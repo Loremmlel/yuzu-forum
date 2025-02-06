@@ -1,6 +1,6 @@
-import { H3Event } from 'h3'
+import {H3Event} from 'h3'
 import jwt from 'jsonwebtoken'
-import type { YzForumPayload } from '~/types/utils/jwt'
+import type {YzForumPayload} from '~/types/utils/jwt'
 
 const config = useRuntimeConfig()
 

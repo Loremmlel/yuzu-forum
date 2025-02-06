@@ -1,12 +1,12 @@
-import { yuzuError } from "~/server/utils/YuzuError"
-import { ReportSubmitRequestData } from "~/types/api/report"
-import { getCookieTokenInfo } from "~/server/utils/getCokkieTokenInfo"
-import { reportSection } from "~/pages/report/constant"
-import { ReportModel } from "~/server/models/report"
+import {yuzuError} from "~/server/utils/YuzuError"
+import {ReportSubmitRequestData} from "~/types/api/report"
+import {getCookieTokenInfo} from "~/server/utils/getCokkieTokenInfo"
+import {reportSection} from "~/pages/report/constant"
+import {ReportModel} from "~/server/models/report"
 
 export default defineEventHandler(async (event) => {
-    const { reason, type }: ReportSubmitRequestData = await readBody(event)
-    
+    const {reason, type}: ReportSubmitRequestData = await readBody(event)
+
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
         return yuzuError(event, 10115, 205)
@@ -20,6 +20,6 @@ export default defineEventHandler(async (event) => {
     if (reason.trim().length > 1007) {
         return yuzuError(event, 10123)
     }
-    await ReportModel.create({ reason, type })
+    await ReportModel.create({reason, type})
     return '成功提交反馈!'
 })

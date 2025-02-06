@@ -1,6 +1,6 @@
 import {TopicModel} from "~/server/models/topic";
 import {UserModel} from "~/server/models/user";
-import {GetSectionRequestData, SectionTopic, SectionUser} from "~/types/api/section";
+import {GetSectionRequestData, SectionTopic} from "~/types/api/section";
 import {yuzuError} from "~/server/utils/YuzuError";
 
 async function getSectionTopic(section: string, page: number, limit: number, order: YuzuOrder) {
