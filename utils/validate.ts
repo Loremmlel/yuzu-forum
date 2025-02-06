@@ -4,7 +4,7 @@ export function isValidTimestamp(timestamp: number) {
 
 export function isValidURL(url: string) {
     try {
-        const urlObj = new URL(url)
+        const _ = new URL(url)
         return true
     } catch (err) {
         console.log(err)
