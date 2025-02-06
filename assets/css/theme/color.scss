@@ -1,0 +1,40 @@
+html {
+  --yzforum-white-solod: #fff;
+  --yzforum-black-solod: #000;
+
+  --yzforum-gray-4: #bcc8d4;
+
+  --yzforum-blue-2: #80ccff;
+  --yzforum-blue-3: #54aeff;
+
+  --yzforum-green-4: #2da44e;
+
+  --yzforum-yellow-2: #fcd554;
+  --yzforum-yellow-3: #d4a72c;
+
+  --yzforum-red-2: #ffaba8;
+  --yzforum-red-3: #ff8182;
+  --yzforum-red-4: #fa4549;
+  --yzforum-red-5: #cf222e;
+
+  --yzforum-purple-4: #a475f9;
+
+  --yzforum-pink-0: #ffeff7;
+  --yzforum-pink-3: #ff80c8;
+  --yzforum-pink-4: #e85aad;
+
+  --yzforum-shadow-color: hsla(0, 0%, 0%, 0.05);
+  --yzforum-trans-gray: rgba(255, 255, 255, 0.2);
+
+  --yzforum-trans-blue-3: #54aeff77;
+  --yzforum-trans-blue-4: #218bff77;
+
+  --yzforum-trans-pink-2: #ffadda77;
+
+  --yzforum-mask-color-0: #00000077;
+  --shadow: 0 1px 2px var(--yzforum-shadow-color),
+  0 1px 4px var(--yzforum-shadow-color),
+  0 2px 8px var(--yzforum-shadow-color);
+  --yzforum-shadow-0: 0 0 12px rgba(0, 0, 0, 0.2);
+  --yzforum-shadow-1: 0 0 17px var(--yzforum-trans-blue-3);
+}

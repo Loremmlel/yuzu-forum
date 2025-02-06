@@ -1,0 +1,91 @@
+/**
+重设浏览器默认样式
+ */
+:root {
+  --font-family: 'system-ui';
+  --yz-background-blur: 0px;
+}
+
+* {
+  box-sizing: border-box;
+
+  &::selection {
+    // 默认选中背景色
+    background-color: var(--yzforum-trans-blue-2);
+    // 默认选中文字色
+    color: var(--yzforum-blue-2)
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+// 滚动条样式
+@-moz-document url-prefix() {
+  * {
+    scrollbar-width: none;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--yzforum-blue-0);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--yzforum-trans-blue-3);
+  border-radius: 5px;
+}
+
+@media (max-width: 700px) {
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  * {
+    scrollbar-color: transparent transparent;
+  }
+}
+
+html {
+  font-family: var(--font-family) "JetBrains Mono" "Microsoft YaHei UI" serif;
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+h1, h2 {
+  &::before {
+    content: '#';
+    color: var(--yzforum-blue-5);
+    margin-right: 10px;
+  }
+}
+
+button, select {
+  font-family: inherit;
+}
+
+button {
+  padding: 0;
+  margin: 0;
+}

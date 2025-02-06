@@ -1,0 +1,23 @@
+@mixin yz-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin yz-blur {
+  backdrop-filter: blur(var(--yz-background-blur));
+  color: var(--yzforum-font-color-3);
+  background-color: var(--yzforum-trans-white-5);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+@mixin yz-box-shadow(
+  $x: 0,
+  $y: 2px,
+  $blur: 8px,
+  $spread: 0,
+  $color: rgba(0, 0, 0, 0.15)
+) {
+  box-shadow: $x $y $blur $spread $color;
+}

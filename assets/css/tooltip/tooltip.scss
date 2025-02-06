@@ -1,0 +1,127 @@
+// 定义一个具有 tooltip 属性的元素样式
+[tooltip] {
+  position: relative;
+
+  // 设置 tooltip 内容的样式
+  & > * {
+    display: inline-block;
+  }
+
+  // 定义 tooltip 的伪元素样式，用于显示提示信息
+  &:before, &:after {
+    text-transform: none;
+    font-size: 13px;
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+    position: absolute;
+    display: none;
+    opacity: 0;
+  }
+
+  // 定义 tooltip 箭头的样式
+  &:before {
+    content: '';
+    border: 5px solid transparent;
+    z-index: 1002;
+  }
+
+  // 定义 tooltip 内容的样式
+  &:after {
+    content: attr(tooltip);
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 7px;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+    background: var(--yzforum-trans-white-2);
+    backdrop-filter: blur(10px);
+    will-change: transform;
+    color: var(--yzforum-blue-5);
+    z-index: 1001;
+  }
+
+  // 鼠标悬停时显示 tooltip
+  &:hover:before, &:hover:after {
+    display: block;
+  }
+
+  // 设置 tooltip 默认位置（顶部）和箭头样式
+  &:not([position]):before, &[postion^='top']:before {
+    bottom: 100%;
+    border-bottom-width: 0;
+    border-top-color: var(--yzforum-trans-white-2);
+  }
+  &:not([position]):after, &[postion^='top']:after {
+    bottom: calc(100% + 5px);
+  }
+
+  // 调整 tooltip 默认位置和箭头的居中样式
+  &:not([position]):before, &:not([position]):after,
+  &[position^='top']:before, &[position^='top']:after {
+    left: 50%;
+    transform: translate(-50%, -10px);
+  }
+
+  // 设置 tooltip 在底部的样式和箭头样式
+  &[position^='bottom']:before {
+    top: 105%;
+    border-top-width: 0;
+    border-bottom-color: var(--yzforum-trans-white-2);
+  }
+  &[position^='bottom']:after {
+    top: calc(100% + 5px);
+  }
+  &[position^='bottom']:before, &[position^='bottom']:after {
+    left: 50%;
+    transform: translate(-50%, 10px);
+  }
+
+  // 设置 tooltip 在左侧的样式和箭头样式
+  &[position^='left']:before {
+    top: 50%;
+    border-right-width: 0;
+    border-left-color: var(--yzforum-trans-white-2);
+    left: calc(0em - 5px);
+    transform: translate(-10px, -50%);
+  }
+  &[position^='left']:after {
+    top: 50%;
+    right: calc(100% + 5px);
+    transform: translate(-10px, -50%);
+  }
+
+  // 设置 tooltip 在右侧的样式和箭头样式
+  &[position^='right']:before {
+    top: 50%;
+    border-left-width: 0;
+    border-right-color: var(--yzforum-trans-white-2);
+    right: calc(0em - 5px);
+    transform: translate(10px, -50%);
+  }
+  &[position^='right']:after {
+    top: 50%;
+    left: calc(100% + 5px);
+    transform: translate(10px, -50%);
+  }
+
+  // 定义垂直方向上鼠标悬停时的动画效果
+  &:not([position]):hover:before,
+  &:not([position]):hover:after,
+  &[position^='bottom']:hover:before,
+  &[position^='bottom']:hover:after,
+  &[position^='top']:hover:before,
+  &[position^='top']:hover:after{
+    animation: vertical 300ms ease-out forwards;
+  }
+
+  // 定义水平方向上鼠标悬停时的动画效果
+  &[position^='left']:hover:before,
+  &[position^='left']:hover:after,
+  &[position^='right']:hover:before,
+  &[position^='right']:hover:after{
+    animation: horizontal 300ms ease-out forwards;
+  }
+}
