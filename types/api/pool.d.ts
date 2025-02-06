@@ -2,12 +2,12 @@ import type {HomeTopic} from "~/types/api/home";
 
 export type SortField =
     'updated'
-| 'time'
-| 'views'
-| 'upvotes'
-| 'likes'
-| 'replies'
-| 'comments'
+    | 'time'
+    | 'views'
+    | 'upvotes'
+    | 'likes'
+    | 'replies'
+    | 'comments'
 
 export type SortFieldPool = 'views' | 'created'
 

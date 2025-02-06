@@ -20,12 +20,12 @@ export interface MessageRequestData {
     limit: string
     type?: MessageType | ''
     sortField?: SortField
-    sortOrder: YzOrder
+    sortOrder: YuzuOrder
 }
 
 export interface Message {
     mid: number
-    sender: YzUser
+    sender: YuzuUser
     receiverId: number
     time: number
     tid: number

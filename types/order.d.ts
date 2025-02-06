@@ -1,1 +1,1 @@
-type YzOrder = 'asc' | 'desc'
+type YuzuOrder = 'asc' | 'desc'

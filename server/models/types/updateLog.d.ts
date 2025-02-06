@@ -1,7 +1,7 @@
 export interface UpdateLog {
     upid: number
     type: string
-    content: YzLanguage
+    content: YuzuLanguage
     time: string
     version: string
 

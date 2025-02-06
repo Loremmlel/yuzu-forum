@@ -12,7 +12,7 @@ export interface GameResource {
 }
 
 export interface GameResourceDetails extends GameResource {
-    user: YzUser
+    user: YuzuUser
     link: string[]
     code: string
     password: string

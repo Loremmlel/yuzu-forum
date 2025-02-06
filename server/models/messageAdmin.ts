@@ -5,17 +5,17 @@ import {Message} from "~/server/models/types/messageAdmin";
 const MessageAdminSchema
     = new mongoose.Schema<Message>(
     {
-        maid: { type: Number, unique: true },
-        uid: { type: Number, required: true },
-        time: { type: Number, default: 0 },
+        maid: {type: Number, unique: true},
+        uid: {type: Number, required: true},
+        time: {type: Number, default: 0},
         content: {
-            'en-us': { type: String, default: '' },
-            'ja-jp': { type: String, default: '' },
-            'zh-cn': { type: String, default: '' }
+            'en-us': {type: String, default: ''},
+            'ja-jp': {type: String, default: ''},
+            'zh-cn': {type: String, default: ''}
         },
-        status: { type: String, default: 'unread' }
+        status: {type: String, default: 'unread'}
     },
-    { timestamps: { createdAt: 'created', updatedAt: 'updated' } }
+    {timestamps: {createdAt: 'created', updatedAt: 'updated'}}
 )
 
 MessageAdminSchema.virtual('user', {

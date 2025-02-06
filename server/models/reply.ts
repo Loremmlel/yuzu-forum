@@ -5,25 +5,25 @@ import {increasingSequence} from "~/server/utils/increasingSequence";
 const ReplySchema
     = new mongoose.Schema<Reply>(
     {
-        rid: { type: Number, unique: true },
-        tid: { type: Number, required: true },
-        rUid: { type: Number, required: true },
-        toUid: { type: Number, required: true },
-        floor: { type: Number, default: 0 },
-        toFloor: { type: Number, default: 0 },
-        tags: { type: [String], default: [] },
-        time: { type: Number, default: 0 },
-        edited: { type: Number, default: 0 },
-        content: { type: String, default: '', maxlength: 10007 },
-        upvoteTime: { type: Number, default: 0 },
+        rid: {type: Number, unique: true},
+        tid: {type: Number, required: true},
+        rUid: {type: Number, required: true},
+        toUid: {type: Number, required: true},
+        floor: {type: Number, default: 0},
+        toFloor: {type: Number, default: 0},
+        tags: {type: [String], default: []},
+        time: {type: Number, default: 0},
+        edited: {type: Number, default: 0},
+        content: {type: String, default: '', maxlength: 10007},
+        upvoteTime: {type: Number, default: 0},
 
-        upvotes: { type: [Number], default: [] },
-        likes: { type: [Number], default: [] },
-        dislikes: { type: [Number], default: [] },
-        share: { type: [Number], default: [] },
-        comment: { type: [String], default: [] }
+        upvotes: {type: [Number], default: []},
+        likes: {type: [Number], default: []},
+        dislikes: {type: [Number], default: []},
+        share: {type: [Number], default: []},
+        comment: {type: [String], default: []}
     },
-    { timestamps: { createdAt: 'created', updatedAt: 'updated' } }
+    {timestamps: {createdAt: 'created', updatedAt: 'updated'}}
 )
 
 ReplySchema.virtual('topic', {

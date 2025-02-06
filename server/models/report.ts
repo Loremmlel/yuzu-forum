@@ -5,12 +5,12 @@ import {Report} from "~/server/models/types/report";
 const ReportSchema
     = new mongoose.Schema<Report>(
     {
-        reportId: { type: Number, unique: true },
-        reason: { type: String, default: '', maxlength: 1007 },
-        type: { type: String, default: '' },
-        status: { type: Number, default: 0 }
+        reportId: {type: Number, unique: true},
+        reason: {type: String, default: '', maxlength: 1007},
+        type: {type: String, default: ''},
+        status: {type: Number, default: 0}
     },
-    { timestamps: { createdAt: 'created', updatedAt: 'updated' } }
+    {timestamps: {createdAt: 'created', updatedAt: 'updated'}}
 )
 
 ReportSchema.pre('save', increasingSequence('reportId'))

@@ -1,7 +1,7 @@
 export interface Todo {
     todoId: number
     status: number
-    content: YzLanguage
+    content: YuzuLanguage
     time: number
     completedTime: number
 

@@ -6,7 +6,7 @@ export interface Message {
     maid: number
     uid: number
     time: number
-    content: YzLanguage
+    content: YuzuLanguage
     status: MessageStatus
 
     user: User

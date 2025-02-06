@@ -5,15 +5,15 @@ import {increasingSequence} from "~/server/utils/increasingSequence";
 const GameHistorySchema
     = new mongoose.Schema<GameHistory>(
     {
-        ghid: { type: Number, unique: true },
-        gid: { type: Number, required: true },
-        uid: { type: Number, required: true },
-        time: { type: Number, default: 0 },
-        action: { type: String, default: '' },
-        type: { type: String, default: '' },
-        content: { type: String, default: '', max: 1007 }
+        ghid: {type: Number, unique: true},
+        gid: {type: Number, required: true},
+        uid: {type: Number, required: true},
+        time: {type: Number, default: 0},
+        action: {type: String, default: ''},
+        type: {type: String, default: ''},
+        content: {type: String, default: '', max: 1007}
     },
-    { timestamps: { createdAt: 'created', updatedAt: 'updated' } }
+    {timestamps: {createdAt: 'created', updatedAt: 'updated'}}
 )
 
 GameHistorySchema.virtual('user', {

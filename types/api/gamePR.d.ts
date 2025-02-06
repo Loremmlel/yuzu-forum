@@ -7,7 +7,7 @@ export interface GamePR {
     status: number
     time: Date | number
     completedTime: number
-    user: YzUser
+    user: YuzuUser
 }
 
 export interface GamePRDetails extends GamePR {

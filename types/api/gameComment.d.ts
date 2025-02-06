@@ -8,6 +8,6 @@ export interface GameComment {
         isLiked: boolean
     }
 
-    user: YzUser
-    toUser: Omit<YzUser, 'avatar'> | 0
+    user: YuzuUser
+    toUser: Omit<YuzuUser, 'avatar'> | 0
 }

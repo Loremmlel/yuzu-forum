@@ -65,7 +65,7 @@ export interface UserGetTopicRequestData {
 
 export interface UserGame {
     gid: number
-    name: YzLanguage
+    name: YuzuLanguage
     time: number
 }
 

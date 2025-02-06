@@ -33,22 +33,22 @@ export interface HomeTopic {
     time: number
     tags: string[]
     section: string[]
-    user: YzUser
+    user: YuzuUser
     status: number
     upvoteTime: number
 }
 
 export interface HomeGame {
     gid: number
-    name: YzLanguage
+    name: YuzuLanguage
     time: number
     views: number
-    contributors: YzUser[]
+    contributors: YuzuUser[]
     languages: string[]
     platforms: string[]
 }
 
 export interface HomeGameResources extends GameResource {
-    name: YzLanguage
+    name: YuzuLanguage
     time: number
 }

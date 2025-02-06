@@ -2,7 +2,7 @@ export interface GetSectionRequestData {
     section: string
     page: string
     limit: string
-    order: YzOrder
+    order: YuzuOrder
 }
 
 export interface SectionUser {

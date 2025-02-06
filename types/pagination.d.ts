@@ -1,4 +1,4 @@
-interface YzPagination {
+interface YuzuPagination {
     page: string
     limit: string
 }

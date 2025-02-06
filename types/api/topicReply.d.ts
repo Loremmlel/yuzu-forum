@@ -4,7 +4,7 @@ import type {TopicComment} from "~/types/api/topicComment";
 export interface TopicReplyRequestData {
     page: string
     limit: string
-    sortOrder: YzOrder
+    sortOrder: YuzuOrder
 }
 
 export interface TopicReply {

@@ -5,17 +5,17 @@ import {Todo} from "~/server/models/types/todo";
 const TodoSchema
     = new mongoose.Schema<Todo>(
     {
-        todoId: { type: Number, unique: true },
-        status: { type: Number, default: 0 },
+        todoId: {type: Number, unique: true},
+        status: {type: Number, default: 0},
         content: {
-            'en-us': { type: String, default: '' },
-            'ja-jp': { type: String, default: '' },
-            'zh-cn': { type: String, default: '' }
+            'en-us': {type: String, default: ''},
+            'ja-jp': {type: String, default: ''},
+            'zh-cn': {type: String, default: ''}
         },
-        time: { type: Number, default: Date.now() },
-        completedTime: { type: Number, default: 0 }
+        time: {type: Number, default: Date.now()},
+        completedTime: {type: Number, default: 0}
     },
-    { timestamps: { createdAt: 'created', updatedAt: 'updated' } }
+    {timestamps: {createdAt: 'created', updatedAt: 'updated'}}
 )
 
 TodoSchema.pre('save', increasingSequence('todoId'))

@@ -32,6 +32,7 @@
     "@prosemirror-adapter/vue": "^0.4.0",
     "animate.css": "^4.1.1",
     "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.7",
     "engine.io": "^6.6.4",
     "feed": "^4.2.2",
     "isomorphic-dompurify": "^2.21.0",

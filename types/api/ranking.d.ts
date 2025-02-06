@@ -17,7 +17,7 @@ export interface RankingGetTopicsRequestData {
     page: string
     limit: string
     sortField: TopicSortFieldRanking
-    sortOrder: YzOrder
+    sortOrder: YuzuOrder
 }
 
 export interface RankingTopics {
@@ -30,7 +30,7 @@ export interface RankingGetUserRequestData {
     page: string
     limit: string
     sortField: UserSortFieldRanking
-    sortOrder: YzOrder
+    sortOrder: YuzuOrder
 }
 
 export interface RankingUsers {

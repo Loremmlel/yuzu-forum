@@ -4,9 +4,9 @@ export interface Game {
     gid: number
     vndbId: string
     uid: number
-    name: YzLanguage
+    name: YuzuLanguage
     banner: string
-    introduction: YzLanguage
+    introduction: YuzuLanguage
 
     time: number
     status: number

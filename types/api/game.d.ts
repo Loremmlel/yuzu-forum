@@ -6,11 +6,11 @@ export interface GameContributor {
 export interface GameDetail {
     gid: number
     vndbId: string
-    user: YzUser
-    name: YzLanguage
+    user: YuzuUser
+    name: YuzuLanguage
     banner: string
-    introduction: YzLanguage
-    markdown: YzLanguage
+    introduction: YuzuLanguage
+    markdown: YuzuLanguage
     time: number
     views: number
     platform: string[]
@@ -38,14 +38,14 @@ export interface GamePageRequestData {
     language: LanguageOptions
     platform: PlatformOptions
     sortField: 'time' | 'views'
-    sortOrder: YzOrder
+    sortOrder: YuzuOrder
 }
 
 export interface GameCard {
     gid: number
-    name: YzLanguage
+    name: YuzuLanguage
     banner: string
-    user: YzUser
+    user: YuzuUser
 
     views: number
     likes: number

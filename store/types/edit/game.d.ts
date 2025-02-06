@@ -1,14 +1,14 @@
 export interface GameStorePersist {
     vndbId: string
-    name: YzLanguage
-    introduction: YzLanguage
+    name: YuzuLanguage
+    introduction: YuzuLanguage
     aliases: string[]
 }
 
-export interface GameStoreTemp{
+export interface GameStoreTemp {
     gid: number
-    name: YzLanguage
-    introduction: YzLanguage
+    name: YuzuLanguage
+    introduction: YuzuLanguage
     series: string[]
     aliases: string[]
     official: string[]

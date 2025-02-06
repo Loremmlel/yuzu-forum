@@ -8,7 +8,7 @@ export interface BannedLog {
     nid: number
     uid: number
     name: string
-    description: YzLanguage
+    description: YuzuLanguage
     time: number
     result: string | number
 }

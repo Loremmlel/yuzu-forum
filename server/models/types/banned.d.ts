@@ -2,7 +2,7 @@ export interface Banned {
     bid: number
     uid: number
     name: string
-    description: YzLanguage
+    description: YuzuLanguage
     time: number
     result: string | number
 

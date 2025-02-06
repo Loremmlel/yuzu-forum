@@ -54,6 +54,7 @@
     border-bottom-width: 0;
     border-top-color: var(--yzforum-trans-white-2);
   }
+
   &:not([position]):after, &[postion^='top']:after {
     bottom: calc(100% + 5px);
   }
@@ -71,9 +72,11 @@
     border-top-width: 0;
     border-bottom-color: var(--yzforum-trans-white-2);
   }
+
   &[position^='bottom']:after {
     top: calc(100% + 5px);
   }
+
   &[position^='bottom']:before, &[position^='bottom']:after {
     left: 50%;
     transform: translate(-50%, 10px);
@@ -87,6 +90,7 @@
     left: calc(0em - 5px);
     transform: translate(-10px, -50%);
   }
+
   &[position^='left']:after {
     top: 50%;
     right: calc(100% + 5px);
@@ -101,6 +105,7 @@
     right: calc(0em - 5px);
     transform: translate(10px, -50%);
   }
+
   &[position^='right']:after {
     top: 50%;
     left: calc(100% + 5px);
@@ -113,7 +118,7 @@
   &[position^='bottom']:hover:before,
   &[position^='bottom']:hover:after,
   &[position^='top']:hover:before,
-  &[position^='top']:hover:after{
+  &[position^='top']:hover:after {
     animation: vertical 300ms ease-out forwards;
   }
 
@@ -121,7 +126,7 @@
   &[position^='left']:hover:before,
   &[position^='left']:hover:after,
   &[position^='right']:hover:before,
-  &[position^='right']:hover:after{
+  &[position^='right']:hover:after {
     animation: horizontal 300ms ease-out forwards;
   }
 }

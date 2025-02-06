@@ -21,5 +21,5 @@ export interface GameHistory {
     action: GameHistoryAction
     type: GameHistoryType
     content: string
-    user: YzUser
+    user: YuzuUser
 }

@@ -16,8 +16,8 @@ export interface SearchResultReply {
     tid: number
     title: string
     content: string
-    user: YzUser
-    toUser: YzUser
+    user: YuzuUser
+    toUser: YuzuUser
     time: number
 }
 
@@ -25,8 +25,8 @@ export interface SearchResultComment {
     tid: number
     title: string
     content: string
-    user: YzUser
-    toUser: YzUser
+    user: YuzuUser
+    toUser: YuzuUser
     time: number
 }
 

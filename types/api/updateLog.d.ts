@@ -23,7 +23,7 @@ export type UpdateType =
 export interface Todo {
     todoId: number
     status: number
-    content: YzLanguage
+    content: YuzuLanguage
     time: number
     completedTime: number
 }
@@ -31,7 +31,7 @@ export interface Todo {
 export interface UpdateLog {
     upid: number
     type: UpdateType
-    content: YzLanguage
+    content: YuzuLanguage
     time: string
     version: string
 }

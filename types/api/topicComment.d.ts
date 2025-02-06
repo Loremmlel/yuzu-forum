@@ -5,7 +5,7 @@ export interface TopicComment {
     rid: number
     tid: number
     user: Omit<TopicUserInfo, 'point'>
-    toUser: Omit<YzUser, 'avatar'>
+    toUser: Omit<YuzuUser, 'avatar'>
     content: string
     likes: {
         count: number
