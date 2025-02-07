@@ -5,7 +5,7 @@ export interface BannedLogRequestData {
 }
 
 export interface BannedLog {
-    nid: number
+    bid: number
     uid: number
     name: string
     description: YuzuLanguage
