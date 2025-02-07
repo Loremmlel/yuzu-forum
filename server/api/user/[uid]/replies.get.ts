@@ -1,0 +1,43 @@
+import {UserModel} from "~/server/models/user";
+import {ReplyModel} from "~/server/models/reply";
+import {UserReply} from "~/types/api/user";
+
+export default defineEventHandler(async (event) => {
+    const uid = getRouterParam(event, 'uid')
+    if (!uid) {
+        return yuzuError(event, 10101)
+    }
+    const {page, limit}: YuzuPagination = await getQuery(event)
+    if (!page || !limit) {
+        return yuzuError(event, 10507)
+    }
+    if (limit !== '50') {
+        return yuzuError(event, 10209)
+    }
+    const skip = (Number(page) - 1) * Number(limit)
+
+    const user = await UserModel.findOne({uid}).lean()
+    if (!user) {
+        return yuzuError(event, 10114)
+    }
+
+    const totalCount = await ReplyModel.countDocuments({
+        rid: {$in: user.reply},
+        status: {$ne: 1}
+    }).lean()
+    const data = await ReplyModel.find({
+        rid: {$in: user.reply},
+        status: {$ne: 1}
+    })
+        .sort({created: -1})
+        .skip(skip)
+        .limit(Number(limit))
+        .lean()
+
+    const replies = data.map((reply) => ({
+        tid: reply.tid,
+        content: reply.content.slice(0, 100),
+        time: reply.time
+    }) as UserReply)
+    return {replies, totalCount}
+})
