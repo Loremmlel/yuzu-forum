@@ -1,7 +1,7 @@
 import sharp from "sharp";
 
 export async function saveGameBanner(
-    bannerBuffer: ArrayBuffer,
+    bannerBuffer: ArrayBuffer | Buffer,
     gid: number
 ) {
     const banner = await sharp(bannerBuffer).toBuffer()
