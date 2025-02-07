@@ -7,7 +7,6 @@ import {Game} from "~/server/models/types/game";
 import {GameModel} from "~/server/models/game";
 import {HomeGame} from "~/types/api/home";
 import {ReplyModel} from "~/server/models/reply";
-import {Reply} from "~/server/models/types/reply";
 import {CommentModel} from "~/server/models/comment";
 
 export async function searchTopic(keywords: string[], skip: number, limit: number) {
