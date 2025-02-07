@@ -44,7 +44,7 @@ export default defineEventHandler(async (event) => {
     if (typeof res === 'number') {
         return yuzuError(event, res)
     }
-    const {avatarUrl, miniAvatarUrl} = res
+    const {avatarUrl} = res
     await UserModel.updateOne(
         {uid: userInfo.uid},
         {$set: {avatar: avatarUrl}}
