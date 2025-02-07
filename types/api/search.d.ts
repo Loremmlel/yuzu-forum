@@ -1,7 +1,7 @@
 import type {HomeGame, HomeTopic} from "~/types/api/home";
 
 export type SearchResultTopic = HomeTopic
-export type SearchResultGalgame = HomeGame
+export type SearchResultGame = HomeGame
 
 export interface SearchResultUser {
     uid: number
@@ -30,10 +30,10 @@ export interface SearchResultComment {
     time: number
 }
 
-export type SearchType = 'topic' | 'galgame' | 'user' | 'reply' | 'comment'
+export type SearchType = 'topic' | 'game' | 'user' | 'reply' | 'comment'
 export type SearchResult =
     | SearchResultTopic
-    | SearchResultGalgame
+    | SearchResultGame
     | SearchResultUser
     | SearchResultReply
     | SearchResultComment

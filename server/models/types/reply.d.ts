@@ -20,9 +20,9 @@ export interface Reply {
     share: number[]
     comment: number[]
 
-    topic: Topic
-    rUser: User
-    toUser: User
+    topic: Topic[]
+    rUser: User[]
+    toUser: User[]
 
     created: Date
     updated: Date
