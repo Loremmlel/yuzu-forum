@@ -11,7 +11,7 @@ async function updateGameLike(gid: number, uid: number) {
     }
 
     if (uid === game.uid) {
-        return
+        return null
     }
 
     const isLikedGame = game.likes.includes(uid)
@@ -54,3 +54,23 @@ async function updateGameLike(gid: number, uid: number) {
         await session.endSession()
     }
 }
+
+export default defineEventHandler(async (event) => {
+    const gid = getRouterParam(event, 'gid')
+    if (!gid) {
+        return yuzuError(event, 10609)
+    }
+
+    const userInfo = await getCookieTokenInfo(event)
+    if (!userInfo) {
+        return yuzuError(event, 10115, 205)
+    }
+    const uid = userInfo.uid
+
+    const result = await updateGameLike(Number(gid), uid)
+    if (typeof result === 'number') {
+        return yuzuError(event, result)
+    }
+
+    return '点赞游戏成功!'
+})
