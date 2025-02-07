@@ -25,5 +25,5 @@ export default defineEventHandler(async (event) => {
         return yuzuError(event, result)
     }
 
-    return '成功发送注册账号验证码!'
+    return '发送注册账号验证码成功!'
 })

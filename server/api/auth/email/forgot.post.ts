@@ -17,5 +17,5 @@ export default defineEventHandler(async (event) => {
     if (typeof result === 'number') {
         return yuzuError(event, result)
     }
-    return '成功发送忘记密码验证码!'
+    return '发送忘记密码验证码成功!'
 })

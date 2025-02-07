@@ -21,5 +21,5 @@ export default defineEventHandler(async (event) => {
         return yuzuError(event, 10123)
     }
     await ReportModel.create({reason, type})
-    return '成功提交反馈!'
+    return '提交反馈成功!'
 })

@@ -13,7 +13,7 @@ const UserSchema
     roles: {type: Number, default: 1},
     status: {type: Number, default: 0},
     time: {type: Number, default: Date.now()},
-    point: {type: Number, default: 1000},
+    point: {type: Number, default: 1017},
     bio: {type: String, default: '', maxlength: 100},
     upvote: {type: Number, default: 0},
     like: {type: Number, default: 0},

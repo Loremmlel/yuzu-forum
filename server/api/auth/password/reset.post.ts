@@ -36,5 +36,5 @@ export default defineEventHandler(async (event) => {
     if (typeof result === 'number') {
         return yuzuError(event, result)
     }
-    return '成功重设密码!'
+    return '重设密码成功!'
 })

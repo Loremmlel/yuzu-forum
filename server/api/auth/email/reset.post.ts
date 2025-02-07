@@ -22,5 +22,5 @@ export default defineEventHandler(async (event) => {
         return yuzuError(event, result)
     }
 
-    return '成功发送重置邮箱验证码!'
+    return '发送重置邮箱验证码成功!'
 })
