@@ -1,6 +1,8 @@
-export function checkComment(content: string) {
+import {ErrorCode} from "~/error/errorCode";
+
+export function checkComment(content: string): ErrorCode {
     if (!content.trim() || content.trim().length > 1000) {
-        return 10223
+        return ErrorCode.CommentContentTooLongOrEmpty
     }
-    return 0
+    return ErrorCode.NoError
 }

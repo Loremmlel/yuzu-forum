@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 import {saveGameBanner} from "~/server/api/game/utils/saveGameBanner";
 import {GameLinkModel} from "~/server/models/gameLink";
 import {GameHistoryModel} from "~/server/models/gameHistory";
+import {ErrorCode} from "~/error/errorCode";
 
 async function readGame(event: H3Event) {
     const formData = await readFormData(event)
@@ -22,7 +23,7 @@ async function readGame(event: H3Event) {
         !aliasesData ||
         !bannerData
     ) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
 
     const vndbId = vndbIdData.toString()
@@ -31,18 +32,18 @@ async function readGame(event: H3Event) {
     const aliases = JSON.parse(aliasesData.toString())
     const banner = await new Response(bannerData).arrayBuffer()
     const res = checkGamePublish(vndbId, name, introduction, aliases)
-    if (res) {
+    if (res !== ErrorCode.NoError) {
         return yuzuError(event, res)
     }
 
     const game = await GameModel.findOne({vndb_id: vndbId})
     if (game) {
-        return yuzuError(event, 10608)
+        return yuzuError(event, ErrorCode.DuplicateVNDBEntry)
     }
 
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
     const uid = userInfo.uid
 
@@ -65,10 +66,10 @@ export default defineEventHandler(async (event) => {
 
     const user = await UserModel.findOne({uid})
     if (!user) {
-        return yuzuError(event, 10101)
+        return yuzuError(event, ErrorCode.UserNotFound)
     }
     if (user.point / 10 < user.dailyGameCount) {
-        return yuzuError(event, 10607)
+        return yuzuError(event, ErrorCode.DailyGameLimitExceeded)
     }
 
     const session = await mongoose.startSession()
@@ -103,7 +104,7 @@ export default defineEventHandler(async (event) => {
 
         const res = await saveGameBanner(banner, newGame.gid)
         if (!res) {
-            return yuzuError(event, 10116)
+            return yuzuError(event, ErrorCode.UnknownImageUploadError)
         }
         if (typeof res === 'number') {
             return yuzuError(event, res)

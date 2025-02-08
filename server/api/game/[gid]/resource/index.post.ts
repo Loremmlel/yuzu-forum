@@ -5,14 +5,15 @@ import mongoose from "mongoose";
 import {GameResourceModel} from "~/server/models/gameResource";
 import {UserModel} from "~/server/models/user";
 import {GameModel} from "~/server/models/game";
+import {ErrorCode} from "~/error/errorCode";
 
 async function getResource(event: H3Event) {
     const body: GameResourceStoreTemp = await readBody(event)
     if (!body) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
     const res = checkGameResourcePublish(body)
-    if (res) {
+    if (res !== ErrorCode.NoError) {
         return yuzuError(event, res)
     }
     const gid = getRouterParam(event, 'gid')
@@ -22,7 +23,7 @@ async function getResource(event: H3Event) {
 
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
     const uid = userInfo.uid
 

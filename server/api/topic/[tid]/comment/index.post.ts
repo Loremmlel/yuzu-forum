@@ -7,26 +7,27 @@ import {UserModel} from "~/server/models/user";
 import {TopicModel} from "~/server/models/topic";
 import {ReplyModel} from "~/server/models/reply";
 import {createMessage} from "~/server/utils/message";
+import {ErrorCode} from "~/error/errorCode";
 
 async function readReply(event: H3Event) {
     const {rid, toUid, content}: TopicCreateCommentRequestData = await readBody(event)
     if (!rid || !toUid) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
 
     const res = checkComment(content)
-    if (res) {
+    if (res !== ErrorCode.NoError) {
         return yuzuError(event, res)
     }
 
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
 
     const tid = getRouterParam(event, 'tid')
     if (!tid) {
-        return yuzuError(event, 10210)
+        return yuzuError(event, ErrorCode.TopicIdReadFailed)
     }
     return {
         rid,
@@ -53,12 +54,12 @@ export default defineEventHandler(async (event) => {
             {$addToSet: {comment: newComment.cid}}
         )
         if (!commentUser) {
-            return yuzuError(event, 10101)
+            return yuzuError(event, ErrorCode.UserNotFound)
         }
 
         const toUser = await UserModel.findOne({uid: toUid})
         if (!toUser) {
-            return yuzuError(event, 10101)
+            return yuzuError(event, ErrorCode.UserNotFound)
         }
 
         await TopicModel.updateOne({tid}, {$inc: {comments: 1}}).lean()

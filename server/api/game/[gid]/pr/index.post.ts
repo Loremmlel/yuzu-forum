@@ -6,22 +6,23 @@ import mongoose from "mongoose";
 import {GamePRModel} from "~/server/models/gamePR";
 import {GameHistoryModel} from "~/server/models/gameHistory";
 import {isDeepEmpty} from "~/server/utils/isDeepEmpty";
+import {ErrorCode} from "~/error/errorCode";
 
 export default defineEventHandler(async (event) => {
     const game: GameStoreTemp = await readBody(event)
     const res = checkGamePR(game)
-    if (res) {
+    if (res !== ErrorCode.NoError) {
         return yuzuError(event, res)
     }
 
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
 
     const originalGame = await GameModel.findOne({gid: game.gid}).lean()
     if (!originalGame) {
-        return yuzuError(event, 10610)
+        return yuzuError(event, ErrorCode.GameNotFound)
     }
     const { gid, name, introduction, series, alias, official, engine, tags } = originalGame
     const diffGame = compareObjects(game, {
@@ -36,7 +37,7 @@ export default defineEventHandler(async (event) => {
     })
 
     if (isDeepEmpty(diffGame)) {
-        return yuzuError(event, 10644)
+        return yuzuError(event, ErrorCode.NoChangesDetected)
     }
 
     const session = await mongoose.startSession()

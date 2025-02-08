@@ -1,5 +1,6 @@
 import {RankingGetUserRequestData, RankingUsers, UserSortFieldRanking} from "~/types/api/ranking";
 import {UserModel} from "~/server/models/user";
+import {ErrorCode} from "~/error/errorCode";
 
 /**
  * 异步获取用户排名信息
@@ -73,10 +74,10 @@ async function getUserRanking(
 export default defineEventHandler(async (event) => {
     const {page, limit, sortField, sortOrder}: RankingGetUserRequestData = await getQuery(event)
     if (!page || !limit || !sortField || !sortOrder) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
     if (limit !== '30') {
-        return yuzuError(event, 10209)
+        return yuzuError(event, ErrorCode.CustomPaginationNotAllowed)
     }
 
     const rankingUserCache = await useStorage('redis')

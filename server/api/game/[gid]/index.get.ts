@@ -3,11 +3,12 @@ import {GameContributor, GameDetail} from "~/types/api/game";
 import {UserModel} from "~/server/models/user";
 import {GameModel} from "~/server/models/game";
 import {markdownToHtml} from "~/server/utils/markdown";
+import {ErrorCode} from "~/error/errorCode";
 
 export default defineEventHandler(async (event) => {
     const gid = getRouterParam(event, 'gid')
     if (!gid) {
-        return yuzuError(event, 10609)
+        return yuzuError(event, ErrorCode.GameIdReadFailed)
     }
     const userInfo = await getCookieTokenInfo(event)
 
@@ -16,7 +17,7 @@ export default defineEventHandler(async (event) => {
     try {
         const game = await GameModel.findOne({ gid }).lean()
         if (!game) {
-            return yuzuError(event, 10610)
+            return yuzuError(event, ErrorCode.GameNotFound)
         }
         if (game.status === 1) {
             return 'banned'
@@ -26,7 +27,7 @@ export default defineEventHandler(async (event) => {
 
         const publisher = await UserModel.findOne({ uid: game.uid })
         if (!publisher) {
-            return yuzuError(event, 10101)
+            return yuzuError(event, ErrorCode.UserNotFound)
         }
 
         const contributorData = await UserModel.find(

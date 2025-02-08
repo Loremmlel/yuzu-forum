@@ -2,11 +2,12 @@ import {GameModel} from "~/server/models/game";
 import {UserModel} from "~/server/models/user";
 import {GameRSS} from "~/types/api/rss";
 import {getPreferredLanguageText} from "~/utils/getPreferredLanguageText";
+import {ErrorCode} from "~/error/errorCode";
 
 export default defineEventHandler(async (event) => {
     const {language}: {language: Language} = await getQuery(event)
     if (!language) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
     const data = await GameModel.find()
         .sort({created: 'desc'})

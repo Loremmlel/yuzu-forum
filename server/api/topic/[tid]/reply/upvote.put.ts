@@ -2,21 +2,22 @@ import {ReplyModel} from "~/server/models/reply";
 import {UserModel} from "~/server/models/user";
 import mongoose from "mongoose";
 import {createMessage} from "~/server/utils/message";
+import {ErrorCode} from "~/error/errorCode";
 
-async function updateReplyUpvote(uid: number, rid: number) {
+async function updateReplyUpvote(uid: number, rid: number): Promise<ErrorCode> {
     const reply = await ReplyModel.findOne({ rid })
     if (!reply) {
-        return 10506
+        return ErrorCode.ReplyNotFound
     }
 
     const userInfo = await UserModel.findOne({ uid })
     if (!userInfo) {
-        return 10115
+        return ErrorCode.LoginExpired
     }
 
     const point = userInfo.point
     if (point < 1100) {
-        return 10508
+        return ErrorCode.InsufficientPointsForPushReply
     }
 
     const session = await mongoose.startSession()
@@ -44,7 +45,7 @@ async function updateReplyUpvote(uid: number, rid: number) {
         )
 
         await session.commitTransaction()
-        return null
+        return ErrorCode.NoError
     } catch (err) {
         await session.abortTransaction()
         throw err
@@ -56,20 +57,20 @@ async function updateReplyUpvote(uid: number, rid: number) {
 export default defineEventHandler(async (event) => {
     const tid = getRouterParam(event, 'tid')
     if (!tid) {
-        return yuzuError(event, 10210)
+        return yuzuError(event, ErrorCode.TopicIdReadFailed)
     }
 
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
 
     const { rid }: { rid: string } = await getQuery(event)
     if (!rid) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
     const result = await updateReplyUpvote(userInfo.uid, parseInt(rid))
-    if (typeof result === 'number') {
+    if (result !== ErrorCode.NoError) {
         return yuzuError(event, result)
     }
 

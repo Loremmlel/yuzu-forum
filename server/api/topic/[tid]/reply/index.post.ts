@@ -8,6 +8,7 @@ import {TopicModel} from "~/server/models/topic";
 import {createTagsByTidAndRid} from "~/server/utils/tags";
 import {createMessage} from "~/server/utils/message";
 import {markdownToHtml} from "~/server/utils/markdown";
+import {ErrorCode} from "~/error/errorCode";
 
 async function readReply(event: H3Event) {
     const {
@@ -19,18 +20,18 @@ async function readReply(event: H3Event) {
     }: TopicCreateReplyRequestData = await readBody(event)
 
     const res = checkReply(tags, content, time)
-    if (res) {
-        return yuzuError(event, 10115, 205)
+    if (res !== ErrorCode.NoError) {
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
 
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
 
     const tid = getRouterParam(event, 'tid')
     if (!tid) {
-        return yuzuError(event, 10210)
+        return yuzuError(event, ErrorCode.TopicIdReadFailed)
     }
 
     const deduplicatedTags = [...new Set(tags)]

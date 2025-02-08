@@ -1,10 +1,11 @@
 import {GameLinkModel} from "~/server/models/gameLink";
 import {GameLink} from "~/types/api/gameLink";
+import {ErrorCode} from "~/error/errorCode";
 
 export default defineEventHandler(async (event) => {
     const gid = getRouterParam(event, 'gid')
     if (!gid) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
 
     const data = await GameLinkModel.find({gid}).sort({created: -1}).lean()

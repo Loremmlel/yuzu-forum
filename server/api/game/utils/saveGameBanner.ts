@@ -1,4 +1,5 @@
 import sharp from "sharp";
+import {ErrorCode} from "~/error/errorCode";
 
 export async function saveGameBanner(
     bannerBuffer: ArrayBuffer | Buffer,
@@ -13,7 +14,7 @@ export async function saveGameBanner(
         .webp({quality: 78})
         .toBuffer()
     if (!checkBufferSize(miniBanner, 1.0)) {
-        return 10605
+        return ErrorCode.PreviewImageSizeExceeded
     }
 
     const bucketName = `image/game/${gid}/banner`

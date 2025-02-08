@@ -1,4 +1,5 @@
 import {GameModel} from "~/server/models/game";
+import {ErrorCode} from "~/error/errorCode";
 
 interface GameSeries {
     gid: number
@@ -8,12 +9,12 @@ interface GameSeries {
 export default defineEventHandler(async (event) => {
     const gid = getRouterParam(event, 'gid')
     if (!gid) {
-        return yuzuError(event, 10609)
+        return yuzuError(event, ErrorCode.GameIdReadFailed)
     }
 
     const game = await GameModel.findOne({ gid, status: { $ne: 1 } }).lean()
     if (!game) {
-        return yuzuError(event, 10610)
+        return yuzuError(event, ErrorCode.GameNotFound)
     }
 
     const series: GameSeries[] = await GameModel.find({

@@ -2,11 +2,12 @@ import {TopicModel} from "~/server/models/topic";
 import mongoose from "mongoose";
 import {UserModel} from "~/server/models/user";
 import {createDeduplicatedMessage} from "~/server/utils/message";
+import {ErrorCode} from "~/error/errorCode";
 
-async function updateTopicFavorite(uid: number, tid: number) {
+async function updateTopicFavorite(uid: number, tid: number): Promise<ErrorCode> {
     const topic = await TopicModel.findOne({ tid })
     if (!topic) {
-        return 10211
+        return ErrorCode.TopicNotFound
     }
     const isFavoriteTopic = topic.favorites.includes(uid)
     const pointAmount = isFavoriteTopic ? -1 : 1
@@ -41,7 +42,7 @@ async function updateTopicFavorite(uid: number, tid: number) {
         }
 
         await session.commitTransaction()
-        return null
+        return ErrorCode.NoError
     } catch (err) {
         await session.abortTransaction()
         throw err
@@ -53,16 +54,16 @@ async function updateTopicFavorite(uid: number, tid: number) {
 export default defineEventHandler(async (event) => {
     const tid = getRouterParam(event, 'tid')
     if (!tid) {
-        return yuzuError(event, 10210)
+        return yuzuError(event, ErrorCode.TopicIdReadFailed)
     }
 
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
 
     const result = await updateTopicFavorite(userInfo.uid, Number(tid))
-    if (typeof result === 'number') {
+    if (result !== ErrorCode.NoError) {
         return yuzuError(event, result)
     }
     return '收藏主题成功!'

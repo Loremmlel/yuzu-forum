@@ -1,19 +1,20 @@
 import {UserModel} from "~/server/models/user";
 import {GamePRModel} from "~/server/models/gamePR";
 import {GamePR} from "~/types/api/gamePR";
+import {ErrorCode} from "~/error/errorCode";
 
 export default defineEventHandler(async (event) => {
     const gid = getRouterParam(event, 'gid')
     if (!gid) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
 
     const { page, limit }: { page: string; limit: string } = await getQuery(event)
     if (!page || !limit) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
     if (limit !== '7') {
-        return yuzuError(event, 10209)
+        return yuzuError(event, ErrorCode.CustomPaginationNotAllowed)
     }
 
     const skip = (Number(page) - 1) * Number(limit)

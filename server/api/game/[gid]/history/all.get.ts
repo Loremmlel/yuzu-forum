@@ -1,15 +1,16 @@
 import {GameHistoryModel} from "~/server/models/gameHistory";
 import {UserModel} from "~/server/models/user";
 import {GameHistory, GameHistoryAction, GameHistoryType} from "~/types/api/gameHistory";
+import {ErrorCode} from "~/error/errorCode";
 
 export default defineEventHandler(async (event) => {
     const gid = getRouterParam(event, 'gid')
     if (!gid) {
-        return yuzuError(event, 10609)
+        return yuzuError(event, ErrorCode.GameIdReadFailed)
     }
     const {page, limit}: { page: string, limit: string } = await getQuery(event)
     if (limit !== '7') {
-        return yuzuError(event, 10209)
+        return yuzuError(event, ErrorCode.CustomPaginationNotAllowed)
     }
 
     const skip = (Number(page) - 1) * Number(limit)

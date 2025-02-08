@@ -5,6 +5,7 @@ import {UserModel} from "~/server/models/user";
 import mongoose from "mongoose";
 import {TopicModel} from "~/server/models/topic";
 import {createTagsByTidAndRid} from "~/server/utils/tags";
+import {ErrorCode} from "~/error/errorCode";
 
 async function readTopicData(event: H3Event) {
     const {
@@ -16,12 +17,12 @@ async function readTopicData(event: H3Event) {
         section
     }: EditCreateTopicRequestData = await readBody(event)
     const res = checkTopic(title, content, tags, category, section, Number(time))
-    if (res) {
+    if (res !== ErrorCode.NoError) {
         return yuzuError(event, res)
     }
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
     const uid = userInfo.uid
 
@@ -53,10 +54,10 @@ export default defineEventHandler(async (event) => {
     } = result
     const user = await UserModel.findOne({uid})
     if (!user) {
-        return yuzuError(event, 10101)
+        return yuzuError(event, ErrorCode.UserNotFound)
     }
     if (user.point / 10 < user.dailyTopicCount) {
-        return yuzuError(event, 10201)
+        return yuzuError(event, ErrorCode.DailyTopicLimitExceeded)
     }
 
     const session = await mongoose.startSession()

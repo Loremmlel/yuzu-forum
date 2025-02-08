@@ -1,15 +1,16 @@
 import {isValidURL} from "~/utils/validate";
+import {ErrorCode} from "~/error/errorCode";
 
-export function checkGameLinkPublish(name: string, link: string) {
+export function checkGameLinkPublish(name: string, link: string): ErrorCode {
     if (name.trim().length > 107) {
-        return 10626
+        return ErrorCode.LinkNameTooLong
     }
     if (link.trim().length > 233) {
-        return 10627
+        return ErrorCode.LinkTooLong
     }
     if (!isValidURL(link)) {
-        return 10636
+        return ErrorCode.InvalidLinkFormat
     }
 
-    return 0
+    return ErrorCode.NoError
 }

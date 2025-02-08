@@ -6,6 +6,7 @@ import {verifyCaptcha} from "~/server/utils/verifyCaptcha";
 import {UserModel} from "~/server/models/user";
 import {hash} from "bcrypt";
 import {createTokens} from "~/server/utils/jwt";
+import {ErrorCode} from "~/error/errorCode";
 
 async function registerController(event: H3Event) {
     const {name, email, password, code}: RegisterRequestData = await readBody(event)
@@ -16,12 +17,12 @@ async function registerController(event: H3Event) {
         !isValidPassword(password) ||
         !isValidMailConfirmCode(code)
     ) {
-        return yuzuError(event, 10107)
+        return yuzuError(event, ErrorCode.InvalidUserCredentials)
     }
     const registerCooldown = await useStorage('redis')
         .getItem<string>(`login:register:cd:${name}`)
     if (registerCooldown) {
-        return yuzuError(event, 10113)
+        return yuzuError(event, ErrorCode.RegistrationCooldown)
     } else {
         useStorage('redis').setItem(`login:register:cd:${ip}`, ip, {ttl: 60})
     }
@@ -36,15 +37,15 @@ export default defineEventHandler(async (event) => {
     const {name, email, password, code, ip} = result
     const isCodeValid = await verifyCaptcha(email, code)
     if (!isCodeValid) {
-        return yuzuError(event, 10103)
+        return yuzuError(event, ErrorCode.EmailVerificationCodeIncorrect)
     }
     const usernameCount = await UserModel.countDocuments({name: {$regex: new RegExp(`^${name}$`, 'i')}})
     if (usernameCount) {
-        return yuzuError(event, 10105)
+        return yuzuError(event, ErrorCode.UsernameAlreadyRegistered)
     }
     const emailCount = await UserModel.countDocuments({email})
     if (emailCount) {
-        return yuzuError(event, 10104)
+        return yuzuError(event, ErrorCode.EmailAlreadyRegistered)
     }
     const hashedPassword = await hash(password, 7)
     const user = new UserModel({

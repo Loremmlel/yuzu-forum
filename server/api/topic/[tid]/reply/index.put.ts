@@ -3,6 +3,7 @@ import {ReplyModel} from "~/server/models/reply";
 import {updateTagsByTidAndRid} from "~/server/utils/tags";
 import {TopicUpdateReplyRequestData} from "~/types/api/topicReply";
 import {checkReply} from "~/server/api/topic/utils/checkReply";
+import {ErrorCode} from "~/error/errorCode";
 
 async function updateReply(
     uid: number,
@@ -32,18 +33,18 @@ async function updateReply(
 export default defineEventHandler(async (event) => {
     const tid = getRouterParam(event, 'tid')
     if (!tid) {
-        return yuzuError(event, 10210)
+        return yuzuError(event, ErrorCode.TopicIdReadFailed)
     }
 
     const { rid, content, tags, edited }: TopicUpdateReplyRequestData = await readBody(event)
     const result = checkReply(tags, content, edited)
-    if (result) {
+    if (result !== ErrorCode.NoError) {
         return yuzuError(event, result)
     }
 
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
     const uid = userInfo.uid
     await updateReply(uid, Number(tid), rid, content, tags, edited)

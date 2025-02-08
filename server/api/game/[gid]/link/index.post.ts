@@ -4,14 +4,15 @@ import mongoose from "mongoose";
 import {GameLinkModel} from "~/server/models/gameLink";
 import {GameModel} from "~/server/models/game";
 import {GameHistoryModel} from "~/server/models/gameHistory";
+import {ErrorCode} from "~/error/errorCode";
 
 async function getLink(event: H3Event) {
     const {name, link}: { name: string; link: string } = await readBody(event)
     if (!name || !link) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
     const res = checkGameLinkPublish(name, link)
-    if (res) {
+    if (res !== ErrorCode.NoError) {
         return yuzuError(event, res)
     }
     const gid = getRouterParam(event, 'gid')
@@ -21,7 +22,7 @@ async function getLink(event: H3Event) {
 
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
     const uid = userInfo.uid
 

@@ -4,6 +4,7 @@ import {Game} from "~/server/models/types/game";
 import {GameModel} from "~/server/models/game";
 import {UserModel} from "~/server/models/user";
 import {GameCard, GamePageRequestData} from "~/types/api/game";
+import {ErrorCode} from "~/error/errorCode";
 
 async function getGames(
     page: number,
@@ -59,10 +60,10 @@ export default defineEventHandler(async (event) => {
         sortOrder
     }: GamePageRequestData = await getQuery(event)
     if(!page || !limit || !sortField || ! sortOrder) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
     if (limit !== '24') {
-        return yuzuError(event, 10209)
+        return yuzuError(event, ErrorCode.CustomPaginationNotAllowed)
     }
     return await getGames(
         Number(page),

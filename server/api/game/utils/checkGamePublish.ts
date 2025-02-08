@@ -1,34 +1,35 @@
 import {isValidYzLanguage} from "~/utils/validate";
 import {vndbPattern} from "~/utils/pattern";
+import {ErrorCode} from "~/error/errorCode";
 
 export function checkGamePublish(
     vndbId: string,
     name: YuzuLanguage,
     introduction: YuzuLanguage,
     aliases?: string[]
-) {
+): ErrorCode {
     if (!vndbId.trim()) {
-        return 10601
+        return ErrorCode.VNDBIdRequired
     }
     if (!vndbPattern.test(vndbId)) {
-        return 10602
+        return ErrorCode.InvalidVNDBIdFormat
     }
     if (!isValidYzLanguage(name, 233)) {
-        return 10603
+        return ErrorCode.InvalidTitleLength
     }
     if (!isValidYzLanguage(introduction, 100007)) {
-        return 10606
+        return ErrorCode.InvalidDescriptionLength
     }
     if (!aliases) {
-        return 0
+        return ErrorCode.NoError
     }
     if (aliases.length > 17) {
-        return 10611
+        return ErrorCode.AliasCountExceeded
     }
     for (const alias of aliases) {
         if (alias.length > 500) {
-            return 10612
+            return ErrorCode.AliasTooLong
         }
     }
-    return 0
+    return ErrorCode.NoError
 }

@@ -1,6 +1,7 @@
 import {HomeMessage} from "~/types/api/home";
 import {MessageModel} from "~/server/models/message";
 import {UserModel} from "~/server/models/user";
+import {ErrorCode} from "~/error/errorCode";
 
 async function getMessages(page: number, limit: number) {
     const skip = (page - 1) * limit
@@ -28,7 +29,7 @@ async function getMessages(page: number, limit: number) {
 export default defineEventHandler(async (event) => {
     const { page, limit }: YuzuPagination = await getQuery(event)
     if (limit !== '10') {
-        return yuzuError(event, 10209)
+        return yuzuError(event, ErrorCode.CustomPaginationNotAllowed)
     }
 
     return await getMessages(Number(page), Number(limit))

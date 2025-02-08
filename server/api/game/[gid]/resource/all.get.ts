@@ -1,10 +1,11 @@
 import {GameResourceModel} from "~/server/models/gameResource";
 import {GameResource} from "~/types/api/gameResource";
+import {ErrorCode} from "~/error/errorCode";
 
 export default defineEventHandler(async (event) => {
     const gid = getRouterParam(event, 'gid')
     if (!gid) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
 
     const data = await GameResourceModel.find({ gid })

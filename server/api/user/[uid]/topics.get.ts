@@ -1,24 +1,25 @@
 import {UserGetTopicRequestData, UserTopic} from "~/types/api/user";
 import {UserModel} from "~/server/models/user";
 import {TopicModel} from "~/server/models/topic";
+import {ErrorCode} from "~/error/errorCode";
 
 export default defineEventHandler(async (event) => {
     const uid = getRouterParam(event, 'uid')
     if (!uid) {
-        return yuzuError(event, 10101)
+        return yuzuError(event, ErrorCode.UserNotFound)
     }
     const { page, limit, type }: UserGetTopicRequestData = await getQuery(event)
     if (!page || !limit || !type) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
     if (limit !== '50') {
-        return yuzuError(event, 10209)
+        return yuzuError(event, ErrorCode.CustomPaginationNotAllowed)
     }
     const skip = (parseInt(page) - 1) * parseInt(limit)
 
     const user = await UserModel.findOne({ uid }).lean()
     if (!user) {
-        return yuzuError(event, 10114)
+        return yuzuError(event, ErrorCode.InvalidUserUID)
     }
     const topicArray =
         {

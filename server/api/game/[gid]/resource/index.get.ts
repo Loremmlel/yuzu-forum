@@ -1,18 +1,19 @@
 import {GameResourceModel} from "~/server/models/gameResource";
 import {UserModel} from "~/server/models/user";
 import {GameResourceDetails} from "~/types/api/gameResource";
+import {ErrorCode} from "~/error/errorCode";
 
 export default defineEventHandler(async (event) => {
     const { grid }: { grid: string } = await getQuery(event)
     if (!grid) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
 
     const data = await GameResourceModel.findOne({ grid })
         .populate('user', 'uid avatar name', UserModel)
         .lean()
     if (!data) {
-        return yuzuError(event, 10622)
+        return yuzuError(event, ErrorCode.ResourceLinkNotFound)
     }
 
     return  {

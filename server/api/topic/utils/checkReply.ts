@@ -1,23 +1,24 @@
 import {isValidTimestamp} from "~/utils/validate";
+import {ErrorCode} from "~/error/errorCode";
 
-export function checkReply(tags: string[], content: string, time: number) {
+export function checkReply(tags: string[], content: string, time: number): ErrorCode {
     if (tags.length > 7) {
-        return 10501
+        return ErrorCode.ReplyTagLimitExceeded
     }
     for (const tag of tags) {
         if (tag.length > 20) {
-            return 10502
+            return ErrorCode.ReplyTagTooLong
         }
     }
 
     if (!content.trim()) {
-        return 10503
+        return ErrorCode.EmptyReplyContent
     }
     if (content.length > 10000) {
-        return 10504
+        return ErrorCode.ReplyContentTooLong
     }
     if (!isValidTimestamp(time)) {
-        return 10208
+        return ErrorCode.InvalidTopicTimestamp
     }
-    return 0
+    return ErrorCode.NoError
 }

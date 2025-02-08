@@ -3,6 +3,7 @@ import {TopicModel} from "~/server/models/topic";
 import {updateTagsByTidAndRid} from "~/server/utils/tags";
 import {checkTopic} from "~/server/api/topic/utils/checkTopic";
 import {EditUpdateTopicRequestData} from "~/types/api/topic";
+import {ErrorCode} from "~/error/errorCode";
 
 async function updateTopic(
     uid: number,
@@ -34,7 +35,7 @@ async function updateTopic(
 export default defineEventHandler(async (event) => {
     const tid = getRouterParam(event, 'tid')
     if (!tid) {
-        return yuzuError(event, 10210)
+        return yuzuError(event, ErrorCode.TopicIdReadFailed)
     }
 
     const {
@@ -53,13 +54,13 @@ export default defineEventHandler(async (event) => {
         section,
         Number(edited)
     )
-    if (res) {
+    if (res !== ErrorCode.NoError) {
         return yuzuError(event, res)
     }
 
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
     const uid = userInfo.uid
 

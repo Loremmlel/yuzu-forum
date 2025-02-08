@@ -1,9 +1,10 @@
 import {MessageAdminModel} from "~/server/models/messageAdmin";
+import {ErrorCode} from "~/error/errorCode";
 
 export default defineEventHandler(async (event) => {
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
 
     await MessageAdminModel.updateMany({}, { status: 'read' })

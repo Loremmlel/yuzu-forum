@@ -1,5 +1,6 @@
 import {RankingGetTopicsRequestData, RankingTopics, TopicSortFieldRanking} from "~/types/api/ranking";
 import {TopicModel} from "~/server/models/topic";
+import {ErrorCode} from "~/error/errorCode";
 
 async function getTopicRanking(
     page: number,
@@ -52,10 +53,10 @@ async function getTopicRanking(
 export default defineEventHandler(async (event) => {
     const {page, limit, sortField, sortOrder}: RankingGetTopicsRequestData = await getQuery(event)
     if (!page || !limit || !sortField || !sortOrder) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
     if (limit !== '30') {
-        return yuzuError(event, 10209)
+        return yuzuError(event, ErrorCode.CustomPaginationNotAllowed)
     }
 
     const rankingTopicCache = await useStorage('redis')

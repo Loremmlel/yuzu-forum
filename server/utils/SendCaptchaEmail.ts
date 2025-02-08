@@ -4,6 +4,7 @@ import {generateRandomCode} from "~/server/utils/generateUtils";
 import {createTransport} from "nodemailer";
 import SMTPTransport from "nodemailer-smtp-transport";
 import env from '~/server/env/dotenv'
+import {ErrorCode} from "~/error/errorCode";
 
 function getEmailContent(type: 'register' | 'forgot' | 'reset', code: string) {
     switch (type) {
@@ -16,13 +17,14 @@ function getEmailContent(type: 'register' | 'forgot' | 'reset', code: string) {
     }
 }
 
-export async function sendCaptchaEmail(event: H3Event, email: string, type: 'register' | 'forgot' | 'reset') {
+export async function sendCaptchaEmail(event: H3Event, email: string, type: 'register' | 'forgot' | 'reset')
+    : Promise<ErrorCode> {
     const ip = getRemoteIp(event)
 
     const limitEmail = await useStorage('redis').getItem(`limit:email:${email}`)
     const limitIP = await useStorage('redis').getItem(`limit:ip:${ip}`)
     if (limitEmail || limitIP) {
-        return 10301
+        return ErrorCode.EmailSendCooldown
     }
 
     const code = generateRandomCode(6)
@@ -54,5 +56,5 @@ export async function sendCaptchaEmail(event: H3Event, email: string, type: 'reg
         text: getEmailContent(type, code)
     }
     transporter.sendMail(mailOptions)
-    return null
+    return ErrorCode.NoError
 }

@@ -1,17 +1,18 @@
 import {GameResourceModel} from "~/server/models/gameResource";
 import mongoose from "mongoose";
 import {UserModel} from "~/server/models/user";
+import {ErrorCode} from "~/error/errorCode";
 
 async function updateGameResourceLike(grid: number, uid: number) {
     const resource = await GameResourceModel.findOne({ grid }).lean()
     if (!resource) {
-        return 10622
+        return ErrorCode.ResourceLinkNotFound
     }
     if (resource.uid === uid) {
         return
     }
     if (resource.likes.includes(uid)) {
-        return 10624
+        return ErrorCode.AlreadyLikedResource
     }
 
     const session = await mongoose.startSession()
@@ -50,12 +51,12 @@ async function updateGameResourceLike(grid: number, uid: number) {
 export default defineEventHandler(async (event) => {
     const { grid }: { grid: string } = await getQuery(event)
     if (!grid) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
 
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
     const uid = userInfo.uid
 

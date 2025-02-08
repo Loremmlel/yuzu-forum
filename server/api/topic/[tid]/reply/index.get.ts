@@ -6,6 +6,7 @@ import {TopicModel} from "~/server/models/topic";
 import {ReplyModel} from "~/server/models/reply";
 import {TopicReply, TopicReplyRequestData} from "~/types/api/topicReply";
 import {markdownToHtml} from "~/server/utils/markdown";
+import {ErrorCode} from "~/error/errorCode";
 
 async function getComments(uid: number, rid: number) {
     const comment = await CommentModel.find({rid})
@@ -46,7 +47,7 @@ async function getReplies(
     try {
         const topicReplies = await TopicModel.findOne({tid}).lean()
         if (!topicReplies) {
-            return 10506
+            return ErrorCode.ReplyNotFound
         }
         const replyIds = topicReplies.replies
         const skip = (page - 1) * limit
@@ -107,15 +108,15 @@ async function getReplies(
 export default defineEventHandler(async (event) => {
     const tid = getRouterParam(event, 'tid')
     if (!tid) {
-        return yuzuError(event, 10210)
+        return yuzuError(event, ErrorCode.TopicIdReadFailed)
     }
 
     const { page, limit, sortOrder }: TopicReplyRequestData = await getQuery(event)
     if (!page || !limit || !sortOrder) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
     if (limit !== '30') {
-        return yuzuError(event, 10209)
+        return yuzuError(event, ErrorCode.CustomPaginationNotAllowed)
     }
 
     const userInfo = await getCookieTokenInfo(event)

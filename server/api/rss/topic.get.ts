@@ -1,11 +1,12 @@
 import {TopicModel} from "~/server/models/topic";
 import {UserModel} from "~/server/models/user";
 import {TopicRSS} from "~/types/api/rss";
+import {ErrorCode} from "~/error/errorCode";
 
 export default defineEventHandler(async (event) => {
     const {language}: {language: Language} = await getQuery(event)
     if (!language) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
     const data = await TopicModel.find()
         .sort({created: 'desc'})

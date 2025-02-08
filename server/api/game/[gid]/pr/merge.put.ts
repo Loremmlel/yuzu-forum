@@ -5,33 +5,34 @@ import {GamePRModel} from "~/server/models/gamePR";
 import mongoose from "mongoose";
 import {GameHistoryModel} from "~/server/models/gameHistory";
 import {mergeLanguages} from "~/server/utils/objectUtils";
+import {ErrorCode} from "~/error/errorCode";
 
 async function checkMerge(event: H3Event) {
     const { gprid }: { gprid: number } = await readBody(event)
     if (!gprid) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
 
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
     const user = await UserModel.findOne({ uid: userInfo.uid }).lean()
     if (!user) {
-        return yuzuError(event, 10101)
+        return yuzuError(event, ErrorCode.UserNotFound)
     }
 
     const gid = getRouterParam(event, 'gid')
     if (!gid) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
     const game = await GameModel.findOne({ gid }).lean()
     if (!game) {
-        return yuzuError(event, 10610)
+        return yuzuError(event, ErrorCode.GameNotFound)
     }
 
     if (userInfo.uid !== game.uid && user.roles < 2) {
-        return yuzuError(event, 10632)
+        return yuzuError(event, ErrorCode.NoPermissionForUpdateRequest)
     }
 
     return { uid: userInfo.uid, gprid, gid, game: game }
@@ -46,10 +47,10 @@ export default defineEventHandler(async (event) => {
 
     const gamePR = await GamePRModel.findOne({ gprid }).lean()
     if (!gamePR) {
-        return yuzuError(event, 10610)
+        return yuzuError(event, ErrorCode.GameNotFound)
     }
     if (gamePR.status !== 0) {
-        return yuzuError(event, 10633)
+        return yuzuError(event, ErrorCode.UpdateRequestAlreadyProcessed)
     }
 
     const session = await mongoose.startSession()

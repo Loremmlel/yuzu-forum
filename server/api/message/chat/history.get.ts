@@ -3,6 +3,7 @@ import { ChatMessageModel } from "~/server/models/chatMessage";
 import { UserModel } from "~/server/models/user";
 import { Message, MessageHistoryRequest } from "~/types/api/chatMessage";
 import { generateRoomName } from "~/server/utils/generateUtils";
+import {ErrorCode} from "~/error/errorCode";
 
 /**
  * 定义一个处理聊天消息历史的API端点
@@ -14,19 +15,19 @@ import { generateRoomName } from "~/server/utils/generateUtils";
 export default defineEventHandler(async (event) => {
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
     const uid = userInfo.uid
 
     const { receiverUid, page, limit }: MessageHistoryRequest = getQuery(event)
     if (!receiverUid || !page || !limit) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
     if (parseInt(receiverUid) === userInfo.uid) {
-        return yuzuError(event, 10401)
+        return yuzuError(event, ErrorCode.CannotSendMessageToSelf)
     }
     if (limit !== '30') {
-        return yuzuError(event, 10209)
+        return yuzuError(event, ErrorCode.CustomPaginationNotAllowed)
     }
 
     const roomName = generateRoomName(Number(receiverUid), uid)

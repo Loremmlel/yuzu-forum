@@ -1,58 +1,59 @@
 import {GameStoreTemp} from "~/store/types/edit/game";
 import {isValidYzLanguage} from "~/utils/validate";
+import {ErrorCode} from "~/error/errorCode";
 
-export function checkGamePR(game: GameStoreTemp) {
+export function checkGamePR(game: GameStoreTemp): ErrorCode {
     if (typeof game.gid !== 'number' || game.gid > 1000000) {
-        return
+        return ErrorCode.InvalidGameGID
     }
 
     if (!isValidYzLanguage(game.name, 233)) {
-        return 10603
+        return ErrorCode.InvalidTitleLength
     }
 
     if (!isValidYzLanguage(game.introduction, 100000)) {
-        return 10606
+        return ErrorCode.InvalidDescriptionLength
     }
 
     if (game.alias.length > 20) {
-        return 10611
+        return ErrorCode.AliasCountExceeded
     }
 
     for (const alias of game.alias) {
         if (alias.length > 500) {
-            return 10612
+            return ErrorCode.AliasTooLong
         }
     }
 
     if (game.official.length > 20) {
-        return 10637
+        return ErrorCode.OfficialWebsiteLimitExceeded
     }
 
     for (const o of game.official) {
         if (o.trim().length > 233) {
-            return 10629
+            return ErrorCode.OfficialLinkTooLong
         }
     }
 
     if (game.engine.length > 20) {
-        return 10638
+        return ErrorCode.EngineCountExceeded
     }
 
     for (const e of game.engine) {
         if (e.trim().length > 100) {
-            return 10635
+            return ErrorCode.EngineNameTooLong
         }
     }
 
     if (game.tags.length > 100) {
-        return 10642
+        return ErrorCode.TagCountExceeded
     }
 
     for (const t of game.tags) {
         if (t.trim().length > 50) {
-            return 10643
+            return ErrorCode.TagNameTooLong
         }
     }
 
-    return 0
+    return ErrorCode.NoError
 }

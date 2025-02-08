@@ -3,11 +3,12 @@ import mongoose from "mongoose";
 import {UserModel} from "~/server/models/user";
 import {createDeduplicatedMessage} from "~/server/utils/message";
 import {findFirstNonNullProperty} from "~/server/utils/findFirstNonNullProperty";
+import {ErrorCode} from "~/error/errorCode";
 
-async function updateGameFavorite(gid: number, uid: number) {
+async function updateGameFavorite(gid: number, uid: number): Promise<ErrorCode> {
     const game = await GameModel.findOne({ gid, status: { $ne: 1 } }).lean()
     if (!game) {
-        return 10211
+        return ErrorCode.TopicNotFound
     }
 
     const isFavoriteGame = game.favorites.includes(uid)
@@ -45,7 +46,7 @@ async function updateGameFavorite(gid: number, uid: number) {
             }
         }
         await session.commitTransaction()
-        return null
+        return ErrorCode.NoError
     } catch (err) {
         await session.abortTransaction()
         throw err
@@ -57,17 +58,17 @@ async function updateGameFavorite(gid: number, uid: number) {
 export default defineEventHandler(async (event) => {
     const gid = getRouterParam(event, 'gid')
     if (!gid) {
-        return yuzuError(event, 10609)
+        return yuzuError(event, ErrorCode.GameIdReadFailed)
     }
 
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
     const uid = userInfo.uid
 
     const result = await updateGameFavorite(Number(gid), uid)
-    if (typeof result === 'number') {
+    if (result !== ErrorCode.NoError) {
         return yuzuError(event, result)
     }
 

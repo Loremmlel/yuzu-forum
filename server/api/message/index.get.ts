@@ -1,6 +1,7 @@
 import {Message, MessageRequestData, MessageType, SortField} from "~/types/api/message";
 import {MessageModel} from "~/server/models/message";
 import {UserModel} from "~/server/models/user";
+import {ErrorCode} from "~/error/errorCode";
 
 async function getMessages(
     uid: number,
@@ -46,12 +47,12 @@ async function getMessages(
 export default defineEventHandler(async (event) => {
     const { page, limit, type, sortField, sortOrder }: MessageRequestData = await getQuery(event)
     if (limit !== '10') {
-        return yuzuError(event, 10209)
+        return yuzuError(event, ErrorCode.CustomPaginationNotAllowed)
     }
 
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
     const uid = userInfo.uid
 

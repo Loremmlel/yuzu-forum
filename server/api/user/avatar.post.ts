@@ -1,6 +1,7 @@
 import sharp from "sharp";
 import {checkBufferSize} from "~/server/utils/checkBufferSize";
 import {UserModel} from "~/server/models/user";
+import {ErrorCode} from "~/error/errorCode";
 
 async function resizeUserAvatar(name: string, avatar: Buffer, uid: number) {
     const miniAvatar = await sharp(avatar)
@@ -11,17 +12,17 @@ async function resizeUserAvatar(name: string, avatar: Buffer, uid: number) {
         .webp({quality: 78})
         .toBuffer()
     if (!checkBufferSize(miniAvatar, 1.0)) {
-        return 10111
+        return ErrorCode.CompressedImageSizeExceeded
     }
     const miniAvatarName = `${name}-100`
     const bucketName = `image/avatar/user_${uid}`
     const avatarUrl = await saveImage(miniAvatar, bucketName, `${name}.webp`)
     if (!avatarUrl) {
-        return 10111
+        return ErrorCode.CompressedImageSizeExceeded
     }
     const miniAvatarUrl = await saveImage(miniAvatar, bucketName, `${miniAvatarName}.webp`)
     if (!miniAvatarUrl) {
-        return 10111
+        return ErrorCode.CompressedImageSizeExceeded
     }
     return {avatarUrl, miniAvatarUrl}
 }
@@ -29,17 +30,17 @@ async function resizeUserAvatar(name: string, avatar: Buffer, uid: number) {
 export default defineEventHandler(async (event) => {
     const avatarFile = await readMultipartFormData(event)
     if (!avatarFile || !Array.isArray(avatarFile)) {
-        return yuzuError(event, 10110)
+        return yuzuError(event, ErrorCode.ImageUploadEmptyError)
     }
 
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
 
     const res = await resizeUserAvatar('avatar', avatarFile[0].data, userInfo.uid)
     if (!res) {
-        return yuzuError(event, 10116)
+        return yuzuError(event, ErrorCode.UnknownImageUploadError)
     }
     if (typeof res === 'number') {
         return yuzuError(event, res)

@@ -1,5 +1,6 @@
 import {BannedModel} from "~/server/models/banned";
 import {BannedLog, BannedLogRequestData} from "~/types/api/banned";
+import {ErrorCode} from "~/error/errorCode";
 
 async function getBannedLogs(page: number, limit: number) {
     const skip = (page - 1) * limit
@@ -23,10 +24,10 @@ async function getBannedLogs(page: number, limit: number) {
 export default defineEventHandler(async (event) => {
     const {page, limit, language}: BannedLogRequestData = await getQuery(event)
     if (!page || !limit || !language) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
     if (limit !== '4') {
-        return yuzuError(event, 10209)
+        return yuzuError(event, ErrorCode.CustomPaginationNotAllowed)
     }
 
     return await getBannedLogs(Number(page), Number(limit))

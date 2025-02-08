@@ -2,11 +2,12 @@ import {TopicModel} from "~/server/models/topic";
 import {UserModel} from "~/server/models/user";
 import {TopicDetail} from "~/types/api/topic";
 import {markdownToHtml} from "~/server/utils/markdown";
+import {ErrorCode} from "~/error/errorCode";
 
 export default defineEventHandler(async (event) => {
     const tid = getRouterParam(event, 'tid')
     if (!tid) {
-        return yuzuError(event, 10210)
+        return yuzuError(event, ErrorCode.TopicIdReadFailed)
     }
 
     const topic = await TopicModel.findOneAndUpdate(
@@ -16,7 +17,7 @@ export default defineEventHandler(async (event) => {
         .populate('user', 'uid name avatar point', UserModel)
         .lean()
     if (!topic) {
-        return yuzuError(event, 10211)
+        return yuzuError(event, ErrorCode.TopicNotFound)
     }
     if (topic.status === 1) {
         return 'banned'

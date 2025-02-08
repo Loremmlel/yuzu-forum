@@ -3,22 +3,23 @@ import {UserModel} from "~/server/models/user";
 import {ForgotPasswordCaptchaRequestData} from "~/types/api/auth";
 import {yuzuError} from "~/server/utils/YuzuError";
 import {sendCaptchaEmail} from "~/server/utils/SendCaptchaEmail";
+import {ErrorCode} from "~/error/errorCode";
 
 export default defineEventHandler(async (event) => {
     const {email}: ForgotPasswordCaptchaRequestData =
         await readBody(event)
 
     if (!isValidEmail(email)) {
-        return yuzuError(event, 10302)
+        return yuzuError(event, ErrorCode.InvalidEmailFormat)
     }
 
     const emailCounts = await UserModel.countDocuments({email})
     if (emailCounts) {
-        return yuzuError(event, 10104)
+        return yuzuError(event, ErrorCode.EmailAlreadyRegistered)
     }
 
     const result = await sendCaptchaEmail(event, email, 'reset')
-    if (typeof result === 'number') {
+    if (result !== ErrorCode.NoError) {
         return yuzuError(event, result)
     }
 

@@ -2,20 +2,21 @@ import {GameModel} from "~/server/models/game";
 import {GameCommentModel} from "~/server/models/gameComment";
 import {UserModel} from "~/server/models/user";
 import mongoose from "mongoose";
+import {ErrorCode} from "~/error/errorCode";
 
 export default defineEventHandler(async (event) => {
     const gid = getRouterParam(event, 'gid')
     if (!gid) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
     const game = await GameModel.findOne({ gid }).lean()
     if (!game) {
-        return yuzuError(event, 10610)
+        return yuzuError(event, ErrorCode.GameNotFound)
     }
 
     const { gcid }: { gcid: string } = await getQuery(event)
     if (!gcid) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
 
     const comment = await GameCommentModel.findOne({ gcid }).lean()
@@ -25,16 +26,16 @@ export default defineEventHandler(async (event) => {
 
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
     const user = await UserModel.findOne({ uid: userInfo.uid }).lean()
     if (!user) {
-        return yuzuError(event, 10101)
+        return yuzuError(event, ErrorCode.UserNotFound)
     }
 
     // 不是游戏发布者、且不是评论发布者或管理员，则不能删除
     if (comment.cUid !== user.uid && game.uid !== user.uid && user.roles < 2) {
-        return yuzuError(event, 10639)
+        return yuzuError(event, ErrorCode.NoPermissionDeleteComment)
     }
 
     const session = await mongoose.startSession()

@@ -2,53 +2,54 @@ import {GameResourceStoreTemp} from "~/store/types/game/resource";
 import {languageOptions, platformOptions, typeOptions} from "~/components/game/utils/option";
 import {isValidURL} from "~/utils/validate";
 import {resourceSizePattern} from "~/utils/pattern";
+import {ErrorCode} from "~/error/errorCode";
 
-export function checkGameResourcePublish(link: GameResourceStoreTemp) {
+export function checkGameResourcePublish(link: GameResourceStoreTemp): ErrorCode {
     if (!typeOptions.filter((item) => item !== 'all').includes(link.type)) {
-        return 10613
+        return ErrorCode.InvalidResourceType
     }
 
     if (!link.link.length || link.link.length > 107) {
-        return 10614
+        return ErrorCode.ResourceLinkRequiredOrExceededMax
     }
 
     for (const l of link.link) {
         if (l.trim().length > 1007) {
-            return 10615
+            return ErrorCode.ResourceLinkTooLong
         }
 
         if (!isValidURL(l)) {
-            return 10636
+            return ErrorCode.InvalidLinkFormat
         }
     }
 
     if (
         !languageOptions.filter((item) => item !== 'all').includes(link.language)
     ) {
-        return 10616
+        return ErrorCode.InvalidResourceLanguage
     }
 
     if (
         !platformOptions.filter((item) => item !== 'all').includes(link.platform)
     ) {
-        return 10617
+        return ErrorCode.InvalidResourcePlatform
     }
 
     if (!resourceSizePattern.test(link.size)) {
-        return 10618
+        return ErrorCode.InvalidResourceSizeFormat
     }
 
     if (link.code.length > 1007) {
-        return 10619
+        return ErrorCode.ResourceCodeTooLong
     }
 
     if (link.password.length > 1007) {
-        return 10620
+        return ErrorCode.ResourcePasswordTooLong
     }
 
     if (link.note.length > 1007) {
-        return 10621
+        return ErrorCode.ResourceNoteTooLong
     }
 
-    return 0
+    return ErrorCode.NoError
 }

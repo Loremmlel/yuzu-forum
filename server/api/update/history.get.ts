@@ -1,6 +1,7 @@
 import {UpdateLogModel} from "~/server/models/updateLog";
 import {GetUpdateLogRequestData, UpdateLog, UpdateType} from "~/types/api/updateLog";
 import {yuzuError} from "~/server/utils/YuzuError";
+import {ErrorCode} from "~/error/errorCode";
 
 async function getUpdateLogs(page: number, limit: number) {
     const skip = (page - 1) * limit
@@ -25,10 +26,10 @@ async function getUpdateLogs(page: number, limit: number) {
 export default defineEventHandler(async (event) => {
     const {page, limit}: GetUpdateLogRequestData = await getQuery(event)
     if (!page || !limit) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
     if (limit !== '10') {
-        return yuzuError(event, 10209)
+        return yuzuError(event, ErrorCode.CustomPaginationNotAllowed)
     }
     return await getUpdateLogs(Number(page), Number(limit))
 })

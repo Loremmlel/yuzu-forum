@@ -4,16 +4,17 @@ import {isValidEmail, isValidName, isValidPassword} from "~/utils/validate";
 import {UserModel} from "~/server/models/user";
 import {compare} from "bcrypt";
 import {createTokens} from "~/server/utils/jwt";
+import {ErrorCode} from "~/error/errorCode";
 
 async function login(event: H3Event) {
     const {name, password}: LoginRequestData = await readBody(event)
     const ip = getRemoteIp(event)
     if (!(isValidName(name) || isValidEmail(name)) || !isValidPassword(password)) {
-        return yuzuError(event, 10107)
+        return yuzuError(event, ErrorCode.InvalidUserCredentials)
     }
     const loginCooldown = await useStorage('redis').getItem<string>(`login:login:cd:${ip}`)
     if (loginCooldown) {
-        return yuzuError(event, 10112)
+        return yuzuError(event, ErrorCode.LoginCooldown)
     } else {
         useStorage('redis').setItem(`login:login:cd:${ip}`, ip, {ttl: 15})
     }
@@ -29,15 +30,15 @@ export default defineEventHandler(async (event) => {
 
     const user = await UserModel.findOne({$or: [{name}, {email: name}]})
     if (!user) {
-        return yuzuError(event, 10101)
+        return yuzuError(event, ErrorCode.UserNotFound)
     }
     if (user.status !== 0) {
-        return yuzuError(event, 10120)
+        return yuzuError(event, ErrorCode.UserBanned)
     }
 
     const isPasswordCorrect = await compare(password, user.password)
     if (!isPasswordCorrect) {
-        return yuzuError(event, 10102)
+        return yuzuError(event, ErrorCode.UserPasswordIncorrect)
     }
 
     const {token, refreshToken} = await createTokens(user.uid, user.name)

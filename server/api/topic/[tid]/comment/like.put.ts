@@ -3,20 +3,21 @@ import {CommentModel} from "~/server/models/comment";
 import mongoose from "mongoose";
 import {UserModel} from "~/server/models/user";
 import {createMessage} from "~/server/utils/message";
+import {ErrorCode} from "~/error/errorCode";
 
 export default defineEventHandler(async (event) => {
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
 
     const { cid }: TopicLikeCommentRequestData = await getQuery(event)
     if (!cid) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
     const comment = await CommentModel.findOne({ cid }).lean()
     if (!comment) {
-        return yuzuError(event, 10224)
+        return yuzuError(event, ErrorCode.CommentNotFound)
     }
     if (userInfo.uid === comment.cUid) {
         return

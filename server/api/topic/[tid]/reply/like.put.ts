@@ -2,11 +2,12 @@ import {ReplyModel} from "~/server/models/reply";
 import mongoose from "mongoose";
 import {UserModel} from "~/server/models/user";
 import {createDeduplicatedMessage} from "~/server/utils/message";
+import {ErrorCode} from "~/error/errorCode";
 
 async function updateReplyLike(uid: number, rid: number) {
     const reply = await ReplyModel.findOne({ rid })
     if (!reply) {
-        return 10506
+        return ErrorCode.ReplyNotFound
     }
     if (uid === reply.rUid) {
         return
@@ -47,12 +48,12 @@ async function updateReplyLike(uid: number, rid: number) {
 export default defineEventHandler(async (event) => {
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
 
     const { rid }: { rid: string } = await getQuery(event)
     if (!rid) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
 
     const result = await updateReplyLike(userInfo.uid, Number(rid))

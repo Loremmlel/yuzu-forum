@@ -1,6 +1,7 @@
 import {PoolTopic, PoolTopicsRequestData, SortFieldPool} from "~/types/api/pool";
 import {TopicModel} from "~/server/models/topic";
 import {UserModel} from "~/server/models/user";
+import {ErrorCode} from "~/error/errorCode";
 
 async function getPoolTopics(
     page: number,
@@ -50,14 +51,14 @@ async function getPoolTopics(
 export default defineEventHandler(async (event) => {
     const {page, limit, sortField, sortOrder, category}: PoolTopicsRequestData = await getQuery(event)
     if (!page || !limit || !sortField || !sortOrder || !category) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
     const availableCategory = ['all', 'game', 'technique', 'other']
     if (!availableCategory.includes(category)) {
         return yuzuError(event, 10220)
     }
     if (limit !== '24') {
-        return yuzuError(event, 10209)
+        return yuzuError(event, ErrorCode.CustomPaginationNotAllowed)
     }
     return getPoolTopics(
         Number(page),

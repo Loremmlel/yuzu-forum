@@ -2,20 +2,21 @@ import {UserModel} from "~/server/models/user";
 import {TopicModel} from "~/server/models/topic";
 import mongoose from "mongoose";
 import {createMessage} from "~/server/utils/message";
+import {ErrorCode} from "~/error/errorCode";
 
 async function updateTopicUpvote(uid: number, tid: number) {
     const topic = await TopicModel.findOne({tid})
     if (!topic) {
-        return 10211
+        return ErrorCode.TopicNotFound
     }
     const userInfo = await UserModel.findOne({uid})
     if (!userInfo) {
-        return 10115
+        return ErrorCode.LoginExpired
     }
 
     const point = userInfo.point
     if (point < 1100) {
-        return 10202
+        return ErrorCode.InsufficientPointsForPushTopic
     }
     const session = await mongoose.startSession()
     session.startTransaction()
@@ -60,12 +61,12 @@ async function updateTopicUpvote(uid: number, tid: number) {
 export default defineEventHandler(async (event) => {
     const tid = getRouterParam(event, 'tid')
     if (!tid) {
-        return yuzuError(event, 10210)
+        return yuzuError(event, ErrorCode.TopicIdReadFailed)
     }
 
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
     const result = await updateTopicUpvote(userInfo.uid, parseInt(tid))
     if (typeof result === 'number') {

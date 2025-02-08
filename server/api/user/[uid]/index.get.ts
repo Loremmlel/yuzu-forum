@@ -1,18 +1,19 @@
 import {UserModel} from "~/server/models/user";
 import {UserInfo} from "~/types/api/user";
+import {ErrorCode} from "~/error/errorCode";
 
 export default defineEventHandler(async (event) => {
     const uid = getRouterParam(event, 'uid')
     if (!uid) {
-        return yuzuError(event, 10101)
+        return yuzuError(event, ErrorCode.UserNotFound)
     }
     const uidNumber = Number(uid)
     if (uidNumber <= 0) {
-        return yuzuError(event, 10114)
+        return yuzuError(event, ErrorCode.InvalidUserUID)
     }
     const user = await UserModel.findOne({uid: uidNumber})
     if (!user) {
-        return yuzuError(event, 10114)
+        return yuzuError(event, ErrorCode.InvalidUserUID)
     }
     if (user.status === 1) {
         return 'banned'

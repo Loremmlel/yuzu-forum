@@ -1,24 +1,25 @@
 import {GameLinkModel} from "~/server/models/gameLink";
 import mongoose from "mongoose";
 import {GameHistoryModel} from "~/server/models/gameHistory";
+import {ErrorCode} from "~/error/errorCode";
 
 export default defineEventHandler(async (event) => {
     const {glid}: {glid: string} = await getQuery(event)
     if (!glid) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
 
     const link = await GameLinkModel.findOne({glid}).lean()
     if (!link) {
-        return yuzuError(event, 10628)
+        return yuzuError(event, ErrorCode.GameLinkNotFound)
     }
 
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
     if (link.uid !== userInfo.uid) {
-        return yuzuError(event, 10623)
+        return yuzuError(event, ErrorCode.NoPermissionForResource)
     }
 
     const session = await mongoose.startSession()

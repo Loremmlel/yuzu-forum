@@ -1,22 +1,23 @@
 import {GameResourceModel} from "~/server/models/gameResource";
+import {ErrorCode} from "~/error/errorCode";
 
 export default defineEventHandler(async (event) => {
     const { grid }: { grid: string } = await getQuery(event)
     if (!grid) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
 
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
 
     const resource = await GameResourceModel.findOne({ grid })
     if (!resource) {
-        return yuzuError(event, 10622)
+        return yuzuError(event, ErrorCode.ResourceLinkNotFound)
     }
     if (resource.uid !== userInfo.uid) {
-        return yuzuError(event, 10623)
+        return yuzuError(event, ErrorCode.NoPermissionForResource)
     }
 
     await GameResourceModel.updateOne({ grid }, { status: 0 }).lean()

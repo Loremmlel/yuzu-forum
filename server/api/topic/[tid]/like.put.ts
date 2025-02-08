@@ -2,11 +2,12 @@ import {TopicModel} from "~/server/models/topic";
 import mongoose from "mongoose";
 import {UserModel} from "~/server/models/user";
 import {createDeduplicatedMessage} from "~/server/utils/message";
+import {ErrorCode} from "~/error/errorCode";
 
 async function updateTopicLike(uid: number, tid: number) {
     const topic = await TopicModel.findOne({ tid })
     if (!topic) {
-        return 10211
+        return ErrorCode.TopicNotFound
     }
     if (uid === topic.uid) {
         return null
@@ -53,12 +54,12 @@ async function updateTopicLike(uid: number, tid: number) {
 export default defineEventHandler(async (event) => {
     const tid = getRouterParam(event, 'tid')
     if (!tid) {
-        return yuzuError(event, 10210)
+        return yuzuError(event, ErrorCode.TopicIdReadFailed)
     }
 
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
 
     const result = await updateTopicLike(userInfo.uid, Number(tid))

@@ -1,5 +1,6 @@
 import {gameSection, otherSection, techniqueSection} from "~/components/edit/utils/category";
 import {isValidTimestamp} from '~/utils/validate'
+import {ErrorCode} from "~/error/errorCode";
 
 const topicCategory = ['game', 'technique', 'other']
 const topicSection = [...gameSection, ...techniqueSection, ...otherSection]
@@ -11,40 +12,40 @@ export function checkTopic(
     category: string[],
     section: string[],
     edited: number
-) {
+): ErrorCode {
     if (!title.trim() || title.trim().length > 47) {
-        return 10204
+        return ErrorCode.TopicTitleTooLongOrEmpty
     }
     if (!content.trim() || content.trim().length > 100000) {
-        return 10205
+        return ErrorCode.TopicContentTooLongOrEmpty
     }
     if (!tags.length || tags.length > 7) {
-        return 10206
+        return ErrorCode.InvalidTagCount
     }
     for (const tag of tags) {
         if (tag.length > 20) {
-            return 10502
+            return ErrorCode.ReplyTagTooLong
         }
     }
     if (!category.length || category.length > 2) {
-        return 10207
+        return ErrorCode.InvalidCategoryCount
     }
     for (const c of category) {
         if (!topicCategory.includes(c)) {
-            return 10218
+            return ErrorCode.InvalidCategorySelection
         }
     }
 
     if (!section.length || section.length > 2) {
-        return 10219
+        return ErrorCode.InvalidSectionCount
     }
     for (const s of section) {
         if (!topicSection.includes(s)) {
-            return 10222
+            return ErrorCode.InvalidTopicSection
         }
     }
     if (!isValidTimestamp(edited)) {
-        return 10208
+        return ErrorCode.InvalidTopicTimestamp
     }
-    return 0
+    return ErrorCode.NoError
 }

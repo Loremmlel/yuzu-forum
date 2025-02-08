@@ -1,17 +1,18 @@
 import {UserModel} from "~/server/models/user";
 import {GameCommentModel} from "~/server/models/gameComment";
 import mongoose from "mongoose";
+import {ErrorCode} from "~/error/errorCode";
 
 async function updateGameCommentLike(gcid: number, uid: number) {
     const comment = await GameCommentModel.findOne({ gcid }).lean()
     if (!comment) {
-        return 10622
+        return ErrorCode.ResourceLinkNotFound
     }
     if (comment.cUid === uid) {
         return
     }
     if (comment.likes.includes(uid)) {
-        return 10624
+        return ErrorCode.AlreadyLikedResource
     }
 
     const session = await mongoose.startSession()
@@ -43,12 +44,12 @@ async function updateGameCommentLike(gcid: number, uid: number) {
 export default defineEventHandler(async (event) => {
     const { gcid }: { gcid: string } = await getQuery(event)
     if (!gcid) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
 
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
     const uid = userInfo.uid
 

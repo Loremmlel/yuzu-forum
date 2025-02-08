@@ -2,25 +2,26 @@ import {H3Event} from "h3";
 import mongoose from "mongoose";
 import {UserModel} from "~/server/models/user";
 import {GameCommentModel} from "~/server/models/gameComment";
+import {ErrorCode} from "~/error/errorCode";
 
 async function readReply(event: H3Event) {
     const { toUid, content }: { toUid: number; content: string } = await readBody(event)
     if (!toUid || !content) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
     if (content.trim().length > 1007) {
-        return yuzuError(event, 10634)
+        return yuzuError(event, ErrorCode.CommentContentTooLong)
     }
 
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
     const uid = userInfo.uid
 
     const gid = getRouterParam(event, 'gid')
     if (!gid) {
-        return yuzuError(event, 10210)
+        return yuzuError(event, ErrorCode.TopicIdReadFailed)
     }
 
     return {

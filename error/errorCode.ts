@@ -86,13 +86,13 @@ export enum ErrorCode {
     // 无效的分类选择
     InvalidCategorySelection = 10218,
     // 分区数量超过限制
-    InvalidZoneCount = 10219,
+    InvalidSectionCount = 10219,
     // 无效的请求参数
     InvalidRequestParameters = 10220,
     // 已收藏
     AlreadyFavoritedTopic = 10221,
     // 无效的分区选择
-    InvalidTopicZone = 10222,
+    InvalidTopicSection = 10222,
     // 评论内容太长或为空
     CommentContentTooLongOrEmpty = 10223,
     // 评论不存在

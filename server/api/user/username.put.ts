@@ -1,5 +1,6 @@
 import {UserModel} from "~/server/models/user";
 import {isValidName} from "~/utils/validate";
+import {ErrorCode} from "~/error/errorCode";
 
 
 export default defineEventHandler(async (event) => {
@@ -7,23 +8,23 @@ export default defineEventHandler(async (event) => {
 
     const userInfo = await getCookieTokenInfo(event)
     if (!userInfo) {
-        return yuzuError(event, 10115, 205)
+        return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
     if (!isValidName(username)) {
-        return yuzuError(event, 10117)
+        return yuzuError(event, ErrorCode.InvalidUsernameUpdate)
     }
     const user = await UserModel.findOne({uid: userInfo.uid})
     if (!user) {
-        return yuzuError(event, 10101)
+        return yuzuError(event, ErrorCode.UserNotFound)
     }
     if (user.point < 1017) {
-        return yuzuError(event, 10118)
+        return yuzuError(event, ErrorCode.InsufficientPoints)
     }
     const duplicated = await UserModel.countDocuments({
         name: {$regex: new RegExp(`^${username}$`, 'i')}
     })
     if (duplicated) {
-        return yuzuError(event, 10105)
+        return yuzuError(event, ErrorCode.UsernameAlreadyRegistered)
     }
     await UserModel.updateOne(
         {uid: userInfo.uid},

@@ -2,6 +2,7 @@ import {TopicModel} from "~/server/models/topic";
 import {UserModel} from "~/server/models/user";
 import {GetSectionRequestData, SectionTopic} from "~/types/api/section";
 import {yuzuError} from "~/server/utils/YuzuError";
+import {ErrorCode} from "~/error/errorCode";
 
 async function getSectionTopic(section: string, page: number, limit: number, order: YuzuOrder) {
     const skip = (page - 1) * limit
@@ -43,10 +44,10 @@ async function getSectionTopic(section: string, page: number, limit: number, ord
 export default defineEventHandler(async (event) => {
     const {section, page, limit, order}: GetSectionRequestData = await getQuery(event)
     if (!section || !page || !limit || !order) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
     if (limit !== '23') {
-        return yuzuError(event, 10209)
+        return yuzuError(event, ErrorCode.CustomPaginationNotAllowed)
     }
 
     return await getSectionTopic(section, Number(page), Number(limit), order)

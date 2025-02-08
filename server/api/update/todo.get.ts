@@ -1,6 +1,7 @@
 import {TodoModel} from "~/server/models/todo";
 import {GetTodoRequestData, Todo} from "~/types/api/updateLog";
 import {yuzuError} from "~/server/utils/YuzuError";
+import {ErrorCode} from "~/error/errorCode";
 
 async function getTodos(page: number, limit: number) {
     const skip = (page - 1) * limit
@@ -26,10 +27,10 @@ async function getTodos(page: number, limit: number) {
 export default defineEventHandler(async (event) => {
     const {page, limit}: GetTodoRequestData = await getQuery(event)
     if (!page || !limit) {
-        return yuzuError(event, 10507)
+        return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
     if (limit !== '10') {
-        return yuzuError(event, 10209)
+        return yuzuError(event, ErrorCode.CustomPaginationNotAllowed)
     }
 
     return await getTodos(Number(page), Number(limit))
