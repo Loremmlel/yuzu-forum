@@ -38,7 +38,8 @@ export default defineNuxtConfig({
 
         public: {
             FORUM_VERSION: appVersion,
-            YZFORUM_URL: process.env.YZFORUM_URL
+            YZFORUM_URL: process.env.YZFORUM_URL,
+            YZFORUM_URL_PRODUCT: process.env.YZFORUM_URL_PRODUCT
         }
     },
     imports: {

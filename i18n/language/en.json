@@ -1,1 +1,10 @@
-{}
+{
+  "head": {
+    "name": "Yuzu Games Forum - Open Source Gaming Site",
+    "title": "Yuzu Games Forum",
+    "description": "A website for sharing game information! No ads ever! Free, gaming download, sharing, resources site",
+    "keywords": "Game, Galgame, forum, Galgame download, Game download, Game discussion, video games, game reviews, gaming forum, game discussion, game localization, tech exchange",
+    "topicRSS": "Yuzu Games Forum Topic Subscription",
+    "gameRSS": "Yuzu Games Forum Game Subscription"
+  }
+}
