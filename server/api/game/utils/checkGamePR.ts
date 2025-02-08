@@ -14,11 +14,11 @@ export function checkGamePR(game: GameStoreTemp) {
         return 10606
     }
 
-    if (game.aliases.length > 20) {
+    if (game.alias.length > 20) {
         return 10611
     }
 
-    for (const alias of game.aliases) {
+    for (const alias of game.alias) {
         if (alias.length > 500) {
             return 10612
         }

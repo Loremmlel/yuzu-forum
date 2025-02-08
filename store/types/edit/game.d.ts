@@ -10,7 +10,7 @@ export interface GameStoreTemp {
     name: YuzuLanguage
     introduction: YuzuLanguage
     series: string[]
-    aliases: string[]
+    alias: string[]
     official: string[]
     engine: string[]
     tags: string[]
