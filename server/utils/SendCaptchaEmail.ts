@@ -1,6 +1,6 @@
 import {H3Event} from "h3";
 import {getRemoteIp} from "~/server/utils/getRemoteIp";
-import {generateRandomCode} from "~/server/utils/generateRandomCode";
+import {generateRandomCode} from "~/server/utils/generateUtils";
 import {createTransport} from "nodemailer";
 import SMTPTransport from "nodemailer-smtp-transport";
 import env from '~/server/env/dotenv'

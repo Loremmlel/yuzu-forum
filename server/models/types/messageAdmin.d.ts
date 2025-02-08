@@ -9,7 +9,7 @@ export interface Message {
     content: YuzuLanguage
     status: MessageStatus
 
-    user: User
+    user: User[]
 
     created: Date
     updated: Date

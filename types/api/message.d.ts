@@ -26,7 +26,7 @@ export interface MessageRequestData {
 export interface Message {
     mid: number
     sender: YuzuUser
-    receiverId: number
+    receiverUid: number
     time: number
     tid: number
     gid: number
