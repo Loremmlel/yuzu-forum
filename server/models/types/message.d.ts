@@ -10,7 +10,7 @@ export interface Message {
     gid: number
     content: string
     status: MessageStatus
-    user: User
+    user: User[]
     type: MessageType
 
     created: Date
