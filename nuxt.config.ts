@@ -37,7 +37,8 @@ export default defineNuxtConfig({
         JWT_SECRET: process.env.JWT_SECRET,
 
         public: {
-            FORUM_VERSION: appVersion
+            FORUM_VERSION: appVersion,
+            YZFORUM_URL: process.env.YZFORUM_URL
         }
     },
     imports: {
