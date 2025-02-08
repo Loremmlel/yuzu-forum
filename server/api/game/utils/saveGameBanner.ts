@@ -13,7 +13,7 @@ export async function saveGameBanner(
         })
         .webp({quality: 78})
         .toBuffer()
-    if (!checkBufferSize(miniBanner, 1.0)) {
+    if (!checkBufferSize(miniBanner, 1.007)) {
         return ErrorCode.PreviewImageSizeExceeded
     }
 

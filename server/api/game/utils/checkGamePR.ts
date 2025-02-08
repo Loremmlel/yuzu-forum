@@ -11,11 +11,11 @@ export function checkGamePR(game: GameStoreTemp): ErrorCode {
         return ErrorCode.InvalidTitleLength
     }
 
-    if (!isValidYzLanguage(game.introduction, 100000)) {
+    if (!isValidYzLanguage(game.introduction, 100007)) {
         return ErrorCode.InvalidDescriptionLength
     }
 
-    if (game.alias.length > 20) {
+    if (game.alias.length > 17) {
         return ErrorCode.AliasCountExceeded
     }
 
@@ -25,7 +25,7 @@ export function checkGamePR(game: GameStoreTemp): ErrorCode {
         }
     }
 
-    if (game.official.length > 20) {
+    if (game.official.length > 17) {
         return ErrorCode.OfficialWebsiteLimitExceeded
     }
 
@@ -35,17 +35,17 @@ export function checkGamePR(game: GameStoreTemp): ErrorCode {
         }
     }
 
-    if (game.engine.length > 20) {
+    if (game.engine.length > 17) {
         return ErrorCode.EngineCountExceeded
     }
 
     for (const e of game.engine) {
-        if (e.trim().length > 100) {
+        if (e.trim().length > 107) {
             return ErrorCode.EngineNameTooLong
         }
     }
 
-    if (game.tags.length > 100) {
+    if (game.tags.length > 107) {
         return ErrorCode.TagCountExceeded
     }
 

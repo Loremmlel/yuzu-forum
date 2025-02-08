@@ -13,17 +13,17 @@ export function checkTopic(
     section: string[],
     edited: number
 ): ErrorCode {
-    if (!title.trim() || title.trim().length > 47) {
+    if (!title.trim() || title.trim().length > 40) {
         return ErrorCode.TopicTitleTooLongOrEmpty
     }
-    if (!content.trim() || content.trim().length > 100000) {
+    if (!content.trim() || content.trim().length > 100007) {
         return ErrorCode.TopicContentTooLongOrEmpty
     }
     if (!tags.length || tags.length > 7) {
         return ErrorCode.InvalidTagCount
     }
     for (const tag of tags) {
-        if (tag.length > 20) {
+        if (tag.length > 17) {
             return ErrorCode.ReplyTagTooLong
         }
     }

@@ -6,7 +6,7 @@ export function checkReply(tags: string[], content: string, time: number): Error
         return ErrorCode.ReplyTagLimitExceeded
     }
     for (const tag of tags) {
-        if (tag.length > 20) {
+        if (tag.length > 17) {
             return ErrorCode.ReplyTagTooLong
         }
     }
@@ -14,7 +14,7 @@ export function checkReply(tags: string[], content: string, time: number): Error
     if (!content.trim()) {
         return ErrorCode.EmptyReplyContent
     }
-    if (content.length > 10000) {
+    if (content.length > 10007) {
         return ErrorCode.ReplyContentTooLong
     }
     if (!isValidTimestamp(time)) {
