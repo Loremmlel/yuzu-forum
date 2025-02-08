@@ -9,7 +9,7 @@ export interface GameHistory {
     type: string
     content: string
 
-    user: User
+    user: User[]
 
     created: Date
     updated: Date

@@ -27,7 +27,6 @@ export default defineEventHandler(async (event) => {
 
     const userInfo = await getCookieTokenInfo(event)
     const comments = data.map(comment => {
-        const cUser = Array.isArray(comment.cUser) ? comment.cUser : [comment.cUser]
         return {
             gcid: comment.gcid,
             gid: comment.gid,
@@ -38,9 +37,9 @@ export default defineEventHandler(async (event) => {
                 isLiked: comment.likes.includes(userInfo?.uid ?? 0)
             },
             user: {
-                uid: cUser[0].uid,
-                name: cUser[0].name,
-                avatar: cUser[0].avatar
+                uid: comment.cUser[0].uid,
+                name: comment.cUser[0].name,
+                avatar: comment.cUser[0].avatar
             },
             toUser: comment.toUser?.length ? {
                 uid: comment.toUser[0].uid,

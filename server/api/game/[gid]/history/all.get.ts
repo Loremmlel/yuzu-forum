@@ -21,8 +21,6 @@ export default defineEventHandler(async (event) => {
         .populate('user', 'uid avatar name', UserModel)
         .lean()
     const historyData = data.map(history => {
-        const users = Array.isArray(history.user) ? history.user : [history.user]
-        const user = users.length > 0 ? users[0] : null
         return {
             gid: history.gid,
             time: history.time,
@@ -30,9 +28,9 @@ export default defineEventHandler(async (event) => {
             type: history.type as GameHistoryType,
             content: history.content,
             user: {
-                uid: user?.uid,
-                avatar: user?.avatar,
-                name: user?.name
+                uid: history.user[0].uid,
+                avatar: history.user[0].avatar,
+                name: history.user[0].name
             }
         } as GameHistory
     })

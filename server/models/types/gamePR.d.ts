@@ -16,5 +16,8 @@ export interface GamePR {
     completedTime: number
     game: Partial<GameStoreTemp>
 
-    user: User
+    user: User[]
+
+    created: Date
+    updated: Date
 }
