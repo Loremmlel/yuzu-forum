@@ -55,9 +55,9 @@ export default defineEventHandler(async (event) => {
             content: result.name
         })
         return '创建游戏相关链接成功!'
-    } catch (error) {
+    } catch (err) {
         await session.abortTransaction()
-        throw error
+        throw err
     } finally {
         await session.endSession()
     }

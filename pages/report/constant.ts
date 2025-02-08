@@ -3,6 +3,6 @@ export const reportSection = [
     "reply",
     "comment",
     "user",
-    "galgame",
-    "galgameComment",
+    "game",
+    "gameComment",
 ];

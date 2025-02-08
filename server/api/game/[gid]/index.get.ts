@@ -76,9 +76,9 @@ export default defineEventHandler(async (event) => {
         }
         await session.commitTransaction()
         return data
-    } catch (error) {
+    } catch (err) {
         await session.abortTransaction()
-        throw error
+        throw err
     } finally {
         await session.endSession()
     }

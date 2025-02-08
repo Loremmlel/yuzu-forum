@@ -1,7 +1,7 @@
 import {GameStoreTemp} from "~/store/types/edit/game";
 import {checkGamePR} from "~/server/api/game/utils/checkGamePR";
 import {GameModel} from "~/server/models/game";
-import {compareObjects} from "~/server/utils/compare";
+import {compareObjects} from "~/server/utils/gamePRUtils";
 import mongoose from "mongoose";
 import {GamePRModel} from "~/server/models/gamePR";
 import {GameHistoryModel} from "~/server/models/gameHistory";
@@ -57,7 +57,7 @@ export default defineEventHandler(async (event) => {
             { gid: game.gid },
             { $set: { time: Date.now() } }
         )
-        GameHistoryModel.create({
+        await GameHistoryModel.create({
             gid,
             uid: userInfo.uid,
             time: Date.now(),
@@ -77,9 +77,9 @@ export default defineEventHandler(async (event) => {
         }
         await session.commitTransaction()
         return '提交游戏拉取请求成功!'
-    } catch (error) {
+    } catch (err) {
         await session.abortTransaction()
-        throw error
+        throw err
     } finally {
         await session.endSession()
     }

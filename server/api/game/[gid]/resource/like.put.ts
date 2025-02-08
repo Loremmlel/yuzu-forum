@@ -1,34 +1,41 @@
-import {UserModel} from "~/server/models/user";
-import {GameCommentModel} from "~/server/models/gameComment";
+import {GameResourceModel} from "~/server/models/gameResource";
 import mongoose from "mongoose";
+import {UserModel} from "~/server/models/user";
 
-async function updateGameCommentLike(gcid: number, uid: number) {
-    const comment = await GameCommentModel.findOne({ gcid }).lean()
-    if (!comment) {
+async function updateGameResourceLike(grid: number, uid: number) {
+    const resource = await GameResourceModel.findOne({ grid }).lean()
+    if (!resource) {
         return 10622
     }
-    if (comment.cUid === uid) {
+    if (resource.uid === uid) {
         return
     }
-    if (comment.likes.includes(uid)) {
+    if (resource.likes.includes(uid)) {
         return 10624
     }
 
     const session = await mongoose.startSession()
     session.startTransaction()
     try {
-        await GameCommentModel.updateOne({ gcid }, { $addToSet: { likes: uid } })
+        await GameResourceModel.updateOne(
+            { grid },
+            { $addToSet: { likes: uid } }
+        )
         await UserModel.updateOne(
-            { uid: comment.cUid },
+            { uid },
+            { $addToSet: { likeGameResource: grid } }
+        )
+        await UserModel.updateOne(
+            { uid: resource.uid },
             { $inc: { point: 1, like: 1 } }
         )
         await createMessage(
             uid,
-            comment.cUid,
+            resource.uid,
             'liked',
-            comment.content.slice(0, 233),
+            resource.link[0].slice(0, 233),
             0,
-            comment.gid
+            resource.gid
         )
         await session.commitTransaction()
         return null
@@ -41,8 +48,8 @@ async function updateGameCommentLike(gcid: number, uid: number) {
 }
 
 export default defineEventHandler(async (event) => {
-    const { gcid }: { gcid: string } = await getQuery(event)
-    if (!gcid) {
+    const { grid }: { grid: string } = await getQuery(event)
+    if (!grid) {
         return yuzuError(event, 10507)
     }
 
@@ -52,10 +59,10 @@ export default defineEventHandler(async (event) => {
     }
     const uid = userInfo.uid
 
-    const result = await updateGameCommentLike(parseInt(gcid), uid)
+    const result = await updateGameResourceLike(Number(grid), uid)
     if (typeof result === 'number') {
         return yuzuError(event, result)
     }
 
-    return '点赞游戏评论成功!'
+    return '点赞游戏资源成功!'
 })

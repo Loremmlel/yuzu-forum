@@ -1,0 +1,57 @@
+import {GameResourceModel} from "~/server/models/gameResource";
+import mongoose from "mongoose";
+import {UserModel} from "~/server/models/user";
+import {GameModel} from "~/server/models/game";
+
+export default defineEventHandler(async (event) => {
+    const { grid }: { grid: string } = await getQuery(event)
+    if (!grid) {
+        return yuzuError(event, 10507)
+    }
+
+    const resource = await GameResourceModel.findOne({ grid }).lean()
+    if (!resource) {
+        return yuzuError(event, 10622)
+    }
+
+    const userInfo = await getCookieTokenInfo(event)
+    if (!userInfo) {
+        return yuzuError(event, 10115, 205)
+    }
+    if (resource.uid !== userInfo.uid) {
+        return yuzuError(event, 10623)
+    }
+
+    const session = await mongoose.startSession()
+    session.startTransaction()
+    try {
+        await UserModel.updateOne(
+            { uid: userInfo.uid },
+            {
+                $inc: {
+                    point: -(resource.likes.length + 5),
+                    like: -resource.likes.length
+                }
+            }
+        )
+        for (const likedUser of resource.likes) {
+            await UserModel.updateOne(
+                { uid: likedUser },
+                { $pull: { likeGameResource: grid } }
+            )
+        }
+        await GameModel.updateOne(
+            { gid: resource.gid },
+            { $pull: { resources: resource.grid } }
+        )
+        await GameResourceModel.deleteOne({ grid })
+
+        await session.commitTransaction()
+        return '删除游戏资源成功!'
+    } catch (err) {
+        await session.abortTransaction()
+        throw err
+    } finally {
+        await session.endSession()
+    }
+})

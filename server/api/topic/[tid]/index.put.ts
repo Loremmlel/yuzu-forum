@@ -23,9 +23,9 @@ async function updateTopic(
         )
         await updateTagsByTidAndRid(tid, 0, tags, category)
         await session.commitTransaction()
-    } catch (error) {
+    } catch (err) {
         await session.abortTransaction()
-        throw error
+        throw err
     } finally {
         await session.endSession()
     }

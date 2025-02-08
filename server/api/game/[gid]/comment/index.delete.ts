@@ -58,9 +58,9 @@ export default defineEventHandler(async (event) => {
         await GameCommentModel.deleteOne({ gcid })
         await session.commitTransaction()
         return '删除游戏评论成功!'
-    } catch (error) {
+    } catch (err) {
         await session.abortTransaction()
-        throw error
+        throw err
     } finally {
         await session.endSession()
     }

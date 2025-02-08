@@ -22,8 +22,8 @@ export function increasingSequence(fieldName: string, startSeq = 1): PreSaveMidd
                 .sort({[fieldName]: -1})
             this[fieldName] = lastTopic ? (lastTopic[fieldName] as number) + 1 : startSeq
             next()
-        } catch (error) {
-            return next(error as Error)
+        } catch (err) {
+            return next(err as Error)
         }
     }
 }

@@ -42,9 +42,9 @@ async function updateTopicLike(uid: number, tid: number) {
         }
         await session.commitTransaction()
         return null
-    } catch (error) {
+    } catch (err) {
         await session.abortTransaction()
-        throw error
+        throw err
     } finally {
         await session.endSession()
     }
