@@ -1,6 +1,6 @@
 import type {LanguageOptions, PlatformOptions, TypeOptions} from "~/components/game/utils/option";
 
-export interface GalgameStoreTemp {
+export interface GameStoreTemp {
     page: number
     limit: number
     type: TypeOptions

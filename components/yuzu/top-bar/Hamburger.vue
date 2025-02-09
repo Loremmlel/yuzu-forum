@@ -272,7 +272,7 @@ function handleShowMore() {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: var(--kungalgame-blue-5);
+    color: var(--yzforum-blue-5);
 
     & > span {
       &:first-child {
