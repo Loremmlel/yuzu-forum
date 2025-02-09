@@ -46,7 +46,6 @@
       "update": "更新日志",
       "nonMoe": "不萌记录",
       "thanks": "感谢名单",
-      "donate": "赞助我们",
       "home": "返回主页",
       "settings": "设置",
       "background": "自定义背景",
@@ -98,7 +97,6 @@
       "agreement": "用户协议",
       "category": "话题分类",
       "contact": "联系 / 加入我们",
-      "donate": "赞助我们",
       "forgot": "忘记密码",
       "friendLinks": "友情链接",
       "game": "游戏资源",
@@ -321,6 +319,305 @@
         "placeholder": "请输入游戏标签, 例如RPG, ACT, 纯爱等等"
       },
       "confirm": "确定发布"
+    }
+  },
+  "login": {
+    "title": "登录",
+    "forgot": "忘记密码?",
+    "email": "用户名或邮箱",
+    "password": "密码",
+    "or": "或"
+  },
+  "register": {
+    "title": "注册",
+    "name": "用户名",
+    "email": "邮箱",
+    "password": "密码",
+    "code": "邮箱验证码",
+    "send": "发送验证码",
+    "agree": "我同意",
+    "agreement": "用户协议",
+    "privacy": "隐私政策"
+  },
+  "user": {
+    "notFound": "该用户不存在",
+    "banned": "该用户已被封禁",
+    "chat": "聊天",
+    "nav": {
+      "profile": "个人信息",
+      "settings": "信息设置",
+      "email": "邮箱设置",
+      "password": "密码设置",
+      "topic": "话题",
+      "game": "游戏",
+      "publish": "已发布",
+      "like": "已点赞",
+      "favorite": "已收藏",
+      "upvote": "已推",
+      "contribute": "已贡献",
+      "reply": "回复",
+      "comment": "评论"
+    },
+    "profile": {
+      "user": "用户",
+      "admin": "管理员",
+      "SU": "超级管理员",
+      "normal": "正常",
+      "banned": "封禁",
+      "name": "用户名",
+      "point": "柚子点",
+      "register": "注册序号",
+      "roles": "角色",
+      "status": "状态",
+      "upvote": "被推",
+      "like": "被赞",
+      "dislike": "被踩",
+      "today": "今日发表话题",
+      "topic": "话题",
+      "reply": "回复",
+      "comment": "评论",
+      "game": {
+        "game": "发布游戏",
+        "contribute": "贡献游戏",
+        "daily": "今日发布游戏"
+      },
+      "time": "注册时间",
+      "bio": "签名",
+      "null": "请填满这只萝莉吧，因为她什么都没留下"
+    },
+    "settings": {
+      "avatar": "更改头像",
+      "drag": "拖拽图片到方框内或",
+      "click": "点击方框上传",
+      "confirm": "确定更改",
+      "bio": "更改签名 (107 字之内)",
+      "hint": "输入您的新签名，最大 107 个字符",
+      "count": "字数",
+      "username": "更改用户名",
+      "usernameHint": "用户名为 1~17 位任意字符, 用户名不可重复，更改用户名将会消耗您 17 柚子点"
+    },
+    "email": {
+      "email": "更改邮箱",
+      "current": "您当前的邮箱是",
+      "newEmail": "请输入您的新邮箱",
+      "code": "请输入您的验证码",
+      "send": "发送验证码",
+      "confirmEmail": "确定更改邮箱",
+      "pwd": "更改密码",
+      "oldPwd": "请输入您的旧密码",
+      "newPwd": "请输入您的新密码",
+      "rePwd": "请再次输入新密码",
+      "confirmPwd": "确定更改密码"
+    }
+  },
+  "forgot": {
+    "title": "忘记密码",
+    "email": "您的邮箱",
+    "code": "验证码",
+    "next": "下一步",
+    "prev": "上一步",
+    "new": "新密码",
+    "rePwd": "确认密码",
+    "confirm": "确定更改"
+  },
+  "ranking": {
+    "asc": "升序",
+    "desc": "降序",
+    "filter": "筛选",
+    "user": {
+      "name": "柚子用户排行",
+      "point": "柚子点",
+      "upvote": "推数",
+      "like": "点赞数",
+      "topic": "话题数",
+      "reply": "回复数",
+      "comment": "评论数"
+    },
+    "topic": {
+      "name": "柚子话题排行",
+      "upvote": "推数",
+      "views": "浏览数",
+      "likes": "点赞数",
+      "replies": "回复数",
+      "comments": "评论数"
+    }
+  },
+  "yzforum": {
+    "agreement": "用户协议",
+    "privacy": "隐私政策",
+    "update": "更新日志",
+    "banned": "封禁记录",
+    "join": "加入我们",
+    "thanks": "感谢名单",
+    "home": "返回主页"
+  },
+  "pool": {
+    "load": "点击继续加载话题",
+    "complete": "已经。。。一滴也不剩了",
+    "views": "浏览",
+    "created": "时间",
+    "all": "全部分类",
+    "game": "游戏",
+    "technique": "技术交流",
+    "others": "其它"
+  },
+  "technique": {
+    "prev": "上一页",
+    "next": "下一页"
+  },
+  "category": {
+    "game": "游戏",
+    "technique": "技术交流",
+    "others": "其它",
+    "update": "页面数据十七分钟更新一次",
+    "publish": "发布于"
+  },
+  "game": {
+    "notFound": "该游戏不存在",
+    "banned": "该游戏已被封禁",
+    "declaration": "我们不是资源的提供者，我们只是资源的指路人",
+    "null": "该条目暂时为空",
+    "welcome": "欢迎贡献条目",
+    "preparing": "准备中",
+    "banner": {
+      "change": "更改图片",
+      "confirm": "确定更改",
+      "hint": "预览图不可包含 R18 等敏感内容"
+    },
+    "introduction": {
+      "name": "介绍",
+      "en-us": "英语",
+      "ja-jp": "日语",
+      "zh-cn": "简体中文",
+      "hint": "暂无对应翻译, 为您找到最近似的语言, 欢迎贡献翻译"
+    },
+    "info": {
+      "name": "信息",
+      "title": "标题",
+      "tags": "标签",
+      "alias": "别名",
+      "official": "官网",
+      "platform": "平台",
+      "engine": "引擎",
+      "index": "序号"
+    },
+    "resource": {
+      "name": "资源链接",
+      "proxy": "提示: 部分资源链接可能需要网络代理",
+      "alter": "如果您找不到想要的资源链接, 可以去看看友站",
+      "edit": "编辑中...",
+      "extract": "提取码",
+      "decompress": "解压码",
+      "expire": "报告过期",
+      "valid": "标记有效",
+      "fetch": "获取链接",
+      "placeholder": {
+        "link": "资源链接 (网盘{'|'}磁链{'|'}网址) 等, 如果同一资源有多个链接，请用英语逗号分隔每个链接",
+        "size": "资源体积 (MB 或 GB)",
+        "extract": "资源提取码 (可选)",
+        "decompress": "资源解压码 (可选)",
+        "note": "资源备注 (可选)"
+      },
+      "type": {
+        "name": "资源链接的类型",
+        "all": "全部类型",
+        "game": "游戏本体",
+        "patch": "补丁",
+        "collection": "合集",
+        "voice": "音声相关",
+        "image": "图片相关",
+        "ai": "AI 相关",
+        "others": "其它"
+      },
+      "language": {
+        "name": "资源链接的语言",
+        "all": "全部语言",
+        "ja-jp": "日语",
+        "en-us": "英语",
+        "zh-cn": "简体中文",
+        "others": "其它"
+      },
+      "platform": {
+        "name": "资源链接的平台",
+        "all": "全部平台",
+        "windows": "Windows",
+        "mac": "macOS",
+        "linux": "Linux",
+        "emulator": "模拟器",
+        "app": "应用直装",
+        "others": "其它"
+      },
+      "sort": {
+        "views": "浏览顺序",
+        "time": "更新顺序",
+        "created": "创建顺序"
+      },
+      "create": "创建资源链接",
+      "cancelRewrite": "取消 Rewrite",
+      "confirmRewrite": "确定 Rewrite"
+    },
+    "series": {
+      "name": "游戏系列",
+      "help": "同一部作品的其它游戏"
+    },
+    "link": {
+      "name": "相关链接",
+      "label": "链接名",
+      "url": "链接地址",
+      "create": "创建"
+    },
+    "history": {
+      "name": "贡献历史",
+      "operation": "游戏操作",
+      "created": "创建了",
+      "updated": "更新了",
+      "deleted": "删除了",
+      "merged": "合并了",
+      "declined": "拒绝了",
+      "game": "游戏",
+      "banner": "预览图",
+      "link": "相关链接",
+      "pr": "更新请求"
+    },
+    "pr": {
+      "name": "更新请求",
+      "help": "蓝色代表增加, 红色代表删减, 游戏发布者或管理员可以合并或拒绝请求",
+      "request": "提出更新请求",
+      "details": "详情",
+      "status0": "进行中",
+      "status1": "已合并",
+      "status2": "已拒绝",
+      "decline": "拒绝",
+      "merge": "合并",
+      "reason": "请填写拒绝原因",
+      "confirm": "确定拒绝",
+      "note": "您可以自己合并自己提出的更新请求",
+      "hint": "要处理该请求, 需要资源的发布者、或管理员",
+      "i18n": {
+        "name": {
+          "en-us": "英语标题",
+          "ja-jp": "日语标题",
+          "zh-cn": "简体中文"
+        },
+        "introduction": {
+          "en-us": "英语介绍",
+          "ja-jp": "日语介绍",
+          "zh-cn": "简体中文"
+        },
+        "tags": "标签",
+        "series": "系列",
+        "alias": "别名",
+        "official": "官网",
+        "engine": "引擎"
+      }
+    },
+    "contributors": "贡献者",
+    "comment": {
+      "name": "评论",
+      "notice": "游戏评论注意事项, 资源失效, 解压密码错误等问题反馈",
+      "to": "评论给",
+      "publish": "发布评论",
+      "sad": "没人评论, 是没人要这个游戏的小只可爱软萌妹子了吗, 呜呜呜..."
     }
   },
   "pageError": {

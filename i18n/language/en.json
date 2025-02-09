@@ -46,7 +46,6 @@
       "update": "Update Log",
       "nonMoe": "Non-Moe Record",
       "thanks": "Thanks List",
-      "donate": "Donate to Us",
       "home": "Back to Home",
       "settings": "Settings",
       "background": "Custom Background",
@@ -98,7 +97,6 @@
       "agreement": "User Agreement",
       "category": "Topic Categories",
       "contact": "Contact / Join Us",
-      "donate": "Donate to Us",
       "forgot": "Forgot Password",
       "friendLinks": "Friend Links",
       "game": "Game Resources",
@@ -200,7 +198,427 @@
     "title": "Join / Contact Us"
   },
   "edit": {
-
+    "topic": {
+      "title": "Title",
+      "loading": "Loading editor...",
+      "uploading": "Uploading...",
+      "preview": "Preview",
+      "code": "Code",
+      "clear": "Clear Content",
+      "rules": "Publishing Rules",
+      "save": "Auto Save",
+      "word": "Words",
+      "tags": "Please enter tags",
+      "hint": "Hint: (each tag up to 17 characters, at least one and up to 7), you can create a tag by typing and pressing 'Enter'",
+      "categories": "Please select category and section",
+      "game": "Game",
+      "Technique": "Technical Exchange",
+      "Others": "Others",
+      "note": "Please do not post R18 adult game resources in the topic",
+      "section": {
+        "g-walkthrough": "Guide",
+        "g-chatting": "Chat",
+        "g-article": "Article",
+        "g-seeking": "Seeking Resources",
+        "g-news": "News",
+        "g-releases": "New Release Info",
+        "g-other": "Others",
+        "t-crack": "Reverse Engineering",
+        "t-web": "Web",
+        "t-languages": "Programming Languages",
+        "t-help": "Request Help",
+        "t-linux": "Linux",
+        "t-practical": "Practical Technology",
+        "t-ai": "AI",
+        "t-android": "Android",
+        "t-adobe": "Adobe",
+        "t-algorithm": "Algorithm",
+        "t-other": "Others",
+        "o-anime": "Anime",
+        "o-comics": "Comics",
+        "o-music": "Music",
+        "o-novel": "Light Novels",
+        "o-daily": "Daily Life",
+        "o-essay": "Personal Essays",
+        "o-forum": "Forum Related",
+        "o-patch": "Patch Website",
+        "o-other": "Others"
+      },
+      "link": {
+        "title": "Insert Hyperlink",
+        "URLLabel": "Link URL",
+        "textLabel": "Link Text (optional)",
+        "confirmInsert": "Insert",
+        "cancelInsert": "Cancel",
+        "confirmUpdate": "Update"
+      },
+      "publish": "Confirm Publish",
+      "rewrite": "Confirm Rewrite"
+    },
+    "game": {
+      "help": {
+        "name": "Publish Game Help",
+        "reference": "Reference Websites (a network proxy may be required)",
+        "vndb": "VNDB",
+        "eroGameScape": "EroGameScape",
+        "dlsite": "DLsite",
+        "wikipedia": "Wikipedia"
+      },
+      "essential": "Essential Information Section",
+      "vndb": {
+        "name": "VNDB ID",
+        "help": "We require every game to have a VNDB ID. The VNDB ID can be found on the official VNDB website (vndb.org). When you navigate to the game's page, the part of the URL (such as https://vndb.org/v19658) after 'v' is the VNDB ID. After entering the ID and clicking 'Fetch Data', we will attempt to retrieve the game's title and description (both in English) from VNDB.",
+        "placeholder": "e.g., v19658",
+        "fetch": "Fetch Data",
+        "info": "When fetching data, we will automatically check if the game is a duplicate."
+      },
+      "title": {
+        "name": "Title",
+        "help": "At least one title is required, but it's highly recommended to fill all fields (if there's no translation available for a language, you may leave it blank; the English title can be fetched automatically from VNDB).",
+        "reference": "Reference Titles (click to copy)"
+      },
+      "introduction": {
+        "name": "Introduction",
+        "help": "At least one introduction is required. The English introduction can be fetched automatically by clicking 'Fetch Data', though it might not always succeed. For Japanese introductions, visit the DLsite website and navigate to the game details page where the 'ストーリー' section provides the Japanese introduction. Chinese introductions can be obtained from Bangumi or Moegirl Wiki. You may also write your own introduction instead of using the official one.",
+        "en-us": "English",
+        "ja-jp": "Japanese",
+        "zh-cn": "Simplified Chinese"
+      },
+      "banner": {
+        "name": "Preview Image",
+        "help": "Game preview images should ideally be taken directly from within the game at their original resolution, without including screen borders or device frames. Preferably, the width should be greater than the height. The final loaded size of the image will be reduced to no larger than 1920 × 1080 pixels.",
+        "hint": "Preview images must not contain sensitive content such as R18 materials.\nThe width should preferably be greater than the height."
+      },
+      "confirm": "Confirm Publish Game"
+    },
+    "pr": {
+      "name": "Update Request",
+      "series": {
+        "name": "Game Series",
+        "hint": "If there are multiple games, please separate each entry with an English comma",
+        "placeholder": "Please enter game IDs (internal site IDs can be found in the information section of individual game pages), for example `Choco Sweet Love 1, Choco Sweet Love 2, Choco Sweet Love 3` would be a series, so you would fill in `18, 19, 20`"
+      },
+      "official": {
+        "name": "Official Website",
+        "hint": "If there are multiple official websites, please separate each link with an English comma",
+        "placeholder": "Please enter the official website link"
+      },
+      "alias": {
+        "name": "Aliases",
+        "placeholder": "Please enter game aliases",
+        "hint": "Up to 17 aliases, press Enter after typing an alias to create it"
+      },
+      "engine": {
+        "name": "Game Engine",
+        "hint": "If there are multiple engines, please separate each engine with an English comma",
+        "placeholder": "Please enter the name of the game engine, such as KiriKiri, RUGP, Shiina Rio, multiple entries allowed"
+      },
+      "tags": {
+        "name": "Game Tags",
+        "hint": "If there are multiple tags, please separate each tag with an English comma",
+        "placeholder": "Please enter game tags, such as RPG, ACT, Pure Love, etc."
+      },
+      "confirm": "Confirm Publish"
+    }
+  },
+  "login": {
+    "title": "Login",
+    "forgot": "Forgot Password?",
+    "email": "Username or Email",
+    "password": "Password",
+    "or": "Or"
+  },
+  "register": {
+    "title": "Register",
+    "name": "Username",
+    "email": "Email",
+    "password": "Password",
+    "code": "Email Verification Code",
+    "send": "Send Verification Code",
+    "agree": "I Agree to the",
+    "agreement": "User Agreement",
+    "privacy": "Privacy Policy"
+  },
+  "user": {
+    "notFound": "User Not Found",
+    "banned": "User Has Been Banned",
+    "chat": "Chat",
+    "nav": {
+      "profile": "Profile",
+      "settings": "Settings",
+      "email": "Email Settings",
+      "password": "Password Settings",
+      "topic": "Topics",
+      "game": "Games",
+      "publish": "Published",
+      "like": "Liked",
+      "favorite": "Favorited",
+      "upvote": "Upvoted",
+      "contribute": "Contributed",
+      "reply": "Replies",
+      "comment": "Comments"
+    },
+    "profile": {
+      "user": "User",
+      "admin": "Admin",
+      "SU": "Super Admin",
+      "normal": "Normal",
+      "banned": "Banned",
+      "name": "Username",
+      "point": "Yuzu Points",
+      "register": "Registration Number",
+      "roles": "Roles",
+      "status": "Status",
+      "upvote": "Upvotes Received",
+      "like": "Likes Received",
+      "dislike": "Dislikes Received",
+      "today": "Topics Posted Today",
+      "topic": "Topics",
+      "reply": "Replies",
+      "comment": "Comments",
+      "game": {
+        "game": "Publish Game",
+        "contribute": "Contribute Game",
+        "daily": "Games Published Today"
+      },
+      "time": "Registration Time",
+      "bio": "Bio",
+      "null": "Please fill this loli because she has left nothing."
+    },
+    "settings": {
+      "avatar": "Change Avatar",
+      "drag": "Drag an image into the box or",
+      "click": "Click the box to upload",
+      "confirm": "Confirm Changes",
+      "bio": "Change Bio (within 107 characters)",
+      "hint": "Enter your new bio, maximum 107 characters",
+      "count": "Character Count",
+      "username": "Change Username",
+      "usernameHint": "Username must be 1-17 characters long and unique. Changing username will cost you 17 Yuzu Points."
+    },
+    "email": {
+      "email": "Change Email",
+      "current": "Your current email is",
+      "newEmail": "Enter your new email",
+      "code": "Enter your verification code",
+      "send": "Send Verification Code",
+      "confirmEmail": "Confirm Email Change",
+      "pwd": "Change Password",
+      "oldPwd": "Enter your old password",
+      "newPwd": "Enter your new password",
+      "rePwd": "Re-enter your new password",
+      "confirmPwd": "Confirm Password Change"
+    }
+  },
+  "forgot": {
+    "title": "Forgot Password",
+    "email": "Your Email",
+    "code": "Verification Code",
+    "next": "Next",
+    "prev": "Previous",
+    "new": "New Password",
+    "rePwd": "Confirm Password",
+    "confirm": "Confirm Changes"
+  },
+  "ranking": {
+    "asc": "Ascending",
+    "desc": "Descending",
+    "filter": "Filter",
+    "user": {
+      "name": "Yuzu User Rankings",
+      "point": "Yuzu Points",
+      "upvote": "Upvotes",
+      "like": "Likes",
+      "topic": "Topics",
+      "reply": "Replies",
+      "comment": "Comments"
+    },
+    "topic": {
+      "name": "Yuzu Topic Rankings",
+      "upvote": "Upvotes",
+      "views": "Views",
+      "likes": "Likes",
+      "replies": "Replies",
+      "comments": "Comments"
+    }
+  },
+  "yzforum": {
+    "agreement": "User Agreement",
+    "privacy": "Privacy Policy",
+    "update": "Changelog",
+    "banned": "Ban Records",
+    "join": "Join Us",
+    "thanks": "Acknowledgments",
+    "home": "Return to Homepage"
+  },
+  "pool": {
+    "load": "Click to load more topics",
+    "complete": "There's... nothing left at all",
+    "views": "Views",
+    "created": "Created On",
+    "all": "All Categories",
+    "game": "Game",
+    "technique": "Technical Exchange",
+    "others": "Others"
+  },
+  "technique": {
+    "prev": "Previous Page",
+    "next": "Next Page"
+  },
+  "category": {
+    "game": "Game",
+    "technique": "Technical Exchange",
+    "others": "Others",
+    "update": "Page data updates every seventeen minutes",
+    "publish": "Published On"
+  },
+  "game": {
+    "notFound": "Game Not Found",
+    "banned": "This Game Has Been Banned",
+    "declaration": "We are not the providers of resources; we merely guide you to them.",
+    "null": "This Entry is Temporarily Empty",
+    "welcome": "Welcome to Contribute Entries",
+    "preparing": "Preparing",
+    "banner": {
+      "change": "Change Image",
+      "confirm": "Confirm Changes",
+      "hint": "Preview images must not contain sensitive content such as R18."
+    },
+    "introduction": {
+      "name": "Introduction",
+      "en-us": "English",
+      "ja-jp": "Japanese",
+      "zh-cn": "Simplified Chinese",
+      "hint": "No translation available, showing the closest language. Contributions welcome."
+    },
+    "info": {
+      "name": "Information",
+      "title": "Title",
+      "tags": "Tags",
+      "alias": "Aliases",
+      "official": "Official Website",
+      "platform": "Platform",
+      "engine": "Engine",
+      "index": "Index"
+    },
+    "resource": {
+      "name": "Resource Links",
+      "proxy": "Note: Some resource links may require a network proxy.",
+      "alter": "If you can't find the desired resource link, consider checking partner sites.",
+      "edit": "Editing...",
+      "extract": "Extraction Code",
+      "decompress": "Decompression Code",
+      "expire": "Report Expired",
+      "valid": "Mark Valid",
+      "fetch": "Fetch Link",
+      "placeholder": {
+        "link": "Resource link (cloud storage{'|'}magnet{'|'}URL), if multiple links exist for the same resource, separate them with an English comma.",
+        "size": "Resource size (MB or GB)",
+        "extract": "Extraction code (optional)",
+        "decompress": "Decompression code (optional)",
+        "note": "Resource notes (optional)"
+      },
+      "type": {
+        "name": "Type of Resource Link",
+        "all": "All Types",
+        "game": "Game Main Body",
+        "patch": "Patch",
+        "collection": "Collection",
+        "voice": "Audio Related",
+        "image": "Image Related",
+        "ai": "AI Related",
+        "others": "Others"
+      },
+      "language": {
+        "name": "Language of Resource Link",
+        "all": "All Languages",
+        "ja-jp": "Japanese",
+        "en-us": "English",
+        "zh-cn": "Simplified Chinese",
+        "others": "Others"
+      },
+      "platform": {
+        "name": "Platform of Resource Link",
+        "all": "All Platforms",
+        "windows": "Windows",
+        "mac": "macOS",
+        "linux": "Linux",
+        "emulator": "Emulator",
+        "app": "Direct Installation App",
+        "others": "Others"
+      },
+      "sort": {
+        "views": "Sort by Views",
+        "time": "Sort by Update Time",
+        "created": "Sort by Creation Time"
+      },
+      "create": "Create Resource Link",
+      "cancelRewrite": "Cancel Rewrite",
+      "confirmRewrite": "Confirm Rewrite"
+    },
+    "series": {
+      "name": "Game Series",
+      "help": "Other games in the same series."
+    },
+    "link": {
+      "name": "Related Links",
+      "label": "Link Label",
+      "url": "Link URL",
+      "create": "Create"
+    },
+    "history": {
+      "name": "Contribution History",
+      "operation": "Operation",
+      "created": "Created",
+      "updated": "Updated",
+      "deleted": "Deleted",
+      "merged": "Merged",
+      "declined": "Declined",
+      "game": "Game",
+      "banner": "Banner",
+      "link": "Related Links",
+      "pr": "Update Request"
+    },
+    "pr": {
+      "name": "Update Request",
+      "help": "Blue indicates additions, red indicates deletions. Game publishers or administrators can merge or decline requests.",
+      "request": "Submit Update Request",
+      "details": "Details",
+      "status0": "In Progress",
+      "status1": "Merged",
+      "status2": "Declined",
+      "decline": "Decline",
+      "merge": "Merge",
+      "reason": "Please provide a reason for declining.",
+      "confirm": "Confirm Decline",
+      "note": "You can merge your own update requests.",
+      "hint": "To process this request, requires the resource publisher or administrator.",
+      "i18n": {
+        "name": {
+          "en-us": "English Title",
+          "ja-jp": "Japanese Title",
+          "zh-cn": "Simplified Chinese"
+        },
+        "introduction": {
+          "en-us": "English Introduction",
+          "ja-jp": "Japanese Introduction",
+          "zh-cn": "Simplified Chinese"
+        },
+        "tags": "Tags",
+        "series": "Series",
+        "alias": "Alias",
+        "official": "Official Website",
+        "engine": "Engine"
+      }
+    },
+    "contributors": "Contributors",
+    "comment": {
+      "name": "Comments",
+      "notice": "Notice for game comments, report expired resources, incorrect decompression passwords, etc.",
+      "to": "Comment To",
+      "publish": "Publish Comment",
+      "sad": "No comments yet. Is no one interested in this cute and adorable character? Sniff..."
+    }
   },
   "pageError": {
     "404": "Za~~~ko~♡ zako~♡ Smelly zako ♡ The page is gone ~ Did you eat it?!",
