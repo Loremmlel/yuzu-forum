@@ -7,30 +7,30 @@ interface TooltipBinding {
     position: 'top' | 'right' | 'bottom' | 'left'
 }
 
-function initializeTooltip(element: HTMLElement, binding: DirectiveBinding) {
+function initializeTooltip(el: HTMLElement, binding: DirectiveBinding) {
     const {message, position} = (binding.value as TooltipBinding) || {
         message: '',
         position: 'left'
     }
-    element.setAttribute('position', position)
+    el.setAttribute('position', position)
     if (typeof message === 'string') {
-        element.setAttribute('tooltip', message)
+        el.setAttribute('tooltip', message)
         return
     }
 
     const localeCookies = Cookies.get('yzforum-language')
     const defaultLocale = window?.location.href.match(/\/[a-z]{2}-[a-z]{2}\//)?.[1] ?? 'zh-cn'
     const locale = localeCookies ?? defaultLocale
-    element.setAttribute('tooltip', message[locale as Language])
+    el.setAttribute('tooltip', message[locale as Language])
 }
 
-export default defineNuxtPlugin((nuxt) => {
-    nuxt.vueApp.directive('tooltip', {
-        mounted(element: HTMLElement, binding: DirectiveBinding) {
-            initializeTooltip(element, binding)
+export default defineNuxtPlugin((nuxtApp) => {
+    nuxtApp.vueApp.directive('tooltip', {
+        mounted(el: HTMLElement, binding: DirectiveBinding) {
+            initializeTooltip(el, binding)
         },
-        updated(element: HTMLElement, binding: DirectiveBinding) {
-            initializeTooltip(element, binding)
+        updated(el: HTMLElement, binding: DirectiveBinding) {
+            initializeTooltip(el, binding)
         }
     })
 })
