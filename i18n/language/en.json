@@ -22,7 +22,6 @@
     "about": {
       "name": "About",
       "about": "About Us",
-      "friends": "Friend Links",
       "contact": "Join Group",
       "navigation": "Navigation Page"
     },
@@ -37,7 +36,6 @@
       "createGame": "Publish Game",
       "createHint": "New",
       "about": "About Us",
-      "friends": "Friend Links",
       "join": "Join / Contact",
       "ranking": "Ranking List",
       "sticker": "Emoji Website",
@@ -45,7 +43,6 @@
       "navHint": "Prevent Loss of Contact",
       "update": "Update Log",
       "nonMoe": "Non-Moe Record",
-      "thanks": "Thanks List",
       "home": "Back to Home",
       "settings": "Settings",
       "background": "Custom Background",
@@ -109,7 +106,6 @@
       "ranking": "Ranking List",
       "report": "Anonymous Report",
       "rss": "RSS Subscription",
-      "thanksList": "Thanks List",
       "updateLog": "Update Log",
       "search": "Search Page"
     },
@@ -448,7 +444,6 @@
     "update": "Changelog",
     "banned": "Ban Records",
     "join": "Join Us",
-    "thanks": "Acknowledgments",
     "home": "Return to Homepage"
   },
   "pool": {
@@ -620,9 +615,203 @@
       "sad": "No comments yet. Is no one interested in this cute and adorable character? Sniff..."
     }
   },
+  "report": {
+    "select": {
+      "title": "Report Type",
+      "section": {
+        "topic": "Topic",
+        "reply": "Reply",
+        "comment": "Comment",
+        "user": "User",
+        "game": "Game",
+        "gameComment": "Game Comment"
+      }
+    },
+    "reason": {
+      "title": "Reason for Reporting",
+      "placeholder": "Provide specific details of the violation to increase the likelihood of a successful report."
+    },
+    "note": "This report is completely anonymous. No user records will be kept in the admin panel or database. Please feel free to report.",
+    "submit": "Submit Report"
+  },
+  "rss": {
+    "select": "Select Language for Subscription",
+    "topic": "Topics",
+    "game": "Games",
+    "copy": "Copy RSS",
+    "update": "RSS data updates every seventeen minutes",
+    "language": {
+      "en-us": "English",
+      "ja-jp": "Japanese",
+      "zh-cn": "Simplified Chinese"
+    }
+  },
+  "search": {
+    "name": "Search",
+    "topic": "Topics",
+    "game": "Games",
+    "user": "Users",
+    "reply": "Replies",
+    "comment": "Comments",
+    "placeholder": "Start typing to search automatically",
+    "history": "Search History",
+    "clear": "Clear All History",
+    "emptyHistory": "This silly loli hasn't searched for anything yet",
+    "emptyResult": "No results found...",
+    "load": "Load More",
+    "loading": "少女祈祷中...",
+    "complete": "There's... nothing left at all"
+  },
+  "message": {
+    "name": "Messages",
+    "notice": "Notifications",
+    "system": "System Messages",
+    "new": "New Message",
+    "offline": "You are offline",
+    "history": "Load Message History"
+  },
+  "footer": {
+    "copyright": "© 2025 Yuzu Game Forum, All Rights Reserved",
+    "openSource": "GitHub Open Source",
+    "reserved": "All rights reserved | Version"
+  },
   "pageError": {
     "404": "Za~~~ko~♡ zako~♡ Smelly zako ♡ The page is gone ~ Did you eat it?!",
     "error": "Za~~~ko~♡ zako~♡ Smelly zako ♡ Something went wrong with the page ~ Did you do it?!",
     "remake": "One-click Reincarnation to Loli"
+  },
+  "seo": {
+    "agreement": {
+      "title": "User Agreement",
+      "description": "1. Anything posted by the user has nothing to do with the Yuzu Game Forum, 2. The Yuzu Game Forum is only a Web development project. 3. We have the right to block users when they make behaviors that are detrimental to the maintenance of our open source projects. 4. Due to user account theft and other losses, Yuzu game forum does not bear"
+    },
+    "category": {
+      "title": "Topic category ",
+      "description": "Topic classification/zoning, game walkthrough, game chat, game seeking resources, game information, game new news, game resources download Web, programming languages,Linux, practical technology,AI, reverse engineering,Android,Adobe, algorithms, animation, manga, music, light novel ",
+      "g-walkthrough": "Game walkthrough, game walkthrough, full CG save, patch, and download, etc. ",
+      "g-chatting": "Chatting game chat, chatting game chat, chatting game chat, chatting game chat, chatting game chat, chatting game chat, chatting game chat",
+      "g-article": "Game articles, some long game articles, suitable for impressions and other articles ",
+      "g-seeking": "The game seeks resources, finds resources, can ask questions about the game resources that can't be found ",
+      "g-news": "Game information, new Chinese information, new dynamic information and other game-related information ",
+      "g-releases": "Releases new releases, which new clubs have released which releases, where, and how to buy them ",
+      "g-other": "Everything related to the game, including some games that are not included in the scope of the VNDB ",
+      "t-web": "Web, Web app development, JavaScript / TypeScript, Node.js, React / Next.js, Vue / Nuxt, Angular, Solid, Svelte",
+      "t-languages": "Programming languages, C language, JavaScript, C++ / cpp, Java, Python, Rust, C#",
+      "t-help": "If you have any questions that need to be solved, please ask here ",
+      "t-linux": "Linux, sudo pacman -Syu, chmod -R 777 /, dd if=/dev/zero of=/dev/sda, alias cd rm -rf ./*",
+      "t-practical": "Practical technology, game Chinese technology, practical software sharing, practical website sharing, practical skills sharing ",
+      "t-ai": "AI, self-supervised Learning, GANs, quantum computing, Transformer, Deep Learning, Federated Learning, GNN, Explainable AI, etc. ",
+      "t-crack": "Reverse engineering, Windows Reverse, Android/Android Reverse, IOS Reverse, vulnerability attack, black box attack, data breach prediction, DDoS, SQL Injection, xss",
+      "t-android": "Android, Java, Kotlin, RxJava, Jetpack Compose, flutter",
+      "t-adobe": "Adobe, Adobe Photoshop(PS), Adobe Illustrator(AI), Adobe Premiere Pro(PR), Adobe Audition(AU),  Adobe After Effects(AE)",
+      "t-algorithm": "Algorithm, Sort, DFS, BFS, A Search, Greedy, Union Find, Hashing, BT, BST, FT, Backtracking",
+      "t-other": "Anything related to technology as you know it, limited to medicine, agriculture, engineering, literature, business, cryptography, sociology, management, etc.",
+      "o-comics": "Comics",
+      "o-music": "Music",
+      "o-novel": "Light novel",
+      "o-daily": "Daily, record the daily stories of your life ",
+      "o-essay": "Personal essay, write anything, say whatever comes to mind ",
+      "o-forum": "Forum related, problem feedback, new feature requests, everything related to this forum",
+      "o-other": "Other content"
+    },
+    "edit": {
+      "title": "Post topic ",
+      "description": "In the Yuzu game post topic, not limited to the type, it can be everything related to the game, game downloads, game impressions, etc."
+    },
+    "forgot": {
+      "title": "Forgot password ",
+      "description": "Yuzu game forget password, forget password retrieval"
+    },
+    "yuzuGamer": {
+      "title": "User ",
+      "description": "Yuzu game user, user information, user avatar, user name, user cute point, user topic, user reply, user comment, user like, user tweet, user signature"
+    },
+    "login": {
+      "title": "Log in Yuzu Game Forum ",
+      "description": "Log in to Yuzu Game Forum, the cutest game forum in the world! Welcome home!"
+    },
+    "register": {
+      "title": "Register Yuzu Game Forum ",
+      "description": "Sign up for Yuzu Game Forum, the cutest game forum in the world! Game exchange discussion, game technology exchange."
+    },
+    "banned": {
+      "title": "Blocked record ",
+      "description": "The user violation record of Yuzu game, here records all the records of punishment so far, I hope you do not do this"
+    },
+    "pool": {
+      "title": "Topic pool ",
+      "description": "Yuzu game topic pool, game exchange, technical exchange, other communication"
+    },
+    "ranking": {
+      "title": "Ranking list ",
+      "description": "Yuzu game leaderboard, user ranking, topic ranking, Yuzu point ranking"
+    },
+    "technique": {
+      "title": "Technical Exchange ",
+      "description": "Yuzu game technical exchange. Game cracking, game Sinicization, game making, game advanced gameplay, Perhaps you can also develop a high-performance gaming website, not limited to games, we encourage the exploration of all technical classes, such as programming, Adobe series, SAI painting, Auto CAD drawing, black technology, brush machine, firewall, server, DDos principle."
+    },
+    "report": {
+      "title": "Anonymous Report ",
+      "description": "Report page of the Yuzu game forum, where you can submit the violation records in the forum, I hope everyone does not violate the rules"
+    },
+    "game": {
+      "title": "Game Resources ",
+      "description": "Yuzu game forum game resources page, providing all kinds of game downloads, game resources, Chinese, English, raw meat, Japanese Windows, macOS, PC, applications, direct installation, emulator, Android, Linux",
+      "support": "This game is supported ",
+      "download": "Zero threshold download"
+    },
+    "rss": {
+      "title": "Game and Topic subscription ",
+      "description": "Subscription to the latest games and topics in Yuzu Games Forum, available in English and Chinese"
+    },
+    "friends": {
+      "title": "Link"
+    },
+    "search": {
+      "title": "Search",
+      "description": "Search for games, game resources, topics, users, replies, reviews, etc."
+    },
+    "message": {
+      "title": "Message",
+      "description": "Yuzu game Forum message system, system notifications, messages, private chat, game group chat, etc."
+    }
+  },
+  "ComponentAlert": {
+    "confirm": "Confirm",
+    "cancel": "Cancel"
+  },
+  "AlertInfo": {
+    "edit": {
+      "publishSuccess": "Publish Success",
+      "rewriteSuccess": "Rewrite Success",
+      "prSuccess": "Pull Request Created Successfully"
+    },
+    "login": {
+      "invalidUsername": "Invalid Username, username can be any character from 1 to 17 characters long",
+      "invalidPassword": "Invalid Password Format, password length should be between 6 and 107 characters, must contain at least one English letter and one number, optional special characters include {'@'}!#$%^&*()_-+=\\/ etc.",
+      "invalidCode": "Invalid Email Verification Code Format, the verification code must be 7 digits or letters",
+      "success": "Login Successful! Welcome to Yuzu Games!"
+    },
+    "capture": {
+      "title": "Please answer the question below",
+      "submit": "Submit",
+      "close": "Close",
+      "hint1": "Truly useless... Can't even answer this... Useless...",
+      "hint2": "Useless... Try clicking on the page",
+      "hint3": "Well, useless... Useless...",
+      "hint4": "Utterly useless... In the end, it's only you who suffers"
+    },
+    "code": {
+      "code": "Verification code has been sent, you can view it in your email. Check your spam folder if you did not receive it. You can try resending the email verification code after 30 seconds.",
+      "password": "Are you sure you want to change your password?"
+    },
+    "check": {
+      "message1": "Utterly useless... Useless... Sign-in successful, but you got nothing today...",
+      "message2": "Utterly useless... Sign-in successful, you received {params} cute points today",
+      "message3": "Useless... Sign-in successful, lucky you, received {params} cute points today!"
+    }
+  },
+  "null": {
+    "null": "Please fill up this loli, as it is completely empty here"
   }
 }
