@@ -2,7 +2,7 @@ import {GameModel} from "~/server/models/game";
 import {ErrorCode} from "~/error/errorCode";
 
 export default defineEventHandler(async (event) => {
-    const {vndbId}: {vndbId: string} = await getQuery(event)
+    const {vndbId}: { vndbId: string } = await getQuery(event)
     if (!vndbId) {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }

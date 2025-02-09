@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
     if (!userInfo) {
         return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
-    const user = await UserModel.findOne({ uid: userInfo.uid })
+    const user = await UserModel.findOne({uid: userInfo.uid})
     if (!user) {
         return yuzuError(event, ErrorCode.UserNotFound)
     }
@@ -16,8 +16,8 @@ export default defineEventHandler(async (event) => {
     }
     const randomPoints = randomNum(0, 7)
     await UserModel.updateOne(
-        { uid: userInfo.uid },
-        { $inc: { point: randomPoints }, $set: { dailyCheckIn: 1 } }
+        {uid: userInfo.uid},
+        {$inc: {point: randomPoints}, $set: {dailyCheckIn: 1}}
     )
     return randomPoints
 })

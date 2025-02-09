@@ -7,7 +7,7 @@ import {GamePRModel} from "~/server/models/gamePR";
 import {ErrorCode} from "~/error/errorCode";
 
 async function checkUpdate(event: H3Event) {
-    const { gprid, note }: { gprid: number; note: string } = await readBody(event)
+    const {gprid, note}: { gprid: number; note: string } = await readBody(event)
     if (!gprid || !note) {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
@@ -19,7 +19,7 @@ async function checkUpdate(event: H3Event) {
     if (!userInfo) {
         return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
-    const user = await UserModel.findOne({ uid: userInfo.uid }).lean()
+    const user = await UserModel.findOne({uid: userInfo.uid}).lean()
     if (!user) {
         return yuzuError(event, ErrorCode.UserNotFound)
     }
@@ -28,7 +28,7 @@ async function checkUpdate(event: H3Event) {
     if (!gid) {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
-    const game = await GameModel.findOne({ gid }).lean()
+    const game = await GameModel.findOne({gid}).lean()
     if (!game) {
         return yuzuError(event, ErrorCode.GameNotFound)
     }
@@ -37,7 +37,7 @@ async function checkUpdate(event: H3Event) {
         return yuzuError(event, ErrorCode.NoPermissionForUpdateRequest)
     }
 
-    return { uid: userInfo.uid, gprid, note }
+    return {uid: userInfo.uid, gprid, note}
 }
 
 export default defineEventHandler(async (event) => {
@@ -45,14 +45,14 @@ export default defineEventHandler(async (event) => {
     if (!result) {
         return
     }
-    const { uid, gprid, note } = result
+    const {uid, gprid, note} = result
 
     const session = await mongoose.startSession()
     session.startTransaction()
     try {
         const gamePR = await GamePRModel.findOneAndUpdate(
-            { gprid },
-            { status: 2, note, game: {} }
+            {gprid},
+            {status: 2, note, game: {}}
         ).lean()
         if (!gamePR) {
             return yuzuError(event, ErrorCode.GameNotFound)

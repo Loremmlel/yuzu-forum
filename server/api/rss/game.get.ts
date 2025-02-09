@@ -5,7 +5,7 @@ import {getPreferredLanguageText} from "~/utils/getPreferredLanguageText";
 import {ErrorCode} from "~/error/errorCode";
 
 export default defineEventHandler(async (event) => {
-    const {language}: {language: Language} = await getQuery(event)
+    const {language}: { language: Language } = await getQuery(event)
     if (!language) {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }

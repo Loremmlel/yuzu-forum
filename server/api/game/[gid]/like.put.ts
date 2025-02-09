@@ -6,7 +6,7 @@ import {findFirstNonNullProperty} from "~/server/utils/findFirstNonNullProperty"
 import {ErrorCode} from "~/error/errorCode";
 
 async function updateGameLike(gid: number, uid: number): Promise<ErrorCode> {
-    const game = await GameModel.findOne({ gid, status: { $ne: 1 } }).lean()
+    const game = await GameModel.findOne({gid, status: {$ne: 1}}).lean()
     if (!game) {
         return ErrorCode.TopicNotFound
     }
@@ -22,18 +22,18 @@ async function updateGameLike(gid: number, uid: number): Promise<ErrorCode> {
     session.startTransaction()
     try {
         await GameModel.updateOne(
-            { gid },
-            { [isLikedGame ? '$pull' : '$addToSet']: { likes: uid } }
+            {gid},
+            {[isLikedGame ? '$pull' : '$addToSet']: {likes: uid}}
         )
 
         await UserModel.updateOne(
-            { uid },
-            { [isLikedGame ? '$pull' : '$addToSet']: { likeGame: gid } }
+            {uid},
+            {[isLikedGame ? '$pull' : '$addToSet']: {likeGame: gid}}
         )
 
         await UserModel.updateOne(
-            { uid: game.uid },
-            { $inc: { point: pointAmount, like: pointAmount } }
+            {uid: game.uid},
+            {$inc: {point: pointAmount, like: pointAmount}}
         )
 
         if (!isLikedGame) {

@@ -12,7 +12,7 @@ export default defineEventHandler(async (event) => {
     if (res !== ErrorCode.NoError) {
         return yuzuError(event, res)
     }
-    const { grid }: { grid: string } = await getQuery(event)
+    const {grid}: { grid: string } = await getQuery(event)
     if (!grid) {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
@@ -23,7 +23,7 @@ export default defineEventHandler(async (event) => {
     }
     const uid = userInfo.uid
 
-    await GameResourceModel.updateOne({ grid, uid }, { ...body })
+    await GameResourceModel.updateOne({grid, uid}, {...body})
 
     return '更新游戏资源成功!'
 })

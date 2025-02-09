@@ -15,7 +15,7 @@ async function getMessages(
     const sortOptions: Record<string, YuzuOrder> = {
         [sortField]: sortOrder === 'asc' ? 'asc' : 'desc'
     }
-    const queryData = type ? { receiver_uid: uid, type } : { receiver_uid: uid }
+    const queryData = type ? {receiver_uid: uid, type} : {receiver_uid: uid}
 
     const data = await MessageModel.find(queryData)
         .sort(sortOptions)
@@ -41,11 +41,11 @@ async function getMessages(
         type: message.type
     }) as Message)
 
-    return { messages, totalCount }
+    return {messages, totalCount}
 }
 
 export default defineEventHandler(async (event) => {
-    const { page, limit, type, sortField, sortOrder }: MessageRequestData = await getQuery(event)
+    const {page, limit, type, sortField, sortOrder}: MessageRequestData = await getQuery(event)
     if (limit !== '10') {
         return yuzuError(event, ErrorCode.CustomPaginationNotAllowed)
     }

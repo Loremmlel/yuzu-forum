@@ -5,12 +5,12 @@ import {GameModel} from "~/server/models/game";
 import {ErrorCode} from "~/error/errorCode";
 
 export default defineEventHandler(async (event) => {
-    const { grid }: { grid: string } = await getQuery(event)
+    const {grid}: { grid: string } = await getQuery(event)
     if (!grid) {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
 
-    const resource = await GameResourceModel.findOne({ grid }).lean()
+    const resource = await GameResourceModel.findOne({grid}).lean()
     if (!resource) {
         return yuzuError(event, ErrorCode.ResourceLinkNotFound)
     }
@@ -27,7 +27,7 @@ export default defineEventHandler(async (event) => {
     session.startTransaction()
     try {
         await UserModel.updateOne(
-            { uid: userInfo.uid },
+            {uid: userInfo.uid},
             {
                 $inc: {
                     point: -(resource.likes.length + 5),
@@ -37,15 +37,15 @@ export default defineEventHandler(async (event) => {
         )
         for (const likedUser of resource.likes) {
             await UserModel.updateOne(
-                { uid: likedUser },
-                { $pull: { likeGameResource: grid } }
+                {uid: likedUser},
+                {$pull: {likeGameResource: grid}}
             )
         }
         await GameModel.updateOne(
-            { gid: resource.gid },
-            { $pull: { resources: resource.grid } }
+            {gid: resource.gid},
+            {$pull: {resources: resource.grid}}
         )
-        await GameResourceModel.deleteOne({ grid })
+        await GameResourceModel.deleteOne({grid})
 
         await session.commitTransaction()
         return '删除游戏资源成功!'

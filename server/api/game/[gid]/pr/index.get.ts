@@ -4,19 +4,19 @@ import {GamePRDetails} from "~/types/api/gamePR";
 import {ErrorCode} from "~/error/errorCode";
 
 export default defineEventHandler(async (event) => {
-    const { gprid }: { gprid: string } = await getQuery(event)
+    const {gprid}: { gprid: string } = await getQuery(event)
     if (!gprid) {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
 
-    const pr = await GamePRModel.findOne({ gprid })
+    const pr = await GamePRModel.findOne({gprid})
         .populate('user', 'uid avatar name', UserModel)
         .lean()
     if (!pr) {
         return yuzuError(event, ErrorCode.ResourceLinkNotFound)
     }
 
-    return  {
+    return {
         gprid: pr.gprid,
         gid: pr.gid,
         index: pr.index,

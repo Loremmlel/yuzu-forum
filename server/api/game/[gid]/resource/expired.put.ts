@@ -2,7 +2,7 @@ import {GameResourceModel} from "~/server/models/gameResource";
 import {ErrorCode} from "~/error/errorCode";
 
 export default defineEventHandler(async (event) => {
-    const { grid }: { grid: string } = await getQuery(event)
+    const {grid}: { grid: string } = await getQuery(event)
     if (!grid) {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
     }
     const uid = userInfo.uid
 
-    const resource = await GameResourceModel.findOne({ grid })
+    const resource = await GameResourceModel.findOne({grid})
     if (!resource) {
         return yuzuError(event, ErrorCode.ResourceLinkNotFound)
     }
@@ -21,7 +21,7 @@ export default defineEventHandler(async (event) => {
         return yuzuError(event, ErrorCode.ResourceLinkExpired)
     }
 
-    await GameResourceModel.updateOne({ grid }, { status: 1 }).lean()
+    await GameResourceModel.updateOne({grid}, {status: 1}).lean()
     await createMessage(
         uid,
         resource.uid,

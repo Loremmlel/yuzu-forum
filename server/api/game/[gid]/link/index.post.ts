@@ -38,12 +38,12 @@ export default defineEventHandler(async (event) => {
     const session = await mongoose.startSession()
     session.startTransaction()
     try {
-        await GameLinkModel.create({ ...result })
+        await GameLinkModel.create({...result})
         await GameModel.updateOne(
-            { gid: result.gid },
+            {gid: result.gid},
             {
-                $set: { time: Date.now() },
-                $addToSet: { contributor: result.uid }
+                $set: {time: Date.now()},
+                $addToSet: {contributor: result.uid}
             }
         )
         await session.commitTransaction()

@@ -36,7 +36,7 @@ export default defineEventHandler(async (event) => {
         return yuzuError(event, ErrorCode.TopicIdReadFailed)
     }
 
-    const { rid, content, tags, edited }: TopicUpdateReplyRequestData = await readBody(event)
+    const {rid, content, tags, edited}: TopicUpdateReplyRequestData = await readBody(event)
     const result = checkReply(tags, content, edited)
     if (result !== ErrorCode.NoError) {
         return yuzuError(event, result)

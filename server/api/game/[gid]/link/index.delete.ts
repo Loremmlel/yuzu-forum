@@ -4,7 +4,7 @@ import {GameHistoryModel} from "~/server/models/gameHistory";
 import {ErrorCode} from "~/error/errorCode";
 
 export default defineEventHandler(async (event) => {
-    const {glid}: {glid: string} = await getQuery(event)
+    const {glid}: { glid: string } = await getQuery(event)
     if (!glid) {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }

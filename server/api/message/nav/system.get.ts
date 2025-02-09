@@ -18,12 +18,12 @@ export default defineEventHandler(async (event) => {
         messageAdminCount,
         messageAdminUnreadCount
     ] = await Promise.all([
-        MessageModel.findOne({ receiverUid: uid }).sort({ time: -1 }).lean(),
-        MessageModel.countDocuments({ receiverUid: uid }),
-        MessageModel.countDocuments({ receiverUid: uid, status: 'unread' }),
-        MessageAdminModel.findOne().sort({ time: -1 }).lean(),
+        MessageModel.findOne({receiverUid: uid}).sort({time: -1}).lean(),
+        MessageModel.countDocuments({receiverUid: uid}),
+        MessageModel.countDocuments({receiverUid: uid, status: 'unread'}),
+        MessageAdminModel.findOne().sort({time: -1}).lean(),
         MessageAdminModel.countDocuments(),
-        MessageAdminModel.countDocuments({ status: 'unread' })
+        MessageAdminModel.countDocuments({status: 'unread'})
     ])
 
     const responseData: AsideItem[] = [

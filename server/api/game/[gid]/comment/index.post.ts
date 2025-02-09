@@ -5,7 +5,7 @@ import {GameCommentModel} from "~/server/models/gameComment";
 import {ErrorCode} from "~/error/errorCode";
 
 async function readReply(event: H3Event) {
-    const { toUid, content }: { toUid: number; content: string } = await readBody(event)
+    const {toUid, content}: { toUid: number; content: string } = await readBody(event)
     if (!toUid || !content) {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
@@ -45,8 +45,8 @@ export default defineEventHandler(async (event) => {
 
         if (result.cUid !== result.toUid) {
             await UserModel.updateOne(
-                { uid: result.toUid },
-                { $inc: { point: 1 } }
+                {uid: result.toUid},
+                {$inc: {point: 1}}
             )
             await createMessage(
                 result.cUid,

@@ -8,8 +8,8 @@ export default defineEventHandler(async (event) => {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
 
-    const data = await GameResourceModel.find({ gid })
-        .sort({ created: -1 })
+    const data = await GameResourceModel.find({gid})
+        .sort({created: -1})
         .lean()
 
     return data.map((gameResource) => ({

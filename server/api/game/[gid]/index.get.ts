@@ -15,7 +15,7 @@ export default defineEventHandler(async (event) => {
     const session = await mongoose.startSession()
     session.startTransaction()
     try {
-        const game = await GameModel.findOne({ gid }).lean()
+        const game = await GameModel.findOne({gid}).lean()
         if (!game) {
             return yuzuError(event, ErrorCode.GameNotFound)
         }
@@ -23,15 +23,15 @@ export default defineEventHandler(async (event) => {
             return 'banned'
         }
 
-        await GameModel.updateOne({ gid }, { $inc: { views: 1 } })
+        await GameModel.updateOne({gid}, {$inc: {views: 1}})
 
-        const publisher = await UserModel.findOne({ uid: game.uid })
+        const publisher = await UserModel.findOne({uid: game.uid})
         if (!publisher) {
             return yuzuError(event, ErrorCode.UserNotFound)
         }
 
         const contributorData = await UserModel.find(
-            { uid: { $in: game.contributor } },
+            {uid: {$in: game.contributor}},
             'uid avatar'
         )
         const contributor: GameContributor[] = contributorData.map((user) => ({

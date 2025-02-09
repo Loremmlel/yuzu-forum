@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
 
-    const { page, limit }: { page: string; limit: string } = await getQuery(event)
+    const {page, limit}: { page: string; limit: string } = await getQuery(event)
     if (!page || !limit) {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
@@ -18,9 +18,9 @@ export default defineEventHandler(async (event) => {
     }
 
     const skip = (Number(page) - 1) * Number(limit)
-    const totalCount = await GamePRModel.countDocuments({ gid }).lean()
-    const data = await GamePRModel.find({ gid })
-        .sort({ created: -1 })
+    const totalCount = await GamePRModel.countDocuments({gid}).lean()
+    const data = await GamePRModel.find({gid})
+        .sort({created: -1})
         .skip(skip)
         .limit(Number(limit))
         .populate('user', 'uid avatar name', UserModel)
@@ -38,5 +38,5 @@ export default defineEventHandler(async (event) => {
             avatar: pr.user[0].avatar
         }
     }) as GamePR)
-    return { prs, totalCount }
+    return {prs, totalCount}
 })

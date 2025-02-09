@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {usePersistSettingsStore} from "~/store/modules/settings";
 
 const persistSettings = usePersistSettingsStore()
@@ -18,14 +18,14 @@ watch(
 </script>
 
 <template>
-  <div class="app" :style="{backgroundImage: `url(${imageURL})`}">
+  <div :style="{backgroundImage: `url(${imageURL})`}" class="app">
     <div class="top-bar">
 
     </div>
     <slot></slot>
     <NuxtImg
         v-if="persistSettings.showYzforumBackLoli"
-        class="kohaku" src="/image/kohaku.webp" loading="lazy" alt="kohaku">
+        alt="kohaku" class="kohaku" loading="lazy" src="/image/kohaku.webp">
     </NuxtImg>
   </div>
 </template>
@@ -36,7 +36,7 @@ watch(
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  background-color: var(--yzforum-white);
+  background-color: var(--yzforum-blue-0);
   min-height: 100dvh;
 }
 

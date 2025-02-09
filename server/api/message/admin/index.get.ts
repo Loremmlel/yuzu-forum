@@ -4,7 +4,7 @@ import {MessageAdmin} from "~/types/api/messageAdmin";
 
 export default defineEventHandler(async (_) => {
     const messageAdmin = await MessageAdminModel.find()
-        .sort({ maid: -1 })
+        .sort({maid: -1})
         .populate('user', 'uid name avatar', UserModel)
         .lean()
 

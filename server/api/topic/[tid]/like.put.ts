@@ -5,7 +5,7 @@ import {createDeduplicatedMessage} from "~/server/utils/message";
 import {ErrorCode} from "~/error/errorCode";
 
 async function updateTopicLike(uid: number, tid: number) {
-    const topic = await TopicModel.findOne({ tid })
+    const topic = await TopicModel.findOne({tid})
     if (!topic) {
         return ErrorCode.TopicNotFound
     }
@@ -20,16 +20,16 @@ async function updateTopicLike(uid: number, tid: number) {
 
     try {
         await TopicModel.updateOne(
-            { tid },
-            { [isLikedTopic ? '$pull' : '$addToSet']: { likes: uid } }
+            {tid},
+            {[isLikedTopic ? '$pull' : '$addToSet']: {likes: uid}}
         )
         await UserModel.updateOne(
-            { uid },
-            { [isLikedTopic ? '$pull' : '$addToSet']: { likeTopic: tid } }
+            {uid},
+            {[isLikedTopic ? '$pull' : '$addToSet']: {likeTopic: tid}}
         )
         await UserModel.updateOne(
-            { uid: topic.uid },
-            { $inc: { point: pointAmount, like: pointAmount } }
+            {uid: topic.uid},
+            {$inc: {point: pointAmount, like: pointAmount}}
         )
         if (!isLikedTopic) {
             await createDeduplicatedMessage(

@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import {ErrorCode} from "~/error/errorCode";
 
 async function updateGameCommentLike(gcid: number, uid: number) {
-    const comment = await GameCommentModel.findOne({ gcid }).lean()
+    const comment = await GameCommentModel.findOne({gcid}).lean()
     if (!comment) {
         return ErrorCode.ResourceLinkNotFound
     }
@@ -18,10 +18,10 @@ async function updateGameCommentLike(gcid: number, uid: number) {
     const session = await mongoose.startSession()
     session.startTransaction()
     try {
-        await GameCommentModel.updateOne({ gcid }, { $addToSet: { likes: uid } })
+        await GameCommentModel.updateOne({gcid}, {$addToSet: {likes: uid}})
         await UserModel.updateOne(
-            { uid: comment.cUid },
-            { $inc: { point: 1, like: 1 } }
+            {uid: comment.cUid},
+            {$inc: {point: 1, like: 1}}
         )
         await createMessage(
             uid,
@@ -42,7 +42,7 @@ async function updateGameCommentLike(gcid: number, uid: number) {
 }
 
 export default defineEventHandler(async (event) => {
-    const { gcid }: { gcid: string } = await getQuery(event)
+    const {gcid}: { gcid: string } = await getQuery(event)
     if (!gcid) {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }

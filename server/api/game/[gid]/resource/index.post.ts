@@ -48,19 +48,19 @@ export default defineEventHandler(async (event) => {
             time: Date.now()
         })
         await UserModel.updateOne(
-            { uid: result.uid },
+            {uid: result.uid},
             {
                 $addToSet: {
                     gameResource: resource.grid,
                     contributeGame: result.gid
                 },
-                $inc: { point: 3 }
+                $inc: {point: 3}
             }
         )
         await GameModel.updateOne(
-            { gid: result.gid },
+            {gid: result.gid},
             {
-                $set: { time: Date.now() },
+                $set: {time: Date.now()},
                 $addToSet: {
                     contributor: result.uid,
                     resources: resource.grid,

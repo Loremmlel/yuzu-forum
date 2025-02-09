@@ -9,7 +9,7 @@ export async function saveGameBanner(
     const miniBanner = await sharp(bannerBuffer)
         .resize(460, 260, {
             fit: 'contain',
-            background: {r:0, g:0, b: 0, alpha: 0}
+            background: {r: 0, g: 0, b: 0, alpha: 0}
         })
         .webp({quality: 78})
         .toBuffer()
@@ -18,7 +18,7 @@ export async function saveGameBanner(
     }
 
     const bucketName = `image/game/${gid}/banner`
-    const url = await saveImage(banner, bucketName,'banner.webp' )
+    const url = await saveImage(banner, bucketName, 'banner.webp')
     const miniUrl = await saveImage(miniBanner, bucketName, 'banner-mini.webp')
     if (!miniUrl || !url) {
         return false

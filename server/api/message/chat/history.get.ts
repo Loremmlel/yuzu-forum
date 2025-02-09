@@ -1,8 +1,8 @@
-import { ChatRoomModel } from "~/server/models/chatRoom";
-import { ChatMessageModel } from "~/server/models/chatMessage";
-import { UserModel } from "~/server/models/user";
-import { Message, MessageHistoryRequest } from "~/types/api/chatMessage";
-import { generateRoomName } from "~/server/utils/generateUtils";
+import {ChatRoomModel} from "~/server/models/chatRoom";
+import {ChatMessageModel} from "~/server/models/chatMessage";
+import {UserModel} from "~/server/models/user";
+import {Message, MessageHistoryRequest} from "~/types/api/chatMessage";
+import {generateRoomName} from "~/server/utils/generateUtils";
 import {ErrorCode} from "~/error/errorCode";
 
 /**
@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
     }
     const uid = userInfo.uid
 
-    const { receiverUid, page, limit }: MessageHistoryRequest = getQuery(event)
+    const {receiverUid, page, limit}: MessageHistoryRequest = getQuery(event)
     if (!receiverUid || !page || !limit) {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
@@ -33,21 +33,21 @@ export default defineEventHandler(async (event) => {
     const roomName = generateRoomName(Number(receiverUid), uid)
 
     // 尝试查找聊天室，如果找不到，则创建新的聊天室并返回空消息数组
-    const room = await ChatRoomModel.findOne({ name: roomName }).lean()
+    const room = await ChatRoomModel.findOne({name: roomName}).lean()
     if (!room) {
         await ChatRoomModel.create({
             name: roomName,
             type: 'private',
             participants: [uid, receiverUid],
-            lastMessage: { time: Date.now() }
+            lastMessage: {time: Date.now()}
         })
         return []
     }
 
     // 计算要跳过的消息数量，并查询消息历史
     const skip = (Number(page) - 1) * Number(limit)
-    const histories = await ChatMessageModel.find({ chatroomName: roomName })
-        .sort({ cmid: -1 })
+    const histories = await ChatMessageModel.find({chatroomName: roomName})
+        .sort({cmid: -1})
         .skip(skip)
         .limit(Number(limit))
         .populate('user', 'uid avatar name', UserModel)
@@ -58,8 +58,8 @@ export default defineEventHandler(async (event) => {
         .map((message) => message.cmid)
     if (cmidArray.length > 0) {
         await ChatMessageModel.updateMany(
-            { cmid: { $in: cmidArray }, 'readBy.uid': { $ne: uid } },
-            { $push: { readBy: { uid, readTime: Date.now() } } }
+            {cmid: {$in: cmidArray}, 'readBy.uid': {$ne: uid}},
+            {$push: {readBy: {uid, readTime: Date.now()}}}
         )
     }
 

@@ -5,7 +5,7 @@ import {createDeduplicatedMessage} from "~/server/utils/message";
 import {ErrorCode} from "~/error/errorCode";
 
 async function updateTopicFavorite(uid: number, tid: number): Promise<ErrorCode> {
-    const topic = await TopicModel.findOne({ tid })
+    const topic = await TopicModel.findOne({tid})
     if (!topic) {
         return ErrorCode.TopicNotFound
     }
@@ -16,17 +16,17 @@ async function updateTopicFavorite(uid: number, tid: number): Promise<ErrorCode>
     session.startTransaction()
     try {
         await TopicModel.updateOne(
-            { tid },
-            { [isFavoriteTopic ? '$pull' : '$addToSet']: { favorites: uid } }
+            {tid},
+            {[isFavoriteTopic ? '$pull' : '$addToSet']: {favorites: uid}}
         )
         await UserModel.updateOne(
-            { uid },
-            { [isFavoriteTopic ? '$pull' : '$addToSet']: { favoriteTopic: tid } }
+            {uid},
+            {[isFavoriteTopic ? '$pull' : '$addToSet']: {favoriteTopic: tid}}
         )
         if (uid !== topic.uid) {
             await UserModel.updateOne(
-                { uid: topic.uid },
-                { $inc: { point: pointAmount } }
+                {uid: topic.uid},
+                {$inc: {point: pointAmount}}
             )
 
             if (!isFavoriteTopic) {

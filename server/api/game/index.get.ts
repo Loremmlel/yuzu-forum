@@ -59,7 +59,7 @@ export default defineEventHandler(async (event) => {
         sortField,
         sortOrder
     }: GamePageRequestData = await getQuery(event)
-    if(!page || !limit || !sortField || ! sortOrder) {
+    if (!page || !limit || !sortField || !sortOrder) {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
     if (limit !== '24') {

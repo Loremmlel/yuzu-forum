@@ -6,8 +6,8 @@ import {ErrorCode} from "~/error/errorCode";
 async function getHomeTopics(page: number, limit: number) {
     const skip = (page - 1) * limit
 
-    const topics = await TopicModel.find({ status: { $ne: 1 } })
-        .sort({ time: -1 })
+    const topics = await TopicModel.find({status: {$ne: 1}})
+        .sort({time: -1})
         .skip(skip)
         .limit(limit)
         .populate('user', 'uid avatar name', UserModel)
@@ -34,7 +34,7 @@ async function getHomeTopics(page: number, limit: number) {
 }
 
 export default defineEventHandler(async (event) => {
-    const { page, limit }: YuzuPagination = await getQuery(event)
+    const {page, limit}: YuzuPagination = await getQuery(event)
     if (limit !== '10') {
         return yuzuError(event, ErrorCode.CustomPaginationNotAllowed)
     }

@@ -7,9 +7,9 @@ async function getMessages(page: number, limit: number) {
     const skip = (page - 1) * limit
 
     const data = await MessageModel.find({
-        type: { $in: ['upvoted', 'replied', 'commented', 'requested'] }
+        type: {$in: ['upvoted', 'replied', 'commented', 'requested']}
     })
-        .sort({ time: -1 })
+        .sort({time: -1})
         .skip(skip)
         .limit(limit)
         .populate('user', 'name', UserModel)
@@ -27,7 +27,7 @@ async function getMessages(page: number, limit: number) {
 }
 
 export default defineEventHandler(async (event) => {
-    const { page, limit }: YuzuPagination = await getQuery(event)
+    const {page, limit}: YuzuPagination = await getQuery(event)
     if (limit !== '10') {
         return yuzuError(event, ErrorCode.CustomPaginationNotAllowed)
     }

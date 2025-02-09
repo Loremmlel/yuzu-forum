@@ -2,7 +2,7 @@ import {useYuzuFeed} from "~/server/routes/_useI18nFeed";
 import {GameRSS} from "~/types/api/rss";
 
 export default defineEventHandler(async (event) => {
-    const {locale}: {locale: Language} = await getQuery(event)
+    const {locale}: { locale: Language } = await getQuery(event)
     const language = locale ?? 'zh-cn'
 
     const baseUrl = useRuntimeConfig().public.YZFORUM_URL

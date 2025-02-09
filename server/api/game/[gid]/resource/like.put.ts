@@ -4,7 +4,7 @@ import {UserModel} from "~/server/models/user";
 import {ErrorCode} from "~/error/errorCode";
 
 async function updateGameResourceLike(grid: number, uid: number) {
-    const resource = await GameResourceModel.findOne({ grid }).lean()
+    const resource = await GameResourceModel.findOne({grid}).lean()
     if (!resource) {
         return ErrorCode.ResourceLinkNotFound
     }
@@ -19,16 +19,16 @@ async function updateGameResourceLike(grid: number, uid: number) {
     session.startTransaction()
     try {
         await GameResourceModel.updateOne(
-            { grid },
-            { $addToSet: { likes: uid } }
+            {grid},
+            {$addToSet: {likes: uid}}
         )
         await UserModel.updateOne(
-            { uid },
-            { $addToSet: { likeGameResource: grid } }
+            {uid},
+            {$addToSet: {likeGameResource: grid}}
         )
         await UserModel.updateOne(
-            { uid: resource.uid },
-            { $inc: { point: 1, like: 1 } }
+            {uid: resource.uid},
+            {$inc: {point: 1, like: 1}}
         )
         await createMessage(
             uid,
@@ -49,7 +49,7 @@ async function updateGameResourceLike(grid: number, uid: number) {
 }
 
 export default defineEventHandler(async (event) => {
-    const { grid }: { grid: string } = await getQuery(event)
+    const {grid}: { grid: string } = await getQuery(event)
     if (!grid) {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }

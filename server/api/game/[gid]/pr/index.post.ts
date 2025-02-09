@@ -24,7 +24,7 @@ export default defineEventHandler(async (event) => {
     if (!originalGame) {
         return yuzuError(event, ErrorCode.GameNotFound)
     }
-    const { gid, name, introduction, series, alias, official, engine, tags } = originalGame
+    const {gid, name, introduction, series, alias, official, engine, tags} = originalGame
     const diffGame = compareObjects(game, {
         gid,
         name,
@@ -43,8 +43,8 @@ export default defineEventHandler(async (event) => {
     const session = await mongoose.startSession()
     session.startTransaction()
     try {
-        const maxIndexPR = await GamePRModel.findOne({ gid })
-            .sort({ index: -1 })
+        const maxIndexPR = await GamePRModel.findOne({gid})
+            .sort({index: -1})
             .lean()
         const baseIndex = maxIndexPR ? maxIndexPR.index : 0
         const index = baseIndex + 1
@@ -55,8 +55,8 @@ export default defineEventHandler(async (event) => {
             game: diffGame
         })
         await GameModel.updateOne(
-            { gid: game.gid },
-            { $set: { time: Date.now() } }
+            {gid: game.gid},
+            {$set: {time: Date.now()}}
         )
         await GameHistoryModel.create({
             gid,

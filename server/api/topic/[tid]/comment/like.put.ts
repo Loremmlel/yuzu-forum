@@ -11,11 +11,11 @@ export default defineEventHandler(async (event) => {
         return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
 
-    const { cid }: TopicLikeCommentRequestData = await getQuery(event)
+    const {cid}: TopicLikeCommentRequestData = await getQuery(event)
     if (!cid) {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
-    const comment = await CommentModel.findOne({ cid }).lean()
+    const comment = await CommentModel.findOne({cid}).lean()
     if (!comment) {
         return yuzuError(event, ErrorCode.CommentNotFound)
     }
@@ -26,12 +26,12 @@ export default defineEventHandler(async (event) => {
     session.startTransaction()
     try {
         await CommentModel.updateOne(
-            { cid },
-            { $addToSet: { likes: userInfo.uid } }
+            {cid},
+            {$addToSet: {likes: userInfo.uid}}
         )
         await UserModel.updateOne(
-            { uid: comment.cUid },
-            { $inc: { like: 1, point: 1 } }
+            {uid: comment.cUid},
+            {$inc: {like: 1, point: 1}}
         )
 
         if (comment) {

@@ -4,7 +4,7 @@ import {TopicRSS} from "~/types/api/rss";
 import {ErrorCode} from "~/error/errorCode";
 
 export default defineEventHandler(async (event) => {
-    const {language}: {language: Language} = await getQuery(event)
+    const {language}: { language: Language } = await getQuery(event)
     if (!language) {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }

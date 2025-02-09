@@ -130,7 +130,7 @@ export default defineEventHandler(async (event) => {
         })
         await session.commitTransaction()
         return newGame.gid
-    }catch (err) {
+    } catch (err) {
         await session.abortTransaction()
         throw err
     } finally {

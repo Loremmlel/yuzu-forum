@@ -22,7 +22,7 @@ const contentMap: Record<Language, Record<'topic' | 'game', I18nContent>> = {
             copyright: 'Copyright © 2024 Yuzu Game Forum All Rights Reserved'
         }
     },
-    'ja-jp':{
+    'ja-jp': {
         topic: {
             title: 'ゆずゲームフォーラム - 新着トピックRSS',
             description: 'トピックに関するニュースと更新情報',

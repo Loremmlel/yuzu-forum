@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
     if (!userInfo) {
         return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
-    const user = await UserModel.findOne({ uid: userInfo.uid })
+    const user = await UserModel.findOne({uid: userInfo.uid})
     if (!user) {
         return yuzuError(event, ErrorCode.UserNotFound)
     }

@@ -11,8 +11,8 @@ export default defineEventHandler(async (event) => {
     }
 
     const topic = await TopicModel.findOneAndUpdate(
-        { tid },
-        { $inc: { views: 1 } }
+        {tid},
+        {$inc: {views: 1}}
     )
         .populate('user', 'uid name avatar point', UserModel)
         .lean()
@@ -26,7 +26,7 @@ export default defineEventHandler(async (event) => {
     const userInfo = await getCookieTokenInfo(event)
     const uid = userInfo?.uid ?? 0
 
-    return  {
+    return {
         tid: topic.tid,
         title: topic.title,
         views: topic.views,

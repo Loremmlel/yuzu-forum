@@ -7,7 +7,7 @@ async function getHomeGameResources(page: number, limit: number) {
     const skip = (page - 1) * limit
 
     const resources = await GameResourceModel.find()
-        .sort({ time: -1 })
+        .sort({time: -1})
         .skip(skip)
         .limit(limit)
         .populate('game', 'name', GameModel)
@@ -29,7 +29,7 @@ async function getHomeGameResources(page: number, limit: number) {
 }
 
 export default defineEventHandler(async (event) => {
-    const { page, limit }: YuzuPagination = await getQuery(event)
+    const {page, limit}: YuzuPagination = await getQuery(event)
     if (limit !== '10') {
         return yuzuError(event, ErrorCode.CustomPaginationNotAllowed)
     }

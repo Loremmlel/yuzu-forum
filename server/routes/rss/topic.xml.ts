@@ -2,7 +2,7 @@ import {useYuzuFeed} from "~/server/routes/_useI18nFeed";
 import {TopicRSS} from "~/types/api/rss";
 
 export default defineEventHandler(async (event) => {
-    const { locale }: { locale: Language } = await getQuery(event)
+    const {locale}: { locale: Language } = await getQuery(event)
     const language = locale ?? 'zh-cn'
 
     const baseUrl = useRuntimeConfig().public.YZFORUM_URL
@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
 
     const feed = useYuzuFeed(baseUrl, language, 'topic')
 
-    const topics = await $fetch<TopicRSS[]>(`/api/rss/topic?language=${language}`, { method: 'GET' })
+    const topics = await $fetch<TopicRSS[]>(`/api/rss/topic?language=${language}`, {method: 'GET'})
 
     for (const topic of topics) {
         feed.addItem({

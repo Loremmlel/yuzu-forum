@@ -5,12 +5,12 @@ import {createMessage} from "~/server/utils/message";
 import {ErrorCode} from "~/error/errorCode";
 
 async function updateReplyUpvote(uid: number, rid: number): Promise<ErrorCode> {
-    const reply = await ReplyModel.findOne({ rid })
+    const reply = await ReplyModel.findOne({rid})
     if (!reply) {
         return ErrorCode.ReplyNotFound
     }
 
-    const userInfo = await UserModel.findOne({ uid })
+    const userInfo = await UserModel.findOne({uid})
     if (!userInfo) {
         return ErrorCode.LoginExpired
     }
@@ -24,16 +24,16 @@ async function updateReplyUpvote(uid: number, rid: number): Promise<ErrorCode> {
     session.startTransaction()
     try {
         await ReplyModel.updateOne(
-            { rid },
+            {rid},
             {
-                $set: { upvoteTime: Date.now() },
-                $push: { upvotes: uid }
+                $set: {upvoteTime: Date.now()},
+                $push: {upvotes: uid}
             }
         )
-        await UserModel.updateOne({ uid }, { $inc: { point: -2 } })
+        await UserModel.updateOne({uid}, {$inc: {point: -2}})
         await UserModel.updateOne(
-            { uid: reply.rUid },
-            { $inc: { point: 1, upvote: 1 } }
+            {uid: reply.rUid},
+            {$inc: {point: 1, upvote: 1}}
         )
         await createMessage(
             uid,
@@ -65,7 +65,7 @@ export default defineEventHandler(async (event) => {
         return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
 
-    const { rid }: { rid: string } = await getQuery(event)
+    const {rid}: { rid: string } = await getQuery(event)
     if (!rid) {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }

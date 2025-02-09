@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
     if (!uid) {
         return yuzuError(event, ErrorCode.UserNotFound)
     }
-    const { page, limit, type }: UserGetTopicRequestData = await getQuery(event)
+    const {page, limit, type}: UserGetTopicRequestData = await getQuery(event)
     if (!page || !limit || !type) {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
     }
     const skip = (parseInt(page) - 1) * parseInt(limit)
 
-    const user = await UserModel.findOne({ uid }).lean()
+    const user = await UserModel.findOne({uid}).lean()
     if (!user) {
         return yuzuError(event, ErrorCode.InvalidUserUID)
     }
@@ -30,14 +30,14 @@ export default defineEventHandler(async (event) => {
         }[type] ?? []
 
     const totalCount = await TopicModel.countDocuments({
-        tid: { $in: topicArray },
-        status: { $ne: 1 }
+        tid: {$in: topicArray},
+        status: {$ne: 1}
     }).lean()
     const data = await TopicModel.find({
-        tid: { $in: topicArray },
-        status: { $ne: 1 }
+        tid: {$in: topicArray},
+        status: {$ne: 1}
     })
-        .sort({ created: -1 })
+        .sort({created: -1})
         .skip(skip)
         .limit(parseInt(limit))
 
@@ -46,5 +46,5 @@ export default defineEventHandler(async (event) => {
         title: topic.title,
         time: new Date(topic.created).getTime()
     }) as UserTopic)
-    return { topics, totalCount }
+    return {topics, totalCount}
 })

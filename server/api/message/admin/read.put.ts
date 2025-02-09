@@ -7,6 +7,6 @@ export default defineEventHandler(async (event) => {
         return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
 
-    await MessageAdminModel.updateMany({}, { status: 'read' })
+    await MessageAdminModel.updateMany({}, {status: 'read'})
     return '已读所有消息成功!'
 })

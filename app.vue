@@ -45,13 +45,13 @@ useHead({
 })
 
 useSchemaOrg([
-    defineOrganization({
-      name: t('head.name'),
-      url: 'https://www.yuzugame.moe',
-      sameAs: ['https://tieba.baidu.com/home/main?id=tb.1.9f660194.afXf_VzuT1aphkZOIPs77A']
-    }),
-    defineWebSite({name: t('head.name')}),
-    defineWebPage()
+  defineOrganization({
+    name: t('head.name'),
+    url: 'https://www.yuzugame.moe',
+    sameAs: ['https://tieba.baidu.com/home/main?id=tb.1.9f660194.afXf_VzuT1aphkZOIPs77A']
+  }),
+  defineWebSite({name: t('head.name')}),
+  defineWebPage()
 ])
 
 onMounted(() => {

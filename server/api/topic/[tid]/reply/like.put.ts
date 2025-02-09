@@ -5,7 +5,7 @@ import {createDeduplicatedMessage} from "~/server/utils/message";
 import {ErrorCode} from "~/error/errorCode";
 
 async function updateReplyLike(uid: number, rid: number) {
-    const reply = await ReplyModel.findOne({ rid })
+    const reply = await ReplyModel.findOne({rid})
     if (!reply) {
         return ErrorCode.ReplyNotFound
     }
@@ -20,12 +20,12 @@ async function updateReplyLike(uid: number, rid: number) {
     session.startTransaction()
     try {
         await ReplyModel.updateOne(
-            { rid },
-            { [isLikedReply ? '$pull' : '$addToSet']: { likes: uid } }
+            {rid},
+            {[isLikedReply ? '$pull' : '$addToSet']: {likes: uid}}
         )
         await UserModel.updateOne(
-            { uid: reply.rUid },
-            { $inc: { point: pointAmount, like: pointAmount } }
+            {uid: reply.rUid},
+            {$inc: {point: pointAmount, like: pointAmount}}
         )
         await createDeduplicatedMessage(
             uid,
@@ -51,7 +51,7 @@ export default defineEventHandler(async (event) => {
         return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
 
-    const { rid }: { rid: string } = await getQuery(event)
+    const {rid}: { rid: string } = await getQuery(event)
     if (!rid) {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }

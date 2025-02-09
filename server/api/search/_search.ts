@@ -101,8 +101,8 @@ export async function searchGame(keywords: string[], skip: number, limit: number
 
 export async function searchUser(name: string, skip: number, limit: number) {
     const regex = new RegExp(name, 'i')
-    const users = await UserModel.find({ name: regex })
-        .sort({ time: -1 })
+    const users = await UserModel.find({name: regex})
+        .sort({time: -1})
         .skip(skip)
         .limit(limit)
         .lean()
@@ -116,7 +116,7 @@ export async function searchUser(name: string, skip: number, limit: number) {
     }) as SearchResultUser)
 }
 
-export async function searchReply(content: string,  skip: number, limit: number) {
+export async function searchReply(content: string, skip: number, limit: number) {
     const regex = new RegExp(content, 'i')
     const replies = await ReplyModel.find({content: regex})
         .sort({time: -1})
@@ -144,7 +144,7 @@ export async function searchReply(content: string,  skip: number, limit: number)
     }) as SearchResultReply)
 }
 
-export async function searchComment(content: string,  skip: number, limit: number) {
+export async function searchComment(content: string, skip: number, limit: number) {
     const regex = new RegExp(content, 'i')
     const comments = await CommentModel.find({content: regex})
         .sort({time: -1})

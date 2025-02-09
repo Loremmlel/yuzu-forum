@@ -4,7 +4,7 @@ import {UserModel} from "~/server/models/user";
 import {ErrorCode} from "~/error/errorCode";
 
 async function updateReplyDislike(uid: number, rid: number) {
-    const reply = await ReplyModel.findOne({ rid })
+    const reply = await ReplyModel.findOne({rid})
     if (!reply) {
         return ErrorCode.ReplyNotFound
     }
@@ -19,12 +19,12 @@ async function updateReplyDislike(uid: number, rid: number) {
     session.startTransaction()
     try {
         await ReplyModel.updateOne(
-            { rid },
-            { [isDislikedReply ? '$pull' : '$addToSet']: { dislikes: uid } }
+            {rid},
+            {[isDislikedReply ? '$pull' : '$addToSet']: {dislikes: uid}}
         )
         await UserModel.updateOne(
-            { uid: reply.rUid },
-            { $inc: { dislike: amount } }
+            {uid: reply.rUid},
+            {$inc: {dislike: amount}}
         )
         await session.commitTransaction()
     } catch (err) {
@@ -41,7 +41,7 @@ export default defineEventHandler(async (event) => {
         return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
 
-    const { rid }: { rid: string } = await getQuery(event)
+    const {rid}: { rid: string } = await getQuery(event)
     if (!rid) {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }

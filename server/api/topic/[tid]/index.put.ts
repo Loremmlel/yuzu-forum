@@ -19,8 +19,8 @@ async function updateTopic(
     session.startTransaction()
     try {
         await TopicModel.updateOne(
-            { tid, uid },
-            { title, content, tags, category, section, edited }
+            {tid, uid},
+            {title, content, tags, category, section, edited}
         )
         await updateTagsByTidAndRid(tid, 0, tags, category)
         await session.commitTransaction()

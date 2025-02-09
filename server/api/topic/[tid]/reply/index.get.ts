@@ -100,7 +100,7 @@ async function getReplies(
     } catch (err) {
         await session.abortTransaction()
         throw err
-    }finally {
+    } finally {
         await session.endSession()
     }
 }
@@ -111,7 +111,7 @@ export default defineEventHandler(async (event) => {
         return yuzuError(event, ErrorCode.TopicIdReadFailed)
     }
 
-    const { page, limit, sortOrder }: TopicReplyRequestData = await getQuery(event)
+    const {page, limit, sortOrder}: TopicReplyRequestData = await getQuery(event)
     if (!page || !limit || !sortOrder) {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }

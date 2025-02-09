@@ -9,7 +9,7 @@
  * 这在处理一些高频触发的事件（如窗口调整大小、滚动、键盘输入等）时非常有用，可以有效避免函数被频繁调用
  */
 export function debounce<F extends (...args: any[]) => any>(fn: F, time: number)
-:((...args: Parameters<F>) => void){
+    : ((...args: Parameters<F>) => void) {
     // 定义一个变量来存储 setTimeout 的引用
     let timeout: NodeJS.Timeout | null = null
 

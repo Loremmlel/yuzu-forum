@@ -5,7 +5,7 @@ import remarkGfm from 'remark-gfm'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import rehypePrism from 'rehype-prism-plus'
-import { unified } from 'unified'
+import {unified} from 'unified'
 
 export async function markdownToHtml(markdown: string) {
     const htmlVFile = await unified()

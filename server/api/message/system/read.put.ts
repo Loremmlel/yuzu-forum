@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
         return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
     const uid = userInfo.uid
-    await MessageModel.updateMany({ receiverUid: uid }, { status: 'read' })
+    await MessageModel.updateMany({receiverUid: uid}, {status: 'read'})
 
     return '已读所有消息成功!'
 })

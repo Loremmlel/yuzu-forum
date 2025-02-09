@@ -8,7 +8,7 @@ import {mergeLanguages} from "~/server/utils/objectUtils";
 import {ErrorCode} from "~/error/errorCode";
 
 async function checkMerge(event: H3Event) {
-    const { gprid }: { gprid: number } = await readBody(event)
+    const {gprid}: { gprid: number } = await readBody(event)
     if (!gprid) {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
@@ -17,7 +17,7 @@ async function checkMerge(event: H3Event) {
     if (!userInfo) {
         return yuzuError(event, ErrorCode.LoginExpired, 205)
     }
-    const user = await UserModel.findOne({ uid: userInfo.uid }).lean()
+    const user = await UserModel.findOne({uid: userInfo.uid}).lean()
     if (!user) {
         return yuzuError(event, ErrorCode.UserNotFound)
     }
@@ -26,7 +26,7 @@ async function checkMerge(event: H3Event) {
     if (!gid) {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
-    const game = await GameModel.findOne({ gid }).lean()
+    const game = await GameModel.findOne({gid}).lean()
     if (!game) {
         return yuzuError(event, ErrorCode.GameNotFound)
     }
@@ -35,7 +35,7 @@ async function checkMerge(event: H3Event) {
         return yuzuError(event, ErrorCode.NoPermissionForUpdateRequest)
     }
 
-    return { uid: userInfo.uid, gprid, gid, game: game }
+    return {uid: userInfo.uid, gprid, gid, game: game}
 }
 
 export default defineEventHandler(async (event) => {
@@ -43,9 +43,9 @@ export default defineEventHandler(async (event) => {
     if (!result) {
         return
     }
-    const { uid, gprid, gid, game } = result
+    const {uid, gprid, gid, game} = result
 
-    const gamePR = await GamePRModel.findOne({ gprid }).lean()
+    const gamePR = await GamePRModel.findOne({gprid}).lean()
     if (!gamePR) {
         return yuzuError(event, ErrorCode.GameNotFound)
     }
@@ -57,8 +57,8 @@ export default defineEventHandler(async (event) => {
     session.startTransaction()
     try {
         await GamePRModel.updateOne(
-            { gprid },
-            { status: 1, completedTime: Date.now() }
+            {gprid},
+            {status: 1, completedTime: Date.now()}
         )
         await GameHistoryModel.create({
             gid: gamePR.gid,
@@ -69,7 +69,7 @@ export default defineEventHandler(async (event) => {
             content: `#${gamePR.index}`
         })
         await GameModel.updateOne(
-            { gid },
+            {gid},
             {
                 name: mergeLanguages(game.name, gamePR.game?.name ?? {}),
                 introduction: mergeLanguages(
@@ -81,24 +81,24 @@ export default defineEventHandler(async (event) => {
                 official: gamePR.game?.official?.filter((str) => str !== ''),
                 engine: gamePR.game?.engine?.filter((str) => str !== ''),
                 tags: gamePR.game?.tags?.filter((str) => str !== ''),
-                $addToSet: { contributor: uid }
+                $addToSet: {contributor: uid}
             }
         )
         await UserModel.updateOne(
-            { uid },
-            { $addToSet: { contributeGame: gid } }
+            {uid},
+            {$addToSet: {contributeGame: gid}}
         )
 
         if (uid !== gamePR.uid) {
             await GameModel.updateOne(
-                { gid },
-                { $addToSet: { contributor: gamePR.uid } }
+                {gid},
+                {$addToSet: {contributor: gamePR.uid}}
             )
             await UserModel.updateOne(
-                { uid: gamePR.uid },
+                {uid: gamePR.uid},
                 {
-                    $inc: { point: 1 },
-                    $addToSet: { contributeGame: gid }
+                    $inc: {point: 1},
+                    $addToSet: {contributeGame: gid}
                 }
             )
             await createMessage(

@@ -8,11 +8,11 @@ export default defineEventHandler(async (event) => {
     }
     const uid = userInfo.uid
 
-    const { mid }: { mid: string } = await getQuery(event)
+    const {mid}: { mid: string } = await getQuery(event)
     if (!mid) {
         return yuzuError(event, ErrorCode.InvalidRequestParametersOrMissing)
     }
-    await MessageModel.deleteOne({ receiverUid: uid, mid })
+    await MessageModel.deleteOne({receiverUid: uid, mid})
 
     return '删除消息成功!'
 })

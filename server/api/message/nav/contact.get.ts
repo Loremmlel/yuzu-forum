@@ -1,7 +1,7 @@
-import { ChatRoomModel } from "~/server/models/chatRoom";
-import { AsideItem } from "~/types/api/chatMessage";
-import { ChatMessageModel } from "~/server/models/chatMessage";
-import { UserModel } from "~/server/models/user";
+import {ChatRoomModel} from "~/server/models/chatRoom";
+import {AsideItem} from "~/types/api/chatMessage";
+import {ChatMessageModel} from "~/server/models/chatMessage";
+import {UserModel} from "~/server/models/user";
 import {ErrorCode} from "~/error/errorCode";
 
 /**
@@ -24,7 +24,7 @@ export default defineEventHandler(async (event) => {
     // 查找用户参与的所有聊天室，排除最后一条消息的发送者UID为0的情况，并按最后一条消息的时间降序排列
     const chatRooms = await ChatRoomModel.find({
         participants: userId,
-        'lastMessage.senderUid': { $ne: 0 }
+        'lastMessage.senderUid': {$ne: 0}
     }).sort({
         'lastMessage.time': -1
     })

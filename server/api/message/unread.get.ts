@@ -21,7 +21,7 @@ export default defineEventHandler(async (event) => {
 
     const chatMessage = await ChatMessageModel.findOne({
         receiverUid: uid,
-        'readBy.uid': { $ne: uid }
+        'readBy.uid': {$ne: uid}
     })
 
     if (message || messageAdmin || chatMessage) {
