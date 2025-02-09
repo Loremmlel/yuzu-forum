@@ -24,7 +24,7 @@ function initializeTooltip(el: HTMLElement, binding: DirectiveBinding) {
     el.setAttribute('tooltip', message[locale as Language])
 }
 
-export default defineNuxtPlugin((nuxtApp) => {
+export default defineNuxtPlugin(nuxtApp => {
     nuxtApp.vueApp.directive('tooltip', {
         mounted(el: HTMLElement, binding: DirectiveBinding) {
             initializeTooltip(el, binding)
