@@ -3,7 +3,7 @@ import {GameModel} from "~/server/models/game";
 import mongoose from "mongoose";
 import {saveGameBanner} from "~/server/api/game/utils/saveGameBanner";
 import {GameHistoryModel} from "~/server/models/gameHistory";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const bannerFile = await readMultipartFormData(event)

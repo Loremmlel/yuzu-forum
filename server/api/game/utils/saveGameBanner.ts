@@ -1,5 +1,5 @@
 import sharp from "sharp";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export async function saveGameBanner(
     bannerBuffer: ArrayBuffer | Buffer,

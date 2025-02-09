@@ -1,7 +1,7 @@
 import {GameLinkModel} from "~/server/models/gameLink";
 import mongoose from "mongoose";
 import {GameHistoryModel} from "~/server/models/gameHistory";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const {glid}: { glid: string } = await getQuery(event)

@@ -2,7 +2,7 @@ import {TopicModel} from "~/server/models/topic";
 import {UserModel} from "~/server/models/user";
 import {GetSectionRequestData, SectionTopic} from "~/types/api/section";
 import {yuzuError} from "~/server/utils/YuzuError";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function getSectionTopic(section: string, page: number, limit: number, order: YuzuOrder) {
     const skip = (page - 1) * limit

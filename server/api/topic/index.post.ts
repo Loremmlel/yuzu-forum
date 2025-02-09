@@ -5,7 +5,7 @@ import {UserModel} from "~/server/models/user";
 import mongoose from "mongoose";
 import {TopicModel} from "~/server/models/topic";
 import {createTagsByTidAndRid} from "~/server/utils/tags";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function readTopicData(event: H3Event) {
     const {

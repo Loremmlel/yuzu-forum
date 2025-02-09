@@ -2,7 +2,7 @@ import {GameResourceModel} from "~/server/models/gameResource";
 import mongoose from "mongoose";
 import {UserModel} from "~/server/models/user";
 import {GameModel} from "~/server/models/game";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const {grid}: { grid: string } = await getQuery(event)

@@ -3,7 +3,7 @@ import {CommentModel} from "~/server/models/comment";
 import mongoose from "mongoose";
 import {UserModel} from "~/server/models/user";
 import {createMessage} from "~/server/utils/message";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const userInfo = await getCookieTokenInfo(event)

@@ -3,7 +3,7 @@ import {ReplyModel} from "~/server/models/reply";
 import {updateTagsByTidAndRid} from "~/server/utils/tags";
 import {TopicUpdateReplyRequestData} from "~/types/api/topicReply";
 import {checkReply} from "~/server/api/topic/utils/checkReply";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function updateReply(
     uid: number,

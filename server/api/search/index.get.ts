@@ -1,6 +1,6 @@
 import {SearchRequestData, SearchType} from "~/types/api/search";
 import {searchComment, searchGame, searchReply, searchTopic, searchUser} from "~/server/api/search/_search";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function search(keywords: string, type: SearchType, page: number, limit: number) {
     const skip = (page - 1) * limit

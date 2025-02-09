@@ -4,7 +4,7 @@ import {hash} from "bcrypt";
 import {UserModel} from "~/server/models/user";
 import {isValidEmail, isValidMailConfirmCode, isValidPassword} from "~/utils/validate";
 import {yuzuError} from "~/server/utils/YuzuError";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function resetPasswordByEmail(email: string, code: string, newPassword: string): Promise<ErrorCode> {
     const validEmail = verifyCaptcha(email, code)

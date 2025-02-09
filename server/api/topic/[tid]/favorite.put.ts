@@ -2,7 +2,7 @@ import {TopicModel} from "~/server/models/topic";
 import mongoose from "mongoose";
 import {UserModel} from "~/server/models/user";
 import {createDeduplicatedMessage} from "~/server/utils/message";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function updateTopicFavorite(uid: number, tid: number): Promise<ErrorCode> {
     const topic = await TopicModel.findOne({tid})

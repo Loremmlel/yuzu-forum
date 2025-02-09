@@ -1,6 +1,6 @@
 import {HomeUserStatus} from "~/types/api/home";
 import {UserModel} from "~/server/models/user";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const userInfo = await getCookieTokenInfo(event)

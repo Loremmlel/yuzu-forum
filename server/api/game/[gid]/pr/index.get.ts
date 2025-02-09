@@ -1,7 +1,7 @@
 import {GamePRModel} from "~/server/models/gamePR";
 import {UserModel} from "~/server/models/user";
 import {GamePRDetails} from "~/types/api/gamePR";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const {gprid}: { gprid: string } = await getQuery(event)

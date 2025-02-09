@@ -1,6 +1,6 @@
 import {BannedModel} from "~/server/models/banned";
 import {BannedLog, BannedLogRequestData} from "~/types/api/banned";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function getBannedLogs(page: number, limit: number) {
     const skip = (page - 1) * limit

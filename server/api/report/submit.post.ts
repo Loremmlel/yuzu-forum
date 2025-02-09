@@ -3,7 +3,7 @@ import {ReportSubmitRequestData} from "~/types/api/report"
 import {getCookieTokenInfo} from "~/server/utils/getCokkieTokenInfo"
 import {reportSection} from "~/pages/report/constant"
 import {ReportModel} from "~/server/models/report"
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const {reason, type}: ReportSubmitRequestData = await readBody(event)

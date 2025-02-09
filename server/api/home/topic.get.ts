@@ -1,7 +1,7 @@
 import {HomeTopic} from "~/types/api/home";
 import {UserModel} from "~/server/models/user";
 import {TopicModel} from "~/server/models/topic";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function getHomeTopics(page: number, limit: number) {
     const skip = (page - 1) * limit

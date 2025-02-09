@@ -2,7 +2,7 @@ import {isValidPassword} from "~/utils/validate";
 import {UserUpdatePasswordRequestData} from "~/types/api/user";
 import {UserModel} from "~/server/models/user";
 import {compare, hash} from "bcrypt";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const {oldPassword, newPassword}: UserUpdatePasswordRequestData = await readBody(event)

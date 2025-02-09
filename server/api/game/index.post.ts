@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 import {saveGameBanner} from "~/server/api/game/utils/saveGameBanner";
 import {GameLinkModel} from "~/server/models/gameLink";
 import {GameHistoryModel} from "~/server/models/gameHistory";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function readGame(event: H3Event) {
     const formData = await readFormData(event)

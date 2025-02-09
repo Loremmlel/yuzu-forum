@@ -1,6 +1,6 @@
 import {render} from "vue";
-import type {InfoCode} from "~/error/infoCode";
-import {getInfoMessagesCN, getInfoMessagesJP} from "~/error/infoMessage";
+import type {InfoCode} from "~/code&message/infoCode";
+import {getInfoMessagesCN, getInfoMessagesJP} from "~/code&message/infoMessage";
 
 
 type MessageType = 'warn' | 'success' | 'error' | 'info'

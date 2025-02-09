@@ -3,7 +3,7 @@ import {GameContributor, GameDetail} from "~/types/api/game";
 import {UserModel} from "~/server/models/user";
 import {GameModel} from "~/server/models/game";
 import {markdownToHtml} from "~/server/utils/markdown";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const gid = getRouterParam(event, 'gid')

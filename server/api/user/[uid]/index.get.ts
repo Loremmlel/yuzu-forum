@@ -1,6 +1,6 @@
 import {UserModel} from "~/server/models/user";
 import {UserInfo} from "~/types/api/user";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const uid = getRouterParam(event, 'uid')

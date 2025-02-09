@@ -3,7 +3,7 @@ import {ChatMessageModel} from "~/server/models/chatMessage";
 import {UserModel} from "~/server/models/user";
 import {Message, MessageHistoryRequest} from "~/types/api/chatMessage";
 import {generateRoomName} from "~/server/utils/generateUtils";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 /**
  * 定义一个处理聊天消息历史的API端点

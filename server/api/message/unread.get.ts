@@ -1,7 +1,7 @@
 import {MessageModel} from "~/server/models/message";
 import {MessageAdminModel} from "~/server/models/messageAdmin";
 import {ChatMessageModel} from "~/server/models/chatMessage";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const userInfo = await getCookieTokenInfo(event)

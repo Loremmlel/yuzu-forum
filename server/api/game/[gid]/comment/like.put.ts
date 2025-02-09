@@ -1,7 +1,7 @@
 import {UserModel} from "~/server/models/user";
 import {GameCommentModel} from "~/server/models/gameComment";
 import mongoose from "mongoose";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function updateGameCommentLike(gcid: number, uid: number) {
     const comment = await GameCommentModel.findOne({gcid}).lean()

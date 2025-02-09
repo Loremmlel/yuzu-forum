@@ -1,7 +1,7 @@
 import {TodoModel} from "~/server/models/todo";
 import {GetTodoRequestData, Todo} from "~/types/api/updateLog";
 import {yuzuError} from "~/server/utils/YuzuError";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function getTodos(page: number, limit: number) {
     const skip = (page - 1) * limit

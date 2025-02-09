@@ -1,5 +1,5 @@
 import {isValidURL} from "~/utils/validate";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export function checkGameLinkPublish(name: string, link: string): ErrorCode {
     if (name.trim().length > 107) {

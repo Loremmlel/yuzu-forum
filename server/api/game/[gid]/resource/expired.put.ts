@@ -1,5 +1,5 @@
 import {GameResourceModel} from "~/server/models/gameResource";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const {grid}: { grid: string } = await getQuery(event)

@@ -2,7 +2,7 @@ import {GameResourceStoreTemp} from "~/store/types/game/resource";
 import {languageOptions, platformOptions, typeOptions} from "~/components/game/utils/option";
 import {isValidURL} from "~/utils/validate";
 import {resourceSizePattern} from "~/utils/pattern";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export function checkGameResourcePublish(link: GameResourceStoreTemp): ErrorCode {
     if (!typeOptions.filter((item) => item !== 'all').includes(link.type)) {

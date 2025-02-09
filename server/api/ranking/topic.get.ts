@@ -1,6 +1,6 @@
 import {RankingGetTopicsRequestData, RankingTopics, TopicSortFieldRanking} from "~/types/api/ranking";
 import {TopicModel} from "~/server/models/topic";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function getTopicRanking(
     page: number,

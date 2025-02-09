@@ -1,7 +1,7 @@
 import sharp from "sharp";
 import {checkBufferSize} from "~/server/utils/checkBufferSize";
 import {UserModel} from "~/server/models/user";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function resizeUserAvatar(name: string, avatar: Buffer, uid: number) {
     const miniAvatar = await sharp(avatar)

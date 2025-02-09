@@ -2,7 +2,7 @@ import {GameModel} from "~/server/models/game";
 import {GameCommentModel} from "~/server/models/gameComment";
 import {UserModel} from "~/server/models/user";
 import mongoose from "mongoose";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const gid = getRouterParam(event, 'gid')

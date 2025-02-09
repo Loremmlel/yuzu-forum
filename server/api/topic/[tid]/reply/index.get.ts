@@ -6,7 +6,7 @@ import {TopicModel} from "~/server/models/topic";
 import {ReplyModel} from "~/server/models/reply";
 import {TopicReply, TopicReplyRequestData} from "~/types/api/topicReply";
 import {markdownToHtml} from "~/server/utils/markdown";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function getComments(uid: number, rid: number) {
     const comment = await CommentModel.find({rid})

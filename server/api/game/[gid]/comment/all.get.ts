@@ -1,7 +1,7 @@
 import {GameCommentModel} from "~/server/models/gameComment";
 import {UserModel} from "~/server/models/user";
 import {GameComment} from "~/types/api/gameComment";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const gid = getRouterParam(event, 'gid')

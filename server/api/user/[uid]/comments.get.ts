@@ -1,7 +1,7 @@
 import {UserModel} from "~/server/models/user";
 import {CommentModel} from "~/server/models/comment";
 import {UserComment} from "~/types/api/user";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const uid = getRouterParam(event, 'uid')

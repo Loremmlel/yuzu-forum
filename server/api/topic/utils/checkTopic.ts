@@ -1,6 +1,6 @@
 import {gameSection, otherSection, techniqueSection} from "~/components/edit/utils/category";
 import {isValidTimestamp} from '~/utils/validate'
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 const topicCategory = ['game', 'technique', 'other']
 const topicSection = [...gameSection, ...techniqueSection, ...otherSection]

@@ -1,7 +1,7 @@
 import {PoolTopic, PoolTopicsRequestData, SortFieldPool} from "~/types/api/pool";
 import {TopicModel} from "~/server/models/topic";
 import {UserModel} from "~/server/models/user";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function getPoolTopics(
     page: number,

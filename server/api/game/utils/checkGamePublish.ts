@@ -1,6 +1,6 @@
 import {isValidYzLanguage} from "~/utils/validate";
 import {vndbPattern} from "~/utils/pattern";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export function checkGamePublish(
     vndbId: string,

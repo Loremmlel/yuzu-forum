@@ -1,7 +1,7 @@
 import {GameResourceModel} from "~/server/models/gameResource";
 import mongoose from "mongoose";
 import {UserModel} from "~/server/models/user";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function updateGameResourceLike(grid: number, uid: number) {
     const resource = await GameResourceModel.findOne({grid}).lean()

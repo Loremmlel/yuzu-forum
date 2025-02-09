@@ -3,7 +3,7 @@ import {UserModel} from "~/server/models/user";
 import {ForgotPasswordCaptchaRequestData} from "~/types/api/auth";
 import {yuzuError} from "~/server/utils/YuzuError";
 import {sendCaptchaEmail} from "~/server/utils/SendCaptchaEmail";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const {email}: ForgotPasswordCaptchaRequestData =

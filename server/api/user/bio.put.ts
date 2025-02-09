@@ -1,5 +1,5 @@
 import {UserModel} from "~/server/models/user";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const {bio}: { bio: string } = await readBody(event)

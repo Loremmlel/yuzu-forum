@@ -1,6 +1,6 @@
 import {GameResourceModel} from "~/server/models/gameResource";
 import {GameResource} from "~/types/api/gameResource";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const gid = getRouterParam(event, 'gid')

@@ -1,7 +1,7 @@
 import {Message, MessageRequestData, MessageType, SortField} from "~/types/api/message";
 import {MessageModel} from "~/server/models/message";
 import {UserModel} from "~/server/models/user";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function getMessages(
     uid: number,

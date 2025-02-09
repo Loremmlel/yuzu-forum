@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import {usePersistSettingsStore} from "~/store/modules/settings";
+import {usePersistSettingsStore} from "~/store/modules/setting";
 
 const {locale, t} = useI18n()
 const colorMode = useColorMode()
@@ -40,8 +40,7 @@ useHead({
       type: 'text/html',
       title: 'Baidu Tieba Youzi'
     }
-  ],
-  title: t('head.name')
+  ]
 })
 
 useSchemaOrg([
@@ -64,6 +63,8 @@ onMounted(() => {
 </script>
 
 <template>
+  <NuxtPwaManifest></NuxtPwaManifest>
+  <NuxtLoadingIndicator color="var(--yzforum-blue-5)"></NuxtLoadingIndicator>
   <NuxtLayout>
     <NuxtPage></NuxtPage>
   </NuxtLayout>

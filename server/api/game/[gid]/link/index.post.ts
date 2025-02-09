@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import {GameLinkModel} from "~/server/models/gameLink";
 import {GameModel} from "~/server/models/game";
 import {GameHistoryModel} from "~/server/models/gameHistory";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function getLink(event: H3Event) {
     const {name, link}: { name: string; link: string } = await readBody(event)

@@ -3,7 +3,7 @@ import {TopicModel} from "~/server/models/topic";
 import {updateTagsByTidAndRid} from "~/server/utils/tags";
 import {checkTopic} from "~/server/api/topic/utils/checkTopic";
 import {EditUpdateTopicRequestData} from "~/types/api/topic";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function updateTopic(
     uid: number,

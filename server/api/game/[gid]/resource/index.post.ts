@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import {GameResourceModel} from "~/server/models/gameResource";
 import {UserModel} from "~/server/models/user";
 import {GameModel} from "~/server/models/game";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function getResource(event: H3Event) {
     const body: GameResourceStoreTemp = await readBody(event)

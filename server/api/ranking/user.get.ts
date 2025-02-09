@@ -1,6 +1,6 @@
 import {RankingGetUserRequestData, RankingUsers, UserSortFieldRanking} from "~/types/api/ranking";
 import {UserModel} from "~/server/models/user";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 /**
  * 异步获取用户排名信息

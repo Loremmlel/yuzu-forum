@@ -1,4 +1,4 @@
-import type {InfoCode} from "~/error/infoCode";
+import type {InfoCode} from "~/code&message/infoCode";
 
 const infoMessagesCN: Record<number, string> = {
     10101: '密码更改成功',

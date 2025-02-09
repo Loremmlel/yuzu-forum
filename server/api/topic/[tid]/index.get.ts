@@ -2,7 +2,7 @@ import {TopicModel} from "~/server/models/topic";
 import {UserModel} from "~/server/models/user";
 import {TopicDetail} from "~/types/api/topic";
 import {markdownToHtml} from "~/server/utils/markdown";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const tid = getRouterParam(event, 'tid')

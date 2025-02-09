@@ -2,7 +2,7 @@ import {ChatRoomModel} from "~/server/models/chatRoom";
 import {AsideItem} from "~/types/api/chatMessage";
 import {ChatMessageModel} from "~/server/models/chatMessage";
 import {UserModel} from "~/server/models/user";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 /**
  * 获取用户的聊天室列表

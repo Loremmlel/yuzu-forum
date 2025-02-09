@@ -1,7 +1,7 @@
 import {UpdateLogModel} from "~/server/models/updateLog";
 import {GetUpdateLogRequestData, UpdateLog, UpdateType} from "~/types/api/updateLog";
 import {yuzuError} from "~/server/utils/YuzuError";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function getUpdateLogs(page: number, limit: number) {
     const skip = (page - 1) * limit

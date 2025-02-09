@@ -1,6 +1,6 @@
 import {GameLinkModel} from "~/server/models/gameLink";
 import {GameLink} from "~/types/api/gameLink";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const gid = getRouterParam(event, 'gid')

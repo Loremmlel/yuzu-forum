@@ -1,6 +1,6 @@
 import {GameStoreTemp} from "~/store/types/edit/game";
 import {isValidYzLanguage} from "~/utils/validate";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export function checkGamePR(game: GameStoreTemp): ErrorCode {
     if (typeof game.gid !== 'number' || game.gid > 1000000) {

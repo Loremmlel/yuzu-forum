@@ -1,7 +1,7 @@
 import {GameResourceModel} from "~/server/models/gameResource";
 import {GameModel} from "~/server/models/game";
 import {HomeGameResources} from "~/types/api/home";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function getHomeGameResources(page: number, limit: number) {
     const skip = (page - 1) * limit

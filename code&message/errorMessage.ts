@@ -1,4 +1,4 @@
-import type {ErrorCode} from "~/error/errorCode";
+import type {ErrorCode} from "~/code&message/errorCode";
 
 const errorMessagesCN: Record<number, string> = {
     10101: `用户未找到`,
@@ -337,7 +337,7 @@ const errorMessagesJP: Record<number, string> = {
 }
 
 export function getErrorMessageEN(errorCode: ErrorCode) {
-    return errorMessagesEN[errorCode] || 'Unknown server error'
+    return errorMessagesEN[errorCode] || 'Unknown server code&message'
 }
 
 export function getErrorMessageJP(errorCode: ErrorCode) {

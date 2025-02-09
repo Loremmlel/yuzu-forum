@@ -4,7 +4,7 @@ import {isValidEmail, isValidName, isValidPassword} from "~/utils/validate";
 import {UserModel} from "~/server/models/user";
 import {compare} from "bcrypt";
 import {createTokens} from "~/server/utils/jwt";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function login(event: H3Event) {
     const {name, password}: LoginRequestData = await readBody(event)

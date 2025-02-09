@@ -4,7 +4,7 @@ import {GameModel} from "~/server/models/game";
 import mongoose from "mongoose";
 import {GameHistoryModel} from "~/server/models/gameHistory";
 import {GamePRModel} from "~/server/models/gamePR";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function checkUpdate(event: H3Event) {
     const {gprid, note}: { gprid: number; note: string } = await readBody(event)

@@ -1,7 +1,7 @@
 import {UserModel} from "~/server/models/user";
 import {GamePRModel} from "~/server/models/gamePR";
 import {GamePR} from "~/types/api/gamePR";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const gid = getRouterParam(event, 'gid')

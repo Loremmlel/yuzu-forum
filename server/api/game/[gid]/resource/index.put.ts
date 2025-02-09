@@ -1,7 +1,7 @@
 import {GameResourceStoreTemp} from "~/store/types/game/resource";
 import {checkGameResourcePublish} from "~/server/api/game/utils/checkGameResourcePublish";
 import {GameResourceModel} from "~/server/models/gameResource";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const body: GameResourceStoreTemp = await readBody(event)

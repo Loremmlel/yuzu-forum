@@ -4,7 +4,7 @@ import {Game} from "~/server/models/types/game";
 import {GameModel} from "~/server/models/game";
 import {UserModel} from "~/server/models/user";
 import {GameCard, GamePageRequestData} from "~/types/api/game";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function getGames(
     page: number,

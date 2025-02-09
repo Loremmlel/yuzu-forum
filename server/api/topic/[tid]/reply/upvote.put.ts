@@ -2,7 +2,7 @@ import {ReplyModel} from "~/server/models/reply";
 import {UserModel} from "~/server/models/user";
 import mongoose from "mongoose";
 import {createMessage} from "~/server/utils/message";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function updateReplyUpvote(uid: number, rid: number): Promise<ErrorCode> {
     const reply = await ReplyModel.findOne({rid})

@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 import {GamePRModel} from "~/server/models/gamePR";
 import {GameHistoryModel} from "~/server/models/gameHistory";
 import {isDeepEmpty} from "~/server/utils/isDeepEmpty";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const game: GameStoreTemp = await readBody(event)

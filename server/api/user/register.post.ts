@@ -6,7 +6,7 @@ import {verifyCaptcha} from "~/server/utils/verifyCaptcha";
 import {UserModel} from "~/server/models/user";
 import {hash} from "bcrypt";
 import {createTokens} from "~/server/utils/jwt";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function registerController(event: H3Event) {
     const {name, email, password, code}: RegisterRequestData = await readBody(event)

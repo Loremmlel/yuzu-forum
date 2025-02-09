@@ -2,7 +2,7 @@ import {GameModel} from "~/server/models/game";
 import {UserModel} from "~/server/models/user";
 import {GameRSS} from "~/types/api/rss";
 import {getPreferredLanguageText} from "~/utils/getPreferredLanguageText";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const {language}: { language: Language } = await getQuery(event)

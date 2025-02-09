@@ -3,7 +3,7 @@ import {checkBufferSize} from "~/server/utils/checkBufferSize";
 import {UserModel} from "~/server/models/user";
 import path from "node:path";
 import {fileURLToPath} from "node:url";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function compressImage(name: string, image: Buffer, uid: number) {
     const miniImage = await sharp(image)

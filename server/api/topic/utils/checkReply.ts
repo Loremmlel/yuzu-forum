@@ -1,5 +1,5 @@
 import {isValidTimestamp} from "~/utils/validate";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export function checkReply(tags: string[], content: string, time: number): ErrorCode {
     if (tags.length > 7) {

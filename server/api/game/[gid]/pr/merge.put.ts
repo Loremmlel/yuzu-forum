@@ -5,7 +5,7 @@ import {GamePRModel} from "~/server/models/gamePR";
 import mongoose from "mongoose";
 import {GameHistoryModel} from "~/server/models/gameHistory";
 import {mergeLanguages} from "~/server/utils/objectUtils";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function checkMerge(event: H3Event) {
     const {gprid}: { gprid: number } = await readBody(event)

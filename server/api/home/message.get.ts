@@ -1,7 +1,7 @@
 import {HomeMessage} from "~/types/api/home";
 import {MessageModel} from "~/server/models/message";
 import {UserModel} from "~/server/models/user";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function getMessages(page: number, limit: number) {
     const skip = (page - 1) * limit

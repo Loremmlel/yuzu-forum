@@ -2,7 +2,7 @@ import {UserModel} from "~/server/models/user";
 import {TopicModel} from "~/server/models/topic";
 import mongoose from "mongoose";
 import {createMessage} from "~/server/utils/message";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function updateTopicUpvote(uid: number, tid: number) {
     const topic = await TopicModel.findOne({tid})

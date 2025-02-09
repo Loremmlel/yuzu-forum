@@ -7,7 +7,7 @@ import {UserModel} from "~/server/models/user";
 import {TopicModel} from "~/server/models/topic";
 import {ReplyModel} from "~/server/models/reply";
 import {createMessage} from "~/server/utils/message";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function readReply(event: H3Event) {
     const {rid, toUid, content}: TopicCreateCommentRequestData = await readBody(event)

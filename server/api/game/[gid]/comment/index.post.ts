@@ -2,7 +2,7 @@ import {H3Event} from "h3";
 import mongoose from "mongoose";
 import {UserModel} from "~/server/models/user";
 import {GameCommentModel} from "~/server/models/gameComment";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function readReply(event: H3Event) {
     const {toUid, content}: { toUid: number; content: string } = await readBody(event)

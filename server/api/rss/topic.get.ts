@@ -1,7 +1,7 @@
 import {TopicModel} from "~/server/models/topic";
 import {UserModel} from "~/server/models/user";
 import {TopicRSS} from "~/types/api/rss";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const {language}: { language: Language } = await getQuery(event)

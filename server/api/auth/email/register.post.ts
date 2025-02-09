@@ -3,7 +3,7 @@ import {isValidEmail} from "~/utils/validate";
 import {yuzuError} from "~/server/utils/YuzuError";
 import {UserModel} from "~/server/models/user";
 import {sendCaptchaEmail} from "~/server/utils/SendCaptchaEmail";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const {name, email}: RegisterCaptchaRequestData = await readBody(event)

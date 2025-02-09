@@ -1,7 +1,7 @@
 import {GameHistoryModel} from "~/server/models/gameHistory";
 import {UserModel} from "~/server/models/user";
 import {GameHistory, GameHistoryAction, GameHistoryType} from "~/types/api/gameHistory";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 export default defineEventHandler(async (event) => {
     const gid = getRouterParam(event, 'gid')

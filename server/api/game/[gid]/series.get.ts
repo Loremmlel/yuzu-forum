@@ -1,5 +1,5 @@
 import {GameModel} from "~/server/models/game";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 interface GameSeries {
     gid: number

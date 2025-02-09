@@ -8,7 +8,7 @@ import {TopicModel} from "~/server/models/topic";
 import {createTagsByTidAndRid} from "~/server/utils/tags";
 import {createMessage} from "~/server/utils/message";
 import {markdownToHtml} from "~/server/utils/markdown";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function readReply(event: H3Event) {
     const {

@@ -1,7 +1,7 @@
 import {GameModel} from "~/server/models/game";
 import {HomeGame} from "~/types/api/home";
 import {UserModel} from "~/server/models/user";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function getHomeGames(page: number, limit: number) {
     const skip = (page - 1) * limit

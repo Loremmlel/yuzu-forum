@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import {usePersistSettingsStore} from "~/store/modules/settings";
+import {usePersistSettingsStore} from "~/store/modules/setting";
 
 const persistSettings = usePersistSettingsStore()
 
@@ -20,7 +20,7 @@ watch(
 <template>
   <div :style="{backgroundImage: `url(${imageURL})`}" class="app">
     <div class="top-bar">
-
+      <YuzuTopBar></YuzuTopBar>
     </div>
     <slot></slot>
     <NuxtImg

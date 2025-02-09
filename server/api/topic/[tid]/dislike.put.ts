@@ -1,7 +1,7 @@
 import {TopicModel} from "~/server/models/topic";
 import mongoose from "mongoose";
 import {UserModel} from "~/server/models/user";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function updateTopicDislike(uid: number, tid: number) {
     const topic = await TopicModel.findOne({tid})

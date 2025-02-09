@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import {UserModel} from "~/server/models/user";
 import {createDeduplicatedMessage} from "~/server/utils/message";
 import {findFirstNonNullProperty} from "~/server/utils/findFirstNonNullProperty";
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 async function updateGameFavorite(gid: number, uid: number): Promise<ErrorCode> {
     const game = await GameModel.findOne({gid, status: {$ne: 1}}).lean()

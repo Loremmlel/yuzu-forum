@@ -4,7 +4,7 @@ import {generateRandomCode} from "~/server/utils/generateUtils";
 import {createTransport} from "nodemailer";
 import SMTPTransport from "nodemailer-smtp-transport";
 import env from '~/server/env/dotenv'
-import {ErrorCode} from "~/error/errorCode";
+import {ErrorCode} from "~/code&message/errorCode";
 
 function getEmailContent(type: 'register' | 'forgot' | 'reset', code: string) {
     switch (type) {
