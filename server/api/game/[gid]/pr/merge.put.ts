@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 import {GameHistoryModel} from "~/server/models/gameHistory";
 import {mergeLanguages} from "~/server/utils/objectUtils";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 async function checkMerge(event: H3Event) {
     const {gprid}: { gprid: number } = await readBody(event)
@@ -111,7 +112,7 @@ export default defineEventHandler(async (event) => {
             )
         }
         await session.commitTransaction()
-        return '合并游戏拉取请求成功!'
+        return ReturnMessage.MergeGamePR
     } catch (error) {
         await session.abortTransaction()
         throw error

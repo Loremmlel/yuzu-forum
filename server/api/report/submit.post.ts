@@ -4,6 +4,7 @@ import {getCookieTokenInfo} from "~/server/utils/getCokkieTokenInfo"
 import {reportSection} from "~/pages/report/constant"
 import {ReportModel} from "~/server/models/report"
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 export default defineEventHandler(async (event) => {
     const {reason, type}: ReportSubmitRequestData = await readBody(event)
@@ -22,5 +23,5 @@ export default defineEventHandler(async (event) => {
         return yuzuError(event, ErrorCode.ReportContentTooLong)
     }
     await ReportModel.create({reason, type})
-    return '提交反馈成功!'
+    return ReturnMessage.SubmitReport
 })

@@ -2,6 +2,7 @@ import {UserModel} from "~/server/models/user";
 import {GameCommentModel} from "~/server/models/gameComment";
 import mongoose from "mongoose";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 async function updateGameCommentLike(gcid: number, uid: number) {
     const comment = await GameCommentModel.findOne({gcid}).lean()
@@ -58,5 +59,5 @@ export default defineEventHandler(async (event) => {
         return yuzuError(event, result)
     }
 
-    return '点赞游戏评论成功!'
+    return ReturnMessage.LikeGameComment
 })

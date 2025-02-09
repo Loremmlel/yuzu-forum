@@ -2,6 +2,7 @@ import {ReplyModel} from "~/server/models/reply";
 import mongoose from "mongoose";
 import {UserModel} from "~/server/models/user";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 async function updateReplyDislike(uid: number, rid: number) {
     const reply = await ReplyModel.findOne({rid})
@@ -51,5 +52,5 @@ export default defineEventHandler(async (event) => {
         return yuzuError(event, result)
     }
 
-    return '点踩回复成功!'
+    return ReturnMessage.DislikeReply
 })

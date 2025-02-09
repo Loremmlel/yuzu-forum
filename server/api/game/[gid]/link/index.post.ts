@@ -5,6 +5,7 @@ import {GameLinkModel} from "~/server/models/gameLink";
 import {GameModel} from "~/server/models/game";
 import {GameHistoryModel} from "~/server/models/gameHistory";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 async function getLink(event: H3Event) {
     const {name, link}: { name: string; link: string } = await readBody(event)
@@ -55,7 +56,7 @@ export default defineEventHandler(async (event) => {
             type: 'link',
             content: result.name
         })
-        return '创建游戏相关链接成功!'
+        return ReturnMessage.CreateGameLink
     } catch (err) {
         await session.abortTransaction()
         throw err

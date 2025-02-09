@@ -2,6 +2,7 @@ import {GameLinkModel} from "~/server/models/gameLink";
 import mongoose from "mongoose";
 import {GameHistoryModel} from "~/server/models/gameHistory";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 export default defineEventHandler(async (event) => {
     const {glid}: { glid: string } = await getQuery(event)
@@ -35,7 +36,7 @@ export default defineEventHandler(async (event) => {
             content: link.name
         })
         await session.commitTransaction()
-        return '删除游戏相关链接成功!'
+        return ReturnMessage.DeleteGameLink
     } catch (err) {
         await session.abortTransaction()
         throw err

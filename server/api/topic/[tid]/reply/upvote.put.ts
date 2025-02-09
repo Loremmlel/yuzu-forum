@@ -3,6 +3,7 @@ import {UserModel} from "~/server/models/user";
 import mongoose from "mongoose";
 import {createMessage} from "~/server/utils/message";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 async function updateReplyUpvote(uid: number, rid: number): Promise<ErrorCode> {
     const reply = await ReplyModel.findOne({rid})
@@ -74,5 +75,5 @@ export default defineEventHandler(async (event) => {
         return yuzuError(event, result)
     }
 
-    return '推⭐回复成功!'
+    return ReturnMessage.UpvoteReply
 })

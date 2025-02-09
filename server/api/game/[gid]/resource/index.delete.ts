@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import {UserModel} from "~/server/models/user";
 import {GameModel} from "~/server/models/game";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 export default defineEventHandler(async (event) => {
     const {grid}: { grid: string } = await getQuery(event)
@@ -48,7 +49,7 @@ export default defineEventHandler(async (event) => {
         await GameResourceModel.deleteOne({grid})
 
         await session.commitTransaction()
-        return '删除游戏资源成功!'
+        return ReturnMessage.DeleteGameResource
     } catch (err) {
         await session.abortTransaction()
         throw err

@@ -1,5 +1,6 @@
 import {GameResourceModel} from "~/server/models/gameResource";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 export default defineEventHandler(async (event) => {
     const {grid}: { grid: string } = await getQuery(event)
@@ -22,5 +23,5 @@ export default defineEventHandler(async (event) => {
 
     await GameResourceModel.updateOne({grid}, {status: 0}).lean()
 
-    return '有效游戏资源成功!'
+    return ReturnMessage.ValidGameResource
 })

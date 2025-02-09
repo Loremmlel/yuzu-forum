@@ -1,5 +1,6 @@
 import {UserModel} from "~/server/models/user";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 export default defineEventHandler(async (event) => {
     const {bio}: { bio: string } = await readBody(event)
@@ -11,5 +12,5 @@ export default defineEventHandler(async (event) => {
         return yuzuError(event, ErrorCode.UserSignatureTooLong)
     }
     await UserModel.updateOne({uid: userInfo.uid}, {$set: {bio}})
-    return '更新bio成功!'
+    return ReturnMessage.UpdateBio
 })

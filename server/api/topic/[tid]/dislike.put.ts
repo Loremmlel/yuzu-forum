@@ -2,6 +2,7 @@ import {TopicModel} from "~/server/models/topic";
 import mongoose from "mongoose";
 import {UserModel} from "~/server/models/user";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 async function updateTopicDislike(uid: number, tid: number) {
     const topic = await TopicModel.findOne({tid})
@@ -54,5 +55,5 @@ export default defineEventHandler(async (event) => {
     if (typeof result === 'number') {
         return yuzuError(event, result)
     }
-    return '点踩主题成功!'
+    return ReturnMessage.DislikeTopic
 })

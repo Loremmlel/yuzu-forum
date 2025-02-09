@@ -4,6 +4,7 @@ import {ForgotPasswordCaptchaRequestData} from "~/types/api/auth";
 import {yuzuError} from "~/server/utils/YuzuError";
 import {sendCaptchaEmail} from "~/server/utils/SendCaptchaEmail";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 export default defineEventHandler(async (event) => {
     const {email}: ForgotPasswordCaptchaRequestData =
@@ -23,5 +24,5 @@ export default defineEventHandler(async (event) => {
         return yuzuError(event, result)
     }
 
-    return '发送重置邮箱验证码成功!'
+    return ReturnMessage.ResetEmailVerificationCodeSend
 })

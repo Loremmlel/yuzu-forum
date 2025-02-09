@@ -4,6 +4,7 @@ import {yuzuError} from "~/server/utils/YuzuError";
 import {UserModel} from "~/server/models/user";
 import {sendCaptchaEmail} from "~/server/utils/SendCaptchaEmail";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 export default defineEventHandler(async (event) => {
     const {email}: ForgotPasswordCaptchaRequestData = await readBody(event)
@@ -18,5 +19,5 @@ export default defineEventHandler(async (event) => {
     if (result !== ErrorCode.NoError) {
         return yuzuError(event, result)
     }
-    return '发送忘记密码验证码成功!'
+    return ReturnMessage.ForgotPasswordVerificationCodeSend
 })

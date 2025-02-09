@@ -1,5 +1,6 @@
 import {MessageModel} from "~/server/models/message";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 export default defineEventHandler(async (event) => {
     const userInfo = await getCookieTokenInfo(event)
@@ -9,5 +10,5 @@ export default defineEventHandler(async (event) => {
     const uid = userInfo.uid
     await MessageModel.updateMany({receiverUid: uid}, {status: 'read'})
 
-    return '已读所有消息成功!'
+    return ReturnMessage.ReadAllSystemMessage
 })

@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import {UserModel} from "~/server/models/user";
 import {createMessage} from "~/server/utils/message";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 export default defineEventHandler(async (event) => {
     const userInfo = await getCookieTokenInfo(event)
@@ -52,5 +53,5 @@ export default defineEventHandler(async (event) => {
         await session.endSession()
     }
 
-    return '点赞评论成功!'
+    return ReturnMessage.LikeTopicComment
 })

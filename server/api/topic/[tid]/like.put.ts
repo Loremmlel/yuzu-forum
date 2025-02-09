@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import {UserModel} from "~/server/models/user";
 import {createDeduplicatedMessage} from "~/server/utils/message";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 async function updateTopicLike(uid: number, tid: number) {
     const topic = await TopicModel.findOne({tid})
@@ -67,5 +68,5 @@ export default defineEventHandler(async (event) => {
         return yuzuError(event, result)
     }
 
-    return '点赞主题成功!'
+    return ReturnMessage.LikeTopic
 })

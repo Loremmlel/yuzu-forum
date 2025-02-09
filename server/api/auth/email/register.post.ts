@@ -4,6 +4,7 @@ import {yuzuError} from "~/server/utils/YuzuError";
 import {UserModel} from "~/server/models/user";
 import {sendCaptchaEmail} from "~/server/utils/SendCaptchaEmail";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 export default defineEventHandler(async (event) => {
     const {name, email}: RegisterCaptchaRequestData = await readBody(event)
@@ -26,5 +27,5 @@ export default defineEventHandler(async (event) => {
         return yuzuError(event, result)
     }
 
-    return '发送注册账号验证码成功!'
+    return ReturnMessage.RegisterVerificationCodeSend
 })

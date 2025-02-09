@@ -1,5 +1,6 @@
 import {GameModel} from "~/server/models/game";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 export default defineEventHandler(async (event) => {
     const {vndbId}: { vndbId: string } = await getQuery(event)
@@ -12,5 +13,5 @@ export default defineEventHandler(async (event) => {
         return yuzuError(event, ErrorCode.GameAlreadyExists)
     }
 
-    return '这个游戏尚未被上传到论坛!'
+    return ReturnMessage.CheckGame
 })

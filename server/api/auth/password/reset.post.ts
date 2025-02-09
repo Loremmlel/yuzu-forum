@@ -5,6 +5,7 @@ import {UserModel} from "~/server/models/user";
 import {isValidEmail, isValidMailConfirmCode, isValidPassword} from "~/utils/validate";
 import {yuzuError} from "~/server/utils/YuzuError";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 async function resetPasswordByEmail(email: string, code: string, newPassword: string): Promise<ErrorCode> {
     const validEmail = verifyCaptcha(email, code)
@@ -37,5 +38,5 @@ export default defineEventHandler(async (event) => {
     if (result !== ErrorCode.NoError) {
         return yuzuError(event, result)
     }
-    return '重设密码成功!'
+    return ReturnMessage.ResetPassword
 })

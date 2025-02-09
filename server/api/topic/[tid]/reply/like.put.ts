@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import {UserModel} from "~/server/models/user";
 import {createDeduplicatedMessage} from "~/server/utils/message";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 async function updateReplyLike(uid: number, rid: number) {
     const reply = await ReplyModel.findOne({rid})
@@ -61,5 +62,5 @@ export default defineEventHandler(async (event) => {
         return yuzuError(event, result)
     }
 
-    return '点赞评论成功!'
+    return ReturnMessage.LikeReply
 })

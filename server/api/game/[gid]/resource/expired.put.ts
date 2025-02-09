@@ -1,5 +1,6 @@
 import {GameResourceModel} from "~/server/models/gameResource";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 export default defineEventHandler(async (event) => {
     const {grid}: { grid: string } = await getQuery(event)
@@ -31,5 +32,5 @@ export default defineEventHandler(async (event) => {
         resource.gid
     )
 
-    return '过期游戏资源成功!'
+    return ReturnMessage.ExpireGameResource
 })

@@ -7,6 +7,7 @@ import {GamePRModel} from "~/server/models/gamePR";
 import {GameHistoryModel} from "~/server/models/gameHistory";
 import {isDeepEmpty} from "~/server/utils/isDeepEmpty";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 export default defineEventHandler(async (event) => {
     const game: GameStoreTemp = await readBody(event)
@@ -77,7 +78,7 @@ export default defineEventHandler(async (event) => {
             )
         }
         await session.commitTransaction()
-        return '提交游戏拉取请求成功!'
+        return ReturnMessage.SubmitGamePR
     } catch (err) {
         await session.abortTransaction()
         throw err

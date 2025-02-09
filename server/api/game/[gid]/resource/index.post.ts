@@ -6,6 +6,7 @@ import {GameResourceModel} from "~/server/models/gameResource";
 import {UserModel} from "~/server/models/user";
 import {GameModel} from "~/server/models/game";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 async function getResource(event: H3Event) {
     const body: GameResourceStoreTemp = await readBody(event)
@@ -72,7 +73,7 @@ export default defineEventHandler(async (event) => {
         )
 
         await session.commitTransaction()
-        return '创建游戏资源成功!'
+        return ReturnMessage.CreateGameResource
     } catch (err) {
         await session.abortTransaction()
         throw err

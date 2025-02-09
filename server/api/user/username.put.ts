@@ -1,6 +1,7 @@
 import {UserModel} from "~/server/models/user";
 import {isValidName} from "~/utils/validate";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 
 export default defineEventHandler(async (event) => {
@@ -30,5 +31,5 @@ export default defineEventHandler(async (event) => {
         {uid: userInfo.uid},
         {$set: {name: username}, $inc: {point: -17}}
     )
-    return '更新用户名成功!'
+    return ReturnMessage.UpdateUsername
 })

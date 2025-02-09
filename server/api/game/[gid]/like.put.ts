@@ -4,6 +4,7 @@ import {UserModel} from "~/server/models/user";
 import {createDeduplicatedMessage} from "~/server/utils/message";
 import {findFirstNonNullProperty} from "~/server/utils/findFirstNonNullProperty";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 async function updateGameLike(gid: number, uid: number): Promise<ErrorCode> {
     const game = await GameModel.findOne({gid, status: {$ne: 1}}).lean()
@@ -73,5 +74,5 @@ export default defineEventHandler(async (event) => {
         return yuzuError(event, result)
     }
 
-    return '点赞游戏成功!'
+    return ReturnMessage.LikeGame
 })

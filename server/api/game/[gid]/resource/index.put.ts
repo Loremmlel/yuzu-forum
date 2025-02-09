@@ -2,6 +2,7 @@ import {GameResourceStoreTemp} from "~/store/types/game/resource";
 import {checkGameResourcePublish} from "~/server/api/game/utils/checkGameResourcePublish";
 import {GameResourceModel} from "~/server/models/gameResource";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 export default defineEventHandler(async (event) => {
     const body: GameResourceStoreTemp = await readBody(event)
@@ -25,5 +26,5 @@ export default defineEventHandler(async (event) => {
 
     await GameResourceModel.updateOne({grid, uid}, {...body})
 
-    return '更新游戏资源成功!'
+    return ReturnMessage.UpdateGameResource
 })

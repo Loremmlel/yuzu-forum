@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import {UserModel} from "~/server/models/user";
 import {GameCommentModel} from "~/server/models/gameComment";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 async function readReply(event: H3Event) {
     const {toUid, content}: { toUid: number; content: string } = await readBody(event)
@@ -58,7 +59,7 @@ export default defineEventHandler(async (event) => {
             )
         }
         await session.commitTransaction()
-        return '发布游戏评论成功!'
+        return ReturnMessage.SendGameComment
     } catch (err) {
         await session.abortTransaction()
         throw err

@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import {UserModel} from "~/server/models/user";
 import {createDeduplicatedMessage} from "~/server/utils/message";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 async function updateTopicFavorite(uid: number, tid: number): Promise<ErrorCode> {
     const topic = await TopicModel.findOne({tid})
@@ -66,5 +67,5 @@ export default defineEventHandler(async (event) => {
     if (result !== ErrorCode.NoError) {
         return yuzuError(event, result)
     }
-    return '收藏主题成功!'
+    return ReturnMessage.FavoriteTopic
 })

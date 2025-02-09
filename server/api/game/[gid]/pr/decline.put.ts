@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import {GameHistoryModel} from "~/server/models/gameHistory";
 import {GamePRModel} from "~/server/models/gamePR";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 async function checkUpdate(event: H3Event) {
     const {gprid, note}: { gprid: number; note: string } = await readBody(event)
@@ -82,7 +83,7 @@ export default defineEventHandler(async (event) => {
         }
 
         await session.commitTransaction()
-        return '拒绝游戏拉取请求成功!'
+        return ReturnMessage.DeclineGamePR
     } catch (err) {
         await session.abortTransaction()
         throw err

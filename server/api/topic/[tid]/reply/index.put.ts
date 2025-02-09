@@ -4,6 +4,7 @@ import {updateTagsByTidAndRid} from "~/server/utils/tags";
 import {TopicUpdateReplyRequestData} from "~/types/api/topicReply";
 import {checkReply} from "~/server/api/topic/utils/checkReply";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 async function updateReply(
     uid: number,
@@ -49,5 +50,5 @@ export default defineEventHandler(async (event) => {
     const uid = userInfo.uid
     await updateReply(uid, Number(tid), rid, content, tags, edited)
 
-    return '修改评论成功!'
+    return ReturnMessage.UpdateReply
 })

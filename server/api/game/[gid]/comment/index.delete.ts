@@ -3,6 +3,7 @@ import {GameCommentModel} from "~/server/models/gameComment";
 import {UserModel} from "~/server/models/user";
 import mongoose from "mongoose";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 export default defineEventHandler(async (event) => {
     const gid = getRouterParam(event, 'gid')
@@ -58,7 +59,7 @@ export default defineEventHandler(async (event) => {
         )
         await GameCommentModel.deleteOne({gcid})
         await session.commitTransaction()
-        return '删除游戏评论成功!'
+        return ReturnMessage.DeleteGameComment
     } catch (err) {
         await session.abortTransaction()
         throw err

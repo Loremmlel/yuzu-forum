@@ -3,6 +3,7 @@ import {TopicModel} from "~/server/models/topic";
 import mongoose from "mongoose";
 import {createMessage} from "~/server/utils/message";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 async function updateTopicUpvote(uid: number, tid: number) {
     const topic = await TopicModel.findOne({tid})
@@ -72,5 +73,5 @@ export default defineEventHandler(async (event) => {
     if (typeof result === 'number') {
         return yuzuError(event, result)
     }
-    return '推⭐主题成功!'
+    return ReturnMessage.UpvoteTopic
 })

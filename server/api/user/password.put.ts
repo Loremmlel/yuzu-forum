@@ -3,6 +3,7 @@ import {UserUpdatePasswordRequestData} from "~/types/api/user";
 import {UserModel} from "~/server/models/user";
 import {compare, hash} from "bcrypt";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 export default defineEventHandler(async (event) => {
     const {oldPassword, newPassword}: UserUpdatePasswordRequestData = await readBody(event)
@@ -24,5 +25,5 @@ export default defineEventHandler(async (event) => {
     }
     const hashedPassword = await hash(newPassword, 7)
     await UserModel.updateOne({uid}, {$set: {password: hashedPassword}})
-    return '更新密码成功!'
+    return ReturnMessage.UpdatePassword
 })

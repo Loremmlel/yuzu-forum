@@ -2,6 +2,7 @@ import {GameResourceModel} from "~/server/models/gameResource";
 import mongoose from "mongoose";
 import {UserModel} from "~/server/models/user";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 async function updateGameResourceLike(grid: number, uid: number) {
     const resource = await GameResourceModel.findOne({grid}).lean()
@@ -65,5 +66,5 @@ export default defineEventHandler(async (event) => {
         return yuzuError(event, result)
     }
 
-    return '点赞游戏资源成功!'
+    return ReturnMessage.LikeGameResource
 })

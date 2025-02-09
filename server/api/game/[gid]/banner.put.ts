@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import {saveGameBanner} from "~/server/api/game/utils/saveGameBanner";
 import {GameHistoryModel} from "~/server/models/gameHistory";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 export default defineEventHandler(async (event) => {
     const bannerFile = await readMultipartFormData(event)
@@ -58,7 +59,7 @@ export default defineEventHandler(async (event) => {
             content: ''
         })
         await session.commitTransaction()
-        return '修改游戏封面成功!'
+        return ReturnMessage.UpdateGameBanner
     } catch (err) {
         await session.abortTransaction()
         throw err

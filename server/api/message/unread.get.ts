@@ -2,6 +2,7 @@ import {MessageModel} from "~/server/models/message";
 import {MessageAdminModel} from "~/server/models/messageAdmin";
 import {ChatMessageModel} from "~/server/models/chatMessage";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 export default defineEventHandler(async (event) => {
     const userInfo = await getCookieTokenInfo(event)
@@ -25,8 +26,8 @@ export default defineEventHandler(async (event) => {
     })
 
     if (message || messageAdmin || chatMessage) {
-        return '有未读消息!'
+        return ReturnMessage.HasUnreadMessage
     } else {
-        return '在线噢!'
+        return ReturnMessage.Online
     }
 })

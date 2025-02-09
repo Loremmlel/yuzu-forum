@@ -4,6 +4,7 @@ import {updateTagsByTidAndRid} from "~/server/utils/tags";
 import {checkTopic} from "~/server/api/topic/utils/checkTopic";
 import {EditUpdateTopicRequestData} from "~/types/api/topic";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 async function updateTopic(
     uid: number,
@@ -75,5 +76,5 @@ export default defineEventHandler(async (event) => {
         Number(edited)
     )
 
-    return '修改主题成功!'
+    return ReturnMessage.UpdateTopic
 })

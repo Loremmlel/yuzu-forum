@@ -1,5 +1,6 @@
 import {MessageModel} from "~/server/models/message";
 import {ErrorCode} from "~/code&message/errorCode";
+import {ReturnMessage} from "~/code&message/returnMessage";
 
 export default defineEventHandler(async (event) => {
     const userInfo = await getCookieTokenInfo(event)
@@ -14,5 +15,5 @@ export default defineEventHandler(async (event) => {
     }
     await MessageModel.deleteOne({receiverUid: uid, mid})
 
-    return '删除消息成功!'
+    return ReturnMessage.DeleteMessage
 })
