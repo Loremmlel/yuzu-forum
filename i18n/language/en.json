@@ -7,6 +7,201 @@
     "topicRSS": "Yuzu Games Forum Topic Subscription",
     "gameRSS": "Yuzu Games Forum Game Subscription"
   },
+  "header": {
+    "name": "Yuzu Game Forum",
+    "topic": {
+      "name": "Topics",
+      "all": "All Topics",
+      "category": "Topic Categories"
+    },
+    "publish": {
+      "name": "Publish",
+      "topic": "Publish Topic",
+      "game": "Publish Game"
+    },
+    "about": {
+      "name": "About",
+      "about": "About Us",
+      "friends": "Friend Links",
+      "contact": "Join Group",
+      "navigation": "Navigation Page"
+    },
+    "game": "Game",
+    "home": "Home",
+    "hamburger": {
+      "name": "Yuzu Game",
+      "game": "Game",
+      "pool": "All Topics",
+      "category": "Topic Categories",
+      "createTopic": "Publish Topic",
+      "createGame": "Publish Game",
+      "createHint": "New",
+      "about": "About Us",
+      "friends": "Friend Links",
+      "join": "Join / Contact",
+      "ranking": "Ranking List",
+      "sticker": "Emoji Website",
+      "nav": "Navigation Website",
+      "navHint": "Prevent Loss of Contact",
+      "update": "Update Log",
+      "nonMoe": "Non-Moe Record",
+      "thanks": "Thanks List",
+      "donate": "Donate to Us",
+      "home": "Back to Home",
+      "settings": "Settings",
+      "background": "Custom Background",
+      "loli": "Show Cute Amber"
+    },
+    "settings": {
+      "name": "Settings Panel",
+      "mode": "Mode Switch",
+      "language": "Website Language Settings",
+      "en-us": "English",
+      "ja-jp": "Japanese",
+      "zh-cn": "Simplified Chinese",
+      "trans": "Page Transparency",
+      "blur": "Page Blur",
+      "font": "Font Style",
+      "default": "System Default",
+      "fontInput": "Please enter the font name here",
+      "background": "Background Settings",
+      "custom": "Customize",
+      "confirm": "Confirm",
+      "restore": "Reset",
+      "recover": "Restore All Settings to Default"
+    },
+    "user": {
+      "profile": "Profile",
+      "message": "My Messages",
+      "check": "Daily Check-in",
+      "logout": "Logout"
+    }
+  },
+  "back": {
+    "back": "Back",
+    "home": "Home"
+  },
+  "home": {
+    "header": {
+      "topicSearch": "Topic Search",
+      "gameSearch": "Game Search",
+      "search": "Enter content to search automatically",
+      "history": "Search History",
+      "clear": "Clear All History",
+      "emptyHistory": "Nothing Searched Yet",
+      "emptyResult": "No Results Found..."
+    },
+    "route": {
+      "homeEn": "Website Home (English)",
+      "homeJp": "Website Home (Japanese)",
+      "homeZh": "Website Home (Simplified Chinese)",
+      "agreement": "User Agreement",
+      "category": "Topic Categories",
+      "contact": "Contact / Join Us",
+      "donate": "Donate to Us",
+      "forgot": "Forgot Password",
+      "friendLinks": "Friend Links",
+      "game": "Game Resources",
+      "yzforum": "About Me",
+      "login": "Login",
+      "register": "Register",
+      "banned": "Ban Records",
+      "pool": "All Topics",
+      "privacy": "Privacy Policy",
+      "ranking": "Ranking List",
+      "report": "Anonymous Report",
+      "rss": "RSS Subscription",
+      "thanksList": "Thanks List",
+      "updateLog": "Update Log",
+      "search": "Search Page"
+    },
+    "subSites": {
+      "sticker": "Emoji",
+      "nav": "Navigation",
+      "documentation": "Development Documentation",
+      "backup": "Backup Site"
+    },
+    "updates": "Latest Updates",
+    "topics": "Latest Topics",
+    "games": "Latest Games",
+    "resources": "Latest Game Resources",
+    "sitemaps": "Sitemap",
+    "foldSection": "Collapse Section",
+    "expandSection": "Expand Section",
+    "load": "Load More",
+    "loading": "少女祈祷中...",
+    "fold": "Fold to Initial State",
+    "copyright": "© 2025 Yuzu Game Forum",
+    "openSource": "Open Source {'|'} Version"
+  },
+  "topic": {
+    "notFound": "This topic does not exist",
+    "banned": "This topic has been banned",
+    "aside": {
+      "floor": "Sort by floor number",
+      "like": "Sort by likes",
+      "comment": "Sort by comments",
+      "tags": "Other topics under the same tags",
+      "tagsEmpty": "No other topics under this tag yet",
+      "master": "Other topics by the original poster",
+      "masterEmpty": "The original poster has no other topics yet"
+    },
+    "content": {
+      "status": "Topic Status",
+      "featured": "Featured",
+      "normal": "Normal",
+      "banned": "Banned",
+      "pinned": "Pinned",
+      "essential": "Essence",
+      "reply": "Reply",
+      "comments": "Comments",
+      "comment": "Comment",
+      "publish": "Publish Comment",
+      "close": "Close",
+      "hint": "Please enter your comment, maximum of 1007 characters"
+    },
+    "panel": {
+      "to": "Reply to",
+      "master": "Owner",
+      "reply": "zako~♡",
+      "advance": "Advanced Options",
+      "confirm": "Confirm Publish",
+      "rewrite": "Confirm Rewrite",
+      "clear": "Clear Content"
+    }
+  },
+  "update": {
+    "todo": "To-Do List",
+    "status0": "Pending",
+    "status1": "In Progress",
+    "status2": "Completed",
+    "status3": "Discarded",
+    "history": "History Versions",
+    "feat": "Feature Addition",
+    "pref": "Performance Optimization",
+    "fix": "Bug Fixes",
+    "styles": "Style Modifications",
+    "mod": "Functionality Changes",
+    "chore": "Other Modifications",
+    "sec": "Security Enhancements",
+    "refactor": "Code Refactoring",
+    "docs": "Documentation Changes",
+    "test": "Test Cases"
+  },
+  "banned": {
+    "log": "Ban Records",
+    "title": "This records all penalties to date. We hope everyone avoids such actions.",
+    "reason": "Reason",
+    "consequence": "Consequences",
+    "point": "Points",
+    "empty": "No Ban Records Yet"
+  },
+  "contact": {
+    "title": "Join / Contact Us"
+  },
+  "edit": {
+
+  },
   "pageError": {
     "404": "Za~~~ko~♡ zako~♡ Smelly zako ♡ The page is gone ~ Did you eat it?!",
     "error": "Za~~~ko~♡ zako~♡ Smelly zako ♡ Something went wrong with the page ~ Did you do it?!",

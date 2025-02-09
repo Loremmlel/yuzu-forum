@@ -7,6 +7,201 @@
     "topicRSS": "ゆずゲームフォーラムトピック購読",
     "gameRSS": "ゆずゲームフォーラムゲーム購読"
   },
+  "header": {
+    "name": "ゆずゲームフォーラム",
+    "topic": {
+      "name": "トピック",
+      "all": "全てのトピック",
+      "category": "トピックのカテゴリー"
+    },
+    "publish": {
+      "name": "公開",
+      "topic": "トピックを公開",
+      "game": "ゲームを公開"
+    },
+    "about": {
+      "name": "情報",
+      "about": "私たちについて",
+      "friends": "リンク集",
+      "contact": "グループに参加",
+      "navigation": "ナビゲーションページ"
+    },
+    "game": "ゲーム",
+    "home": "ホーム",
+    "hamburger": {
+      "name": "ゆずゲーム",
+      "game": "ゲーム",
+      "pool": "全てのトピック",
+      "category": "トピックのカテゴリー",
+      "createTopic": "トピックを公開",
+      "createGame": "ゲームを公開",
+      "createHint": "新規",
+      "about": "私たちについて",
+      "friends": "リンク集",
+      "join": "参加/連絡",
+      "ranking": "ランキングリスト",
+      "sticker": "絵文字サイト",
+      "nav": "ナビゲーションサイト",
+      "navHint": "連絡喪失防止",
+      "update": "更新ログ",
+      "nonMoe": "萌えない記録",
+      "thanks": "謝辞一覧",
+      "donate": "寄付する",
+      "home": "ホームに戻る",
+      "settings": "設定",
+      "background": "カスタム背景",
+      "loli": "かわいいアンバーを表示"
+    },
+    "settings": {
+      "name": "設定パネル",
+      "mode": "モード切替",
+      "language": "ウェブサイト言語設定",
+      "en-us": "英語",
+      "ja-jp": "日本語",
+      "zh-cn": "中国語",
+      "trans": "ページ透明度",
+      "blur": "ページぼかし度",
+      "font": "フォントスタイル",
+      "default": "システムデフォルト",
+      "fontInput": "ここにフォント名を入力してください",
+      "background": "背景設定",
+      "custom": "カスタマイズ",
+      "confirm": "確定",
+      "restore": "リセット",
+      "recover": "全ての設定をデフォルトに戻す"
+    },
+    "user": {
+      "profile": "プロフィール",
+      "message": "メッセージ",
+      "check": "毎日のチェックイン",
+      "logout": "ログアウト"
+    }
+  },
+  "back": {
+    "back": "戻る",
+    "home": "ホーム"
+  },
+  "home": {
+    "header": {
+      "topicSearch": "トピック検索",
+      "gameSearch": "ゲーム検索",
+      "search": "自動検索する内容を入力",
+      "history": "検索履歴",
+      "clear": "全ての履歴をクリア",
+      "emptyHistory": "まだ何も検索していません",
+      "emptyResult": "結果が見つかりませんでした..."
+    },
+    "route": {
+      "homeEn": "ウェブサイトホーム（英語）",
+      "homeJp": "ウェブサイトホーム（日本語）",
+      "homeZh": "ウェブサイトホーム（中国語）",
+      "agreement": "ユーザー契約",
+      "category": "トピックのカテゴリー",
+      "contact": "連絡/参加する",
+      "donate": "寄付する",
+      "forgot": "パスワードを忘れた",
+      "friendLinks": "リンク集",
+      "game": "ゲームリソース",
+      "yzforum": "私について",
+      "login": "ログイン",
+      "register": "登録",
+      "banned": "禁止記録",
+      "pool": "全てのトピック",
+      "privacy": "プライバシーポリシー",
+      "ranking": "ランキングリスト",
+      "report": "匿名通報",
+      "rss": "RSS購読",
+      "thanksList": "謝辞一覧",
+      "updateLog": "更新ログ",
+      "search": "検索ページ"
+    },
+    "subSites": {
+      "sticker": "絵文字",
+      "nav": "ナビゲーション",
+      "documentation": "開発ドキュメンテーション",
+      "backup": "バックアップサイト"
+    },
+    "updates": "最新のアップデート",
+    "topics": "最新のトピック",
+    "games": "最新のゲーム",
+    "resources": "最新のゲームリソース",
+    "sitemaps": "サイトマップ",
+    "foldSection": "セクションを折りたたむ",
+    "expandSection": "セクションを展開する",
+    "load": "もっと読み込む",
+    "loading": "少女祈祷中...",
+    "fold": "初期状態に折りたたむ",
+    "copyright": "© 2025 ゆずゲームフォーラム",
+    "openSource": "オープンソース {'|'} バージョン"
+  },
+  "topic": {
+    "notFound": "このトピックは存在しません" ,
+    "banned": "このトピックは禁止されています",
+    "aside": {
+      "floor": "階層番号でソート",
+      "like": "いいねの数でソート",
+      "comment": "コメントの数でソート",
+      "tags": "同じタグ内の他のトピック" ,
+      "tagsEmpty": "このタグにはまだ他のトピックがありません" ,
+      "master": "投稿者の他のトピック" ,
+      "masterEmpty": "投稿者はまだ他のトピックを投稿していません"
+    },
+    "content": {
+      "status": "トピックの状態",
+      "featured": "おすすめ",
+      "normal": "通常",
+      "banned": "禁止",
+      "pinned": "ピン留め",
+      "essential": "精华",
+      "reply": "返信",
+      "comments": "コメント",
+      "comment": "コメントする",
+      "publish": "コメントを公開",
+      "close": "閉じる",
+      "hint": "コメントを入力してください、最大1007文字まで"
+    },
+    "panel": {
+      "to": "へ返信",
+      "master": "投稿者",
+      "reply": "雑魚~♡",
+      "advance": "高度なオプション",
+      "confirm": "公開を確認",
+      "rewrite": "リライトを確認",
+      "clear": "内容をクリア"
+    }
+  },
+  "update": {
+    "todo": "やることリスト",
+    "status0": "未処理",
+    "status1": "進行中",
+    "status2": "完了",
+    "status3": "破棄",
+    "history": "履歴バージョン",
+    "feat": "機能追加",
+    "pref": "パフォーマンス最適化",
+    "fix": "バグ修正",
+    "styles": "スタイル変更",
+    "mod": "機能変更",
+    "chore": "その他の変更",
+    "sec": "セキュリティ強化",
+    "refactor": "コードリファクタリング",
+    "docs": "ドキュメンテーション変更",
+    "test": "テストケース"
+  },
+  "banned": {
+    "log": "禁止記録",
+    "title": "ここにはこれまでの全ての罰則が記録されています。皆さんがこのような行動を避けることを望みます。",
+    "reason": "理由",
+    "consequence": "結果",
+    "point": "ポイント",
+    "empty": "禁止記録はありません"
+  },
+  "contact": {
+    "title": "参加/連絡する"
+  },
+  "edit": {
+
+  },
   "pageError": {
     "404": "雑~~~魚~♡雑魚~♡ 臭雑魚♡ ページが見つかりません ~ 食べちゃったの?!",
     "error": "雑~~~魚~♡雑魚~♡ 臭雑魚♡ ページでエラーが発生しました ~ あなたのせい?!",
