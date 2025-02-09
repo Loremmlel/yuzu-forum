@@ -47,9 +47,9 @@ const {t} = useI18n()
             </span>
           </NuxtLinkLocale>
 
-          <NuxtLinkLocale class="item" to="/contact">
+          <NuxtLinkLocale class="item" to="/friend-links">
             <span>
-              <span>{{ t('header.about.contact') }}</span>
+              <span>{{ t('header.about.friendLinks') }}</span>
             </span>
           </NuxtLinkLocale>
         </div>

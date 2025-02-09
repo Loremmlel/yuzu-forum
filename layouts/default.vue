@@ -1,18 +1,18 @@
 <script lang="ts" setup>
 import {usePersistSettingsStore} from "~/store/modules/setting";
 
-const persistSettings = usePersistSettingsStore()
+const setting = usePersistSettingsStore()
 
 const imageURL = ref('')
 
 onMounted(async () => {
-  imageURL.value = await persistSettings.getCurrentBackground()
+  imageURL.value = await setting.getCurrentBackground()
 })
 
 watch(
-    () => persistSettings.showYzforumBackground,
+    () => setting.showYzforumBackground,
     async () => {
-      imageURL.value = await persistSettings.getCurrentBackground()
+      imageURL.value = await setting.getCurrentBackground()
     }
 )
 </script>
@@ -24,7 +24,7 @@ watch(
     </div>
     <slot></slot>
     <NuxtImg
-        v-if="persistSettings.showYzforumBackLoli"
+        v-if="setting.showYzforumBackLoli"
         alt="kohaku" class="kohaku" loading="lazy" src="/image/kohaku.webp">
     </NuxtImg>
   </div>

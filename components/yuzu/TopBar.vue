@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import 'animate.css'
+
 const { showYzforumPanel } = storeToRefs(useTempSettingStore())
 </script>
 
@@ -7,7 +9,7 @@ const { showYzforumPanel } = storeToRefs(useTempSettingStore())
     <YuzuTopBarNav></YuzuTopBarNav>
     <YuzuTopBarAvatar></YuzuTopBarAvatar>
   </div>
-  <div content="settings-panel">
+  <div class="settings-panel">
     <Transition
     enter-active-class="animate__animated animate__jackInTheBox animate__faster"
     leave-active-class="animate__animated animate__fadeOutRight animate__faster">
@@ -22,7 +24,7 @@ const { showYzforumPanel } = storeToRefs(useTempSettingStore())
 <style scoped lang="scss">
 .header {
   height: 60px;
-  box-shadow: 0 2px 4px var(--yzforum-trans-blue-1);
+  box-shadow: 0 2px 4px var(--yzforum-trans-blue-0);
   background-color: var(--yzforum-trans-white-5);
   display: flex;
   align-items: center;
