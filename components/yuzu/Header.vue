@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 interface Props {
   size: number
   showHelp?: boolean
@@ -11,7 +11,7 @@ const showHelp = computed(() => props.showHelp ?? false)
 </script>
 
 <template>
-  <div class="yuzu-header" :class="`size-${size}`">
+  <div :class="`size-${size}`" class="yuzu-header">
     <slot name="header"></slot>
     <span v-if="showHelp" @click="show = !show">
       <Icon class="icon" name="lucide:circle-help"></Icon>
@@ -25,7 +25,7 @@ const showHelp = computed(() => props.showHelp ?? false)
   </p>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .yuzu-header {
   margin-bottom: 20px;
   font-weight: bold;

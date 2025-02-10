@@ -110,11 +110,8 @@
       "updateLog": "Update Log",
       "search": "Search Page"
     },
-    "subSites": {
-      "sticker": "Emoji",
-      "nav": "Navigation",
-      "documentation": "Development Documentation",
-      "backup": "Backup Site"
+    "subsites": {
+      "cnbBa": "NianBin Cai Ba"
     },
     "updates": "Latest Updates",
     "topics": "Latest Topics",

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {HomeMessage} from "~/types/api/home";
 
 const iconMap: Record<string, string> = {
@@ -37,27 +37,27 @@ function handleClose() {
 </script>
 
 <template>
-  <div class="recent" v-if="messageData">
-    <div class="message" v-for="(message, index) in messageData" :key="index">
-      <Icon class="icon" :name="iconMap[message.type]"></Icon>
-      <NuxtLinkLocale class="user" :to="`/yzgamer/${message.uid}`">
-        {{message.name}}
+  <div v-if="messageData" class="recent">
+    <div v-for="(message, index) in messageData" :key="index" class="message">
+      <Icon :name="iconMap[message.type]" class="icon"></Icon>
+      <NuxtLinkLocale :to="`/yzgamer/${message.uid}`" class="user">
+        {{ message.name }}
       </NuxtLinkLocale>
-      <NuxtLinkLocale class="link" :to="message.tid ? `/topic/${message.tid}` : `/game/${message.gid}`">
-        <span>{{message.content}}</span>
-        <span>{{formatTimeDiff(message.time, locale)}}</span>
+      <NuxtLinkLocale :to="message.tid ? `/topic/${message.tid}` : `/game/${message.gid}`" class="link">
+        <span>{{ message.content }}</span>
+        <span>{{ formatTimeDiff(message.time, locale) }}</span>
       </NuxtLinkLocale>
     </div>
   </div>
 
   <HomeLoader v-model="pageData.page" :status="status">
     <span v-if="pageData.page !== 1" class="close" @click="handleClose">
-      {{t('home.fold')}}
+      {{ t('home.fold') }}
     </span>
   </HomeLoader>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .recent {
   display: flex;
   flex-shrink: 0;

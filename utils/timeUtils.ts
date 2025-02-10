@@ -105,3 +105,24 @@ export function formatTimeDiff(pastTime: number | Date | string, language: Langu
     }
     return replaceTimeUnits(time(), language).replace(/s\b/g, '')
 }
+
+export function hourDiff(upvoteTime: number, hours: number) {
+    if (upvoteTime === 0 || upvoteTime == null) {
+        return false
+    }
+    const currentTime = dayjs()
+    const time = dayjs(upvoteTime)
+
+    return currentTime.diff(time, 'hour') <= hours
+}
+
+export function formatDate(time: Date | number, locale: string, config?: { showYear?: boolean, isPrecise?: boolean }) {
+    let formatString = 'DD-MM'
+    if (config?.showYear) {
+        formatString = locale === 'en-us' ? 'MM-DD-YYYY' : 'YYYY-MM-DD'
+    }
+    if (config?.isPrecise) {
+        formatString = `${formatString} - HH:mm`
+    }
+    return dayjs(time).format(formatString)
+}

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 interface Props {
   margin?: string,
   color?: string
@@ -16,9 +16,9 @@ const props = withDefaults(defineProps<Props>(), {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .yuzu-divider {
-  color:var(--yzforum-font-color-0);
+  color: var(--yzforum-font-color-0);
   font-size: small;
   display: flex;
   align-items: center;

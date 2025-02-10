@@ -110,11 +110,8 @@
       "updateLog": "更新日志",
       "search": "搜索页面"
     },
-    "subSites": {
-      "sticker": "表情包",
-      "nav": "导航",
-      "documentation": "开发文档",
-      "backup": "备用站点"
+    "subsites": {
+      "cnbBa": "蔡年彬吧"
     },
     "updates": "最新动态",
     "topics": "最新话题",

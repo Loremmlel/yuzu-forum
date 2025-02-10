@@ -110,11 +110,8 @@
       "updateLog": "更新ログ",
       "search": "検索ページ"
     },
-    "subSites": {
-      "sticker": "絵文字",
-      "nav": "ナビゲーション",
-      "documentation": "開発ドキュメンテーション",
-      "backup": "バックアップサイト"
+    "subsites": {
+      "cnbBa": "蔡年彬吧"
     },
     "updates": "最新のアップデート",
     "topics": "最新のトピック",

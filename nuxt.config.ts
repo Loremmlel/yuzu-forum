@@ -17,6 +17,7 @@ export default defineNuxtConfig({
     modules: [
         '@nuxt/image',
         '@nuxt/icon',
+        '@nuxt/eslint',
         '@nuxtjs/i18n',
         '@nuxtjs/color-mode',
         '@nuxtjs/sitemap',
@@ -38,7 +39,7 @@ export default defineNuxtConfig({
 
         public: {
             FORUM_VERSION: appVersion,
-            YZFORUM_URL: process.env.YZFORUM_URL,
+            YZFORUM_URL: import.meta.dev ? process.env.YZFORUM_URL : process.env.YZFORUM_URL_PRODUCT,
             YZFORUM_URL_PRODUCT: process.env.YZFORUM_URL_PRODUCT
         }
     },

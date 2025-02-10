@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const {t} = useI18n()
 const {fold} = storeToRefs(usePersistYzforumHomeStore())
 </script>
@@ -12,7 +12,7 @@ const {fold} = storeToRefs(usePersistYzforumHomeStore())
       <div class="header">
         <span>{{ t('home.updates') }}</span>
         <span class="suffix" @click="fold.updates = !fold.updates">
-        {{ t(`home.${fold.updates ? 'foldSection' : 'expandSection'}`) }}
+          {{ t(`home.${fold.updates ? 'foldSection' : 'expandSection'}`) }}
         </span>
       </div>
     </template>
@@ -22,9 +22,9 @@ const {fold} = storeToRefs(usePersistYzforumHomeStore())
   <YuzuHeader :size="2">
     <template #header>
       <div class="header">
-        <span>{{t('home.topics')}}</span>
+        <span>{{ t('home.topics') }}</span>
         <span class="suffix" @click="fold.topics = !fold.topics">
-        {{ t(`home.${fold.topics ? 'foldSection' : 'expandSection'}`) }}
+          {{ t(`home.${fold.topics ? 'foldSection' : 'expandSection'}`) }}
         </span>
       </div>
     </template>
@@ -34,9 +34,9 @@ const {fold} = storeToRefs(usePersistYzforumHomeStore())
   <YuzuHeader :size="2">
     <template #header>
       <div class="header">
-        <span>{{t('home.games')}}</span>
+        <span>{{ t('home.games') }}</span>
         <span class="suffix" @click="fold.games = !fold.games">
-        {{ t(`home.${fold.games ? 'foldSection' : 'expandSection'}`) }}
+          {{ t(`home.${fold.games ? 'foldSection' : 'expandSection'}`) }}
         </span>
       </div>
     </template>
@@ -46,9 +46,9 @@ const {fold} = storeToRefs(usePersistYzforumHomeStore())
   <YuzuHeader :size="2">
     <template #header>
       <div class="header">
-        <span>{{t('home.resources')}}</span>
+        <span>{{ t('home.resources') }}</span>
         <span class="suffix" @click="fold.resources = !fold.resources">
-        {{ t(`home.${fold.resources ? 'foldSection' : 'expandSection'}`) }}
+          {{ t(`home.${fold.resources ? 'foldSection' : 'expandSection'}`) }}
         </span>
       </div>
     </template>
@@ -58,7 +58,7 @@ const {fold} = storeToRefs(usePersistYzforumHomeStore())
   <HomeFooter></HomeFooter>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .header {
   width: 100%;
   display: flex;

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const {locale} = useI18n()
 
 const {data} = await useLazyFetch('/api/home/pin', {
@@ -10,13 +10,13 @@ const {data} = await useLazyFetch('/api/home/pin', {
   <div class="pinned">
     <NuxtLinkLocale v-for="(topic, index) in data" :key="index" :to="`/topic/${topic.tid}`">
       <Icon class="icon" name="lucide:pin"></Icon>
-      <span>{{topic.title}}</span>
-      <span>{{formatTimeDiff(topic.time, locale)}}</span>
+      <span>{{ topic.title }}</span>
+      <span>{{ formatTimeDiff(topic.time, locale) }}</span>
     </NuxtLinkLocale>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .pinned {
   display: flex;
   flex-wrap: wrap;

@@ -1,21 +1,21 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const {t} = useI18n()
 const pageNumber = defineModel<number>({required: true})
 
-const props = defineProps<{status: UseFetchStatus}>()
+const props = defineProps<{ status: UseFetchStatus }>()
 </script>
 
 <template>
-  <YuzuDivider margin="30px" color="var(--yzforum-gray-4)">
+  <YuzuDivider color="var(--yzforum-gray-4)" margin="30px">
     <slot></slot>
-    <span v-if="props.status !== 'pending'" @click="pageNumber++" class="loader">
-      {{t('home.load')}}
+    <span v-if="props.status !== 'pending'" class="loader" @click="pageNumber++">
+      {{ t('home.load') }}
     </span>
-    <span v-else>{{t('home.loading')}}</span>
+    <span v-else>{{ t('home.loading') }}</span>
   </YuzuDivider>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 span {
   &:first-child {
     padding-left: 20px;
