@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const {t} = useI18n()
 const localePath = useLocalePath()
 
@@ -19,14 +19,14 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
 
 <template>
   <div class="yzgamer-info">
-    <NuxtLinkLocale class="search" aria-label="search" v-tooltip="{
+    <NuxtLinkLocale v-tooltip="{
       message: {
         'en-us': 'Press Ctrl + K to search',
         'ja-jp': 'Ctrl + K を押して検索',
           'zh-cn': '按下 Ctrl + K 以搜索'
       },
       position: 'bottom'
-    }" to="/search">
+    }" aria-label="search" class="search" to="/search">
       <Icon class="icon" name="lucide:search"></Icon>
     </NuxtLinkLocale>
 
@@ -34,18 +34,18 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
       <Icon class="icon" name="uiw:setting-o"></Icon>
     </span>
 
-    <div class="avatar" v-if="user.name">
+    <div v-if="user.name" class="avatar">
       <div>
-        <NuxtImg class="avatar-image" v-if="user.avatarMin"
-                 @click="tempSetting.showYzforumUserPanel = true"
-                 :src="user.avatarMin" :alt="user.name"></NuxtImg>
+        <NuxtImg v-if="user.avatarMin" :alt="user.name"
+                 :src="user.avatarMin"
+                 class="avatar-image" @click="tempSetting.showYzforumUserPanel = true"></NuxtImg>
         <!--头像右下角小图标，表示用户状态-->
-        <div class="status" :class="tempSetting.messageStatus"></div>
+        <div :class="tempSetting.messageStatus" class="status"></div>
       </div>
-      <span class="guest" @click="tempSetting.showYzforumUserPanel = true" v-if="!user.avatarMin">{{ user.name }}</span>
+      <span v-if="!user.avatarMin" class="guest" @click="tempSetting.showYzforumUserPanel = true">{{ user.name }}</span>
     </div>
 
-    <div class="login" v-if="!user.name">
+    <div v-if="!user.name" class="login">
       <NuxtLinkLocale to="/login">{{ t('login.title') }}</NuxtLinkLocale>
     </div>
 
@@ -54,7 +54,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .yzgamer-info {
   display: flex;
   justify-content: center;

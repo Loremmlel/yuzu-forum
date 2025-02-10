@@ -19,8 +19,10 @@ export const useComponentMessageStore = defineStore('tempComponentMessage', () =
     const showCapture = ref(false)
     const isCaptureSuccessful = ref(false)
 
-    const handleClose: Ref<() => void> = ref(() => {})
-    const handleConfirm: Ref<() => void> = ref(() => {})
+    const handleClose: Ref<() => void> = ref(() => {
+    })
+    const handleConfirm: Ref<() => void> = ref(() => {
+    })
 
     function info(infoMessage_: string, infoTranslateParams_?: string, durations_?: number) {
         infoMessage.value = infoMessage_
@@ -62,5 +64,6 @@ export const useComponentMessageStore = defineStore('tempComponentMessage', () =
         handleClose,
         handleConfirm,
         info,
-        alert}
+        alert
+    }
 }, {persist: false})

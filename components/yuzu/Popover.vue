@@ -1,19 +1,19 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const show = ref(false)
 </script>
 
 <template>
-  <div class="yz-popover" @mouseover="show = true" @mouseleave="show = false">
+  <div class="yz-popover" @mouseleave="show = false" @mouseover="show = true">
     <slot></slot>
     <Transition name="slide-fade">
-      <div class="popover" v-if="show">
+      <div v-if="show" class="popover">
         <slot name="content"></slot>
       </div>
     </Transition>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .yz-popover {
   width: 100%;
   position: relative;

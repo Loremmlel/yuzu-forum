@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const {t} = useI18n()
 </script>
 
@@ -70,7 +70,7 @@ const {t} = useI18n()
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @mixin underline-hover {
   position: relative;
   color: var(--yzforum-blue-5);

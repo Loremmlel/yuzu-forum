@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 
 import {InfoCode} from "~/code&message/infoCode";
 
@@ -72,43 +72,43 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div ref="container" tabindex="-1" class="container" @blur="handlePanelBlur" @mousedown.passive="container?.focus()">
+  <div ref="container" class="container" tabindex="-1" @blur="handlePanelBlur" @mousedown.passive="container?.focus()">
     <span class="triangle1"></span>
     <span class="triangle2"></span>
 
     <div class="yzgamer">
       <div class="info">
-        <p>{{user.name}}</p>
+        <p>{{ user.name }}</p>
         <p>
           <span><Icon class="icon" name="lucide:lollipop"></Icon></span>
-          <span>{{user.point}}</span>
+          <span>{{ user.point }}</span>
         </p>
       </div>
 
       <div class="func">
         <span>
           <NuxtLinkLocale :to="`/yzgamer/${user.uid}/info`">
-            {{t('header.user.profile')}}
+            {{ t('header.user.profile') }}
           </NuxtLinkLocale>
         </span>
 
         <NuxtLinkLocale to="/message">
-          <span>{{t('header.user.message')}}</span>
+          <span>{{ t('header.user.message') }}</span>
           <span v-if="isShowMessageDot" class="message-dot"></span>
         </NuxtLinkLocale>
 
         <span v-if="!isCheckIn" @click="handleCheckIn">
-          <span>{{t('header.user.check')}}</span>
+          <span>{{ t('header.user.check') }}</span>
           <span class="message-dot"></span>
         </span>
 
-        <span @click="logout">{{t('header.user.logout')}}</span>
+        <span @click="logout">{{ t('header.user.logout') }}</span>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .container {
   position: absolute;
   top: 50px;

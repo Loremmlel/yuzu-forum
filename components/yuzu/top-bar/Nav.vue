@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {ReturnMessage} from "~/code&message/returnMessage";
 
 const {t} = useI18n()
@@ -41,7 +41,7 @@ function handleRouterBack() {
 <template>
   <!--顶部栏左半边部分导航栏，有网站图片、名称，以及游戏、讨论等的导航-->
   <div class="nav-top">
-    <div class="return" v-if="baseRouteName !== 'index'" @click="handleRouterBack">
+    <div v-if="baseRouteName !== 'index'" class="return" @click="handleRouterBack">
       <Icon class="icon" name="lucide:arrow-left"></Icon>
     </div>
     <!--汉堡菜单。展示在左侧，纵向排列。用于移动端。-->
@@ -51,7 +51,7 @@ function handleRouterBack() {
     </div>
     <div class="yzforum">
       <NuxtLinkLocale to="/">
-        <NuxtImg src="/favicon.webp" alt="Yzforum | 柚子游戏"></NuxtImg>
+        <NuxtImg alt="Yzforum | 柚子游戏" src="/favicon.webp"></NuxtImg>
         <span>{{ t('header.name') }}</span>
       </NuxtLinkLocale>
     </div>
@@ -59,7 +59,7 @@ function handleRouterBack() {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .return, .hamburger {
   display: none;
   cursor: pointer;
@@ -100,9 +100,11 @@ function handleRouterBack() {
 @media (max-width: 1000px) {
   .yzforum {
     display: none;
+
     span {
       display: none;
     }
+
     img {
       margin-right: 0 !important;
     }

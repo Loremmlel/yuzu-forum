@@ -1,15 +1,15 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const model = defineModel<boolean>({required: true})
 
 const id = ref(`switch-${Math.random().toString(36).slice(2, 9)}`)
 </script>
 
 <template>
-  <input type="checkbox" :id="id" v-model="model">
+  <input :id="id" v-model="model" type="checkbox">
   <label :for="id"></label>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 input {
   height: 0;
   width: 0;

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {usePersistSettingsStore} from "#imports";
 
 const {t} = useI18n()
@@ -8,7 +8,7 @@ const setting = usePersistSettingsStore()
 
 const showItemIndex = ref(1)
 
-const emits = defineEmits<{close: [showYzforumPanel: boolean]}>()
+const emits = defineEmits<{ close: [showYzforumPanel: boolean] }>()
 
 function handleCloseSettingPanel() {
   emits('close', false)
@@ -19,9 +19,9 @@ function handleCloseSettingPanel() {
   <div class="root">
     <div class="container">
       <div class="title">
-        <span>{{t('header.settings.name')}}</span>
+        <span>{{ t('header.settings.name') }}</span>
         <span>
-          <Icon @click="navigateTo(localePath('/rss'))" class="rss-icon" name="lucide:rss"></Icon>
+          <Icon class="rss-icon" name="lucide:rss" @click="navigateTo(localePath('/rss'))"></Icon>
           <Icon class="setting-icon" name="uiw:setting-o"></Icon>
         </span>
       </div>
@@ -31,36 +31,38 @@ function handleCloseSettingPanel() {
 
       <div class="switch">
         <div class="menu">
-          <span :class="showItemIndex === 1 ? 'active' : ''" @click="showItemIndex = 1">
-            <Icon class="icon" name="mdi:circle-transparent"></Icon>
-          </span>
-          <span :class="showItemIndex === 2 ? 'active' : ''" @click="showItemIndex = 2">
-            <Icon class="icon" name="tabler:blur"></Icon>
-          </span>
-          <span :class="showItemIndex === 3 ? 'active' : ''" @click="showItemIndex = 3">
-            <Icon class="icon" name="ci:font"></Icon>
-          </span>
+          <div>
+            <span :class="showItemIndex === 1 ? 'active' : ''" @click="showItemIndex = 1">
+              <Icon class="icon" name="mdi:circle-transparent"></Icon>
+            </span>
+            <span :class="showItemIndex === 2 ? 'active' : ''" @click="showItemIndex = 2">
+              <Icon class="icon" name="tabler:blur"></Icon>
+            </span>
+            <span :class="showItemIndex === 3 ? 'active' : ''" @click="showItemIndex = 3">
+              <Icon class="icon" name="ci:font"></Icon>
+            </span>
+          </div>
 
-          <span class="loli" v-tooltip="{
+          <span v-tooltip="{
             message: {
               'en-us': 'Whether to display Kohaku',
                 'ja-jp': '琥珀を表示しますか？',
                 'zh-cn': '是否显示琥珀'
             },
             position: 'bottom'
-          }">
+          }" class="loli">
             <YuzuSwitch v-model="setting.showYzforumBackLoli"></YuzuSwitch>
           </span>
         </div>
 
         <TransitionGroup name="item" tag="div">
-          <div class="item" v-if="showItemIndex === 1">
+          <div v-if="showItemIndex === 1" class="item">
             <YuzuSettingPanelTransparency></YuzuSettingPanelTransparency>
           </div>
-          <div class="item" v-if="showItemIndex === 2">
+          <div v-if="showItemIndex === 2" class="item">
             <YuzuSettingPanelBlur></YuzuSettingPanelBlur>
           </div>
-          <div class="item" v-if="showItemIndex === 3">
+          <div v-if="showItemIndex === 3" class="item">
             <YuzuSettingPanelFont></YuzuSettingPanelFont>
           </div>
         </TransitionGroup>
@@ -74,7 +76,7 @@ function handleCloseSettingPanel() {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .root {
   top: 75px;
   right: 0;
@@ -89,7 +91,8 @@ function handleCloseSettingPanel() {
 .container {
   position: relative;
   margin: 20px;
-  font-size: 20px;
+  font-size: 16px;
+  width: 250px;
 }
 
 @keyframes settings {
@@ -130,6 +133,11 @@ function handleCloseSettingPanel() {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    justify-content: space-between;
+
+    div {
+      display: flex;
+    }
 
     span {
       cursor: pointer;
@@ -155,7 +163,7 @@ function handleCloseSettingPanel() {
 
 .close {
   font-size: 25px;
-  width: 60px;
+  width: 40px;
   display: flex;
   justify-content: flex-end;
   margin: 20px;

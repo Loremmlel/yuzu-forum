@@ -61,7 +61,7 @@ useHead({
 
   </div>
 </template>
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .root {
   display: flex;
   flex-direction: column;

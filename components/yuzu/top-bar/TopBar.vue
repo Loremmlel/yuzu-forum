@@ -1,7 +1,7 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import 'animate.css'
 
-const { showYzforumPanel } = storeToRefs(useTempSettingStore())
+const {showYzforumPanel} = storeToRefs(useTempSettingStore())
 </script>
 
 <template>
@@ -11,8 +11,8 @@ const { showYzforumPanel } = storeToRefs(useTempSettingStore())
   </div>
   <div class="settings-panel">
     <Transition
-    enter-active-class="animate__animated animate__jackInTheBox animate__faster"
-    leave-active-class="animate__animated animate__fadeOutRight animate__faster">
+        enter-active-class="animate__animated animate__jackInTheBox animate__faster"
+        leave-active-class="animate__animated animate__fadeOutRight animate__faster">
       <KeepAlive>
         <LazyYuzuSettingPanel v-if="showYzforumPanel"
                               @close="showYzforumPanel = false"></LazyYuzuSettingPanel>
@@ -21,7 +21,7 @@ const { showYzforumPanel } = storeToRefs(useTempSettingStore())
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .header {
   height: 60px;
   box-shadow: 0 2px 4px var(--yzforum-trans-blue-0);

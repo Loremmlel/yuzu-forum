@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 interface Hamburger {
   icon: string
   name: string
@@ -114,26 +114,26 @@ function handleShowMore() {
 <template>
   <Transition :duration="500" name="slide">
     <div v-if="tempSetting.showYzforumHamburger" class="mask"
-         @click.stop @click="tempSetting.showYzforumHamburger = false">
-      <div class="container" @click.stop
+         @click="tempSetting.showYzforumHamburger = false" @click.stop>
+      <div class="container" @touchend="handleTouchEnd"
+           @click.stop
            @touchstart.passive="handleTouchStart"
-           @touchmove.passive="handleTouchMove"
-           @touchend="handleTouchEnd">
+           @touchmove.passive="handleTouchMove">
         <div>
           <div class="yzforum" @click="navigateTo(localePath('/'))">
-            <NuxtImg src="/favicon.webp" :alt="t('head.title')"></NuxtImg>
+            <NuxtImg :alt="t('head.title')" src="/favicon.webp"></NuxtImg>
             <span>{{ t('header.name') }}</span>
           </div>
 
           <div class="item-container">
             <div v-for="(yz, index) in item" :key="index" class="item">
               <span class="icon-item">
-                <Icon class="icon" :name="yz.name"></Icon>
+                <Icon :name="yz.name" class="icon"></Icon>
               </span>
-              <NuxtLinkLocale :to="yz.router" :target="isValidURL(yz.router) ? '_blank' : ''">
+              <NuxtLinkLocale :target="isValidURL(yz.router) ? '_blank' : ''" :to="yz.router">
                 {{ t(`header.hamburger.${yz.name}`) }}
               </NuxtLinkLocale>
-              <span class="hint" v-if="yz.hint">{{ t(`header.hamburger.${yz.hint}`) }}</span>
+              <span v-if="yz.hint" class="hint">{{ t(`header.hamburger.${yz.hint}`) }}</span>
             </div>
           </div>
 
@@ -172,7 +172,7 @@ function handleShowMore() {
   </Transition>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .mask {
   height: 100dvh;
   width: 100vw;
