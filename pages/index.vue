@@ -58,7 +58,7 @@ useHead({
 </script>
 <template>
   <div class="root">
-
+    <HomeContainer></HomeContainer>
   </div>
 </template>
 <style lang="scss" scoped>
