@@ -13,7 +13,7 @@ export function useMessage(
     duration?: number,
     richText?: boolean
 ) {
-    // let timeout: NodeJS.Timeout | null = null
+    let timeout: NodeJS.Timeout | null = null
     let message: YuzuLanguage
 
     messageCount.value++
@@ -30,15 +30,15 @@ export function useMessage(
     }
 
     const messageNode = h(Message, {message, type, richText})
-    // const time = duration ?? 3000
-    // if (timeout) {
-    //     clearTimeout(timeout)
-    // }
-    // timeout = setTimeout(() => {
-    //     messageCount.value--
-    //     if (messageCount.value === 0) {
-    //         render(null, document.body)
-    //     }
-    // }, time)
+    const time = duration ?? 3000
+    if (timeout) {
+        clearTimeout(timeout)
+    }
+    timeout = setTimeout(() => {
+        messageCount.value--
+        if (messageCount.value === 0) {
+            render(null, document.body)
+        }
+    }, time)
     render(messageNode, document.body)
 }

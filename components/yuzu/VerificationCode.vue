@@ -50,7 +50,11 @@ watch(
 )
 
 function handleSendCode() {
-  isSendCode.value = !isSendCode.value
+  nextTick(() => {
+    if (message.isCheckPass) {
+      isSendCode.value = !isSendCode.value
+    }
+  })
 }
 </script>
 

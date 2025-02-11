@@ -89,7 +89,7 @@ export function isValidPassword(password: string) {
 }
 
 export function isValidMailConfirmCode(code: string) {
-    const regex = /^[a-zA-Z0-9]{7}$/
+    const regex = /^[a-zA-Z0-9]{6}$/
     return regex.test(code)
 }
 

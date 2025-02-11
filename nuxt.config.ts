@@ -37,6 +37,12 @@ export default defineNuxtConfig({
         JWT_AUD: process.env.JWT_AUD,
         JWT_SECRET: process.env.JWT_SECRET,
 
+        EMAIL_FROM: 'SHIKI YUZU',
+        EMAIL_HOST: 'smtp.qq.com',
+        EMAIL_PORT: '465',
+        EMAIL_ACCOUNT: '1336835965@qq.com',
+        EMAIL_PASSWORD: 'pogvvxpjezpvgddj',
+
         public: {
             FORUM_VERSION: appVersion,
             YZFORUM_URL: import.meta.dev ? process.env.YZFORUM_URL : process.env.YZFORUM_URL_PRODUCT,

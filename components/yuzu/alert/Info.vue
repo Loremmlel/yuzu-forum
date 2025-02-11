@@ -60,7 +60,7 @@ watch(
 
         <Transition enter-active-class="animate__animated animate__bounceInRight animate__faster" appear>
           <div class="info">
-            {{ `「 ${t(message.infoMessage, {params: message.infoTranslateParams})} 」` }}
+            {{ `「 ${t(message.infoMessage)} 」` }}
           </div>
         </Transition>
 
@@ -123,14 +123,15 @@ watch(
   margin-right: 50px;
   font-size: 20px;
   color: var(--yzforum-white);
-
-  text-shadow: 0 1px var(--yzforum-font-color-3),
-  1px 0 var(--yzforum-font-color-3),
-  -1px 0 var(--yzforum-font-color-3) 0 -1px var(--yzforum-font-color-3),
-  1px 2px var(--yzforum-font-color-3),
-  1px 2px var(--yzforum-font-color-3),
-  1px 2px var(--yzforum-font-color-3),
-  1px 2px var(--yzforum-font-color-3);
+  text-shadow:
+      0 1px var(--yzforum-font-color-3),
+      1px 0 var(--yzforum-font-color-3),
+      -1px 0 var(--yzforum-font-color-3),
+      0 -1px var(--yzforum-font-color-3),
+      1px 2px var(--yzforum-font-color-3),
+      1px 2px var(--yzforum-font-color-3),
+      1px 2px var(--yzforum-font-color-3),
+      1px 2px var(--yzforum-font-color-3);
 }
 
 .close {

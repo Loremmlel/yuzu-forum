@@ -16,6 +16,7 @@ export const useComponentMessageStore = defineStore('tempComponentMessage', () =
         'zh-cn': ''
     })
     const showCancel = ref(false)
+    const isCheckPass = ref(false)
 
     let handleClose = () => {}
     let handleConfirm = () => {}
@@ -46,6 +47,13 @@ export const useComponentMessageStore = defineStore('tempComponentMessage', () =
         })
     }
 
+    function setPass() {
+        isCheckPass.value = true
+        setTimeout(() => {
+            isCheckPass.value = false
+        }, 500)
+    }
+
     return {
         showInfo,
         infoMessage,
@@ -58,6 +66,8 @@ export const useComponentMessageStore = defineStore('tempComponentMessage', () =
         handleClose,
         handleConfirm,
         info,
-        alert
+        alert,
+        isCheckPass,
+        setPass
     }
 }, {persist: false})

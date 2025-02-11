@@ -71,6 +71,7 @@ function handleSendCode() {
     useMessage(InfoCode.AgreementRequired, 'warn')
     return
   }
+  message.setPass()
   isSendCode.value = true
 }
 

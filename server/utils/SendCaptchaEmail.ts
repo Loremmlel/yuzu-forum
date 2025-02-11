@@ -6,6 +6,8 @@ import SMTPTransport from "nodemailer-smtp-transport";
 import env from '~/server/env/dotenv'
 import {ErrorCode} from "~/code&message/errorCode";
 
+const config = useRuntimeConfig()
+
 function getEmailContent(type: 'register' | 'forgot' | 'reset', code: string) {
     switch (type) {
         case 'register':
@@ -37,20 +39,21 @@ export async function sendCaptchaEmail(event: H3Event, email: string, type: 'reg
             pool: {
                 pool: true
             },
-            host: env.EMAIL_HOST,
-            port: Number(env.EMAIL_PORT) || 587,
-            secure: false,
+            host: config.EMAIL_HOST,
+            port: Number(config.EMAIL_PORT) || 587,
+            // QQ邮箱发送一定要用secure，不然会拒绝
+            secure: true,
             requireTLS: true,
             auth: {
-                user: env.EMAIL_ACCOUNT,
-                pass: env.EMAIL_PASSWORD
+                user: config.EMAIL_ACCOUNT,
+                pass: config.EMAIL_PASSWORD
             }
         })
     )
 
     const mailOptions = {
-        from: `${env.EMAIL_FROM}<${env.EMAIL_ACCOUNT}>`,
-        sender: env.EMAIL_ACCOUNT,
+        from: `${config.EMAIL_FROM}<${config.EMAIL_ACCOUNT}>`,
+        sender: config.EMAIL_ACCOUNT,
         to: email,
         subject: '柚子游戏论坛验证码',
         text: getEmailContent(type, code)
