@@ -26,17 +26,20 @@ const messageClassMap = {
 
 const messageClass = computed(() => `${messageClassMap[props.type]} ${props.type}`)
 
+
+const iconMap = {
+  "warn": 'triangle-alert',
+  "success": 'check',
+  "error": 'x',
+  "info": 'info'
+}
 </script>
 
 <template>
   <div class="yzforum-message-container">
     <div class="yzforum-message" :class="messageClass">
-      <Icon class="icon" :name="`lucide:${{
-        warn: 'triangle-alert',
-        success: 'check',
-        error: 'x',
-        info: 'info'
-      }[props.type]}`"></Icon>
+      <!--为什么这个地方用不了Icon?-->
+<!--      <Icon class="icon" :name="`lucide:${iconMap[props.type]}`"></Icon>-->
       <span v-if="!props.richText" class="message">{{ messageRef }}</span>
       <span v-else v-html="messageRef"></span>
     </div>

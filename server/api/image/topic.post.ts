@@ -19,7 +19,7 @@ async function compressImage(name: string, image: Buffer, uid: number) {
     }
 
     const bucketName = `image/topic/user_${uid}`
-    return await saveImage(miniImage, bucketName, `${name}.webp`)
+    return saveImage(miniImage, bucketName, `${name}.webp`);
 }
 
 export default defineEventHandler(async (event) => {
