@@ -63,6 +63,9 @@ onMounted(() => {
 </script>
 
 <template>
+  <YuzuAlert></YuzuAlert>
+  <YuzuAlertInfo></YuzuAlertInfo>
+
   <NuxtPwaManifest></NuxtPwaManifest>
   <NuxtLoadingIndicator color="var(--yzforum-blue-5)"></NuxtLoadingIndicator>
   <NuxtLayout>
