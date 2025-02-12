@@ -2,7 +2,13 @@ export const usePersistYzforumReplyStore = defineStore('YzforumTopicReply', () =
     const mode = ref<'preview' | 'code'>('preview')
     const textCount = ref(0)
 
-    const replyDraft = reactive({
+    const replyDraft = reactive<{
+        toUsername: string,
+        toUid: number,
+        content: string,
+        tags: string[],
+        toFloor: number
+    }>({
         toUsername: '',
         toUid: 0,
         content: '',

@@ -206,8 +206,8 @@
       "hint": "Hint: (each tag up to 17 characters, at least one and up to 7), you can create a tag by typing and pressing 'Enter'",
       "categories": "Please select category and section",
       "game": "Game",
-      "Technique": "Technical Exchange",
-      "Others": "Others",
+      "technique": "Technical Exchange",
+      "other": "Others",
       "note": "Please do not post R18 adult game resources in the topic",
       "section": {
         "g-walkthrough": "Guide",

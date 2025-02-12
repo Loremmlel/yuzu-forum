@@ -10,7 +10,6 @@ const {t} = useI18n()
       <EditTopicCategory></EditTopicCategory>
       <EditTopicSection></EditTopicSection>
     </div>
-    <EditInfoNotice></EditInfoNotice>
     <EditTopicButton></EditTopicButton>
   </div>
 </template>
