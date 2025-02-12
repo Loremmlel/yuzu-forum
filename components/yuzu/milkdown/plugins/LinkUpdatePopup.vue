@@ -70,7 +70,7 @@ function handleUpdateLink() {
 </script>
 
 <template>
-  <div v-if="loading" class="wrapper" ref="linkUpdatePopupRef">
+  <div v-if="view.editable" class="wrapper" ref="linkUpdatePopupRef">
     <input class="input" type="url" @keydown.enter="handleUpdateLink" v-model="linkHref">
     <button class="confirm-button" @click="handleUpdateLink">
       {{t('edit.topic.link.confirmUpdate')}}

@@ -51,33 +51,34 @@ onUnmounted(() => {
 })
 
 // 通用命令执行方法，使用泛型支持不同类型的命令参数
+
 // 封装Milkdown的命令调用机制，简化按钮的事件处理
-const call = <T, >(command: CmdKey<T>, payload?: T) => {
+function call<T, >(command: CmdKey<T>, payload?: T) {
   // 通过编辑器实例执行命令，callCommand是Milkdown的通用命令触发器
   return get()?.action(callCommand(command, payload))
 }
 </script>
 
 <template>
-  <!-- 仅在加载完成后渲染，避免空DOM操作 -->
   <!-- tooltip容器使用绝对定位，样式通过CSS变量实现主题化 -->
-  <div v-if="loading" class="tooltip" ref="divRef">
+  <!--重要!!! 不知道为什么通过useInstance()获取的loading变量恒为false，所以根据字面意义，采用view.editable进行代替，目前可用.-->
+  <div v-if="view.editable" class="tooltip" ref="divRef">
     <!-- 每个按钮对应特定格式命令，点击触发call方法 -->
     <!-- 使用预创建的图标VNode优化渲染性能 -->
     <button @click="call(toggleStrongCommand.key)">
-      <YuzuBold></YuzuBold>
+      <YuzuBold name="lucide:bold"></YuzuBold>
     </button>
 
     <button @click="call(toggleEmphasisCommand.key)">
-      <YuzuItalic></YuzuItalic>
+      <YuzuItalic name="lucide:italic"></YuzuItalic>
     </button>
 
     <button @click="call(toggleStrikethroughCommand.key)">
-      <YuzuStrikethrough></YuzuStrikethrough>
+      <YuzuStrikethrough name="lucide:strikethrough"></YuzuStrikethrough>
     </button>
 
     <button @click="call(toggleInlineCodeCommand.key)">
-      <YuzuCode></YuzuCode>
+      <YuzuCode name="lucide:code-xml"></YuzuCode>
     </button>
   </div>
 </template>
