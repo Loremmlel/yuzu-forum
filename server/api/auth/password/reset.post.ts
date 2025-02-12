@@ -8,7 +8,7 @@ import {ErrorCode} from "~/code&message/errorCode";
 import {ReturnMessage} from "~/code&message/returnMessage";
 
 async function resetPasswordByEmail(email: string, code: string, newPassword: string): Promise<ErrorCode> {
-    const validEmail = verifyCaptcha(email, code)
+    const validEmail = await verifyCaptcha(email, code)
     if (!validEmail) {
         return ErrorCode.EmailVerificationCodeIncorrect
     }
