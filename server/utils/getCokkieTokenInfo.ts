@@ -5,7 +5,8 @@ import type {YzForumPayload} from '~/types/utils/jwt'
 const config = useRuntimeConfig()
 
 export async function getCookieTokenInfo(event: H3Event) {
-    const refreshToken = getCookie(event, 'yuzu-forum-refresh-token')
+    // cookie的键名要统一...,不然无限跳转了
+    const refreshToken = getCookie(event, 'yzforum-refresh-token')
     if (!refreshToken) {
         return null
     }

@@ -43,7 +43,7 @@ export default defineEventHandler(async (event) => {
 
     const {token, refreshToken} = await createTokens(user.uid, user.name)
     deleteCookie(event, 'yzforum-is-navigate-to-login')
-    setCookie(event, 'yz-forum-refresh-token', refreshToken, {
+    setCookie(event, 'yzforum-refresh-token', refreshToken, {
         httpOnly: true,
         maxAge: 30 * 24 * 60 * 60 * 1000
     })
