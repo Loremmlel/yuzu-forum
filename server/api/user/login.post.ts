@@ -16,7 +16,7 @@ async function login(event: H3Event) {
     if (loginCooldown) {
         return yuzuError(event, ErrorCode.LoginCooldown)
     } else {
-        useStorage('redis').setItem(`login:login:cd:${ip}`, ip, {ttl: 15})
+        await useStorage('redis').setItem(`login:login:cd:${ip}`, ip, {ttl: 15})
     }
     return {name, password}
 }
@@ -24,7 +24,7 @@ async function login(event: H3Event) {
 export default defineEventHandler(async (event) => {
     const result = await login(event)
     if (!result) {
-        return
+        return yuzuError(event, ErrorCode.UnknownError)
     }
     const {name, password} = result
 

@@ -1,6 +1,7 @@
 export enum ErrorCode {
     // 没有错误
     NoError = 0,
+    UnknownError = 9999,
 
     // 用户相关
     // 用户不存在

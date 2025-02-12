@@ -1,6 +1,7 @@
 import type {ErrorCode} from "~/code&message/errorCode";
 
 const errorMessagesCN: Record<number, string> = {
+    9999: '未知错误',
     10101: `用户未找到`,
     10102: `用户密码错误`,
     10103: `邮箱验证码错误`,
@@ -113,6 +114,7 @@ const errorMessagesCN: Record<number, string> = {
 }
 
 const errorMessagesEN: Record<number, string> = {
+    9999: `Unknown error`,
     10101: `User not found`,
     10102: `User password error`,
     10103: `Email verification code error`,
@@ -225,6 +227,7 @@ const errorMessagesEN: Record<number, string> = {
 }
 
 const errorMessagesJP: Record<number, string> = {
+    9999: '不明なエラーが発生しました',
     10101: `ユーザーが見つかりません`,
     10102: `ユーザーパスワードが間違っています`,
     10103: `メール認証コードが間違っています`,

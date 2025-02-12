@@ -54,8 +54,7 @@ async function handleLogin() {
   const userInfo = await $fetch('/api/user/login', {
     method: 'POST',
     body: loginForm,
-    watch: false,
-    ...yzforumResponseHandler
+    watch: false
   })
   if (userInfo) {
     message.info('AlertInfo.login.success')
@@ -68,7 +67,8 @@ async function handleLogin() {
 <template>
   <div class="root">
     <div class="login">
-      <form class="form">
+      <!--表单默认提交事件会中断请求发送。困扰了我半小时，还得是d指导👍-->
+      <form class="form" @submit.prevent>
         <NuxtImg preload src="/placeholder.webp" placeholder="/placeholder.webp"></NuxtImg>
         <div>
           <label for="username">{{ t('login.email') }}</label>
