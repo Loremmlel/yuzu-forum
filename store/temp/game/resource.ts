@@ -6,5 +6,12 @@ export const useTempGameResourceStore = defineStore('tempGameResource', () => {
     const rewriteResourceId = ref(0)
     const commentToUid = ref(0)
 
-    return {resources, showPublish, rewriteResourceId, commentToUid}
+    function reset() {
+        resources.value = undefined
+        showPublish.value = false
+        rewriteResourceId.value = 0
+        commentToUid.value = 0
+    }
+
+    return {resources, showPublish, rewriteResourceId, commentToUid, reset}
 }, {persist: false})

@@ -25,7 +25,7 @@ export function onResponse(context: YuzuOnResponseContext) {
     if (context.response.status === 205) {
         const navigateCookie = Cookies.get('yzforum-is-navigate-to-login')
         if (!navigateCookie) {
-            usePersistUserStore().$reset()
+            usePersistUserStore().reset()
             useMessage(InfoCode.LoginExpired, 'error', 8888)
 
             const nuxt = useNuxtApp()

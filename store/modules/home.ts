@@ -7,5 +7,15 @@ export const usePersistYzforumHomeStore = defineStore('yzforumHome', () => {
         sitemaps: true
     })
 
-    return {fold}
+    function reset() {
+        fold.value = {
+            updates: true,
+            topics: true,
+            games: true,
+            resources: true,
+            sitemaps: true
+        }
+    }
+
+    return {fold, reset}
 }, {persist: true})

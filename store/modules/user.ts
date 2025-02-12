@@ -27,5 +27,27 @@ export const usePersistUserStore = defineStore('YzforumUser', () => {
         accessToken.value = ''
     }
 
-    return {uid, name, avatar, avatarMin, point, accessToken, roles, setUserInfo, setToken, removeToken}
+    function reset() {
+        uid.value = 0
+        name.value = ''
+        avatar.value = ''
+        avatarMin.value = ''
+        point.value = 0
+        roles.value = 0
+        accessToken.value = ''
+    }
+
+    return {
+        uid,
+        name,
+        avatar,
+        avatarMin,
+        point,
+        accessToken,
+        roles,
+        setUserInfo,
+        setToken,
+        removeToken,
+        reset
+    }
 }, {persist: true})

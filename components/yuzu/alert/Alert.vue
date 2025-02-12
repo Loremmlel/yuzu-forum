@@ -22,7 +22,7 @@ function handleConfirm() {
       </div>
 
       <div class="footer">
-        <button v-if="message.showCancel ?? true" class="button" @click="handleClose">
+        <button v-if="message.showCancel || true" class="button" @click="handleClose">
           {{ t('ComponentAlert.cancel') }}
         </button>
         <button class="button" @click="handleConfirm">

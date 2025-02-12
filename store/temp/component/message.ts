@@ -18,8 +18,7 @@ export const useComponentMessageStore = defineStore('tempComponentMessage', () =
     const showCancel = ref(false)
     const isCheckPass = ref(false)
 
-    let handleClose = () => {}
-    let handleConfirm = () => {}
+    let promiseResolve: ((value: boolean) => void) | null = null
 
     function info(infoMessage_: string, infoTranslateParams_?: string, durations_?: number) {
         infoMessage.value = infoMessage_
@@ -28,8 +27,9 @@ export const useComponentMessageStore = defineStore('tempComponentMessage', () =
         showInfo.value = true
     }
 
-    function alert(alertTitle_?: YuzuLanguage, alertMessage_?: YuzuLanguage, shouCancel_?: boolean) {
+    function alert(alertTitle_?: YuzuLanguage, alertMessage_?: YuzuLanguage, showCancel_?: boolean) {
         return new Promise<boolean>((resolve) => {
+            promiseResolve = resolve
             showAlert.value = true
             if (alertTitle_) {
                 alertTitle.value = alertTitle_
@@ -37,13 +37,10 @@ export const useComponentMessageStore = defineStore('tempComponentMessage', () =
             if (alertMessage_) {
                 alertMessage.value = alertMessage_
             }
-            if (shouCancel_) {
-                showCancel.value = shouCancel_
+            if (showCancel_) {
+                showCancel.value = showCancel_
             }
             showAlert.value = true
-
-            handleClose = () => resolve(false)
-            handleConfirm = () => resolve(true)
         })
     }
 
@@ -52,6 +49,40 @@ export const useComponentMessageStore = defineStore('tempComponentMessage', () =
         setTimeout(() => {
             isCheckPass.value = false
         }, 500)
+    }
+
+    function handleClose() {
+        promiseResolve?.(false)
+        promiseResolve = null
+    }
+
+    function handleConfirm() {
+        promiseResolve?.(true)
+        promiseResolve = null
+    }
+
+    function reset() {
+        showInfo.value = false
+        infoMessage.value = ''
+        infoTranslateParams.value = ''
+        durations.value = 0
+
+        showAlert.value = false
+        alertTitle.value = {
+            'en-us': '',
+            'ja-jp': '',
+            'zh-cn': ''
+        }
+        alertMessage.value = {
+            'en-us': '',
+            'ja-jp': '',
+            'zh-cn': ''
+        }
+        showCancel.value = false
+        isCheckPass.value = false
+
+        promiseResolve = null
+
     }
 
     return {
@@ -68,6 +99,7 @@ export const useComponentMessageStore = defineStore('tempComponentMessage', () =
         info,
         alert,
         isCheckPass,
-        setPass
+        setPass,
+        reset
     }
 }, {persist: false})

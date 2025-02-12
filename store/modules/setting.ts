@@ -68,6 +68,14 @@ export const usePersistSettingsStore = defineStore('yzforumSettings', () => {
         await deleteImage(settingsPublishBannerImageName)
     }
 
+    function reset() {
+        showYzforumPageTransparency.value = 77
+        showYzforumFontStyle.value = settingsDefaultFontFamily
+        showYzforumBackground.value = 0
+        showYzforumBackgroundBlur.value = 0
+        showYzforumBackLoli.value = true
+    }
+
     return {
         showYzforumPageTransparency,
         showYzforumFontStyle,
@@ -80,6 +88,7 @@ export const usePersistSettingsStore = defineStore('yzforumSettings', () => {
         setSystemBackground,
         setCustomBackground,
         getCurrentBackground,
-        setYzforumSettingsRecover
+        setYzforumSettingsRecover,
+        reset
     }
 }, {persist: true})

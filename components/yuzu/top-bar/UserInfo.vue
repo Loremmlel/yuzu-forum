@@ -50,7 +50,7 @@ async function logout() {
     'zh-cn': '您确定退出登录吗？'
   })
   if (res) {
-    user.$reset()
+    user.reset()
     navigateTo(localePath('/login'))
     useMessage(InfoCode.LogoutSuccess, 'success')
   }

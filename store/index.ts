@@ -1,13 +1,13 @@
-import {useTempSectionStore} from "~/store/temp/section";
-import {useTempBannedStore} from "~/store/temp/banned";
-import {useTempSearchStore} from "~/store/temp/search";
-import {useTempRankingStore} from "~/store/temp/ranking";
-import {useTempSettingStore} from "~/store/temp/setting";
-
 export function yzforumStoreReset() {
-    useTempSectionStore().$reset()
-    useTempBannedStore().$reset()
-    useTempSearchStore().$reset()
-    useTempRankingStore().$reset()
-    useTempSettingStore().$reset()
+    usePersistYzforumHomeStore().reset()
+    usePersistSettingsStore().reset()
+    usePersistUserStore().reset()
+
+    useTempSectionStore().reset()
+    useTempBannedStore().reset()
+    useTempSearchStore().reset()
+    useTempRankingStore().reset()
+    useTempSettingStore().reset()
+    useTempGameResourceStore().reset()
+    useComponentMessageStore().reset()
 }

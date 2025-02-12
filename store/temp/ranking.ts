@@ -14,5 +14,20 @@ export const useTempRankingStore = defineStore('tempRanking', () => {
         sortOrder: 'desc'
     })
 
-    return {topicRequestData, userRequestData}
+    function reset() {
+        topicRequestData.value = {
+            page: '1',
+            limit: '30',
+            sortField: 'views',
+            sortOrder: 'desc'
+        }
+        userRequestData.value = {
+            page: '1',
+            limit: '30',
+            sortField: 'point',
+            sortOrder: 'desc'
+        }
+    }
+
+    return {topicRequestData, userRequestData, reset}
 }, {persist: false})
