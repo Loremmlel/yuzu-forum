@@ -1,0 +1,198 @@
+code[class*='language-'],
+pre[class*='language-'] {
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  color: var(--yzforum-pink-0);
+  font-family:
+          Roboto Mono,
+          monospace;
+  font-size: 1em;
+  line-height: 1.5em;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+code[class*='language-']::-moz-selection,
+pre[class*='language-']::-moz-selection,
+code[class*='language-'] ::-moz-selection,
+code[class*='language-']::selection,
+pre[class*='language-']::selection,
+code[class*='language-'] ::selection,
+:not(pre) > code[class*='language-'] {
+  white-space: normal;
+  border-radius: 0.2em;
+  padding: 0.1em;
+}
+
+pre[class*='language-'] {
+  overflow: auto;
+  position: relative;
+  margin: 0.5em 0;
+  padding: 1.25em 1em;
+}
+
+.language-css > code,
+.language-sass > code,
+.language-scss > code {
+  color: var(--yzforum-red-2);
+}
+
+[class*='language-'] .namespace {
+  opacity: 0.7;
+}
+
+.token.atrule {
+  color: var(--yzforum-pink-3);
+}
+
+.token.attr-name {
+  color: var(--yzforum-purple-4);
+}
+
+.token.attr-value {
+  color: var(--yzforum-green-4);
+}
+
+.token.attribute {
+  color: var(--yzforum-green-4);
+}
+
+.token.boolean {
+  color: var(--yzforum-pink-3);
+}
+
+.token.builtin {
+  color: var(--yzforum-purple-4);
+}
+
+.token.cdata {
+  color: var(--yzforum-blue-5);
+}
+
+.token.char {
+  color: var(--yzforum-blue-5);
+}
+
+.token.class {
+  color: var(--yzforum-purple-4);
+}
+
+.token.class-name {
+  color: var(--yzforum-yellow-2);
+}
+
+.token.comment {
+  color: var(--yzforum-font-color-0);
+}
+
+.token.constant {
+  color: var(--yzforum-pink-3);
+}
+
+.token.deleted {
+  color: var(--yzforum-red-4);
+}
+
+.token.doctype {
+  color: var(--yzforum-font-color-0);
+}
+
+.token.entity {
+  color: var(--yzforum-red-4);
+}
+
+.token.function {
+  color: var(--yzforum-pink-3);
+}
+
+.token.hexcode {
+  color: var(--yzforum-yellow-2);
+}
+
+.token.id {
+  color: var(--yzforum-pink-3);
+  font-weight: bold;
+}
+
+.token.important {
+  color: var(--yzforum-pink-3);
+  font-weight: bold;
+}
+
+.token.inserted {
+  color: var(--yzforum-blue-5);
+}
+
+.token.keyword {
+  color: var(--yzforum-pink-3);
+}
+
+.token.number {
+  color: var(--yzforum-red-2);
+}
+
+.token.operator {
+  color: var(--yzforum-blue-2);
+}
+
+.token.prolog {
+  color: var(--yzforum-font-color-0);
+}
+
+.token.property {
+  color: var(--yzforum-blue-5);
+}
+
+.token.pseudo-class {
+  color: var(--yzforum-green-4);
+}
+
+.token.pseudo-element {
+  color: var(--yzforum-green-4);
+}
+
+.token.punctuation {
+  color: var(--yzforum-blue-2);
+}
+
+.token.regex {
+  color: var(--yzforum-yellow-2);
+}
+
+.token.selector {
+  color: var(--yzforum-red-4);
+}
+
+.token.string {
+  color: var(--yzforum-green-4);
+}
+
+.token.symbol {
+  color: var(--yzforum-pink-3);
+}
+
+.token.tag {
+  color: var(--yzforum-red-4);
+}
+
+.token.unit {
+  color: var(--yzforum-red-2);
+}
+
+.token.url {
+  color: var(--yzforum-red-4);
+}
+
+.token.variable {
+  color: var(--yzforum-red-4);
+}
