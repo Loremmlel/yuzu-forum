@@ -18,6 +18,15 @@ function autoResizeTextarea() {
 
 function saveMarkdown(editorMarkdown: string) {
   const targetContent = tempEdit.isTopicRewriting ? tempEdit.content : persistEdit.content
+  // 编辑器内容发生变化时，更新对应的数据
+  // 原仓库没有更新，也是奇了怪了
+  if (targetContent !== editorMarkdown) {
+    if (tempEdit.isTopicRewriting) {
+      tempEdit.content = editorMarkdown
+    } else {
+      persistEdit.content = editorMarkdown
+    }
+  }
   valueMarkdown.value = editorMarkdown
   tempEdit.autosaveCount++
 }
