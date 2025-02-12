@@ -160,4 +160,8 @@ export default defineNuxtConfig({
             websocket: true
         }
     },
+
+    features: {
+        devLogs: true
+    }
 })

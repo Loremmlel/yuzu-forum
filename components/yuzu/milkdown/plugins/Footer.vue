@@ -51,6 +51,7 @@ onMounted(() => {
 
 <template>
   <div class="footer">
+    <YuzuMilkdownSettings></YuzuMilkdownSettings>
     <span class="size">{{size + ` ${t('edit.topic.word')} `}}</span>
   </div>
 </template>
