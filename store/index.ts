@@ -1,3 +1,5 @@
+import {useTempCommentStore} from "~/store/temp/topic/comment";
+
 export function yzforumStoreReset() {
     usePersistYzforumHomeStore().reset()
     usePersistSettingsStore().reset()
@@ -15,4 +17,5 @@ export function yzforumStoreReset() {
     useTempEditStore().reset()
     useComponentMessageStore().reset()
     useTempReplyStore().reset()
+    useTempCommentStore().reset()
 }
