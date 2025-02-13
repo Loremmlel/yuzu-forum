@@ -13,13 +13,8 @@ const iconMap: Record<string, string> = {
 </script>
 
 <template>
-  <span
-      class="section"
-      v-for="(sec, index) in props.section"
-      :key="index"
-      :class="sec.toLowerCase()[0]"
-  >
-    <Icon class="icon" :name="iconMap[sec[0]]" />
+  <span class="section" v-for="(sec, index) in props.section" :key="index" :class="sec.toLowerCase()[0]">
+    <Icon class="icon" :name="iconMap[sec[0]]"></Icon>
     <span>{{ t(`edit.topic.section.${sec}`) }}</span>
   </span>
 </template>

@@ -26,6 +26,11 @@ defineProps<{
             {{ user.name }}
           </NuxtLink>
         </p>
+
+        <p class="point">
+          <span><Icon class="icon" name="lucide:lollipop"></Icon></span>
+          <span>{{user.point}}</span>
+        </p>
       </div>
 
       <slot></slot>
@@ -96,7 +101,7 @@ defineProps<{
 }
 
 @media (max-width: 700px) {
-  .yzforumr {
+  .yzgamer {
     flex-direction: row;
     margin-bottom: 0;
     padding: 0 10px;

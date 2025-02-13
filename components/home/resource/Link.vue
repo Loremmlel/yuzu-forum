@@ -28,15 +28,15 @@ const gameResource = useTempGameResourceStore()
           <span>{{ t('game.resource.edit') }}</span>
         </span>
         <span>
-          <Icon class="icon" :name="typeIconMap[props.link.type]"/>
+          <Icon class="icon" :name="typeIconMap[props.link.type]"></Icon>
           <span>{{ t(`game.resource.type.${props.link.type}`) }}</span>
         </span>
         <span>
-          <Icon class="icon" name="lucide:database"/>
+          <Icon class="icon" name="lucide:database"></Icon>
           <span>{{ props.link.size }}</span>
         </span>
         <span>
-          <Icon class="icon" :name="platformIconMap[props.link.platform]"/>
+          <Icon class="icon" :name="platformIconMap[props.link.platform]"></Icon>
           <span>{{ t(`game.resource.platform.${props.link.platform}`) }}</span>
         </span>
         <span>

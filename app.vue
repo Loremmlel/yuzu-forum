@@ -66,6 +66,8 @@ onMounted(() => {
   <YuzuAlert></YuzuAlert>
   <YuzuAlertInfo></YuzuAlertInfo>
 
+  <LazyTopicReplyPanel></LazyTopicReplyPanel>
+
   <NuxtPwaManifest></NuxtPwaManifest>
   <NuxtLoadingIndicator color="var(--yzforum-blue-5)"></NuxtLoadingIndicator>
   <NuxtLayout>
