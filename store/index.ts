@@ -1,4 +1,4 @@
-import {useTempCommentStore} from "~/store/temp/topic/comment";
+import {usePersistEditGameStore} from "~/store/modules/edit/game";
 
 export function yzforumStoreReset() {
     usePersistYzforumHomeStore().reset()
@@ -7,6 +7,7 @@ export function yzforumStoreReset() {
     usePersistEditTopicStore().reset()
     usePersistYzforumReplyStore().reset()
     usePersistYzforumTopicStore().reset()
+    usePersistEditGameStore().reset()
 
     useTempSectionStore().reset()
     useTempBannedStore().reset()
@@ -18,4 +19,5 @@ export function yzforumStoreReset() {
     useComponentMessageStore().reset()
     useTempReplyStore().reset()
     useTempCommentStore().reset()
+    useTempGamePRStore().reset()
 }

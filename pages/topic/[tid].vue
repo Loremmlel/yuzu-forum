@@ -9,8 +9,8 @@ const topicStore = usePersistYzforumTopicStore()
 const tempReply = useTempReplyStore()
 
 const isBanned = ref(false)
-const tid = computed(() => parseInt((route.params as { tid: string }).tid))
-provide<number>('tid', tid.value)
+const tid = ref<string>(route.params.tid as string)
+provide<string>('tid', tid.value)
 
 const data = await useFetch(`/api/topic/${tid.value}`, {
   method: 'GET',

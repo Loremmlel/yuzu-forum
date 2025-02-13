@@ -6,7 +6,7 @@ import {InfoCode} from "~/code&message/infoCode";
 const {t} = useI18n()
 
 const props = defineProps<{
-  tid: number,
+  tid: string,
   topic: TopicDetail
 }>()
 
@@ -30,7 +30,7 @@ replyData.value = data.value
 
 const scrollPage = throttle((rid: number) => {
   let timeout: NodeJS.Timeout | null = null
-  const child = document.querySelector('#k${rid}') as HTMLElement
+  const child = document.querySelector(`#k${rid}`) as HTMLElement
 
   if (child) {
     child.scrollIntoView({behavior: 'smooth', block: 'center'})

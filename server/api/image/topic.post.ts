@@ -56,5 +56,5 @@ export default defineEventHandler(async (event) => {
         {uid: userInfo.uid},
         {$inc: {dailyImageCount: 1}}
     )
-    return path.relative(fileURLToPath(import.meta.url), res)
+    return path.relative(process.cwd(), res)
 })

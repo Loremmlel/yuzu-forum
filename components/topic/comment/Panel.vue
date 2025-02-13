@@ -10,7 +10,7 @@ const emits = defineEmits<{ getComment: [newComment: TopicComment] }>()
 
 const userStore = usePersistUserStore()
 const tempCommentStore = useTempCommentStore()
-const tid = inject<number>('tid')
+const tid = inject<string>('tid')
 const commentValue = ref('')
 const publishing = ref(false)
 

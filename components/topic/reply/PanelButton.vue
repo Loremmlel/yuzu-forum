@@ -26,7 +26,7 @@ function checkReplyPublish(tags: string[], content: string) {
 const {t} = useI18n()
 
 const route = useRoute()
-const tid = computed(() => parseInt((route.params as { tid: string }).tid))
+const tid = ref<string>(route.params.tid as string)
 
 const persistTopicStore = usePersistYzforumTopicStore()
 const tempReplyStore = useTempReplyStore()

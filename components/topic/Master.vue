@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type {TopicDetail} from "~/types/api/topic";
-import {formatDate} from "../../utils/timeUtils";
+import {formatDate} from "~/utils/timeUtils";
 
 const {locale, t} = useI18n()
 
