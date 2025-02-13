@@ -73,7 +73,7 @@ async function handlePublish() {
 }
 
 async function handleRewrite() {
-  if (!checkReplyPublish(persistReplyStore.replyDraft.tags, persistReplyStore.replyDraft.content)) {
+  if (!checkReplyPublish(tempReplyStore.replyRewrite[0].tags, tempReplyStore.replyRewrite[0].markdown)) {
     return
   }
   const res = await useComponentMessageStore().alert({
@@ -94,9 +94,9 @@ async function handleRewrite() {
   const result = await $fetch(`/api/topic/${tid.value}/reply`, {
     method: 'PUT',
     body: {
-      rid: tempReplyStore.tempReply[0].rid,
-      content: tempReplyStore.tempReply[0].markdown,
-      tags: tempReplyStore.tempReply[0].tags,
+      rid: tempReplyStore.replyRewrite[0].rid,
+      content: tempReplyStore.replyRewrite[0].markdown,
+      tags: tempReplyStore.replyRewrite[0].tags,
       edited: Date.now()
     },
     watch: false,
