@@ -19,7 +19,8 @@ import {insertLinkPlugin} from "~/components/yuzu/milkdown/plugins/hyperlinkInse
 
 const props = defineProps<{
   editorInfo: UseEditorReturn,
-  showUploadImage: boolean
+  showUploadImage: boolean,
+  toggle?: boolean
 }>()
 
 const {get} = props.editorInfo
@@ -67,7 +68,7 @@ async function handleFileChange(event: Event) {
 
 <template>
   <div class="menu">
-    <YuzuMilkdownPluginsModeToggle></YuzuMilkdownPluginsModeToggle>
+    <YuzuMilkdownPluginsModeToggle v-if="props.toggle ?? true"></YuzuMilkdownPluginsModeToggle>
 
     <!--插件s-->
     <div class="button" aria-label="yzforum-bold" @click="call(toggleStrongCommand.key)" v-tooltip="{

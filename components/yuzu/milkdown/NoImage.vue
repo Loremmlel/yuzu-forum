@@ -149,7 +149,7 @@ watch(
 <template>
   <div ref="container" class="editor-container">
     <YuzuMilkdownPluginsMenu ref="toolbar" :editor-info="editorInfo"
-                             :show-upload-image="false"></YuzuMilkdownPluginsMenu>
+                             :show-upload-image="false" :toggle="false"></YuzuMilkdownPluginsMenu>
 
     <Milkdown class="yzforum-content"></Milkdown>
 
