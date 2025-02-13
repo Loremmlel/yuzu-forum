@@ -23,7 +23,7 @@ const props = defineProps<{ topic: HomeTopic }>()
 
       <div class="status">
         <span>
-          <Icon class="icon" name="lucide:moouse-pointer-click"></Icon>
+          <Icon class="icon" name="lucide:mouse-pointer-click"></Icon>
           <span>{{ topic.views }}</span>
         </span>
         <span>
