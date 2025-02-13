@@ -1,5 +1,4 @@
 import {isValidYzLanguage} from "~/utils/validate";
-import {vndbPattern} from "~/utils/pattern";
 import {ErrorCode} from "~/code&message/errorCode";
 
 export function checkGamePublish(
@@ -10,9 +9,6 @@ export function checkGamePublish(
 ): ErrorCode {
     if (!vndbId.trim()) {
         return ErrorCode.VNDBIdRequired
-    }
-    if (!vndbPattern.test(vndbId)) {
-        return ErrorCode.InvalidVNDBIdFormat
     }
     if (!isValidYzLanguage(name, 233)) {
         return ErrorCode.InvalidTitleLength

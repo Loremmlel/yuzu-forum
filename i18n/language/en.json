@@ -268,12 +268,12 @@
       },
       "title": {
         "name": "Title",
-        "help": "At least one title is required, but it's highly recommended to fill all fields (if there's no translation available for a language, you may leave it blank; the English title can be fetched automatically from VNDB).",
+        "help": "At least one title is required.",
         "reference": "Reference Titles (click to copy)"
       },
       "introduction": {
         "name": "Introduction",
-        "help": "At least one introduction is required. The English introduction can be fetched automatically by clicking 'Fetch Data', though it might not always succeed. For Japanese introductions, visit the DLsite website and navigate to the game details page where the 'ストーリー' section provides the Japanese introduction. Chinese introductions can be obtained from Bangumi or Moegirl Wiki. You may also write your own introduction instead of using the official one.",
+        "help": "At least one introduction is required.",
         "en-us": "English",
         "ja-jp": "Japanese",
         "zh-cn": "Simplified Chinese"

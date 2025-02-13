@@ -30,7 +30,8 @@ const editGameStore = usePersistEditGameStore()
     </EditGameTitle>
 
     <EditGameIntroduction :introduction-language="introductionLanguage" type="publish"
-    :is-success="isSuccess" @set="(value) => introductionLanguage = value as Language"></EditGameIntroduction>
+                          :is-success="isSuccess"
+                          @set="(value) => introductionLanguage = value as Language"></EditGameIntroduction>
 
     <EditGameBanner></EditGameBanner>
 
@@ -39,5 +40,49 @@ const editGameStore = usePersistEditGameStore()
 </template>
 
 <style scoped lang="scss">
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
 
+  @include yz-blur;
+}
+
+:deep(h2) {
+  margin-bottom: 20px;
+
+  .icon {
+    font-size: large;
+    margin-left: 10px;
+  }
+}
+
+.divider {
+  padding: 0 20px;
+}
+
+.vndb {
+  display: flex;
+  margin-bottom: 20px;
+
+  input {
+    margin-right: 20px;
+  }
+}
+
+.info {
+  color: var(--yzforum-font-color-0);
+  font-size: small;
+  font-style: oblique;
+  margin-bottom: 20px;
+}
+
+.titles {
+  display: flex;
+  flex-direction: column;
+
+  input {
+    margin-bottom: 10px;
+  }
+}
 </style>
