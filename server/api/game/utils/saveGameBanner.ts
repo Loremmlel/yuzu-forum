@@ -1,5 +1,6 @@
 import sharp from "sharp";
 import {ErrorCode} from "~/code&message/errorCode";
+import path from "node:path";
 
 export async function saveGameBanner(
     bannerBuffer: ArrayBuffer | Buffer,
@@ -23,5 +24,8 @@ export async function saveGameBanner(
     if (!miniUrl || !url) {
         return false
     }
-    return {url, miniUrl}
+    return {
+        url: path.relative('/' + path.join(process.cwd(), 'public'), url),
+        miniUrl: path.relative('/' + path.join(process.cwd(), 'public'), miniUrl)
+    }
 }

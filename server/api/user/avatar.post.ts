@@ -2,6 +2,7 @@ import sharp from "sharp";
 import {checkBufferSize} from "~/server/utils/checkBufferSize";
 import {UserModel} from "~/server/models/user";
 import {ErrorCode} from "~/code&message/errorCode";
+import path from "node:path";
 
 async function resizeUserAvatar(name: string, avatar: Buffer, uid: number) {
     const miniAvatar = await sharp(avatar)
@@ -24,7 +25,10 @@ async function resizeUserAvatar(name: string, avatar: Buffer, uid: number) {
     if (!miniAvatarUrl) {
         return ErrorCode.CompressedImageSizeExceeded
     }
-    return {avatarUrl, miniAvatarUrl}
+    return {
+        avatarUrl: path.relative('/' + path.join(process.cwd(), 'public'), avatarUrl),
+        miniAvatarUrl: path.relative('/' + path.join(process.cwd(), 'public'), miniAvatarUrl)
+    }
 }
 
 export default defineEventHandler(async (event) => {
