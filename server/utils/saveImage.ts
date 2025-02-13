@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 export async function saveImage(file: Buffer, bucketName: string, filename: string) {
-    const dataPath = path.join(process.cwd(), 'data', bucketName)
+    const dataPath = path.join(process.cwd(), 'public', 'data', bucketName)
     if (!fs.existsSync(dataPath)) {
         fs.mkdirSync(dataPath, {recursive: true})
     }
