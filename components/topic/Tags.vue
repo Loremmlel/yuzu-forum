@@ -26,7 +26,7 @@ const props = defineProps<Props>()
   color: var(--yzforum-font-color-3);
   user-select: text;
 
-  .tag-list {
+  .tags-list {
     margin: 5px;
     font-size: small;
     padding: 5px 20px;
