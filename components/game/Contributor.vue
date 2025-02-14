@@ -29,7 +29,7 @@ const {t} = useI18n()
           'zh-cn': '浏览数'
         },
         position: 'bottom'}">
-      <Icon class="icon" name="lucide:mouse-pointer-click" />
+      <Icon class="icon" name="lucide:mouse-pointer-click"></Icon>
       <span>{{ views }}</span>
     </span>
   </div>
