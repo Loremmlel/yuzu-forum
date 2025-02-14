@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type {HomeGame} from "~/types/api/home";
-import {platformIconMap} from "~/components/game/utils/platformIconMap";
+import {platformIconMap} from "~/components/game/utils/iconMap";
 
 const {locale} = useI18n()
 

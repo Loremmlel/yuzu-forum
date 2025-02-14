@@ -7,7 +7,7 @@ const localePath = useLocalePath()
   <div class="blank">
     <div class="container">
       <h1>
-        <slot/>
+        <slot></slot>
       </h1>
       <button @click="navigateTo(localePath('/'))">
         {{ t('yzforum.home') }}

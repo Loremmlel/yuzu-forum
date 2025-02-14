@@ -18,7 +18,7 @@ resourceData.value = data.value
 watch(
     () => [pageData.page, status.value],
     () => {
-      if (data.value && status.value !== 'pending' && pageData.page > 1) {
+      if (data.value && status.value === 'success' && pageData.page > 1) {
         resourceData.value = resourceData.value?.concat(data.value)
       }
     }

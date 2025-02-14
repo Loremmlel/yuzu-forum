@@ -8,7 +8,7 @@ const props = defineProps<{ status: UseFetchStatus }>()
 <template>
   <YuzuDivider color="var(--yzforum-gray-4)" margin="30px">
     <slot></slot>
-    <span v-if="props.status !== 'pending'" class="loader" @click="pageNumber++">
+    <span v-if="props.status === 'success'" class="loader" @click="pageNumber++">
       {{ t('home.load') }}
     </span>
     <span v-else>{{ t('home.loading') }}</span>

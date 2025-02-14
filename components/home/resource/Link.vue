@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type {HomeGameResources} from "~/types/api/home";
 import {useTempGameResourceStore} from "~/store/temp/game/resource";
-import {platformIconMap, typeIconMap} from "~/components/game/utils/platformIconMap";
+import {platformIconMap, typeIconMap} from "~/components/game/utils/iconMap";
 
 const {locale, t} = useI18n()
 const props = defineProps<{ link: HomeGameResources }>()

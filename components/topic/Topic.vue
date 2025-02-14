@@ -99,7 +99,7 @@ watch(
 
     <YuzuDivider v-if="replyData && replyData.length >= pageData.limit" margin="30px" padding="0 17px">
       <slot></slot>
-      <span class="loader" v-if="status !== 'pending' && !loadComplete" @click="pageData.page++">
+      <span class="loader" v-if="status !== 'success' && !loadComplete" @click="pageData.page++">
         {{ t('search.load') }}
       </span>
       <span v-if="status === 'pending'">

@@ -37,7 +37,7 @@ async function handlePublishGame() {
   formData.append('name', JSON.stringify(editGameStore.name))
   formData.append('banner', banner!)
   formData.append('introduction', JSON.stringify(editGameStore.introduction))
-  formData.append('aliases', JSON.stringify(editGameStore.aliases.slice(0, 17) + 'yuzu!'))
+  formData.append('aliases', JSON.stringify(editGameStore.name.slice(0, 17)))
 
   const gid = await $fetch('/api/game', {
     method: 'POST',

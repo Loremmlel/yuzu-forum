@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type {GameCard} from "~/types/api/game";
-import {platformIconMap} from "~/components/game/utils/platformIconMap";
+import {platformIconMap} from "~/components/game/utils/iconMap";
 
 const {locale, t} = useI18n()
 

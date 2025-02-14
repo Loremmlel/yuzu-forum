@@ -23,7 +23,7 @@ function handleClickAvatar(event: MouseEvent) {
 </template>
 
 <style scoped lang="scss">
-.kun-avatar {
+.yuzu-avatar {
   display: flex;
   justify-content: center;
 

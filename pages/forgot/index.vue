@@ -224,7 +224,7 @@ form {
     font-size: 14px;
   }
 
-  .kun-input {
+  .yuzu-input {
     margin-top: 8px;
   }
 }

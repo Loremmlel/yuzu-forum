@@ -17,7 +17,7 @@ gameData.value = data.value
 watch(
     () => [pageData.page, status.value],
     () => {
-      if (data.value && status.value !== 'pending' && pageData.page > 1) {
+      if (data.value && status.value == 'success' && pageData.page > 1) {
         gameData.value = gameData.value?.concat(data.value)
       }
     }
