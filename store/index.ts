@@ -1,4 +1,5 @@
 import {usePersistEditGameStore} from "~/store/modules/edit/game";
+import {useTempGameStore} from "~/store/temp/game/game";
 
 export function yzforumStoreReset() {
     usePersistYzforumHomeStore().reset()
@@ -20,4 +21,5 @@ export function yzforumStoreReset() {
     useTempReplyStore().reset()
     useTempCommentStore().reset()
     useTempGamePRStore().reset()
+    useTempGameStore().reset()
 }
