@@ -38,7 +38,6 @@ const GameSchema
 
         alias: {type: [String], default: []},
         official: {type: [String], default: []},
-        engine: {type: [String], default: []},
         tags: {type: [String], default: []}
     },
     {timestamps: {createdAt: 'created', updatedAt: 'updated'}}

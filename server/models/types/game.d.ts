@@ -26,7 +26,6 @@ export interface Game {
 
     alias: string[]
     official: string[]
-    engine: string[]
     tags: string[]
 
     user: User[]

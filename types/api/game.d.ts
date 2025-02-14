@@ -26,7 +26,6 @@ export interface GameDetail {
     }
     alias: string[]
     official: string[]
-    engine: string[]
     tags: string[]
     series: number[]
 }

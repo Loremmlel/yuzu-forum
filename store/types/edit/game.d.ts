@@ -12,6 +12,5 @@ export interface GameStoreTemp {
     series: string[]
     alias: string[]
     official: string[]
-    engine: string[]
     tags: string[]
 }

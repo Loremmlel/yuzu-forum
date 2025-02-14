@@ -34,17 +34,6 @@ export function checkGamePR(game: GameStoreTemp): ErrorCode {
             return ErrorCode.OfficialLinkTooLong
         }
     }
-
-    if (game.engine.length > 17) {
-        return ErrorCode.EngineCountExceeded
-    }
-
-    for (const e of game.engine) {
-        if (e.trim().length > 107) {
-            return ErrorCode.EngineNameTooLong
-        }
-    }
-
     if (game.tags.length > 107) {
         return ErrorCode.TagCountExceeded
     }

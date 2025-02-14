@@ -71,7 +71,6 @@ export default defineEventHandler(async (event) => {
             },
             alias: game.alias,
             official: game.official,
-            engine: game.engine,
             tags: game.tags,
             series: game.series
         }

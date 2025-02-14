@@ -80,7 +80,6 @@ export default defineEventHandler(async (event) => {
                 alias: gamePR.game?.alias?.filter((str) => str !== ''),
                 series: gamePR.game?.series?.map((s) => parseInt(s)),
                 official: gamePR.game?.official?.filter((str) => str !== ''),
-                engine: gamePR.game?.engine?.filter((str) => str !== ''),
                 tags: gamePR.game?.tags?.filter((str) => str !== ''),
                 $addToSet: {contributor: uid}
             }

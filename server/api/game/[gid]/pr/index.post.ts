@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
     if (!originalGame) {
         return yuzuError(event, ErrorCode.GameNotFound)
     }
-    const {gid, name, introduction, series, alias, official, engine, tags} = originalGame
+    const {gid, name, introduction, series, alias, official, tags} = originalGame
     const diffGame = compareObjects(game, {
         gid,
         name,
@@ -33,7 +33,6 @@ export default defineEventHandler(async (event) => {
         series: series.map((s) => s.toString()),
         alias,
         official,
-        engine,
         tags
     })
 
