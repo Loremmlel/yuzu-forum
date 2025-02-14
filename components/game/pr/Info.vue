@@ -10,7 +10,7 @@ const iconMap: Record<number, string> = {
 const {locale, t} = useI18n()
 
 interface Props {
-  gid: number
+  gid: string
   pr: GamePR
   status: UseFetchStatus
   refresh: () => void

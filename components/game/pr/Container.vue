@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type {GamePR} from "~/types/api/gamePR";
+
 const {t} = useI18n()
 
 const route = useRoute()
@@ -29,7 +31,7 @@ const {data, status, refresh} = await useLazyFetch(`/api/game/${gid.value}/pr/al
     </YuzuHeader>
 
     <div v-if="status === 'success'">
-      <GamePrInfo v-for="(pr, index) in data.prs" :key="index" :gid="gid" :pr="pr"
+      <GamePrInfo v-for="(pr, index) in data.prs" :key="index" :gid="gid" :pr="pr as GamePR"
                   :status="status" :refresh="refresh"></GamePrInfo>
     </div>
     <YuzuSkeletonGameResource v-if="status === 'pending'"></YuzuSkeletonGameResource>
