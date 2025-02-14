@@ -25,7 +25,7 @@ export async function saveGameBanner(
         return false
     }
     return {
-        url: path.relative('/' + path.join(process.cwd(), 'public'), url),
-        miniUrl: path.relative('/' + path.join(process.cwd(), 'public'), miniUrl)
+        url: '/' + path.relative(path.join(process.cwd(), 'public'), url),
+        miniUrl: '/' + path.relative(path.join(process.cwd(), 'public'), miniUrl)
     }
 }
