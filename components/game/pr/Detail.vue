@@ -166,7 +166,6 @@ function diffGame(oldGame: Partial<GameDetail>, newGame: Partial<GameStoreTemp>)
         introduction: oldGame.markdown,
         alias: oldGame.alias?.toString(),    // 转换数组为逗号分隔字符串
         official: oldGame.official?.toString(),
-        engine: oldGame.engine?.toString(),
         tags: oldGame.tags?.toString(),
         series: oldGame.series?.toString()
       },
@@ -174,7 +173,6 @@ function diffGame(oldGame: Partial<GameDetail>, newGame: Partial<GameStoreTemp>)
         ...newGame,
         alias: newGame.alias?.toString(),    // 保持新旧数据结构一致
         official: newGame.official?.toString(),
-        engine: newGame.engine?.toString(),
         tags: newGame.tags?.toString(),
         series: newGame.series?.toString()
       }

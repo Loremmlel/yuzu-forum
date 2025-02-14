@@ -104,7 +104,7 @@ const handleDeleteComment = async (gid: number, gcid: number) => {
       color: var(--yzforum-blue-5);
     }
 
-    .kun-avatar {
+    .yuzu-avatar {
       margin-right: 10px;
     }
 
@@ -147,5 +147,10 @@ const handleDeleteComment = async (gid: number, gcid: number) => {
 
 .panel {
   margin-top: 10px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
 }
 </style>
