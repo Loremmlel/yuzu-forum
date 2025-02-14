@@ -10,7 +10,7 @@ const isPublishing = ref(false)
 
 async function handlePublishGame() {
   const banner = await getImage('yzforum-publish-banner')
-  if (!checkGalgamePublish(editGameStore.name, banner, editGameStore.introduction)) {
+  if (!checkGamePublish(editGameStore.name, banner, editGameStore.introduction)) {
     return
   }
   const res = await useComponentMessageStore().alert({
@@ -54,7 +54,7 @@ async function handlePublishGame() {
   }
 }
 
-function checkGalgamePublish(name: YuzuLanguage, banner: Blob | null, introduction: YuzuLanguage): boolean {
+function checkGamePublish(name: YuzuLanguage, banner: Blob | null, introduction: YuzuLanguage): boolean {
   if (!isValidYzLanguage(name, 233)) {
     useMessage(InfoCode.TitleRequirements, 'warn')
     return false

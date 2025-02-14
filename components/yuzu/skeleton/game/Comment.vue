@@ -27,7 +27,7 @@ ul {
   flex-direction: column;
 
   li {
-    padding: 17px;
+    padding: 30px;
     background-image: linear-gradient(
             90deg,
             var(--yzforum-trans-blue-0) 25%,
@@ -40,7 +40,7 @@ ul {
     flex-grow: 1;
     list-style: none;
     background-size: 400% 100%;
-    margin-top: 10px;
+    margin-bottom: 30px;
     background-position: 100% 50%;
     animation: skeleton 2s ease infinite;
   }

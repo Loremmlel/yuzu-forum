@@ -12,7 +12,7 @@ const userStore = usePersistUserStore()
 const isFavorite = ref(props.isFavorite)
 const favoritesCount = ref(props.favoritesCount)
 
-async function toggleFavoriteGalgame() {
+async function toggleFavoriteGame() {
   const result = await $fetch(`/api/topic/${props.tid}/favorite`, {
     method: 'PUT',
     watch: false,
@@ -32,7 +32,7 @@ async function toggleFavoriteGalgame() {
   }
 }
 
-const handleClickFavoriteThrottled = throttle(toggleFavoriteGalgame, 1007, () =>
+const handleClickFavoriteThrottled = throttle(toggleFavoriteGame, 1007, () =>
     useMessage(InfoCode.OperationCooldown, 'warn')
 )
 

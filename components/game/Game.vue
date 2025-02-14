@@ -22,7 +22,7 @@ const {data, status} = await useLazyFetch(`/api/game/${props.game.gid}/contribut
     <YuzuDivider></YuzuDivider>
     <GameContributor v-if="data" :data="data" :pending="status === 'pending'" :views="game.views"></GameContributor>
     <YuzuDivider></YuzuDivider>
-    <GameCommentContainer v-if="data" :user-data="data" :to-user="game.user"></GameCommentContainer>
+    <GamePrContainer v-if="data" :user-data="data" :to-user="game.user"></GamePrContainer>
   </div>
 </template>
 

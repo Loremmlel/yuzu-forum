@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const count = 3
+const count = 5
 </script>
 
 <template>
@@ -13,7 +13,6 @@ const count = 3
 <style scoped lang="scss">
 .skeleton {
   width: 100%;
-  height: 100%;
   display: flex;
   justify-content: center;
 }
@@ -21,13 +20,10 @@ const count = 3
 ul {
   border-radius: 3px;
   margin: 0 auto;
+  padding: 10px;
   width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
 
   li {
-    padding: 17px;
     background-image: linear-gradient(
             90deg,
             var(--yzforum-trans-blue-0) 25%,
@@ -36,11 +32,10 @@ ul {
     );
     border-radius: 3px;
     width: 100%;
-    height: 100%;
-    flex-grow: 1;
+    height: 80px;
     list-style: none;
     background-size: 400% 100%;
-    margin-top: 10px;
+    margin-top: 20px;
     background-position: 100% 50%;
     animation: skeleton 2s ease infinite;
   }

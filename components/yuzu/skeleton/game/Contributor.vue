@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const count = 3
+const count = 1
 </script>
 
 <template>
@@ -16,6 +16,7 @@ const count = 3
   height: 100%;
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 ul {
@@ -27,7 +28,7 @@ ul {
   flex-direction: column;
 
   li {
-    padding: 17px;
+    padding: 20px;
     background-image: linear-gradient(
             90deg,
             var(--yzforum-trans-blue-0) 25%,
@@ -40,7 +41,6 @@ ul {
     flex-grow: 1;
     list-style: none;
     background-size: 400% 100%;
-    margin-top: 10px;
     background-position: 100% 50%;
     animation: skeleton 2s ease infinite;
   }

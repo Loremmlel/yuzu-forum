@@ -154,7 +154,7 @@ watch(
     <Milkdown class="yzforum-content"></Milkdown>
 
     <div class="loading" v-if="editorInfo.loading.value">
-      <Icon class="icon" name="svg-spinners:12-dots-scale-rotate"/>
+      <Icon class="icon" name="svg-spinners:12-dots-scale-rotate"></Icon>
       <span>{{ t('edit.topic.loading') }}</span>
     </div>
   </div>

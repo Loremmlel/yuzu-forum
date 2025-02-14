@@ -24,10 +24,9 @@ ul {
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
 
   li {
-    padding: 17px;
+    padding: 20px;
     background-image: linear-gradient(
             90deg,
             var(--yzforum-trans-blue-0) 25%,
@@ -35,12 +34,12 @@ ul {
             var(--yzforum-trans-blue-0) 63%
     );
     border-radius: 3px;
-    width: 100%;
+    width: 200px;
     height: 100%;
-    flex-grow: 1;
     list-style: none;
     background-size: 400% 100%;
     margin-top: 10px;
+    margin-right: 10px;
     background-position: 100% 50%;
     animation: skeleton 2s ease infinite;
   }

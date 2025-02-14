@@ -28,7 +28,7 @@ async function handleDeleteResource(gid: number, grid: number) {
     return
   }
 
-  const result = await $fetch(`/api/galgame/${gid}/resource`, {
+  const result = await $fetch(`/api/game/${gid}/resource`, {
     method: 'DELETE',
     query: {grid},
     watch: false,
