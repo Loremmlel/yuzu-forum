@@ -17,7 +17,7 @@ const {fold} = storeToRefs(usePersistYzforumHomeStore())
       </div>
     </template>
   </YuzuHeader>
-  <HomeRecent></HomeRecent>
+  <HomeRecent v-if="fold.updates"></HomeRecent>
 
   <YuzuHeader :size="2">
     <template #header>
@@ -29,7 +29,7 @@ const {fold} = storeToRefs(usePersistYzforumHomeStore())
       </div>
     </template>
   </YuzuHeader>
-  <HomeTopicContainer></HomeTopicContainer>
+  <HomeTopicContainer v-if="fold.topics"></HomeTopicContainer>
 
   <YuzuHeader :size="2">
     <template #header>
@@ -41,7 +41,7 @@ const {fold} = storeToRefs(usePersistYzforumHomeStore())
       </div>
     </template>
   </YuzuHeader>
-  <HomeGameContainer></HomeGameContainer>
+  <HomeGameContainer v-if="fold.games"></HomeGameContainer>
 
   <YuzuHeader :size="2">
     <template #header>
@@ -53,7 +53,7 @@ const {fold} = storeToRefs(usePersistYzforumHomeStore())
       </div>
     </template>
   </YuzuHeader>
-  <HomeResourceContainer></HomeResourceContainer>
+  <HomeResourceContainer v-if="fold.resources"></HomeResourceContainer>
 
   <HomeFooter></HomeFooter>
 </template>
