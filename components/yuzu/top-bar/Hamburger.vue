@@ -42,16 +42,16 @@ const hamburgerItems: Hamburger[] = [
     router: '/edit/Game?type=publish',
     hint: 'createHint'
   },
-  {
-    name: 'about',
-    icon: 'lucide:info',
-    router: '/yzforum'
-  },
-  {
-    name: 'ranking',
-    icon: 'lucide:align-end-horizontal',
-    router: '/ranking'
-  },
+  // {
+  //   name: 'about',
+  //   icon: 'lucide:info',
+  //   router: '/yzforum'
+  // },
+  // {
+  //   name: 'ranking',
+  //   icon: 'lucide:align-end-horizontal',
+  //   router: '/ranking'
+  // },
   {
     name: 'update',
     icon: 'lucide:arrow-big-up-dash',
