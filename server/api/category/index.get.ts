@@ -25,7 +25,7 @@ async function getCategoryData(category: string) {
     // 如果缓存不存在，从数据库中查询类别数据
     const data: CategoryResponseData[] = await TopicModel.aggregate([
         {
-            // 将每个文档中的'section'数组展开为多个文档
+            // 将每个文档中的section数组展开为多个文档
             $unwind: '$section'
         },
         {
@@ -35,12 +35,12 @@ async function getCategoryData(category: string) {
             }
         },
         {
-            // 按'section'字段分组，计算每个分组的主题数、浏览数和最新主题
+            // 按section字段分组，计算每个分组的主题数、浏览数和最新主题
             $group: {
                 _id: '$section',
                 topics: {$sum: 1},
                 views: {$sum: '$views'},
-                latestTopic: {$last: '$ROOT'}
+                latestTopic: {$last: '$$ROOT'}
             }
         },
         {
