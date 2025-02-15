@@ -3,7 +3,7 @@ import type {TopicType, UserInfo} from "~/types/api/user";
 
 const props = defineProps<{ user: UserInfo }>()
 const route = useRoute()
-const topicType = ref(route.query.type as TopicType)
+const topicType = ref(route.params.type as TopicType)
 
 const count = computed(() => {
   switch (topicType.value) {
