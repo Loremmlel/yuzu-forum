@@ -1,16 +1,38 @@
 <script setup lang="ts">
+import type {CategoryResponseData} from "~/types/api/category";
+
 const {t} = useI18n()
 
 const availableCategory = ['game', 'technique', 'other']
 const categoryStore = usePersistCategoryStore()
+const sections = ref<CategoryResponseData[]>([])
+const status = ref<UseFetchStatus>('idle')
 
-const {data, status} = await useLazyFetch('/api/category', {
-  method: 'GET',
-  query: {
-    category: categoryStore.category
-  },
-  ...yzforumResponseHandler
-})
+watch(
+    () => categoryStore.category,
+    () => {
+      fetchData()
+    }
+)
+
+async function fetchData() {
+  sections.value = []
+  status.value = 'pending'
+  const result = await $fetch('/api/category', {
+    method: 'GET',
+    query: {
+      category: categoryStore.category
+    },
+    watch: false,
+    ...yzforumResponseHandler
+  })
+  if (result) {
+    sections.value = result as CategoryResponseData[]
+    status.value = 'success'
+  }
+}
+
+onMounted(() => fetchData())
 </script>
 
 <template>
@@ -23,7 +45,7 @@ const {data, status} = await useLazyFetch('/api/category', {
       </span>
     </div>
 
-    <CategorySections v-if="data && status === 'success'" :sections="data"></CategorySections>
+    <CategorySections v-if="sections.length && status === 'success'" :sections="sections"></CategorySections>
     <YuzuSkeletonCategory v-if="status === 'pending'"></YuzuSkeletonCategory>
 
     <p class="hint">{{t('category.update')}}</p>
