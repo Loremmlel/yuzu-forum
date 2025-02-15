@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {InfoCode} from "~/code&message/infoCode";
 
-const {t} = useI18n()
+const {t, locale} = useI18n()
 
 const editGameStore = usePersistEditGameStore()
 
@@ -37,7 +37,7 @@ async function handlePublishGame() {
   formData.append('name', JSON.stringify(editGameStore.name))
   formData.append('banner', banner!)
   formData.append('introduction', JSON.stringify(editGameStore.introduction))
-  formData.append('aliases', JSON.stringify(editGameStore.name.slice(0, 17)))
+  formData.append('aliases', JSON.stringify(getPreferredLanguageText(editGameStore.name, locale.value).slice(0, 17)))
 
   const gid = await $fetch('/api/game', {
     method: 'POST',
