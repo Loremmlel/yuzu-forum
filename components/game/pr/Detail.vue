@@ -244,7 +244,7 @@ function diffGame(oldGame: Partial<GameDetail>, newGame: Partial<GameStoreTemp>)
   }
 }
 
-.btn {
+.button {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 20px;

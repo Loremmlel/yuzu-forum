@@ -63,7 +63,7 @@ async function handleChangePassword() {
                  v-model="input.repeatPassword" type="password"></YuzuInput>
     </div>
 
-    <div class="btn">
+    <div class="button">
       <YuzuButton @click="handleChangePassword">
         {{ t('user.email.confirmPwd') }}
       </YuzuButton>
