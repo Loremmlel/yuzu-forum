@@ -1,5 +1,7 @@
-import {usePersistEditGameStore} from "~/store/modules/edit/game";
-import {useTempGameStore} from "~/store/temp/game/game";
+import {useTempPoolPageStore} from "~/store/temp/topic/pool";
+import {usePersistPoolStore} from "~/store/modules/pool";
+import {usePersistYzforumSearchStore} from "~/store/modules/search";
+import {usePersistCategoryStore} from "~/store/modules/category";
 
 export function yzforumStoreReset() {
     usePersistYzforumHomeStore().reset()
@@ -9,6 +11,9 @@ export function yzforumStoreReset() {
     usePersistYzforumReplyStore().reset()
     usePersistYzforumTopicStore().reset()
     usePersistEditGameStore().reset()
+    usePersistPoolStore().reset()
+    usePersistYzforumSearchStore().reset()
+    usePersistCategoryStore().reset()
 
     useTempSectionStore().reset()
     useTempBannedStore().reset()
@@ -22,4 +27,5 @@ export function yzforumStoreReset() {
     useTempCommentStore().reset()
     useTempGamePRStore().reset()
     useTempGameStore().reset()
+    useTempPoolPageStore().reset()
 }
