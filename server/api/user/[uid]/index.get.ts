@@ -40,7 +40,7 @@ export default defineEventHandler(async (event) => {
         upvoteTopic: user.upvoteTopic.length,
         favoriteTopic: user.favoriteTopic.length,
 
-        Game: user.game.length,
+        game: user.game.length,
         likeGame: user.likeGame.length,
         favoriteGame: user.favoriteGame.length,
         contributeGame: user.contributeGame.length,

@@ -22,7 +22,7 @@ export interface UserInfo {
     upvoteTopic: number
     favoriteTopic: number
 
-    Game: number
+    game: number
     likeGame: number
     favoriteGame: number
     contributeGame: number
