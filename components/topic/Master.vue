@@ -6,6 +6,14 @@ const {locale, t} = useI18n()
 
 const props = defineProps<{ topic: TopicDetail }>()
 
+/**
+ * 计算主题状态标签
+ * @function loliStatus
+ * @returns {string} 状态标识字符串
+ * @description 根据主题的点赞时间和状态码计算当前显示状态：
+ * - 如果点赞时间在最近10小时内显示featured
+ * - 根据状态码映射显示状态：正常(0)、封禁(1)、置顶(2)、精华(3)
+ */
 const loliStatus = computed(() => {
   if (hourDiff(props.topic.upvoteTime, 10)) {
     return 'featured'
@@ -22,13 +30,16 @@ const loliStatus = computed(() => {
 
 <template>
   <div class="master" id="k0">
+    <!-- 标题区域 -->
     <div class="header">
       <h1 class="title">
         {{ topic.title }}
       </h1>
     </div>
 
+    <!-- 主体内容容器 -->
     <div class="content">
+      <!-- 顶部信息栏（板块标签和时间） -->
       <div class="top">
         <div class="section">
           <TopicSection :section="topic.section"></TopicSection>
@@ -40,16 +51,21 @@ const loliStatus = computed(() => {
         </span>
       </div>
 
+      <!-- 中间主要内容区域 -->
       <div class="center">
+        <!-- 用户信息卡片（包含移动端时间显示） -->
         <TopicYzgamerInfo v-if="topic.user" :user="topic.user">
           <span class="time-mobile">
             {{ formatDate(topic.time, locale, {showYear: true, isPrecise: true}) }}
           </span>
         </TopicYzgamerInfo>
+        <!-- 主题正文内容渲染 -->
         <YuzuContent :content="topic.content"></YuzuContent>
       </div>
 
+      <!-- 底部状态栏 -->
       <div class="bottom">
+        <!-- 主题状态标签 -->
         <div class="status">
           <span>{{ `${t('topic.content.status')}:` }}</span>
           <span :class="loliStatus">
@@ -58,6 +74,7 @@ const loliStatus = computed(() => {
         </div>
 
         <span class="line"></span>
+        <!-- 浏览数统计（带多语言提示） -->
         <span v-if="topic.views > 0" class="views" v-tooltip="{
           message: {
             'en-us': 'Views',
@@ -70,6 +87,7 @@ const loliStatus = computed(() => {
           {{ topic.views }}
         </span>
 
+        <!-- 编辑时间显示（带多语言提示） -->
         <s class="rewrite" v-if="topic.edited" v-tooltip="{
             message: {
               'en-us': 'Rewrite Time',
