@@ -17,7 +17,8 @@ async function resizeUserAvatar(name: string, avatar: Buffer, uid: number) {
     }
     const miniAvatarName = `${name}-100`
     const bucketName = `image/avatar/user_${uid}`
-    const avatarUrl = await saveImage(miniAvatar, bucketName, `${name}.webp`)
+    // fix: 修复了只保存mini照片的bug……
+    const avatarUrl = await saveImage(avatar, bucketName, `${name}.webp`)
     if (!avatarUrl) {
         return ErrorCode.CompressedImageSizeExceeded
     }
