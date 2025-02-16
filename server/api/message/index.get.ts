@@ -15,7 +15,7 @@ async function getMessages(
     const sortOptions: Record<string, YuzuOrder> = {
         [sortField]: sortOrder === 'asc' ? 'asc' : 'desc'
     }
-    const queryData = type ? {receiver_uid: uid, type} : {receiver_uid: uid}
+    const queryData = type ? {receiverUid: uid, type} : {receiverUid: uid}
 
     const data = await MessageModel.find(queryData)
         .sort(sortOptions)
