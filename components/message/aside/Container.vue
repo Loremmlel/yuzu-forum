@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {asideItems} from "~/components/message/aside/item";
+import {asideItems} from "~/components/message/aside/items";
 
 const {t} = useI18n()
 
