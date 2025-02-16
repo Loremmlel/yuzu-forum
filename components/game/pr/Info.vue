@@ -90,7 +90,8 @@ watch(
   <p class="note" v-if="userStore.uid === props.pr.user.uid && props.pr.status === 0">
     {{t('game.pr.note')}}
   </p>
-  <GamePRDetails v-if="details" :details="details" :refresh="refresh"></GamePRDetails>
+  <!--fix: 组件名称不对-->
+  <GamePrDetail v-if="details" :details="details" :refresh="refresh"></GamePrDetail>
 </template>
 
 <style scoped lang="scss">
