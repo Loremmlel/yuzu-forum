@@ -1,12 +1,12 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const value = defineModel<string | number>({required: true})
 </script>
 
 <template>
-  <input type="text" class="yuzu-input" v-model="value"></input>
+  <input v-model="value" class="yuzu-input" type="text"></input>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .yuzu-input {
   padding: 8px 12px;
   border: 1px solid var(--yzforum-trans-blue-2);

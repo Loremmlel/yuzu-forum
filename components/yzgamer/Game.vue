@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {GameType} from "~/types/api/user";
 
 const props = defineProps<{ uid: number, type: GameType }>()
@@ -18,8 +18,8 @@ const {data, status} = await useFetch(`/api/user/${props.uid}/game`, {
 </script>
 
 <template>
-  <div class="topic" v-if="data && data.games.length">
-    <div class="item" v-for="(game, index) in data.games" :key="index">
+  <div v-if="data && data.games.length" class="topic">
+    <div v-for="(game, index) in data.games" :key="index" class="item">
       <NuxtLink :to="`/game/${game.gid}`">
         <div class="title">
           {{ getPreferredLanguageText(game.name, locale) }}
@@ -30,14 +30,14 @@ const {data, status} = await useFetch(`/api/user/${props.uid}/game`, {
       </NuxtLink>
     </div>
 
-    <YuzuPagination class="pagination" v-if="data.totalCount > 50"
-                    :page="pageData.page" :limit="pageData.limit"
-                    :sum="data.totalCount" :status="status"
+    <YuzuPagination v-if="data.totalCount > 50" :limit="pageData.limit"
+                    :page="pageData.page" :status="status"
+                    :sum="data.totalCount" class="pagination"
                     @set-page="(newPage) => (pageData.page = newPage)"></YuzuPagination>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .item {
   width: 100%;
   margin-top: 20px;

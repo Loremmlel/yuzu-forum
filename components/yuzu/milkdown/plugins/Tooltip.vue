@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {usePluginViewContext} from "@prosemirror-adapter/vue";
 import {useInstance} from "@milkdown/vue";
 import type {VNodeRef} from "vue";
@@ -62,7 +62,7 @@ function call<T, >(command: CmdKey<T>, payload?: T) {
 <template>
   <!-- tooltip容器使用绝对定位，样式通过CSS变量实现主题化 -->
   <!--重要!!! 不知道为什么通过useInstance()获取的loading变量恒为false，所以根据字面意义，采用view.editable进行代替，目前可用.-->
-  <div v-if="view.editable" class="tooltip" ref="divRef">
+  <div v-if="view.editable" ref="divRef" class="tooltip">
     <!-- 每个按钮对应特定格式命令，点击触发call方法 -->
     <!-- 使用预创建的图标VNode优化渲染性能 -->
     <button @click="call(toggleStrongCommand.key)">
@@ -83,7 +83,7 @@ function call<T, >(command: CmdKey<T>, payload?: T) {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .tooltip {
   position: absolute;
   display: flex;

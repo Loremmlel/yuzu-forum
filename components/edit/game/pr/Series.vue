@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const {t} = useI18n()
 
 const gamePRStore = useTempGamePRStore()
@@ -15,11 +15,11 @@ const gamePRStore = useTempGamePRStore()
     {{ t('edit.pr.series.hint') }}
   </div>
 
-  <YuzuTextarea :placeholder="`${t('edit.pr.series.placeholder')}`"
-                v-model="gamePRStore.gamePR[0].series"></YuzuTextarea>
+  <YuzuTextarea v-model="gamePRStore.gamePR[0].series"
+                :placeholder="`${t('edit.pr.series.placeholder')}`"></YuzuTextarea>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .yuzu-input {
   width: 100%;
   margin-bottom: 20px;

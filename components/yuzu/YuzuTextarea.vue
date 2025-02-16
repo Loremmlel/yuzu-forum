@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const value = defineModel<string | number | string[]>({
   required: true
 })
@@ -9,12 +9,12 @@ withDefaults(defineProps<{ placeholder: string }>(), {
 
 <template>
   <div class="yuzu-textarea">
-    <textarea :placeholder="placeholder" v-model="value" name="comment" rows="5"></textarea>
+    <textarea v-model="value" :placeholder="placeholder" name="comment" rows="5"></textarea>
     <span class="yuzu-textarea-count">{{ value.toString().trim().length }}</span>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .yuzu-textarea {
   position: relative;
 

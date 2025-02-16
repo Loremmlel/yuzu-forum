@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {MilkdownProvider} from "@milkdown/vue";
 import {ProsemirrorAdapterProvider} from "@prosemirror-adapter/vue";
 
@@ -54,20 +54,20 @@ watch(
   <div class="editor">
     <MilkdownProvider v-if="persistEdit.mode === 'preview'">
       <ProsemirrorAdapterProvider>
-        <YuzuMilkdownEditor @save-markdown="saveMarkdown" :value-markdown="valueMarkdown" editor-height="300"
-                            :is-show-menu="true">
+        <YuzuMilkdownEditor :is-show-menu="true" :value-markdown="valueMarkdown" editor-height="300"
+                            @save-markdown="saveMarkdown">
         </YuzuMilkdownEditor>
       </ProsemirrorAdapterProvider>
     </MilkdownProvider>
-    <div class="code-editor" v-if="persistEdit.mode === 'code'">
+    <div v-if="persistEdit.mode === 'code'" class="code-editor">
       <YuzuMilkdownPluginsModeToggle></YuzuMilkdownPluginsModeToggle>
-      <textarea class="code" maxlength="100000" :value="valueMarkdown"
-                @input="handleInputCodeMarkdown($event)" ref="textarea" autofocus></textarea>
+      <textarea ref="textarea" :value="valueMarkdown" autofocus
+                class="code" maxlength="100000" @input="handleInputCodeMarkdown($event)"></textarea>
     </div>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .code-editor {
   textarea {
     border: none;

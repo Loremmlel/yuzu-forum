@@ -3,7 +3,6 @@ import {getRemoteIp} from "~/server/utils/getRemoteIp";
 import {generateRandomCode} from "~/server/utils/generateUtils";
 import {createTransport} from "nodemailer";
 import SMTPTransport from "nodemailer-smtp-transport";
-import env from '~/server/env/dotenv'
 import {ErrorCode} from "~/code&message/errorCode";
 
 const config = useRuntimeConfig()

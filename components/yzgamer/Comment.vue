@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const props = defineProps<{ uid: number }>()
 
 const pageData = reactive({
@@ -14,8 +14,8 @@ const {data, status} = await useFetch(`/api/user/${props.uid}/comments`, {
 </script>
 
 <template>
-  <div class="comment" v-if="data && data.comments.length">
-    <div class="item" v-for="(commentData, index) in data.comments" :key="index">
+  <div v-if="data && data.comments.length" class="comment">
+    <div v-for="(commentData, index) in data.comments" :key="index" class="item">
       <NuxtLink :to="`/topic/${commentData.tid}`">
         <div class="title">
           {{ commentData.content }}
@@ -23,14 +23,14 @@ const {data, status} = await useFetch(`/api/user/${props.uid}/comments`, {
       </NuxtLink>
     </div>
 
-    <YuzuPagination class="pagination" v-if="data.totalCount > 50"
-                    :page="pageData.page" :limit="pageData.limit"
-                    :sum="data.totalCount" :status="status"
+    <YuzuPagination v-if="data.totalCount > 50" :limit="pageData.limit"
+                    :page="pageData.page" :status="status"
+                    :sum="data.totalCount" class="pagination"
                     @set-page="(newPage) => pageData.page = newPage"></YuzuPagination>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .item {
   width: 100%;
   margin-top: 20px;

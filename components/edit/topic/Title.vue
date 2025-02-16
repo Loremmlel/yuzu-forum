@@ -1,6 +1,7 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {useTempEditStore} from "~/store/temp/edit/edit";
 import {usePersistEditTopicStore} from "~/store/modules/edit/edit";
+
 const {t} = useI18n()
 
 const tempEdit = useTempEditStore()
@@ -34,12 +35,12 @@ const handleInput = debounce(() => {
 
 <template>
   <div class="title">
-    <input type="text" :placeholder="t('edit.topic.title')" v-model="topicTitle" @input="handleInput"
-           :maxlength="maxInputLength">
+    <input v-model="topicTitle" :maxlength="maxInputLength" :placeholder="t('edit.topic.title')" type="text"
+           @input="handleInput">
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .title {
   padding: 10px;
   width: 100%;

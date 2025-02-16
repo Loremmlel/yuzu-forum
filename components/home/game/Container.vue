@@ -30,16 +30,16 @@ function handleClose() {
 </script>
 
 <template>
-  <div class="container" v-if="gameData">
+  <div v-if="gameData" class="container">
     <div v-for="(game, index) in gameData" :key="index">
       <HomeGameCard :game="game"></HomeGameCard>
-      <YuzuDivider margin="0 8px" color="var(--yzforum-trans-blue-1)"></YuzuDivider>
+      <YuzuDivider color="var(--yzforum-trans-blue-1)" margin="0 8px"></YuzuDivider>
     </div>
   </div>
 
   <HomeLoader v-model="pageData.page" :status="status">
     <span v-if="pageData.page !== 1" class="close" @click="handleClose">
-      {{t('home.fold')}}
+      {{ t('home.fold') }}
     </span>
   </HomeLoader>
 </template>

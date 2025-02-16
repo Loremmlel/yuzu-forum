@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import 'animate.css'
 
 interface Props {
@@ -37,16 +37,16 @@ const iconMap = {
 
 <template>
   <div class="yzforum-message-container">
-    <div class="yzforum-message" :class="messageClass">
+    <div :class="messageClass" class="yzforum-message">
       <!--为什么这个地方用不了Icon?-->
-<!--      <Icon class="icon" :name="`lucide:${iconMap[props.type]}`"></Icon>-->
+      <!--      <Icon class="icon" :name="`lucide:${iconMap[props.type]}`"></Icon>-->
       <span v-if="!props.richText" class="message">{{ messageRef }}</span>
       <span v-else v-html="messageRef"></span>
     </div>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .yzforum-message-container {
   position: fixed;
   top: 100px;

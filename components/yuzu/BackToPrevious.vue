@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const router = useRouter()
 </script>
 
@@ -8,7 +8,7 @@ const router = useRouter()
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .return {
   color: var(--yzforum-font-color-0);
   cursor: pointer;

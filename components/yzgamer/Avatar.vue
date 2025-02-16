@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {InfoCode} from "~/code&message/infoCode";
 
 const {t} = useI18n()
@@ -82,12 +82,12 @@ function checkImageValid(file: File) {
     <div class="title">{{ t('user.settings.avatar') }}</div>
 
     <div class="container">
-      <div ref="upload" tabindex="0" class="avatar-upload" @drop="handleDrop($event)"
-          @dragover="handleDragOver" @click="input?.click()">
-        <span class="plus" v-if="!selectedFileUrl"></span>
-        <NuxtImg class="avatar-preview" :src="selectedFileUrl"
-            alt="Uploaded Image" v-if="selectedFileUrl"></NuxtImg>
-        <input ref="input" hidden type="file" accept="*.jpg *.jpeg *.png *.webp"
+      <div ref="upload" class="avatar-upload" tabindex="0" @click="input?.click()"
+           @dragover="handleDragOver" @drop="handleDrop($event)">
+        <span v-if="!selectedFileUrl" class="plus"></span>
+        <NuxtImg v-if="selectedFileUrl" :src="selectedFileUrl"
+                 alt="Uploaded Image" class="avatar-preview"></NuxtImg>
+        <input ref="input" accept="*.jpg *.jpeg *.png *.webp" hidden type="file"
                @change="handleFileChange($event)">
       </div>
 
@@ -104,7 +104,7 @@ function checkImageValid(file: File) {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .avatar {
   width: 100%;
   margin-bottom: 20px;

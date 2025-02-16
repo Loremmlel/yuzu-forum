@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const {t} = useI18n()
 const localePath = useLocalePath()
 </script>
@@ -16,7 +16,7 @@ const localePath = useLocalePath()
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .blank {
   display: flex;
   justify-content: center;

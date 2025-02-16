@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {languageItems} from "~/components/edit/utils/options";
 
 defineProps<{
@@ -15,17 +15,17 @@ const {t} = useI18n()
 </script>
 
 <template>
-  <YuzuHeader :size="2" :show-help="true">
+  <YuzuHeader :show-help="true" :size="2">
     <template #header>{{ t('edit.game.introduction.name') }}</template>
     <template #help>{{ t('edit.game.introduction.help') }}</template>
   </YuzuHeader>
 
-  <YuzuNav class="nav" :items="languageItems" :default-value="introductionLanguage"
+  <YuzuNav :default-value="introductionLanguage" :items="languageItems" class="nav"
            @set="(value) => emits('set', value as Language)"></YuzuNav>
-  <EditGameEditor :lang="introductionLanguage" :type="type" :pending="isSuccess"></EditGameEditor>
+  <EditGameEditor :lang="introductionLanguage" :pending="isSuccess" :type="type"></EditGameEditor>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .nav {
   margin-bottom: 20px;
 }

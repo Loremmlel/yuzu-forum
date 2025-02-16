@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {InfoCode} from "~/code&message/infoCode";
 
 const {t} = useI18n()
@@ -96,19 +96,19 @@ watch(
           <span class="close-button" @click="handleTagClose(tag)">×</span>
         </span>
       </div>
-      <input class="input" type="text" v-model="inputValue" @keydown.enter="handleAddTag" @input="canDeleteTag = false"
-             @focus="isInputFocus = true" @blur="isInputFocus = false">
+      <input v-model="inputValue" class="input" type="text" @blur="isInputFocus = false" @focus="isInputFocus = true"
+             @input="canDeleteTag = false" @keydown.enter="handleAddTag">
       <span v-if="inputValue" class="add-tag" @click="handleAddTag">
         <Icon name="lucide:plus"></Icon>
       </span>
       <div class="box1"></div>
-      <div class="box2" :class="isInputFocus ? 'box-active' : ''"></div>
+      <div :class="isInputFocus ? 'box-active' : ''" class="box2"></div>
     </div>
     <div class="hint">{{ t('edit.topic.hint') }}</div>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .container-1 {
   width: 100%;
 }

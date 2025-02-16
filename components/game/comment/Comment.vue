@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {GameComment} from "~/types/api/gameComment";
 import type {GameDetail} from "~/types/api/game";
 import {InfoCode} from "~/code&message/infoCode";
@@ -11,8 +11,8 @@ const props = defineProps<{
 const game = inject<GameDetail>('game')
 
 const gameResourceStore = useTempGameResourceStore()
-const { uid, roles } = usePersistUserStore()
-const { locale, t } = useI18n()
+const {uid, roles} = usePersistUserStore()
+const {locale, t} = useI18n()
 
 const showComment = ref(false)
 const showDelete = computed(() => props.comment.user?.uid === uid || game?.user.uid === uid || roles >= 2)
@@ -34,7 +34,7 @@ const handleDeleteComment = async (gid: number, gcid: number) => {
 
   const result = await $fetch(`/api/game/${gid}/comment`, {
     method: 'DELETE',
-    query: { gcid },
+    query: {gcid},
     watch: false,
     ...yzforumResponseHandler
   })
@@ -69,7 +69,7 @@ const handleDeleteComment = async (gid: number, gcid: number) => {
           <Icon class="icon" name="lucide:reply"></Icon>
         </span>
         <GameCommentLike :comment="comment"></GameCommentLike>
-        <span class="delete" v-if="showDelete" @click="handleDeleteComment(comment.gid, comment.gcid)">
+        <span v-if="showDelete" class="delete" @click="handleDeleteComment(comment.gid, comment.gcid)">
           <Icon class="icon" name="lucide:trash-2"></Icon>
         </span>
       </div>
@@ -81,7 +81,7 @@ const handleDeleteComment = async (gid: number, gcid: number) => {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .comment {
   width: 100%;
   display: flex;

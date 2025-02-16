@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {CategoryResponseData} from "~/types/api/category";
 
 const {t, locale} = useI18n()
@@ -17,7 +17,7 @@ function formatNumberWithCommas(number: number): string {
 </script>
 
 <template>
-  <section class="section" v-for="(section, index) in sections" :key="index">
+  <section v-for="(section, index) in sections" :key="index" class="section">
     <div class="section-title">
       <span>{{ t(`edit.topic.section.${section.section}`) }}</span>
     </div>
@@ -47,7 +47,7 @@ function formatNumberWithCommas(number: number): string {
   </section>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .section {
   margin-bottom: 20px;
 

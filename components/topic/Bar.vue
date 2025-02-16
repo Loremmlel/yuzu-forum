@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const tempReplyStore = useTempReplyStore()
 
 watch(
@@ -21,7 +21,7 @@ watch(
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .bar {
   position: fixed;
   bottom: 50px;

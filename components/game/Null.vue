@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {InfoCode} from "~/code&message/infoCode";
 
 const {t} = useI18n()
@@ -13,7 +13,7 @@ const {t} = useI18n()
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .null {
   font-size: small;
   color: var(--yzforum-font-color-0);

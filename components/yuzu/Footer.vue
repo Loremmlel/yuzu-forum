@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 </script>
 
 <template>
@@ -8,19 +8,19 @@
       <span>GitHub 开源 -></span>
 
       <a
-          href="https://github.com/Loremmlel/yuzu-forum" target="_blank" rel="noopener noreferer"
-          aria-label="Yuzu Game Forum Open Source GitHub Repository. 柚子游戏论坛 开源 GitHub 仓库">
+          aria-label="Yuzu Game Forum Open Source GitHub Repository. 柚子游戏论坛 开源 GitHub 仓库" href="https://github.com/Loremmlel/yuzu-forum" rel="noopener noreferer"
+          target="_blank">
         <Icon class="icon" name="lucide:github"></Icon>
       </a>
     </div>
 
     <div>
-      <span>{{`保留所有权利 | 版本 ${useRuntimeConfig().public.FORUM_VERSION}`}}</span>
+      <span>{{ `保留所有权利 | 版本 ${useRuntimeConfig().public.FORUM_VERSION}` }}</span>
     </div>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .yuzu-footer {
   letter-spacing: 1px;
   color: var(--yzforum-font-color-3);

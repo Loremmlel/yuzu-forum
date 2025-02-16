@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {checkResetEmail, checkSendCode} from "~/components/yzgamer/utils/check";
 import {InfoCode} from "~/code&message/infoCode";
 
@@ -73,7 +73,7 @@ async function handleResetEmail() {
     </div>
 
     <div class="button">
-      <YuzuButton @click="handleSendCode" v-if="!hasSentCodeEmail">
+      <YuzuButton v-if="!hasSentCodeEmail" @click="handleSendCode">
         {{ t('user.email.send') }}
       </YuzuButton>
       <YuzuButton @click="handleResetEmail">
@@ -83,7 +83,7 @@ async function handleResetEmail() {
   </form>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .email {
   width: 100%;
   margin-bottom: 30px;

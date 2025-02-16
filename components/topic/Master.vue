@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {TopicDetail} from "~/types/api/topic";
 import {formatDate} from "~/utils/timeUtils";
 
@@ -29,7 +29,7 @@ const loliStatus = computed(() => {
 </script>
 
 <template>
-  <div class="master" id="k0">
+  <div id="k0" class="master">
     <!-- 标题区域 -->
     <div class="header">
       <h1 class="title">
@@ -43,7 +43,7 @@ const loliStatus = computed(() => {
       <div class="top">
         <div class="section">
           <TopicSection :section="topic.section"></TopicSection>
-          <TopicTags v-if="topic.tags" :tags="topic.tags" :show-icon="true"></TopicTags>
+          <TopicTags v-if="topic.tags" :show-icon="true" :tags="topic.tags"></TopicTags>
         </div>
 
         <span class="time">
@@ -75,27 +75,27 @@ const loliStatus = computed(() => {
 
         <span class="line"></span>
         <!-- 浏览数统计（带多语言提示） -->
-        <span v-if="topic.views > 0" class="views" v-tooltip="{
+        <span v-if="topic.views > 0" v-tooltip="{
           message: {
             'en-us': 'Views',
             'ja-jp': '閲覧数',
             'zh-cn': '浏览数'
           },
           position: 'bottom'
-        }">
+        }" class="views">
           <Icon class="icon" name="lucide:mouse-pointer-click"></Icon>
           {{ topic.views }}
         </span>
 
         <!-- 编辑时间显示（带多语言提示） -->
-        <s class="rewrite" v-if="topic.edited" v-tooltip="{
+        <s v-if="topic.edited" v-tooltip="{
             message: {
               'en-us': 'Rewrite Time',
               'ja-jp': 'Rewrite 時間',
               'zh-cn': 'Rewrite 时间'
             },
             position: 'bottom'
-        }">
+        }" class="rewrite">
           ×
           {{ formatDate(topic.edited, locale, {showYear: true, isPrecise: true}) }}
         </s>
@@ -105,7 +105,7 @@ const loliStatus = computed(() => {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .master {
   width: 100%;
   display: flex;

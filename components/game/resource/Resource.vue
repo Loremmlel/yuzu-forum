@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const {t} = useI18n()
 
 const route = useRoute()
@@ -29,7 +29,7 @@ watch(
   <div class="resource">
     <YuzuHeader :size="2">
       <template #header>
-        <span>{{t('game.resource.name')}}</span>
+        <span>{{ t('game.resource.name') }}</span>
         <span class="contribute" @click="handleClickContribute">
           <Icon class="icon" name="lucide:circle-plus"></Icon>
         </span>
@@ -37,10 +37,10 @@ watch(
     </YuzuHeader>
 
     <div class="note">
-      <div>{{t('game.resource.proxy')}}</div>
+      <div>{{ t('game.resource.proxy') }}</div>
     </div>
 
-    <GameNull class="null" v-if="!data?.length"></GameNull>
+    <GameNull v-if="!data?.length" class="null"></GameNull>
 
     <GameResourcePublish v-if="gameResourceStore.showPublish" :refresh="refresh"></GameResourcePublish>
 
@@ -52,7 +52,7 @@ watch(
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .resource {
   width: 100%;
   display: flex;

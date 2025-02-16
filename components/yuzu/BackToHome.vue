@@ -1,15 +1,15 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 
 </script>
 
 <template>
-  <NuxtLink to="/" class="return">
+  <NuxtLink class="return" to="/">
     <Icon class="icon" name="lucide:home"></Icon>
     <span>主页</span>
   </NuxtLink>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .return {
   color: var(--yzforum-font-color-0);
   cursor: pointer;

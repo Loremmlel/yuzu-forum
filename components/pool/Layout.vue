@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {PoolTopic} from "~/types/api/pool";
 
 defineProps<{ topics: PoolTopic[] }>()
@@ -7,19 +7,19 @@ const poolStore = usePersistPoolStore()
 </script>
 
 <template>
-  <div class="grid" v-if="poolStore.layout === 'grid'">
-    <PoolTopic v-for="(topic, index) in topics" :key="index" class="item" :topic="topic"></PoolTopic>
+  <div v-if="poolStore.layout === 'grid'" class="grid">
+    <PoolTopic v-for="(topic, index) in topics" :key="index" :topic="topic" class="item"></PoolTopic>
   </div>
 
-  <div class="list" v-else>
+  <div v-else class="list">
     <div v-for="(topic, index) in topics" :key="index">
       <HomeTopicCard :topic="topic"></HomeTopicCard>
-      <YuzuDivider margin="0 10px" color="var(--yzforum-trans-blue-1)"></YuzuDivider>
+      <YuzuDivider color="var(--yzforum-trans-blue-1)" margin="0 10px"></YuzuDivider>
     </div>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

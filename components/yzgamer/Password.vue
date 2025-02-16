@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {checkChangePassword} from "~/components/yzgamer/utils/check";
 import {InfoCode} from "~/code&message/infoCode";
 
@@ -43,24 +43,24 @@ async function handleChangePassword() {
 <template>
   <form class="password" @submit.prevent>
     <div class="title">{{ t('user.email.pwd') }}</div>
-    <input autocomplete="username" type="text" hidden>
+    <input autocomplete="username" hidden type="text">
 
     <div class="input-container">
       <label for="old-password">{{ t('user.email.oldPwd') }}</label>
-      <YuzuInput id="old-password" autocomplete="current-password"
-          v-model="input.oldPassword" type="password"></YuzuInput>
+      <YuzuInput id="old-password" v-model="input.oldPassword"
+                 autocomplete="current-password" type="password"></YuzuInput>
     </div>
 
     <div class="input-container">
       <label for="new-password">{{ t('user.email.newPwd') }}</label>
-      <YuzuInput id="new-password" autocomplete="new-password"
-          v-model="input.newPassword" type="password"></YuzuInput>
+      <YuzuInput id="new-password" v-model="input.newPassword"
+                 autocomplete="new-password" type="password"></YuzuInput>
     </div>
 
     <div class="input-container">
       <label for="repeat-password">{{ t('user.email.rePwd') }}</label>
-      <YuzuInput id="repeat-password" autocomplete="new-password"
-                 v-model="input.repeatPassword" type="password"></YuzuInput>
+      <YuzuInput id="repeat-password" v-model="input.repeatPassword"
+                 autocomplete="new-password" type="password"></YuzuInput>
     </div>
 
     <div class="button">
@@ -71,7 +71,7 @@ async function handleChangePassword() {
   </form>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .title {
   margin-bottom: 36px;
 }

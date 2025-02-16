@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const {locale, t} = useI18n()
 </script>
 
@@ -8,7 +8,7 @@ const {locale, t} = useI18n()
       {{ t('edit.pr.name') }}
     </template>
   </YuzuHeader>
-  <div class="help" v-if="locale === 'en-us'">
+  <div v-if="locale === 'en-us'" class="help">
     <p>
       To update game information, you need to submit an update request.
     </p>
@@ -24,7 +24,7 @@ const {locale, t} = useI18n()
     </p>
   </div>
 
-  <div class="help" v-if="locale === 'ja-jp'">
+  <div v-if="locale === 'ja-jp'" class="help">
     <p>gameの情報を更新するには、更新リクエストを提出する必要があります。</p>
     <p>
       このリクエストがgameリソースの投稿者、ポイントが1100を超えるユーザー、
@@ -36,7 +36,7 @@ const {locale, t} = useI18n()
     </p>
   </div>
 
-  <div class="help" v-if="locale === 'zh-cn'">
+  <div v-if="locale === 'zh-cn'" class="help">
     <p>要更新游戏信息, 需要提出更新请求</p>
     <p>
       当该请求被该游戏资源的发布者、或柚子点大于 1100
@@ -49,7 +49,7 @@ const {locale, t} = useI18n()
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .container {
   width: 100%;
   height: 100%;

@@ -138,8 +138,8 @@ async function handleChangePassword() {
           </div>
         </form>
 
-        <form class="password" v-else @submit.prevent>
-          <input autocomplete="username" type="text" hidden>
+        <form v-else class="password" @submit.prevent>
+          <input autocomplete="username" hidden type="text">
 
           <div class="input-container">
             <label for="new-password">{{ t('forgot.new') }}</label>
@@ -155,8 +155,8 @@ async function handleChangePassword() {
       </Transition>
 
       <div class="button">
-        <YuzuVerificationCode v-if="flag" @click="handleClickSendCode" class="code"
-                              :email="forgotForm.email" to="forgot"></YuzuVerificationCode>
+        <YuzuVerificationCode v-if="flag" :email="forgotForm.email" class="code"
+                              to="forgot" @click="handleClickSendCode"></YuzuVerificationCode>
         <YuzuButton v-if="flag" @click="handleClickNext">{{ t('forgot.next') }}</YuzuButton>
         <YuzuButton v-if="!flag" @click="handleClickPrev">{{ t('forgot.prev') }}</YuzuButton>
         <YuzuButton v-if="!flag" @click="handleChangePassword">{{ t('forgot.confirm') }}</YuzuButton>

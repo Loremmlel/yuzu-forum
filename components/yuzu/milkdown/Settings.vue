@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const {t} = useI18n()
 const tempEdit = useTempEditStore()
 </script>
@@ -6,11 +6,11 @@ const tempEdit = useTempEditStore()
 <template>
   <div class="settings">
     <div class="save">
-      {{`${t('edit.topic.save')} × ${tempEdit.autosaveCount} `}}
+      {{ `${t('edit.topic.save')} × ${tempEdit.autosaveCount} ` }}
     </div>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 
 </style>

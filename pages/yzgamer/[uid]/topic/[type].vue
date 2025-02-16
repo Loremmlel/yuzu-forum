@@ -23,7 +23,7 @@ const count = computed(() => {
 
 <template>
   <YzgamerList>
-    <YzgamerTopic :uid="user.uid" :type="topicType"></YzgamerTopic>
+    <YzgamerTopic :type="topicType" :uid="user.uid"></YzgamerTopic>
 
     <YuzuNull :condition="count === 0" type="null"></YuzuNull>
   </YzgamerList>

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const {t} = useI18n()
 const props = defineProps<{
   show: boolean
@@ -32,10 +32,10 @@ function handleLinkInsert() {
   <YuzuDialog :show-dialog="show">
     <div class="container">
       <h2 class="title">{{ t('edit.topic.link.title') }}</h2>
-      <YuzuInput type="url" v-model="inputHref" class="input"
-                 :placeholder="`${t('edit.topic.link.URLLabel')} (${exampleURL})`"></YuzuInput>
-      <YuzuInput type="text" v-model="inputText" class="input"
-                 :placeholder="t('edit.topic.link.textLabel')"></YuzuInput>
+      <YuzuInput v-model="inputHref" :placeholder="`${t('edit.topic.link.URLLabel')} (${exampleURL})`" class="input"
+                 type="url"></YuzuInput>
+      <YuzuInput v-model="inputText" :placeholder="t('edit.topic.link.textLabel')" class="input"
+                 type="text"></YuzuInput>
       <div class="button-group">
         <YuzuButton @click="emits('cancel')">{{ t('edit.topic.link.cancelInsert') }}</YuzuButton>
         <YuzuButton @click="handleLinkInsert">{{ t('edit.topic.link.confirmInsert') }}</YuzuButton>
@@ -44,7 +44,7 @@ function handleLinkInsert() {
   </YuzuDialog>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .container {
   width: 600px;
   margin: auto;

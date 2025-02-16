@@ -4,5 +4,6 @@ export const useTempSearchStore = defineStore('tempSearch', () => {
     function reset() {
         keywords.value = ''
     }
+
     return {keywords, reset}
 }, {persist: false})

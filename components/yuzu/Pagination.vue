@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 interface Props {
   page: number
   limit: number
@@ -46,26 +46,26 @@ function prevPage() {
 
 <template>
   <div class="pagination">
-    <button @click="prevPage" :disabled="currentPage === 1" aria-label="previous">
+    <button :disabled="currentPage === 1" aria-label="previous" @click="prevPage">
       <Icon class="icon" name="lucide:chevron-left"></Icon>
     </button>
 
     <div class="page">
-      <input v-model="pageInput" @keyup.enter="handlePageInput" @blur="handlePageInput"
-             type="number" :min="1" :max="totalPages">
+      <input v-model="pageInput" :max="totalPages" :min="1"
+             type="number" @blur="handlePageInput" @keyup.enter="handlePageInput">
       <span class="separator">/</span>
       <span>{{ totalPages }}</span>
     </div>
 
-    <button @click="nextPage" :disabled="currentPage === totalPages" aria-label="next">
+    <button :disabled="currentPage === totalPages" aria-label="next" @click="nextPage">
       <Icon class="icon" name="lucide:chevron-right"></Icon>
     </button>
 
-    <div class="loading" v-if="props.status === 'pending'"></div>
+    <div v-if="props.status === 'pending'" class="loading"></div>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .pagination {
   @include yz-center;
   width: 100%;

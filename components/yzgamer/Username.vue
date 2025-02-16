@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {InfoCode} from "~/code&message/infoCode";
 
 const {t} = useI18n()
@@ -42,14 +42,14 @@ async function handleChangeUsername() {
   <div class="username">
     <div class="title">{{ t('user.settings.username') }}</div>
     <p>{{ t('user.settings.usernameHint') }}</p>
-    <YuzuInput type="text" v-model="inputValue"></YuzuInput>
+    <YuzuInput v-model="inputValue" type="text"></YuzuInput>
     <YuzuButton @click="handleChangeUsername">
       {{ t('user.settings.confirm') }}
     </YuzuButton>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 p {
   margin: 10px 0;
   font-size: 14px;

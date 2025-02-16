@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {GameDetail} from "~/types/api/game";
 import {platformIconMap} from "~/components/game/utils/iconMap";
 
@@ -24,22 +24,22 @@ defineProps<{ game: GameDetail }>()
   <div>
     <h4>{{ t('game.info.tags') }}</h4>
     <GameNull v-if="!game.tags.length"></GameNull>
-    <TopicTags :tags="game.tags" :show-icon="false"></TopicTags>
+    <TopicTags :show-icon="false" :tags="game.tags"></TopicTags>
   </div>
 
   <div>
     <h4>{{ t('game.info.alias') }}</h4>
     <GameNull v-if="!game.alias.length"></GameNull>
-    <TopicTags :tags="game.alias" :show-icon="false"></TopicTags>
+    <TopicTags :show-icon="false" :tags="game.alias"></TopicTags>
   </div>
 
   <div class="official">
     <h4>{{ t('game.info.official') }}</h4>
     <GameNull v-if="!game.official.length"></GameNull>
     <template v-else>
-      <span class="link" v-for="(off, index) in game.official" :key="index">
+      <span v-for="(off, index) in game.official" :key="index" class="link">
         <YuzuCopy :text="off"></YuzuCopy>
-        <a :href="off" target="_blank" rel="noopener noreferer">
+        <a :href="off" rel="noopener noreferer" target="_blank">
           <Icon class="icon" name="lucide:external-link"></Icon>
         </a>
       </span>
@@ -52,7 +52,7 @@ defineProps<{ game: GameDetail }>()
       message: t(`game.resource.platform.${platform}`),
       position: 'bottom'
     }">
-      <Icon class="icon" :name="platformIconMap[platform]"></Icon>
+      <Icon :name="platformIconMap[platform]" class="icon"></Icon>
     </span>
   </div>
 
@@ -62,7 +62,7 @@ defineProps<{ game: GameDetail }>()
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 div {
   margin-bottom: 20px;
 }

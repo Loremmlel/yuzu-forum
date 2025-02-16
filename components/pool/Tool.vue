@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {useTempPoolPageStore} from "~/store/temp/topic/pool";
 import {usePersistPoolStore} from "~/store/modules/pool";
 
@@ -11,16 +11,16 @@ const poolStore = usePersistPoolStore()
 <template>
   <div class="tool">
     <div class="sort">
-      <YuzuSelect :styles="{width: '100px'}" :options="['created', 'views']"
-                  :default-value="pageStore.sortField" i18n="pool"
-                  @set="(value) => pageStore.sortField = value as 'views' | 'created'" position="bottom">
+      <YuzuSelect :default-value="pageStore.sortField" :options="['created', 'views']"
+                  :styles="{width: '100px'}" i18n="pool"
+                  position="bottom" @set="(value) => pageStore.sortField = value as 'views' | 'created'">
         <span>{{ t(`pool.${pageStore.sortField}`) }}</span>
       </YuzuSelect>
 
-      <YuzuSelect :styles="{width: '150px'}" :options="['all', 'game', 'technique', 'other']"
-                  :default-value="pageStore.category" i18n="pool"
-                  @set="(value) => pageStore.category = value as 'all' | 'game' | 'technique' | 'other'"
-                  position="bottom">
+      <YuzuSelect :default-value="pageStore.category" :options="['all', 'game', 'technique', 'other']"
+                  :styles="{width: '150px'}" i18n="pool"
+                  position="bottom"
+                  @set="(value) => pageStore.category = value as 'all' | 'game' | 'technique' | 'other'">
         {{ t(`pool.${pageStore.category}`) }}
       </YuzuSelect>
     </div>
@@ -42,7 +42,7 @@ const poolStore = usePersistPoolStore()
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .tool {
   padding: 10px;
   color: var(--yzforum-font-color-3);

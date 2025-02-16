@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {AsideItem} from "~/types/api/chatMessage";
 
 const {locale} = useI18n()
@@ -7,7 +7,7 @@ defineProps<{ room: AsideItem }>()
 </script>
 
 <template>
-  <NuxtLink class="item" :to="`/message/user/${room.route}`">
+  <NuxtLink :to="`/message/user/${room.route}`" class="item">
     <YuzuAvatar :user="{uid: parseInt(room.route), avatar: room.avatar, name: room.title}" size="50px"></YuzuAvatar>
     <div class="info">
       <div class="title">
@@ -30,7 +30,7 @@ defineProps<{ room: AsideItem }>()
   </NuxtLink>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .item {
   display: flex;
   padding: 10px;

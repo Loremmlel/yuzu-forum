@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {CategoryResponseData} from "~/types/api/category";
 
 const {t} = useI18n()
@@ -39,8 +39,8 @@ onMounted(() => fetchData())
   <div class="category">
     <div class="title">
       <span v-for="(category, index) in availableCategory" :key="index"
-            @click="categoryStore.category = category as 'game' | 'technique' | 'other'"
-            :class="categoryStore.category === category ? 'active' : ''">
+            :class="categoryStore.category === category ? 'active' : ''"
+            @click="categoryStore.category = category as 'game' | 'technique' | 'other'">
         {{ t(`category.${category}`) }}
       </span>
     </div>
@@ -48,12 +48,12 @@ onMounted(() => fetchData())
     <CategorySections v-if="sections.length && status === 'success'" :sections="sections"></CategorySections>
     <YuzuSkeletonCategory v-if="status === 'pending'"></YuzuSkeletonCategory>
 
-    <p class="hint">{{t('category.update')}}</p>
+    <p class="hint">{{ t('category.update') }}</p>
     <YuzuFooter></YuzuFooter>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .category {
   width: 100%;
   height: 100%;

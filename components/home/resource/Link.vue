@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {HomeGameResources} from "~/types/api/home";
 import {useTempGameResourceStore} from "~/store/temp/game/resource";
 import {platformIconMap, typeIconMap} from "~/components/game/utils/iconMap";
@@ -23,12 +23,12 @@ const gameResource = useTempGameResourceStore()
   <div class="link">
     <div class="base">
       <div class="info">
-        <span class="rewrite" v-if="props.link.grid === gameResource.rewriteResourceId">
+        <span v-if="props.link.grid === gameResource.rewriteResourceId" class="rewrite">
           <Icon class="icon" name="svg-spinners:12-dots-scale-rotate"></Icon>
           <span>{{ t('game.resource.edit') }}</span>
         </span>
         <span>
-          <Icon class="icon" :name="typeIconMap[props.link.type]"></Icon>
+          <Icon :name="typeIconMap[props.link.type]" class="icon"></Icon>
           <span>{{ t(`game.resource.type.${props.link.type}`) }}</span>
         </span>
         <span>
@@ -36,7 +36,7 @@ const gameResource = useTempGameResourceStore()
           <span>{{ props.link.size }}</span>
         </span>
         <span>
-          <Icon class="icon" :name="platformIconMap[props.link.platform]"></Icon>
+          <Icon :name="platformIconMap[props.link.platform]" class="icon"></Icon>
           <span>{{ t(`game.resource.platform.${props.link.platform}`) }}</span>
         </span>
         <span>
@@ -45,29 +45,29 @@ const gameResource = useTempGameResourceStore()
       </div>
 
       <div class="status">
-        <GameResourceLike v-if="user.uid !== props.link.uid" :gid="props.link.gid"
-                          :grid="props.link.grid" :to-uid="props.link.uid" :likes="props.link.likes"
-                          v-tooltip="{
+        <GameResourceLike v-if="user.uid !== props.link.uid" v-tooltip="{
           message: {
               'en-us': 'Like',
               'ja-jp': 'いいね',
               'zh-cn': '点赞'
             },
             position: 'bottom'
-        }"></GameResourceLike>
-        <NuxtLinkLocale v-if="user.uid === props.link.uid" to="/report" aria-label="Report violation"
-                        v-tooltip="{
+        }"
+                          :gid="props.link.gid" :grid="props.link.grid" :likes="props.link.likes"
+                          :to-uid="props.link.uid"></GameResourceLike>
+        <NuxtLinkLocale v-if="user.uid === props.link.uid" v-tooltip="{
           message: {
               'en-us': 'Report violation',
               'ja-jp': '違反の報告',
               'zh-cn': '举报违规'
             },
             position: 'bottom'
-        }">
+        }" aria-label="Report violation"
+                        to="/report">
           <Icon class="icon" name="lucide:triangle-alert"></Icon>
         </NuxtLinkLocale>
 
-        <span class="status-dot" :class="`status-${props.link.status}`" v-tooltip="{
+        <span v-tooltip="{
           message: {
               'en-us': link.status ? 'Link expired' : 'Link valid',
               'ja-jp': link.status
@@ -76,15 +76,15 @@ const gameResource = useTempGameResourceStore()
               'zh-cn': link.status ? '链接过期' : '链接有效'
             },
             position: 'bottom'
-        }">
+        }" :class="`status-${props.link.status}`" class="status-dot">
         </span>
       </div>
     </div>
-    <YuzuDivider margin="0 0 20px 0" color="var(--yzforum-trans-blue-1)"></YuzuDivider>
+    <YuzuDivider color="var(--yzforum-trans-blue-1)" margin="0 0 20px 0"></YuzuDivider>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .title {
   width: 100%;
   font-size: 18px;

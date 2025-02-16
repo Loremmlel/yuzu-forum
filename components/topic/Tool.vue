@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {TopicReply} from "~/types/api/topicReply";
 
 const {t} = useI18n()
@@ -13,7 +13,7 @@ const emits = defineEmits<{ setSortOrder: [value: YuzuOrder] }>()
 </script>
 
 <template>
-  <div class="tool" v-if="props.replyData && props.replyData.length > 5">
+  <div v-if="props.replyData && props.replyData.length > 5" class="tool">
     <div class="order">
       <span :class="props.sortOrder === 'asc' ? 'active' : ''" @click="emits('setSortOrder', 'asc')">
         <Icon class="icon" name="lucide:arrow-up"></Icon>
@@ -23,13 +23,13 @@ const emits = defineEmits<{ setSortOrder: [value: YuzuOrder] }>()
       </span>
     </div>
 
-    <span class="pending" v-if="pending">
+    <span v-if="pending" class="pending">
       {{ t('search.loading') }}
     </span>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .tool {
   padding: 10px;
   margin-bottom: 20px;

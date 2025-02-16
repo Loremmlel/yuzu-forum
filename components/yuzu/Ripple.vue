@@ -1,20 +1,20 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const props = defineProps<{
   ripples: RippleType[]
 }>()
 </script>
 
 <template>
-  <span v-for="ripple in ripples" :key="ripple.key" class="ripple"
-      :style="{
+  <span v-for="ripple in ripples" :key="ripple.key" :style="{
         width: `${ripple.size}px`,
         height: `${ripple.size}px`,
         top: `${ripple.y}px`,
         left: `${ripple.x}px`
-      }"></span>
+      }"
+        class="ripple"></span>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .ripple {
   position: absolute;
   border-radius: 50%;

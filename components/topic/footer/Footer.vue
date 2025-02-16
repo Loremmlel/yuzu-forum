@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {TopicDetail} from "~/types/api/topic";
 
 const {locale, t} = useI18n()
@@ -12,10 +12,6 @@ defineProps<{
   <div class="footer">
     <div class="left">
       <TopicFooterUpvote
-          :tid="topic.tid"
-          :to-uid="topic.user.uid"
-          :upvote-count="topic.upvotes.count"
-          :is-upvoted="topic.upvotes.isUpvoted"
           v-tooltip="{
             message: {
             'en-us': 'Upvote',
@@ -23,13 +19,13 @@ defineProps<{
             'zh-cn': '推'
           },
           position: 'bottom'
-      }"></TopicFooterUpvote>
-
-      <TopicFooterLike
+      }"
+          :is-upvoted="topic.upvotes.isUpvoted"
           :tid="topic.tid"
           :to-uid="topic.user.uid"
-          :likes-count="topic.likes.count"
-          :is-liked="topic.likes.isLiked"
+          :upvote-count="topic.upvotes.count"></TopicFooterUpvote>
+
+      <TopicFooterLike
           v-tooltip="{
           message: {
             'en-us': 'Like',
@@ -37,13 +33,13 @@ defineProps<{
             'zh-cn': '点赞'
           },
           position: 'bottom'
-        }"></TopicFooterLike>
+        }"
+          :is-liked="topic.likes.isLiked"
+          :likes-count="topic.likes.count"
+          :tid="topic.tid"
+          :to-uid="topic.user.uid"></TopicFooterLike>
 
       <TopicFooterDislike
-          :tid="topic.tid"
-          :to-uid="topic.user.uid"
-          :dislikes-count="topic.dislikes.count"
-          :is-disliked="topic.dislikes.isDisliked"
           v-tooltip="{
           message: {
             'en-us': 'Dislike',
@@ -51,13 +47,13 @@ defineProps<{
             'zh-cn': '点踩'
           },
           position: 'bottom'
-        }"></TopicFooterDislike>
+        }"
+          :dislikes-count="topic.dislikes.count"
+          :is-disliked="topic.dislikes.isDisliked"
+          :tid="topic.tid"
+          :to-uid="topic.user.uid"></TopicFooterDislike>
 
       <TopicFooterFavorite
-          :tid="topic.tid"
-          :to-uid="topic.user.uid"
-          :favorites-count="topic.favorites.count"
-          :is-favorite="topic.favorites.isFavorite"
           v-tooltip="{
           message: {
             'en-us': 'Favorite',
@@ -65,39 +61,43 @@ defineProps<{
             'zh-cn': '收藏'
           },
           position: 'bottom'
-        }"></TopicFooterFavorite>
+        }"
+          :favorites-count="topic.favorites.count"
+          :is-favorite="topic.favorites.isFavorite"
+          :tid="topic.tid"
+          :to-uid="topic.user.uid"></TopicFooterFavorite>
     </div>
 
     <div class="right">
       <TopicFooterReply
           :tid="topic.tid"
-          :to-username="topic.user.name"
+          :to-floor="0"
           :to-uid="topic.user.uid"
-          :to-floor="0"></TopicFooterReply>
+          :to-username="topic.user.name"></TopicFooterReply>
 
       <span
-          @click="useYuzuCopy(
-              `${topic.title}: ${useRuntimeConfig().public.YZFORUM_URL}/${locale}/topic/${topic.tid}`)"
-          class="icon" v-tooltip="{
+          v-tooltip="{
             message: {
             'en-us': 'Share',
             'ja-jp': '共有',
             'zh-cn': '分享'
           },
           position: 'bottom'
-          }">
+          }"
+          class="icon" @click="useYuzuCopy(
+              `${topic.title}: ${useRuntimeConfig().public.YZFORUM_URL}/${locale}/topic/${topic.tid}`)">
         <Icon class="icon" name="lucide:share-2"></Icon>
       </span>
 
-      <TopicFooterRewrite :topic="topic" v-tooltip="{
+      <TopicFooterRewrite v-tooltip="{
         message: 'Rewrite',
         position: 'bottom'
-      }"></TopicFooterRewrite>
+      }" :topic="topic"></TopicFooterRewrite>
     </div>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .footer {
   padding: 20px 10px;
   width: 100%;

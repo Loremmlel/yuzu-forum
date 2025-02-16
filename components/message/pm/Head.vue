@@ -1,7 +1,7 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const {t} = useI18n()
 
-const props = defineProps<{uid: number}>()
+const props = defineProps<{ uid: number }>()
 
 const socket = useSocketIO()
 
@@ -22,29 +22,29 @@ const handleReload = () => location.reload()
 
 <template>
   <header>
-   <NuxtLink to="/message">
-     <Icon class="icon" name="lucide:chevron-left"></Icon>
-   </NuxtLink>
+    <NuxtLink to="/message">
+      <Icon class="icon" name="lucide:chevron-left"></Icon>
+    </NuxtLink>
     <YuzuAvatar :user="user" size="30px"></YuzuAvatar>
     <h2 class="username">
-      <span>{{user.name}}</span>
-      <span class="status" :class="socket.connected ? 'connected' : 'disconnected'"></span>
-      <span class="offline" v-if="!socket.connected" @click="handleReload" v-tooltip="{
+      <span>{{ user.name }}</span>
+      <span :class="socket.connected ? 'connected' : 'disconnected'" class="status"></span>
+      <span v-if="!socket.connected" v-tooltip="{
         message: {
             'en-us': `Click to refresh the page, but it's okay if you don't refresh it.`,
             'ja-jp': 'クリックしてページを更新、更新しなくても大丈夫です',
             'zh-cn': '点击刷新页面, 不刷新也可以'
           },
           position: 'bottom'
-      }">
-        <span>{{t('message.offline')}}</span>
+      }" class="offline" @click="handleReload">
+        <span>{{ t('message.offline') }}</span>
         <Icon class="icon" name="lucide:refresh-cow"></Icon>
       </span>
     </h2>
   </header>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 header {
   display: flex;
   flex-wrap: wrap;

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const {t} = useI18n()
 
 const initialImageUrl = ref('')
@@ -12,16 +12,16 @@ onMounted(async () => {
 </script>
 
 <template>
-  <YuzuHeader :size="2" :show-help="true">
+  <YuzuHeader :show-help="true" :size="2">
     <template #header>{{ t('edit.game.banner.name') }}</template>
     <template #help>{{ t('edit.game.banner.help') }}</template>
   </YuzuHeader>
-  <YuzuUpload class="upload" width="300px" :initial-image="initialImageUrl" :size="1920"
-              :aspect="16 / 9" :hint="t('edit.game.banner.hint')"
+  <YuzuUpload :aspect="16 / 9" :hint="t('edit.game.banner.hint')" :initial-image="initialImageUrl" :size="1920"
+              class="upload" width="300px"
               @set-image="(img) => saveImage(img, 'yzforum-publish-banner')"></YuzuUpload>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .upload {
   margin-bottom: 20px;
 }

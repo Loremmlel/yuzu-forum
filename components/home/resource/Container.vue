@@ -31,7 +31,7 @@ function handleClose() {
 </script>
 
 <template>
-  <div class="container" v-if="resourceData">
+  <div v-if="resourceData" class="container">
     <HomeResourceLink v-for="resource in resourceData" :key="resource.grid" :link="resource"></HomeResourceLink>
   </div>
 

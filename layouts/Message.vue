@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import DefaultLayout from '~/layouts/default.vue'
 
 const route = useRoute()
@@ -29,7 +29,7 @@ const showContent = computed(() => !isMobile.value || (isMobile.value && baseRou
   </DefaultLayout>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .content-container {
   border-radius: 10px;
   height: calc(100dvh - 75px);

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {gameSection, otherSection, techniqueSection, topicCategory} from "~/components/edit/utils/category";
 
 const {t} = useI18n()
@@ -54,18 +54,18 @@ function intersection<T>(array1: T[], array2: T[]): T[] {
 </script>
 
 <template>
-  <div class="section" v-if="showSection">
-    <div v-for="(select, index) in topicCategory" :key="index" v-show="showSelect(select.name)">
-      <YuzuSelect v-if="showSelect(select.name)" :styles="{width: '150px'}" :options="select.options"
-                  i18n="edit.topic.section" @set="(value) => handleSetSection(select.name, value)"
-                  position="top">
+  <div v-if="showSection" class="section">
+    <div v-for="(select, index) in topicCategory" v-show="showSelect(select.name)" :key="index">
+      <YuzuSelect v-if="showSelect(select.name)" :options="select.options" :styles="{width: '150px'}"
+                  i18n="edit.topic.section" position="top"
+                  @set="(value) => handleSetSection(select.name, value)">
         <span>{{ t(`edit.topic.${select.name}`) }}</span>
       </YuzuSelect>
     </div>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .section {
   display: flex;
   justify-content: space-between;

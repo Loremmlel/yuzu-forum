@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {UseEditorReturn} from "@milkdown/vue";
 import type {CmdKey} from "@milkdown/core";
 import {callCommand} from "@milkdown/utils";
@@ -71,39 +71,39 @@ async function handleFileChange(event: Event) {
     <YuzuMilkdownPluginsModeToggle v-if="props.toggle ?? true"></YuzuMilkdownPluginsModeToggle>
 
     <!--插件s-->
-    <div class="button" aria-label="yzforum-bold" @click="call(toggleStrongCommand.key)" v-tooltip="{
+    <div v-tooltip="{
       message: {
           'en-us': 'Bold',
           'ja-jp': '太字',
           'zh-cn': '加粗'
         },
         position: 'bottom'
-    }">
+    }" aria-label="yzforum-bold" class="button" @click="call(toggleStrongCommand.key)">
       <Icon class="icon" name="lucide:bold"></Icon>
     </div>
-    <div class="button" aria-label="yzforum-italic" @click="call(toggleEmphasisCommand.key)" v-tooltip="{
+    <div v-tooltip="{
         message: {
           'en-us': 'Italic',
           'ja-jp': '斜体',
           'zh-cn': '斜体'
         },
         position: 'bottom'
-      }">
+      }" aria-label="yzforum-italic" class="button" @click="call(toggleEmphasisCommand.key)">
       <Icon class="icon" name="lucide:italic"></Icon>
     </div>
 
-    <div class="button" aria-label="yzforum-strikethrough" @click="call(toggleStrikethroughCommand.key)" v-tooltip="{
+    <div v-tooltip="{
         message: {
           'en-us': 'Strikethrough',
           'ja-jp': '打消し線',
           'zh-cn': '删除线'
         },
         position: 'bottom'
-      }">
+      }" aria-label="yzforum-strikethrough" class="button" @click="call(toggleStrikethroughCommand.key)">
       <Icon class="icon" name="lucide:strikethrough"></Icon>
     </div>
 
-    <div class="button" aria-label="yzforum-list-bulleted" @click="call(wrapInBulletListCommand.key)" v-tooltip="{
+    <div v-tooltip="{
         message: {
           'en-us': 'Bulleted List',
           'ja-jp': '箇条書き',
@@ -111,11 +111,11 @@ async function handleFileChange(event: Event) {
           'zh-tw': '無序列錶'
         },
         position: 'bottom'
-      }">
+      }" aria-label="yzforum-list-bulleted" class="button" @click="call(wrapInBulletListCommand.key)">
       <Icon class="icon" name="lucide:list"></Icon>
     </div>
 
-    <div class="button" aria-label="yzforum-list-numbered" @click="call(wrapInOrderedListCommand.key)" v-tooltip="{
+    <div v-tooltip="{
         message: {
           'en-us': 'Ordered List',
           'ja-jp': '番号付きリスト',
@@ -123,59 +123,59 @@ async function handleFileChange(event: Event) {
           'zh-tw': '有序列錶'
         },
         position: 'bottom'
-      }">
+      }" aria-label="yzforum-list-numbered" class="button" @click="call(wrapInOrderedListCommand.key)">
       <Icon class="icon" name="lucide:list-ordered"></Icon>
     </div>
 
-    <div class="button" aria-label="yzforum-quote" @click="call(wrapInBlockquoteCommand.key)" v-tooltip="{
+    <div v-tooltip="{
         message: {
           'en-us': 'Quote Block',
           'ja-jp': '引用ブロック',
           'zh-cn': '引用块'
         },
         position: 'bottom'
-      }">
+      }" aria-label="yzforum-quote" class="button" @click="call(wrapInBlockquoteCommand.key)">
       <Icon class="icon" name="lucide:quote"></Icon>
     </div>
 
-    <div class="button" aria-label="yzforum-horizontal" @click="call(insertHrCommand.key)" v-tooltip="{
+    <div v-tooltip="{
         message: {
           'en-us': 'Horizontal Line',
           'ja-jp': '水平線',
           'zh-cn': '水平线'
         },
         position: 'bottom'
-      }">
+      }" aria-label="yzforum-horizontal" class="button" @click="call(insertHrCommand.key)">
       <Icon class="icon" name="lucide:minus"></Icon>
     </div>
 
-    <div class="button" aria-label="yzforum-insert-link" @click="showInsertLink = true" v-tooltip="{
+    <div v-tooltip="{
       message: {
           'en-us': 'Insert Link',
           'ja-jp': 'リンク挿入',
           'zh-cn': '插入链接'
         },
         position: 'bottom'
-    }">
+    }" aria-label="yzforum-insert-link" class="button" @click="showInsertLink = true">
       <Icon class="icon" name="lucide:link"></Icon>
-      <YuzuMilkdownPluginsLinkInsertDialog :show="showInsertLink" @insert="call(
-          insertLinkPlugin.key, undefined, () => showInsertLink = false)"
-                                           @cancel="showInsertLink = false"></YuzuMilkdownPluginsLinkInsertDialog>
+      <YuzuMilkdownPluginsLinkInsertDialog :show="showInsertLink" @cancel="showInsertLink = false"
+                                           @insert="call(
+          insertLinkPlugin.key, undefined, () => showInsertLink = false)"></YuzuMilkdownPluginsLinkInsertDialog>
     </div>
 
-    <div class="button" aria-label="yzforum-code-block" @click="call(createCodeBlockCommand.key, 'javascript')"
-         v-tooltip="{
+    <div v-tooltip="{
       message: {
           'en-us': 'Code Block',
           'ja-jp': 'コードブロック',
           'zh-cn': '代码块',
         },
         position: 'bottom'
-    }">
+    }" aria-label="yzforum-code-block" class="button"
+         @click="call(createCodeBlockCommand.key, 'javascript')">
       <Icon class="icon" name="lucide:square-code"></Icon>
     </div>
 
-    <div class="button" aria-label="yzforum-code" @click="call(toggleInlineCodeCommand.key)" v-tooltip="{
+    <div v-tooltip="{
         message: {
           'en-us': 'Inline Code',
           'ja-jp': 'インラインコード',
@@ -183,12 +183,11 @@ async function handleFileChange(event: Event) {
           'zh-tw': '行內代碼'
         },
         position: 'bottom'
-      }">
+      }" aria-label="yzforum-code" class="button" @click="call(toggleInlineCodeCommand.key)">
       <Icon class="icon" name="lucide:code-xml"></Icon>
     </div>
 
-    <div class="button" aria-label="yzforum-upload-image" v-if="props.showUploadImage" @click="input?.click()"
-         v-tooltip="{
+    <div v-if="props.showUploadImage" v-tooltip="{
         message: {
           'en-us': 'Upload Image',
           'ja-jp': '画像アップロード',
@@ -196,19 +195,20 @@ async function handleFileChange(event: Event) {
           'zh-tw': '上傳圖片'
         },
         position: 'bottom'
-      }">
+      }" aria-label="yzforum-upload-image" class="button"
+         @click="input?.click()">
       <Icon class="icon" name="lucide:image-plus"></Icon>
-      <input ref="input" type="file" accept=".jpg, .jpeg, .png, .webp" @change="handleFileChange($event)">
+      <input ref="input" accept=".jpg, .jpeg, .png, .webp" type="file" @change="handleFileChange($event)">
     </div>
 
-    <div class="button emoji" aria-label="yzforum-emoji">
+    <div aria-label="yzforum-emoji" class="button emoji">
       <Icon class="icon" name="lucide:smile-plus"></Icon>
       <YuzuMilkdownPluginsEmojiContainer :editor-info="editorInfo"></YuzuMilkdownPluginsEmojiContainer>
     </div>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .menu {
   position: sticky;
   top: 0;

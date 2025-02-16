@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const count = 3
 </script>
 
@@ -10,7 +10,7 @@ const count = 3
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .skeleton {
   width: 100%;
   height: 100%;

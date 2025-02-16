@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {GameResourceStoreTemp} from "~/store/types/game/resource";
 import {languageOptions, platformOptions, typeOptions} from "~/components/game/utils/option";
 import {InfoCode} from "~/code&message/infoCode";
@@ -129,19 +129,19 @@ function checkGameResourcePublish(link: GameResourceStoreTemp) {
   <GameResourceHelp></GameResourceHelp>
 
   <div class="link">
-    <YuzuTextarea :placeholder="`${t('game.resource.placeholder.link')}`" v-model="resourceLink.link"></YuzuTextarea>
+    <YuzuTextarea v-model="resourceLink.link" :placeholder="`${t('game.resource.placeholder.link')}`"></YuzuTextarea>
     <div>
-      <YuzuInput :placeholder="t('game.resource.placeholder.size')" v-model="resourceLink.size"></YuzuInput>
-      <YuzuInput :placeholder="t('game.resource.placeholder.extract')" v-model="resourceLink.code"></YuzuInput>
-      <YuzuInput :placeholder="t('game.resource.placeholder.decompress')" v-model="resourceLink.password"></YuzuInput>
+      <YuzuInput v-model="resourceLink.size" :placeholder="t('game.resource.placeholder.size')"></YuzuInput>
+      <YuzuInput v-model="resourceLink.code" :placeholder="t('game.resource.placeholder.extract')"></YuzuInput>
+      <YuzuInput v-model="resourceLink.password" :placeholder="t('game.resource.placeholder.decompress')"></YuzuInput>
     </div>
   </div>
 
   <div class="type">
-    <YuzuSelect class="yuzu-select" :styles="{width: '200px'}"
-                :options="typeOptions.filter(e => e !== 'all')"
-                i18n="game.resource.type" @set="(value) => resourceLink.type = value"
-                position="top" default-value="game">
+    <YuzuSelect :options="typeOptions.filter(e => e !== 'all')" :styles="{width: '200px'}"
+                class="yuzu-select"
+                default-value="game" i18n="game.resource.type"
+                position="top" @set="(value) => resourceLink.type = value">
       <div class="select">
         <span>{{ t('game.resource.type.name') }}</span>
         <span v-if="resourceLink.type">
@@ -150,10 +150,10 @@ function checkGameResourcePublish(link: GameResourceStoreTemp) {
       </div>
     </YuzuSelect>
 
-    <YuzuSelect class="yuzu-select" :styles="{width: '200px'}"
-                :options="languageOptions.filter(e => e !== 'all')"
-                i18n="game.resource.language" @set="(value) => resourceLink.language = value"
-                position="top" :default-value="locale">
+    <YuzuSelect :default-value="locale" :options="languageOptions.filter(e => e !== 'all')"
+                :styles="{width: '200px'}"
+                class="yuzu-select" i18n="game.resource.language"
+                position="top" @set="(value) => resourceLink.language = value">
       <div class="select">
         <span>{{ t('game.resource.language.name') }}</span>
         <span v-if="resourceLink.language">
@@ -162,10 +162,10 @@ function checkGameResourcePublish(link: GameResourceStoreTemp) {
       </div>
     </YuzuSelect>
 
-    <YuzuSelect class="yuzu-select" :styles="{width: '200px'}"
-                :options="platformOptions.filter(e => e !== 'all')"
-                i18n="game.resource.platform" @set="(value) => resourceLink.platform = value"
-                position="top" default-value="windows">
+    <YuzuSelect :options="platformOptions.filter(e => e !== 'all')" :styles="{width: '200px'}"
+                class="yuzu-select"
+                default-value="windows" i18n="game.resource.platform"
+                position="top" @set="(value) => resourceLink.platform = value">
       <div class="select">
         <span>{{ t('game.resource.platform.name') }}</span>
         <span v-if="resourceLink.platform">
@@ -176,25 +176,25 @@ function checkGameResourcePublish(link: GameResourceStoreTemp) {
   </div>
 
   <div class="note">
-    <YuzuTextarea :placeholder="`${t('game.resource.placeholder.note')}`" v-model="resourceLink.note"></YuzuTextarea>
+    <YuzuTextarea v-model="resourceLink.note" :placeholder="`${t('game.resource.placeholder.note')}`"></YuzuTextarea>
   </div>
 
   <div class="button">
-    <YuzuButton @click="handlePublishResourceLink('POST')" type="primary"
-                :pending="isFetching" v-if="!gameResourceStore.rewriteResourceId">
+    <YuzuButton v-if="!gameResourceStore.rewriteResourceId" :pending="isFetching"
+                type="primary" @click="handlePublishResourceLink('POST')">
       {{ t('game.resource.create') }}
     </YuzuButton>
-    <YuzuButton @click="handleCancel" v-if="gameResourceStore.rewriteResourceId">
+    <YuzuButton v-if="gameResourceStore.rewriteResourceId" @click="handleCancel">
       {{ t('game.resource.cancelRewrite') }}
     </YuzuButton>
-    <YuzuButton class="rewrite" @click="handlePublishResourceLink('PUT')" type="danger"
-                :pending="isFetching" v-if="gameResourceStore.rewriteResourceId">
+    <YuzuButton v-if="gameResourceStore.rewriteResourceId" :pending="isFetching" class="rewrite"
+                type="danger" @click="handlePublishResourceLink('PUT')">
       {{ t('game.resource.confirmRewrite') }}
     </YuzuButton>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .link {
   display: flex;
   flex-direction: column;

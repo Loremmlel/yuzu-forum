@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 defineProps<{
   titles: { title: string }[]
 }>()
@@ -7,12 +7,12 @@ const {t} = useI18n()
 </script>
 
 <template>
-  <YuzuHeader :size="2" :show-help="true">
+  <YuzuHeader :show-help="true" :size="2">
     <template #header>{{ t('edit.game.title.name') }}</template>
     <template #help>{{ t('edit.game.title.help') }}</template>
   </YuzuHeader>
 
-  <div class="reference" v-if="titles.length">
+  <div v-if="titles.length" class="reference">
     <b>{{ t('edit.game.title.reference') }}</b>
     <span v-for="(title, index) in titles" :key="index" @click="useYuzuCopy(title.title)">
       {{ title.title }}
@@ -24,7 +24,7 @@ const {t} = useI18n()
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .reference {
   display: flex;
   flex-wrap: wrap;

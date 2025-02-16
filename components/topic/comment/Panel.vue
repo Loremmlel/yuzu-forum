@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {TopicComment} from "~/types/api/topicComment";
 import {InfoCode} from "~/code&message/infoCode";
 
@@ -61,16 +61,16 @@ async function handlePublishComment() {
           {{ t('topic.content.publish') }}
         </YuzuButton>
         <YuzuButton @click="tempCommentStore.showPanel = false">
-          {{t('topic.content.close')}}
+          {{ t('topic.content.close') }}
         </YuzuButton>
       </div>
     </div>
 
-    <YuzuTextarea name="comment" :placeholder="t('topic.content.hint')" row="5" v-model="commentValue"></YuzuTextarea>
+    <YuzuTextarea v-model="commentValue" :placeholder="t('topic.content.hint')" name="comment" row="5"></YuzuTextarea>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .panel {
   display: flex;
   flex-direction: column;

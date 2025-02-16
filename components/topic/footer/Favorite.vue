@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {InfoCode} from "~/code&message/infoCode";
 
 const props = defineProps<{
@@ -46,13 +46,13 @@ const handleClickFavorite = () => {
 </script>
 
 <template>
-  <span class="favorite" :class="isFavorite ? 'active' : ''" @click="handleClickFavorite">
+  <span :class="isFavorite ? 'active' : ''" class="favorite" @click="handleClickFavorite">
     <Icon class="icon" name="lucide:heart"></Icon>
     <span v-if="favoritesCount">{{ favoritesCount }}</span>
   </span>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .favorite {
   @include yz-center;
   margin-right: 0;

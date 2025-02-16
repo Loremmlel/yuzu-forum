@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {decodeIfEncoded} from "~/server/utils/decodeIfEncoded";
 
 withDefaults(defineProps<{ text: string; name?: string }>(), {
@@ -13,7 +13,7 @@ withDefaults(defineProps<{ text: string; name?: string }>(), {
   </span>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .yuzu-copy {
   cursor: pointer;
   color: var(--yzforum-blue-5);

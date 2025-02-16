@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {InfoCode} from "~/code&message/infoCode";
 
 const props = defineProps<{
@@ -63,13 +63,13 @@ function handleClickLike() {
 </script>
 
 <template>
-  <span class="like" :class="isLiked ? 'active' : ''" @click="handleClickLike">
+  <span :class="isLiked ? 'active' : ''" class="like" @click="handleClickLike">
     <Icon class="icon" name="lucide:thumbs-up"></Icon>
     <span v-if="likesCount">{{ likesCount }}</span>
   </span>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .like {
   @include yz-center;
   margin-right: 0;

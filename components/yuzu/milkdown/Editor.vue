@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 // Milkdown 核心
 import {defaultValueCtx, Editor, rootAttrsCtx, rootCtx} from '@milkdown/core'
 import {Milkdown, useEditor} from '@milkdown/vue'
@@ -158,12 +158,12 @@ const editorInfo = useEditor(root =>
 
 <template>
   <div ref="container" class="editor-container">
-    <YuzuMilkdownPluginsMenu ref="toolbar" v-if="showMenu" :editor-info="editorInfo"
+    <YuzuMilkdownPluginsMenu v-if="showMenu" ref="toolbar" :editor-info="editorInfo"
                              :show-upload-image="true"></YuzuMilkdownPluginsMenu>
 
     <Milkdown class="yzforum-content"></Milkdown>
 
-    <div class="loading" v-if="editorInfo.loading.value">
+    <div v-if="editorInfo.loading.value" class="loading">
       <span>
         <Icon class="icon" name="svg-spinners:12-dots-scale-rotate"></Icon>
       </span>

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {Message} from "~/types/api/chatMessage";
 import {InfoCode} from "~/code&message/infoCode";
 import {replaceAsideItem} from "~/components/message/aside/items";
@@ -127,13 +127,13 @@ async function handleLoadHistoryMessages() {
 
 <template>
   <div ref="historyContainer" class="history">
-    <div class="loader" v-if="showLoader" @click="handleLoadHistoryMessages">
+    <div v-if="showLoader" class="loader" @click="handleLoadHistoryMessages">
       {{ t('message.history') }}
     </div>
     <YuzuNull :condition="!showLoader && messages.length > 30" type="null"></YuzuNull>
     <template v-if="messages.length">
-      <MessagePmItem v-for="(message, index) in messages" :key="index" :message="message"
-                     :is-sent="toUid !== message.sender.uid" class="message-item"></MessagePmItem>
+      <MessagePmItem v-for="(message, index) in messages" :key="index" :is-sent="toUid !== message.sender.uid"
+                     :message="message" class="message-item"></MessagePmItem>
     </template>
     <YuzuNull :condition="!messages.length" type="null"></YuzuNull>
   </div>
@@ -146,7 +146,7 @@ async function handleLoadHistoryMessages() {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .send-container {
   width: 100%;
   display: flex;

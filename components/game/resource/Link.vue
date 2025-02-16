@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {GameResource, GameResourceDetails} from "~/types/api/gameResource";
 import {InfoCode} from "~/code&message/infoCode";
 import {platformIconMap, typeIconMap} from "~/components/game/utils/iconMap";
@@ -68,12 +68,12 @@ watch(
   <div class="link">
     <div class="base">
       <div class="info">
-        <span class="rewrite" v-if="link.grid === gameResourceStore.rewriteResourceId">
+        <span v-if="link.grid === gameResourceStore.rewriteResourceId" class="rewrite">
           <Icon class="icon" name="svg-spinners:12-dots-scale-rotate"></Icon>
           <span>{{ t('game.resource.edit') }}</span>
         </span>
         <span>
-          <Icon class="icon" :name="typeIconMap[link.type]"></Icon>
+          <Icon :name="typeIconMap[link.type]" class="icon"></Icon>
           <span>{{ t(`game.resource.type.${link.type}`) }}</span>
         </span>
         <span>
@@ -81,7 +81,7 @@ watch(
           <span>{{ link.size }}</span>
         </span>
         <span>
-          <Icon class="icon" :name="platformIconMap[link.platform]"></Icon>
+          <Icon :name="platformIconMap[link.platform]" class="icon"></Icon>
           <span>{{ t(`game.resource.platform.${link.platform}`) }}</span>
         </span>
         <span>{{ t(`game.resource.language.${link.language}`) }}</span>
@@ -91,35 +91,34 @@ watch(
         <span v-if="details" class="close" @click="details = undefined">
           <Icon class="icon" name="lucide:x"></Icon>
         </span>
-        <YuzuButton class="valid" v-if="userStore.uid === link.uid && link.status === 1"
-            @click="handleMarkValid(link.gid, link.grid)" :pending="isFetching">
+        <YuzuButton v-if="userStore.uid === link.uid && link.status === 1" :pending="isFetching"
+                    class="valid" @click="handleMarkValid(link.gid, link.grid)">
           {{ t('game.resource.valid') }}
         </YuzuButton>
         <YuzuButton v-if="!details && link.grid !== gameResourceStore.rewriteResourceId"
-            @click="handleGetDetail(link.grid)" :pending="isFetching">
+                    :pending="isFetching" @click="handleGetDetail(link.grid)">
           {{ t('game.resource.fetch') }}
         </YuzuButton>
-        <GameResourceLike v-if="userStore.uid !== link.uid" :gid="link.gid" :grid="link.grid"
-            :to-uid="link.uid" :likes="link.likes" v-tooltip="{
+        <GameResourceLike v-if="userStore.uid !== link.uid" v-tooltip="{
             message: {
               'en-us': 'Like',
               'ja-jp': 'いいね',
               'zh-cn': '点赞'
             },
             position: 'bottom'
-          }"></GameResourceLike>
-        <NuxtLink v-if="userStore.uid !== link.uid" to="/report" v-tooltip="{
+          }" :gid="link.gid"
+                          :grid="link.grid" :likes="link.likes" :to-uid="link.uid"></GameResourceLike>
+        <NuxtLink v-if="userStore.uid !== link.uid" v-tooltip="{
             message: {
               'en-us': 'Report violation',
               'ja-jp': '違反の報告',
               'zh-cn': '举报违规'
             },
             position: 'bottom'
-          }">
+          }" to="/report">
           <Icon class="icon" name="lucide:triangle-alert"></Icon>
         </NuxtLink>
-        <span class="status-dot" :class="`status-${link.status}`"
-            v-tooltip="{
+        <span v-tooltip="{
             message: {
               'en-us': link.status ? 'Link expired' : 'Link valid',
               'ja-jp': link.status
@@ -128,7 +127,8 @@ watch(
               'zh-cn': link.status ? '链接过期' : '链接有效'
             },
             position: 'bottom'
-          }"></span>
+          }" :class="`status-${link.status}`"
+              class="status-dot"></span>
       </div>
     </div>
 
@@ -138,7 +138,7 @@ watch(
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .base {
   display: flex;
   align-items: center;

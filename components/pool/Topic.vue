@@ -1,38 +1,38 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {PoolTopic} from "~/types/api/pool";
 
-const props = defineProps<{topic: PoolTopic}>()
+const props = defineProps<{ topic: PoolTopic }>()
 
 const actionsCount = computed(() => props.topic.comments + props.topic.replies)
 </script>
 
 <template>
-  <NuxtLink class="topic" :to="`/topic/${topic.tid}`" v-yuzu-gradient="{
+  <NuxtLink v-yuzu-gradient="{
     color: '--yzforum-trans-blue-0',
     radius: 70
-  }">
-    <div class="title">{{topic.title}}</div>
-    <PoolUser :user="topic.user" :time="topic.time"></PoolUser>
+  }" :to="`/topic/${topic.tid}`" class="topic">
+    <div class="title">{{ topic.title }}</div>
+    <PoolUser :time="topic.time" :user="topic.user"></PoolUser>
     <PoolIntroduction :section="topic.section" :tags="topic.tags"></PoolIntroduction>
 
     <div class="status">
       <span>
         <Icon class="icon" name="lucide:mouse-pointer-click"></Icon>
-        <span>{{topic.views}}</span>
+        <span>{{ topic.views }}</span>
       </span>
       <span>
         <Icon class="icon" name="lucide:thumbs-up"></Icon>
-        <span v-if="topic.likes">{{topic.likes}}</span>
+        <span v-if="topic.likes">{{ topic.likes }}</span>
       </span>
       <span>
         <Icon class="icon" name="lucide:reply"></Icon>
-        <span v-if="actionsCount">{{actionsCount}}</span>
+        <span v-if="actionsCount">{{ actionsCount }}</span>
       </span>
     </div>
   </NuxtLink>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .topic {
   display: flex;
   flex-direction: column;

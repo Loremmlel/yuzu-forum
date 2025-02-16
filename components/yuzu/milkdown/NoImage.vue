@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {tooltipFactory} from "@milkdown/plugin-tooltip";
 import {usePluginViewFactory} from "@prosemirror-adapter/vue";
 import {Milkdown, useEditor} from "@milkdown/vue";
@@ -153,7 +153,7 @@ watch(
 
     <Milkdown class="yzforum-content"></Milkdown>
 
-    <div class="loading" v-if="editorInfo.loading.value">
+    <div v-if="editorInfo.loading.value" class="loading">
       <Icon class="icon" name="svg-spinners:12-dots-scale-rotate"></Icon>
       <span>{{ t('edit.topic.loading') }}</span>
     </div>
@@ -164,7 +164,7 @@ watch(
 @use '~/assets/css/editor/yuzu-content.scss';
 </style>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .yzforum-content {
   position: relative;
   width: 100%;

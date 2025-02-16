@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const {locale} = useI18n()
 const introductionLanguage = ref(locale.value as Language)
 </script>
@@ -17,7 +17,7 @@ const introductionLanguage = ref(locale.value as Language)
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .container {
   width: 100%;
   height: 100%;

@@ -100,8 +100,8 @@ if (data) {
   <div class="root">
     <Topic v-if="data" :tid="tid" :topic="data"></Topic>
     <YuzuNull :condition="!data && !isBanned" type="404"></YuzuNull>
-    <YuzuBlank v-if="isBanned">{{t('topic.banned')}}</YuzuBlank>
-    
+    <YuzuBlank v-if="isBanned">{{ t('topic.banned') }}</YuzuBlank>
+
     <TopicBar></TopicBar>
   </div>
 </template>

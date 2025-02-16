@@ -69,7 +69,7 @@ async function handleLogin() {
     <div class="login">
       <!--表单默认提交事件会中断请求发送。困扰了我半小时，还得是d指导👍-->
       <form class="form" @submit.prevent>
-        <NuxtImg preload src="/placeholder.webp" placeholder="/placeholder.webp"></NuxtImg>
+        <NuxtImg placeholder="/placeholder.webp" preload src="/placeholder.webp"></NuxtImg>
         <div>
           <label for="username">{{ t('login.email') }}</label>
           <YuzuInput id="username" v-model="loginForm.name" autocomplete="username" type="text"></YuzuInput>
@@ -79,7 +79,7 @@ async function handleLogin() {
           <YuzuInput id="password" v-model="loginForm.password" autocomplete="current-password"
                      type="password"></YuzuInput>
         </div>
-        <YuzuButton @click="handleLogin" class="button">{{ t('login.title') }}</YuzuButton>
+        <YuzuButton class="button" @click="handleLogin">{{ t('login.title') }}</YuzuButton>
       </form>
 
       <YuzuDivider margin="16px 0">

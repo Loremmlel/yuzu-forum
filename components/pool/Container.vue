@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {PoolTopic} from "~/types/api/pool";
 import {useTempPoolPageStore} from "~/store/temp/topic/pool";
 
@@ -89,10 +89,10 @@ onUnmounted(() => {
     <PoolTool></PoolTool>
     <PoolLayout :topics="topics"></PoolLayout>
     <div class="load">
-      <span class="loader" v-if="!loadingComplete" @click="handleLoadTopics">
+      <span v-if="!loadingComplete" class="loader" @click="handleLoadTopics">
         {{ t('pool.load') }}
       </span>
-      <span class="complete" v-else>
+      <span v-else class="complete">
         {{ t('pool.complete') }}
       </span>
     </div>
@@ -100,7 +100,7 @@ onUnmounted(() => {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .pool {
   display: flex;
   flex-direction: column;

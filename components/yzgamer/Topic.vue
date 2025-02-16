@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {TopicType} from "~/types/api/user";
 
 const {locale} = useI18n()
@@ -19,8 +19,8 @@ const {data, status} = await useFetch(`/api/user/${props.uid}/topics`, {
 </script>
 
 <template>
-  <div class="topic" v-if="data && data.topics.length">
-    <div class="item" v-for="(topic, index) in data.topics" :key="index">
+  <div v-if="data && data.topics.length" class="topic">
+    <div v-for="(topic, index) in data.topics" :key="index" class="item">
       <NuxtLink :to="`/topic/${topic.tid}`">
         <div class="title">
           {{ topic.title }}
@@ -31,14 +31,14 @@ const {data, status} = await useFetch(`/api/user/${props.uid}/topics`, {
       </NuxtLink>
     </div>
 
-    <YuzuPagination class="pagination" v-if="data.totalCount > 50"
-                    :page="pageData.page" :limit="pageData.limit"
-                    :sum="data.totalCount" :status="status"
+    <YuzuPagination v-if="data.totalCount > 50" :limit="pageData.limit"
+                    :page="pageData.page" :status="status"
+                    :sum="data.totalCount" class="pagination"
                     @set-page="(newPage) => (pageData.page = newPage)"></YuzuPagination>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .item {
   width: 100%;
   margin-top: 20px;

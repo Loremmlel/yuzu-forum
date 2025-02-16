@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import DOMPurify from "isomorphic-dompurify"
 
 defineProps<{
@@ -10,7 +10,7 @@ defineProps<{
   <div class="yzforum-content" v-html="DOMPurify.sanitize(content, {ADD_ATTR: ['line']})"></div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @use '~/assets/css/editor/index.scss';
 @use '~/assets/css/editor/yuzu-content.scss';
 

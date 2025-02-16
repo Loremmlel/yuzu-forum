@@ -1,16 +1,16 @@
-<script setup lang="ts">
-const model = defineModel<boolean>({ required: true })
+<script lang="ts" setup>
+const model = defineModel<boolean>({required: true})
 </script>
 
 <template>
   <label class="yuzu-checkbox">
-    <input type="checkbox" v-model="model">
+    <input v-model="model" type="checkbox">
     <span class="checkmark"></span>
     <slot></slot>
   </label>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 /**
  * 自定义复选框样式，包括布局和交互效果
  */

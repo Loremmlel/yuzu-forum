@@ -1,5 +1,4 @@
-<script setup lang="ts">
-import {dataURItoBlob} from "~/utils/dataURItoBlob";
+<script lang="ts" setup>
 import {InfoCode} from "~/code&message/infoCode";
 import {resizeImage} from "~/utils/imageUtils";
 
@@ -97,18 +96,18 @@ function handleClickUpload() {
 </script>
 
 <template>
-  <div tabindex="0" class="yuzu-upload" :style="{width: props.width, 'aspect-ratio': props.aspect}"
-       @drop="handleDrop($event)" @dragover="handleDragOver($event)" @click="handleClickUpload">
-    <span class="plus" v-if="!selectedFileUrl && !initialImage"></span>
-    <span class="hint" v-if="props.hint">{{ props.hint }}</span>
-    <NuxtImg :style="{'max-width': `calc(${props.width} - 10px)`}" class="preview"
-             v-if="selectedFileUrl || initialImage" :src="selectedFileUrl || initialImage"
-             alt="Uploaded Image"></NuxtImg>
-    <input ref="input" hidden type="file" accept="*.jpg *.jpeg *.png *.webp" @change="handleFileChange($event)"></input>
+  <div :style="{width: props.width, 'aspect-ratio': props.aspect}" class="yuzu-upload" tabindex="0"
+       @click="handleClickUpload" @dragover="handleDragOver($event)" @drop="handleDrop($event)">
+    <span v-if="!selectedFileUrl && !initialImage" class="plus"></span>
+    <span v-if="props.hint" class="hint">{{ props.hint }}</span>
+    <NuxtImg v-if="selectedFileUrl || initialImage" :src="selectedFileUrl || initialImage"
+             :style="{'max-width': `calc(${props.width} - 10px)`}" alt="Uploaded Image"
+             class="preview"></NuxtImg>
+    <input ref="input" accept="*.jpg *.jpeg *.png *.webp" hidden type="file" @change="handleFileChange($event)"></input>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .yuzu-upload {
   border: 1px solid var(--yzforum-blue-5);
   border-radius: 10px;

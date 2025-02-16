@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 
 
 import type {TopicReply} from "~/types/api/topicReply";
@@ -26,7 +26,7 @@ watch(
 </script>
 
 <template>
-  <div class="reply" :class="hourDiff(reply.upvoteTime, 10) ? 'active-upvote' : ''" :id="`k${reply.floor}`">
+  <div :id="`k${reply.floor}`" :class="hourDiff(reply.upvoteTime, 10) ? 'active-upvote' : ''" class="reply">
     <div class="floor">
       <NuxtLink :to="`/topic/${reply.tid}#k${reply.floor}`">
         {{ reply.floor }}
@@ -56,17 +56,17 @@ watch(
       </div>
 
       <div class="bottom">
-        <TopicTags :tags="reply.tags" :show-icon="true"></TopicTags>
+        <TopicTags :show-icon="true" :tags="reply.tags"></TopicTags>
         <p class="time">
           <span>{{ formatDate(reply.time, locale, {showYear: true, isPrecise: true}) }}</span>
-          <s class="rewrite" v-if="reply.edited" v-tooltip="{
+          <s v-if="reply.edited" v-tooltip="{
             message: {
                 'en-us': 'Rewrite Time',
                 'ja-jp': 'Rewrite 時間',
                 'zh-cn': 'Rewrite 时间'
               },
               position: 'bottom'
-          }">
+          }" class="rewrite">
             ×
             {{ formatDate(reply.edited, locale, {showYear: true, isPrecise: true}) }}
           </s>
@@ -74,11 +74,11 @@ watch(
       </div>
     </div>
     <TopicReplyFooter :reply="reply" :title="title"></TopicReplyFooter>
-    <TopicComment :rid="reply.rid" :comments-data="reply.comment"></TopicComment>
+    <TopicComment :comments-data="reply.comment" :rid="reply.rid"></TopicComment>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .reply {
   width: 100%;
   flex-shrink: 0;

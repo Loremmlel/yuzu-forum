@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {MilkdownProvider} from "@milkdown/vue";
 import {ProsemirrorAdapterProvider} from "@prosemirror-adapter/vue";
 
@@ -32,13 +32,13 @@ const saveMarkdown = debounce((editorMarkdown: string) => {
   <div>
     <MilkdownProvider>
       <ProsemirrorAdapterProvider>
-        <YuzuMilkdownNoImage @save-markdown="saveMarkdown" :value-markdown="valueMarkdown"
-                             :language="lang" :pending="pending"></YuzuMilkdownNoImage>
+        <YuzuMilkdownNoImage :language="lang" :pending="pending"
+                             :value-markdown="valueMarkdown" @save-markdown="saveMarkdown"></YuzuMilkdownNoImage>
       </ProsemirrorAdapterProvider>
     </MilkdownProvider>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 
 </style>

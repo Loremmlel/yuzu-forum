@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {GamePRDetails} from "~/types/api/gamePR";
 import type {GameDetail} from "~/types/api/game";
 import type {GameStoreTemp} from "~/store/types/edit/game";
@@ -192,28 +192,28 @@ function diffGame(oldGame: Partial<GameDetail>, newGame: Partial<GameStoreTemp>)
       </div>
     </div>
 
-    <div class="button" v-if="!details.status && showButton">
-      <YuzuButton @click="showReasonInput = !showReasonInput" :pending="isFetching">
+    <div v-if="!details.status && showButton" class="button">
+      <YuzuButton :pending="isFetching" @click="showReasonInput = !showReasonInput">
         {{ t('game.pr.decline') }}
       </YuzuButton>
-      <YuzuButton @click="handleMergeRequest" :pending="isFetching">
+      <YuzuButton :pending="isFetching" @click="handleMergeRequest">
         {{ t('game.pr.merge') }}
       </YuzuButton>
     </div>
-    <div class="hint" v-if="!details.status && !showButton">
+    <div v-if="!details.status && !showButton" class="hint">
       {{ t('game.pr.hint') }}
     </div>
 
-    <div class="decline-input" v-if="showReasonInput">
-      <YuzuInput :placeholder="`${t('game.pr.note')}`" v-model="declineInput"></YuzuInput>
-      <YuzuButton type="danger" @click="handleDeclineRequest" :pending="isFetching">
+    <div v-if="showReasonInput" class="decline-input">
+      <YuzuInput v-model="declineInput" :placeholder="`${t('game.pr.note')}`"></YuzuInput>
+      <YuzuButton :pending="isFetching" type="danger" @click="handleDeclineRequest">
         {{ t('game.pr.confirm') }}
       </YuzuButton>
     </div>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .diff {
   :deep(h2) {
     margin-bottom: 10px;

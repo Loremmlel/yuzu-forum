@@ -1,11 +1,11 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {Message} from "~/types/api/message";
 import {InfoCode} from "~/code&message/infoCode";
 import {getMessageI18n} from "../utils/getMessageI18n";
 
 const props = defineProps<{ message: Message, refresh: () => Promise<void> }>()
 
-const { locale,t } = useI18n()
+const {locale, t} = useI18n()
 
 const handleDeleteMessage = async (mid: number) => {
   const res = await useComponentMessageStore().alert({
@@ -19,7 +19,7 @@ const handleDeleteMessage = async (mid: number) => {
 
   const result = await $fetch(`/api/message/delete`, {
     method: 'DELETE',
-    query: { mid },
+    query: {mid},
     watch: false,
     ...yzforumResponseHandler
   })
@@ -32,11 +32,11 @@ const handleDeleteMessage = async (mid: number) => {
 </script>
 
 <template>
-  <div class="message" :class="message.status === 'read' ? 'message-read' : ''">
+  <div :class="message.status === 'read' ? 'message-read' : ''" class="message">
     <div class="title">
       <div class="status">
-        <Icon class="unread" v-if="message.status === 'unread'" name="lucide:info"></Icon>
-        <Icon class="read" v-else name="lucide:check-check"></Icon>
+        <Icon v-if="message.status === 'unread'" class="unread" name="lucide:info"></Icon>
+        <Icon v-else class="read" name="lucide:check-check"></Icon>
       </div>
       <div>
         <NuxtLink :to="`/yzgamer/${message.sender.uid}/info`">
@@ -49,13 +49,13 @@ const handleDeleteMessage = async (mid: number) => {
     <div class="content">
       <YuzuAvatar :user="message.sender" size="32px"></YuzuAvatar>
 
-      <NuxtLink class="link" :to="message.tid ? `/topic/${message.tid}` : `/game/${message.gid}`">
+      <NuxtLink :to="message.tid ? `/topic/${message.tid}` : `/game/${message.gid}`" class="link">
         <pre class="detail">{{ markdownToText(message.content) }}</pre>
       </NuxtLink>
     </div>
     <div class="bottom">
       <span class="time">
-        {{formatDate(message.time, locale, {showYear: true, isPrecise: true}) }}
+        {{ formatDate(message.time, locale, {showYear: true, isPrecise: true}) }}
       </span>
       <span @click="handleDeleteMessage(message.mid)">
         <Icon class="icon" name="lucide:trash-2"></Icon>
@@ -64,7 +64,7 @@ const handleDeleteMessage = async (mid: number) => {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .message {
   padding: 10px;
   border-radius: 5px;

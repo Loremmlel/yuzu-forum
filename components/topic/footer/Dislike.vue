@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {InfoCode} from "~/code&message/infoCode";
 
 const props = defineProps<{
@@ -63,13 +63,13 @@ function handleClickDislike() {
 </script>
 
 <template>
-  <span class="dislike" :class="isDisliked ? 'active' : ''" @click="handleClickDislike">
+  <span :class="isDisliked ? 'active' : ''" class="dislike" @click="handleClickDislike">
     <Icon class="icon" name="lucide:thumbs-down"></Icon>
     <span v-if="dislikesCount">{{ dislikesCount }}</span>
   </span>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .dislike {
   @include yz-center;
   margin-right: 0;

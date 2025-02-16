@@ -1,9 +1,9 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {usePluginViewContext} from "@prosemirror-adapter/vue";
 
 const {t} = useI18n()
 
-const { view } = usePluginViewContext()
+const {view} = usePluginViewContext()
 
 const size = computed(() => {
   return view.value.state.doc.textContent.length
@@ -16,7 +16,7 @@ const size = computed(() => {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .footer {
   padding: 10px 20px;
   display: flex;

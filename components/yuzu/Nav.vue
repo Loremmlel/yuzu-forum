@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 interface Items {
   value: string
   i18n?: string
@@ -23,14 +23,14 @@ const emits = defineEmits<{ set: [value: string] }>()
     <span v-for="(item, index) in props.items" :key="index" :class="defaultValue === item.value ? 'active' : ''"
           @click="emits('set', item.value)">
       <span v-if="item.icon" :style="{'font-size': props.iconSize}">
-        <Icon class="icon" :name="item.icon"></Icon>
+        <Icon :name="item.icon" class="icon"></Icon>
       </span>
       <span v-if="item.i18n">{{ t(item.i18n) }}</span>
     </span>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .yuzu-nav {
   display: flex;
   align-items: center;

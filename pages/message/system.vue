@@ -31,7 +31,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="container" v-if="data">
+  <div v-if="data" class="container">
     <header>
       <NuxtLink to="/message">
         <Icon class="icon" name="lucide:chevron-left"></Icon>

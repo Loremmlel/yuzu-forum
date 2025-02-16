@@ -5,7 +5,7 @@ definePageMeta({
   middleware: 'auth'
 })
 
-defineProps<{user: UserInfo}>()
+defineProps<{ user: UserInfo }>()
 </script>
 
 <template>

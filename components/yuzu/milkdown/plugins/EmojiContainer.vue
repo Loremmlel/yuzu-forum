@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {UseEditorReturn} from "@milkdown/vue";
 import {editorViewCtx} from "@milkdown/core";
 import {emojis} from "~/components/yuzu/milkdown/plugins/isoEmojis";
@@ -40,7 +40,7 @@ function selectEmoji(emoji: string) {
 <template>
   <div class="emoji-container">
     <div class="emoji-grid">
-      <span v-for="(emoji, index) in paginatedEmojis" :key="index" @click="selectEmoji(emoji)" class="emoji">
+      <span v-for="(emoji, index) in paginatedEmojis" :key="index" class="emoji" @click="selectEmoji(emoji)">
         {{ emoji }}
       </span>
     </div>
@@ -57,7 +57,7 @@ function selectEmoji(emoji: string) {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .emoji-container {
   display: flex;
   flex-direction: column;

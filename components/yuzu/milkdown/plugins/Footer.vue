@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {useTempReplyStore} from "~/store/temp/topic/reply";
 import {usePersistYzforumReplyStore} from "~/store/modules/topic/reply";
 import {usePluginViewContext} from "@prosemirror-adapter/vue";
@@ -52,11 +52,11 @@ onMounted(() => {
 <template>
   <div class="footer">
     <YuzuMilkdownSettings></YuzuMilkdownSettings>
-    <span class="size">{{size + ` ${t('edit.topic.word')} `}}</span>
+    <span class="size">{{ size + ` ${t('edit.topic.word')} ` }}</span>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .footer {
   padding: 10px 17px;
   display: flex;

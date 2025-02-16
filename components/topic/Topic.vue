@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {TopicDetail} from "~/types/api/topic";
 import type {TopicReply} from "~/types/api/topicReply";
 import {InfoCode} from "~/code&message/infoCode";
@@ -89,7 +89,7 @@ watch(
   <div class="content">
     <TopicMaster :topic="topic"></TopicMaster>
 
-    <TopicTool v-if="replyData" :reply-data="replyData" :pending="status === 'pending'"
+    <TopicTool v-if="replyData" :pending="status === 'pending'" :reply-data="replyData"
                :sort-order="pageData.sortOrder" @set-sort-order="(value) => pageData.sortOrder = value"></TopicTool>
 
     <template v-if="replyData">
@@ -99,7 +99,7 @@ watch(
 
     <YuzuDivider v-if="replyData && replyData.length >= pageData.limit" margin="30px" padding="0 17px">
       <slot></slot>
-      <span class="loader" v-if="status !== 'success' && !loadComplete" @click="pageData.page++">
+      <span v-if="status !== 'success' && !loadComplete" class="loader" @click="pageData.page++">
         {{ t('search.load') }}
       </span>
       <span v-if="status === 'pending'">
@@ -112,7 +112,7 @@ watch(
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .pagination {
   padding: 10px;
   margin-bottom: 20px;

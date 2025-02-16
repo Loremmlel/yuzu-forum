@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {EditCreateTopicRequestData, EditUpdateTopicRequestData} from "~/types/api/topic";
 import {markdownToText} from "~/utils/markdownToText";
 import {InfoCode} from "~/code&message/infoCode";
@@ -195,12 +195,12 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKeydown))
     <div class="section">
       <Icon class="icon" name="lucide:layout-grid"></Icon>
       <p v-for="(section, index) in sections" :key="index">
-        <Icon class="icon" :name="iconMap[section[0]]"></Icon>
+        <Icon :name="iconMap[section[0]]" class="icon"></Icon>
         <span>{{ t(`edit.topic.section.${section}`) }}</span>
       </p>
     </div>
 
-    <YuzuButton v-if="!isTopicRewriting" class="confirm-button" @click="handlePublish" :disabled="isPublishing">
+    <YuzuButton v-if="!isTopicRewriting" :disabled="isPublishing" class="confirm-button" @click="handlePublish">
       {{ t('edit.topic.publish') }}
     </YuzuButton>
 
@@ -210,7 +210,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKeydown))
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .button-container {
   width: 100%;
   display: flex;

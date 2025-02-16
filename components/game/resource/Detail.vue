@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {GameResourceDetails} from "~/types/api/gameResource";
 import {InfoCode} from "~/code&message/infoCode";
 
@@ -84,11 +84,11 @@ function handleRewriteResource(details: GameResourceDetails) {
 </script>
 
 <template>
-  <div class="more" v-if="details">
+  <div v-if="details" class="more">
     <div class="title">
-      <span class="link" v-for="(link, index) in details.link" :key="index">
+      <span v-for="(link, index) in details.link" :key="index" class="link">
         <YuzuCopy :text="link"></YuzuCopy>
-        <a :href="link" target="_blank" rel="noopener noreferrer">
+        <a :href="link" rel="noopener noreferrer" target="_blank">
           <Icon class="icon" name="lucide:external-link"></Icon>
         </a>
       </span>
@@ -114,7 +114,7 @@ function handleRewriteResource(details: GameResourceDetails) {
         <span class="time">{{ formatTimeDiff(details.time, locale) }}</span>
       </div>
 
-      <div class="user-button" v-if="details.user.uid === userStore.uid">
+      <div v-if="details.user.uid === userStore.uid" class="user-button">
         <span class="rewrite" @click="handleRewriteResource(details)">
           <Icon class="icon" name="lucide:pencil"></Icon>
         </span>
@@ -123,8 +123,8 @@ function handleRewriteResource(details: GameResourceDetails) {
         </span>
       </div>
 
-      <div class="other-button" v-if="userStore.uid !== details.user.uid && !details.status">
-        <YuzuButton type="danger" @click="handleReportExpire(details)" :pending="isFetching">
+      <div v-if="userStore.uid !== details.user.uid && !details.status" class="other-button">
+        <YuzuButton :pending="isFetching" type="danger" @click="handleReportExpire(details)">
           {{ t('game.resource.expire') }}
         </YuzuButton>
       </div>
@@ -132,7 +132,7 @@ function handleRewriteResource(details: GameResourceDetails) {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .more {
   margin-bottom: 10px;
 }

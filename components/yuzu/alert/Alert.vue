@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const {locale, t} = useI18n()
 const message = useComponentMessageStore()
 
@@ -33,7 +33,7 @@ function handleConfirm() {
   </YuzuDialog>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .container {
   width: 300px;
   margin: auto;

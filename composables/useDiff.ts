@@ -1,9 +1,9 @@
 /**
  * 生成两个字符串的差异对比结果，使用HTML标签标记差异部分
- * 
+ *
  * 实现原理：基于最长公共子序列（LCS）算法，通过动态规划找出两个字符串的差异，
  * 使用\<b\>标签标记str1特有的字符，\<strong\>标记str2特有的字符
- * 
+ *
  * @param str1 原始字符串
  * @param str2 对比字符串
  * @returns 返回带有HTML标签的差异字符串，其中：
@@ -27,7 +27,7 @@ export function useDiff(str1: string, str2: string): string {
             }
         }
     }
-    
+
     // 反向遍历DP表格重构LCS字符串
     // 从右下角开始，根据字符匹配情况和DP表值决定移动方向
     let lcs = ''
@@ -44,7 +44,7 @@ export function useDiff(str1: string, str2: string): string {
             j--
         }
     }
-    
+
     // 生成差异标记字符串
     // 同时遍历原始字符串和LCS，标记差异部分：
     // - 在str1中但不在LCS中的字符标记为删除（<b>）
@@ -52,7 +52,7 @@ export function useDiff(str1: string, str2: string): string {
     let diff = ''
     let idx1 = 0
     let idx2 = 0
-    for(let k = 0; k < lcs.length; k++) {
+    for (let k = 0; k < lcs.length; k++) {
         // 处理str1中LCS字符前的非公共字符
         while (str1[idx1] !== lcs[k]) {
             diff += `<b>${str1[idx1++]}</b>`
@@ -66,7 +66,7 @@ export function useDiff(str1: string, str2: string): string {
         idx1++
         idx2++
     }
-    
+
     // 处理字符串末尾的剩余差异
     while (idx1 < str1.length) {
         diff += `<b>${str1[idx1++]}</b>`
@@ -74,6 +74,6 @@ export function useDiff(str1: string, str2: string): string {
     while (idx2 < str2.length) {
         diff += `<strong>${str2[idx2++]}</strong>`
     }
-    
+
     return diff.trim()
 }

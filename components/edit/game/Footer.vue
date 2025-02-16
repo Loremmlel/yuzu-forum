@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {InfoCode} from "~/code&message/infoCode";
 
 const {t, locale} = useI18n()
@@ -83,7 +83,7 @@ function checkGamePublish(name: YuzuLanguage, banner: Blob | null, introduction:
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .confirm {
   width: 100%;
   margin-top: 50px;

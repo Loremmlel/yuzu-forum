@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {type Category, topicCategory} from "~/components/edit/utils/category";
 
 const {t} = useI18n()
@@ -41,14 +41,14 @@ function handleClickCategory(category: Category) {
 <template>
   <div class="categories">
     <Icon class="icon" name="lucide:layers-3"></Icon>
-    <span class="button" v-for="category in topicCategory" :key="category.index" @click="handleClickCategory(category)"
-          :class="{active: selectedCategories.includes(category.name)}">
+    <span v-for="category in topicCategory" :key="category.index" :class="{active: selectedCategories.includes(category.name)}" class="button"
+          @click="handleClickCategory(category)">
       {{ t(`edit.topic.${category.name}`) }}
     </span>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .categories {
   height: 100%;
   display: flex;

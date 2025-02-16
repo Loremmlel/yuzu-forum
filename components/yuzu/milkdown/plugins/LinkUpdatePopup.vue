@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {usePluginViewContext} from "@prosemirror-adapter/vue";
 import {useInstance} from "@milkdown/vue";
 import type {VNodeRef} from "vue";
@@ -70,15 +70,15 @@ function handleUpdateLink() {
 </script>
 
 <template>
-  <div v-if="view.editable" class="wrapper" ref="linkUpdatePopupRef">
-    <input class="input" type="url" @keydown.enter="handleUpdateLink" v-model="linkHref">
+  <div v-if="view.editable" ref="linkUpdatePopupRef" class="wrapper">
+    <input v-model="linkHref" class="input" type="url" @keydown.enter="handleUpdateLink">
     <button class="confirm-button" @click="handleUpdateLink">
-      {{t('edit.topic.link.confirmUpdate')}}
+      {{ t('edit.topic.link.confirmUpdate') }}
     </button>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .wrapper {
   width: 350px;
   display: inline-flex;

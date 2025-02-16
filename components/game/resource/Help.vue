@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 
 </script>
 
@@ -31,7 +31,7 @@
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .help {
   border-left: 5px solid var(--yzforum-blue-5);
   padding-left: 20px;

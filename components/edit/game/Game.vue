@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {usePersistEditGameStore} from "~/store/modules/edit/game";
 
 const {locale, t} = useI18n()
@@ -24,13 +24,13 @@ const editGameStore = usePersistEditGameStore()
 <template>
   <div class="container">
     <EditGameTitle :titles="data.titles">
-      <YuzuInput :placeholder="t('edit.game.introduction.en-us')" v-model="editGameStore.name['en-us']"></YuzuInput>
-      <YuzuInput :placeholder="t('edit.game.introduction.ja-jp')" v-model="editGameStore.name['ja-jp']"></YuzuInput>
-      <YuzuInput :placeholder="t('edit.game.introduction.zh-cn')" v-model="editGameStore.name['zh-cn']"></YuzuInput>
+      <YuzuInput v-model="editGameStore.name['en-us']" :placeholder="t('edit.game.introduction.en-us')"></YuzuInput>
+      <YuzuInput v-model="editGameStore.name['ja-jp']" :placeholder="t('edit.game.introduction.ja-jp')"></YuzuInput>
+      <YuzuInput v-model="editGameStore.name['zh-cn']" :placeholder="t('edit.game.introduction.zh-cn')"></YuzuInput>
     </EditGameTitle>
 
-    <EditGameIntroduction :introduction-language="introductionLanguage" type="publish"
-                          :is-success="isSuccess"
+    <EditGameIntroduction :introduction-language="introductionLanguage" :is-success="isSuccess"
+                          type="publish"
                           @set="(value) => introductionLanguage = value as Language"></EditGameIntroduction>
 
     <EditGameBanner></EditGameBanner>
@@ -39,7 +39,7 @@ const editGameStore = usePersistEditGameStore()
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .container {
   width: 100%;
   height: 100%;

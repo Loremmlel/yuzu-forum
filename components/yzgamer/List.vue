@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 
 </script>
 
@@ -8,7 +8,7 @@
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .list {
   width: 100%;
   padding: 10px 20px;

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const tempGameStore = useTempGameStore()
 
 const pageData = computed(() => tempGameStore.out())
@@ -19,15 +19,15 @@ const {data, status} = await useFetch('/api/game', {
       {{ t('game.declaration') }}
     </div>
 
-    <YuzuPagination class="pagination" v-if="data?.totalCount" :page="pageData.page"
-                    :limit="pageData.limit" :sum="data.totalCount" :status="status"
+    <YuzuPagination v-if="data?.totalCount" :limit="pageData.limit" :page="pageData.page"
+                    :status="status" :sum="data.totalCount" class="pagination"
                     @set-page="(newPage) => tempGameStore.page= newPage"></YuzuPagination>
 
     <YuzuFooter></YuzuFooter>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .declaration {
   user-select: none;
   margin-top: 16px;

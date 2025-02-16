@@ -50,16 +50,16 @@ useHead({
 <template>
   <div class="root">
     <div class="container">
-      <YzgamerHeader v-if="user" :uid="user.uid" :name="user.name" :avatar="user.avatar"
-                     :point="user.point"></YzgamerHeader>
+      <YzgamerHeader v-if="user" :avatar="user.avatar" :name="user.name" :point="user.point"
+                     :uid="user.uid"></YzgamerHeader>
       <div class="content">
-        <YzgamerNavBar :uid="parseInt(uid)" :nav="navBarRoute"></YzgamerNavBar>
+        <YzgamerNavBar :nav="navBarRoute" :uid="parseInt(uid)"></YzgamerNavBar>
         <NuxtPage :user="user"></NuxtPage>
       </div>
     </div>
     <YuzuNull :condition="!user && !isBanned" type="404"></YuzuNull>
     <YuzuBlank v-if="isBanned">
-      {{t('user.banned')}}
+      {{ t('user.banned') }}
     </YuzuBlank>
     <YuzuFooter></YuzuFooter>
   </div>

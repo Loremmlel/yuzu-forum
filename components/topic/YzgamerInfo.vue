@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 defineProps<{
   user: {
     uid: number
@@ -11,10 +11,10 @@ defineProps<{
 
 <template>
   <div class="yzgamer">
-    <div class="avatar" v-if="user.avatar">
+    <div v-if="user.avatar" class="avatar">
       <NuxtLink :aria-label="`Yuzu Game Forum, 柚子游戏论坛, 用户 ${user.name}`"
                 :to="`/yzgamer/${user.uid}/info`">
-        <img :src="user.avatar" :alt="user.name">
+        <img :alt="user.name" :src="user.avatar">
       </NuxtLink>
     </div>
 
@@ -29,7 +29,7 @@ defineProps<{
 
         <p class="point">
           <span><Icon class="icon" name="lucide:lollipop"></Icon></span>
-          <span>{{user.point}}</span>
+          <span>{{ user.point }}</span>
         </p>
       </div>
 
@@ -38,7 +38,7 @@ defineProps<{
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .yzgamer {
   display: flex;
   flex-direction: column;

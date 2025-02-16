@@ -100,15 +100,15 @@ async function handleRegister() {
   <div class="root">
     <div class="register">
       <form class="form" @submit.prevent>
-        <NuxtImg preload src="/placeholder.webp" placeholder="/placeholder.webp"></NuxtImg>
-        <div class="input-container" v-for="item in registerFormItem" :key="item.index">
+        <NuxtImg placeholder="/placeholder.webp" preload src="/placeholder.webp"></NuxtImg>
+        <div v-for="item in registerFormItem" :key="item.index" class="input-container">
           <label :for="item.value">{{ t(`register.${item.placeholder}`) }}</label>
           <YuzuInput :id="item.value" v-model="registerForm[item.value]"
-                     :autocomplete="item.autocomplete" :type="item.type" :class="item.class"></YuzuInput>
+                     :autocomplete="item.autocomplete" :class="item.class" :type="item.type"></YuzuInput>
         </div>
-        <YuzuVerificationCode @click="handleSendCode" class="code" :name="registerForm.name"
-                              :email="registerForm.email" to="register"
-                              style="bottom: 87px"></YuzuVerificationCode>
+        <YuzuVerificationCode :email="registerForm.email" :name="registerForm.name" class="code"
+                              style="bottom: 87px" to="register"
+                              @click="handleSendCode"></YuzuVerificationCode>
         <YuzuCheckbox v-model="isAgree">
           <span>{{ t('register.agree') }}</span>
           <NuxtLink to="/agreement">{{ t('register.agreement') }}</NuxtLink>

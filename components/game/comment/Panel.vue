@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {InfoCode} from "~/code&message/infoCode";
 
 const {t} = useI18n()
@@ -44,18 +44,18 @@ async function handlePublishComment() {
 
 <template>
   <div class="panel">
-    <YuzuTextarea placeholder="快来写下评论吧~" v-model="content" name="comment" rows="5"></YuzuTextarea>
+    <YuzuTextarea v-model="content" name="comment" placeholder="快来写下评论吧~" rows="5"></YuzuTextarea>
 
     <div class="footer">
       <slot></slot>
-      <YuzuButton @click="handlePublishComment" :pending="isPublishing">
+      <YuzuButton :pending="isPublishing" @click="handlePublishComment">
         {{ t('game.comment.publish') }}
       </YuzuButton>
     </div>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .panel {
   margin-bottom: 20px;
 

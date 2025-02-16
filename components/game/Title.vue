@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {GameDetail} from "~/types/api/game";
 import {InfoCode} from "~/code&message/infoCode";
 
@@ -74,12 +74,12 @@ onMounted(async () => {
   <div class="banner">
     <NuxtImg :src="game.banner" loading="lazy"></NuxtImg>
 
-    <div class="upload" v-if="showUpload && hasPermission">
+    <div v-if="showUpload && hasPermission" class="upload">
       <span class="close" @click="showUpload = false">
         <Icon class="icon" name="lucide:x"></Icon>
       </span>
-      <YuzuUpload width="300px" :initial-image="initialImageUrl" :size="1920" :aspect="16/9"
-                  :placeholder="t('game.banner.hint')"
+      <YuzuUpload :aspect="16/9" :initial-image="initialImageUrl" :placeholder="t('game.banner.hint')" :size="1920"
+                  width="300px"
                   @set-image="(img) => saveImage(img, 'yzforum-rewrite-banner')"></YuzuUpload>
       <span class="confirm" @click="handleChangeBanner">
         {{ t('game.banner.confirm') }}
@@ -91,7 +91,7 @@ onMounted(async () => {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .banner {
   width: 100%;
   display: flex;

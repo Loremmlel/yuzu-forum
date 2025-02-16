@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {GameDetail} from "~/types/api/game";
 
 const {t} = useI18n()
@@ -8,7 +8,7 @@ const game = inject<GameDetail>('game')
 </script>
 
 <template>
-  <div class="footer" v-if="game">
+  <div v-if="game" class="footer">
     <span class="history" @click="showHistory = !showHistory">
       {{ t('game.history.name') }}
     </span>
@@ -16,37 +16,37 @@ const game = inject<GameDetail>('game')
       <span class="hint">
         {{ t('game.history.operation') }}
       </span>
-      <GameLike :gid="game.gid" :to-uid="game.user.uid" :likes-count="game.likes.count"
-                :is-liked="game.likes.isLiked" v-tooltip="{
+      <GameLike v-tooltip="{
                   message: {
                     'en-us': 'Like',
                     'ja-jp': 'いいね',
                     'zh-cn': '点赞',
                   },
                   position: 'bottom'
-                }"></GameLike>
+                }" :gid="game.gid" :is-liked="game.likes.isLiked"
+                :likes-count="game.likes.count" :to-uid="game.user.uid"></GameLike>
 
-      <GameFavorite :gid="game.gid" :to-uid="game.user.uid" :favorites-count="game.favorites.count"
-                    :is-favorite="game.favorites.isFavorite" v-tooltip="{
+      <GameFavorite v-tooltip="{
                       message: {
                         'en-us': 'Favorite',
                         'ja-jp': 'お気に入り',
                         'zh-cn': '收藏'
                       },
                       position: 'bottom'
-                    }"></GameFavorite>
+                    }" :favorites-count="game.favorites.count" :gid="game.gid"
+                    :is-favorite="game.favorites.isFavorite" :to-uid="game.user.uid"></GameFavorite>
 
-      <GameRewrite :game="game" v-tooltip="{
+      <GameRewrite v-tooltip="{
           message: 'Rewrite',
           position: 'bottom'
-        }"></GameRewrite>
+        }" :game="game"></GameRewrite>
     </div>
   </div>
 
   <LazyGameHistory v-if="showHistory"></LazyGameHistory>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .footer {
   display: flex;
   justify-content: space-between;

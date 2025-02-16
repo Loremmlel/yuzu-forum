@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import 'animate.css'
 
 const {t} = useI18n()
@@ -28,11 +28,11 @@ async function handleClosePanel() {
 </script>
 
 <template>
-  <Teleport to="body" :disabled="!tempReplyStore.isEdit">
+  <Teleport :disabled="!tempReplyStore.isEdit" to="body">
     <Transition
         enter-active-class="animate__animated animate__fadeInUp animate__faster"
         leave-active-class="animate__animated animate__fadeOutDown animate__faster">
-      <div class="root" v-if="tempReplyStore.isEdit">
+      <div v-if="tempReplyStore.isEdit" class="root">
         <div class="container">
           <div class="title">
             <h3>
@@ -44,7 +44,7 @@ async function handleClosePanel() {
               </span>
             </h3>
             <span class="close">
-              <Icon class="icon" @click="handleClosePanel" name="lucide:x"></Icon>
+              <Icon class="icon" name="lucide:x" @click="handleClosePanel"></Icon>
             </span>
           </div>
 
@@ -53,8 +53,8 @@ async function handleClosePanel() {
           </div>
 
           <div class="footer">
-            <LazyEditTopicTags style="margin-top: 10px; padding: 10px"
-                               v-if="persistTopicStore.showAdvance"></LazyEditTopicTags>
+            <LazyEditTopicTags v-if="persistTopicStore.showAdvance"
+                               style="margin-top: 10px; padding: 10px"></LazyEditTopicTags>
             <TopicReplyPanelButton></TopicReplyPanelButton>
           </div>
         </div>
@@ -63,7 +63,7 @@ async function handleClosePanel() {
   </Teleport>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .root {
   position: fixed;
   bottom: 0;

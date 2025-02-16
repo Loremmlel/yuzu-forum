@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 type ButtonType = 'primary' | 'danger' | ''
 
 const props = withDefaults(defineProps<{ type?: ButtonType; pending?: boolean }>(), {
@@ -10,14 +10,14 @@ const {ripples, onClick} = useRipple()
 </script>
 
 <template>
-  <button class="yuzu-button" @click="onClick" :class="props.type" :disabled="props.pending">
-    <Icon class="icon" v-if="pending" name="svg-spinners:12-dots-scale-rotate"></Icon>
+  <button :class="props.type" :disabled="props.pending" class="yuzu-button" @click="onClick">
+    <Icon v-if="pending" class="icon" name="svg-spinners:12-dots-scale-rotate"></Icon>
     <slot></slot>
     <YuzuRipple :ripples="ripples"></YuzuRipple>
   </button>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .yuzu-button {
   border: 1.5px solid var(--yzforum-blue-5);
   background-color: transparent;

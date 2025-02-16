@@ -1,11 +1,11 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const {t} = useI18n()
 </script>
 
 <template>
   <div class="footer">
     <EditTopicTags></EditTopicTags>
-    <p class="hint">{{t('edit.topic.categories')}}</p>
+    <p class="hint">{{ t('edit.topic.categories') }}</p>
     <div class="partition">
       <EditTopicCategory></EditTopicCategory>
       <EditTopicSection></EditTopicSection>
@@ -14,7 +14,7 @@ const {t} = useI18n()
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .footer {
   padding: 10px;
   display: flex;

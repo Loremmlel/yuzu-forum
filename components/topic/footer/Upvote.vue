@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {InfoCode} from "~/code&message/infoCode";
 
 const props = defineProps<{
@@ -102,13 +102,13 @@ async function handleClickUpvote() {
 </script>
 
 <template>
-  <span class="upvote" :class="isUpvoted ? 'active' : ''" @click="handleClickUpvote">
+  <span :class="isUpvoted ? 'active' : ''" class="upvote" @click="handleClickUpvote">
     <Icon class="icon" name="lucide:sparkles"></Icon>
     <span v-if="upvoteCount">{{ upvoteCount }}</span>
   </span>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .upvote {
   @include yz-center;
   margin-right: 0;

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {InfoCode} from "~/code&message/infoCode";
 
 const {t} = useI18n()
@@ -28,12 +28,12 @@ function handleClickReply() {
 </script>
 
 <template>
-  <div @click="handleClickReply" class="reply">
+  <div class="reply" @click="handleClickReply">
     {{ t('topic.content.reply') }}
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .reply {
   position: relative;
   width: 70px;
@@ -55,6 +55,7 @@ function handleClickReply() {
     border: 2px solid transparent;
     box-sizing: border-box;
   }
+
   &:hover {
     color: var(--yzforum-pink-4);
 

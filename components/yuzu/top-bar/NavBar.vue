@@ -37,24 +37,24 @@ const {t} = useI18n()
       </template>
     </YuzuPopover>
 
-<!--    <YuzuPopover>-->
-<!--      <span class="nav">{{ t('header.about.name') }}</span>-->
-<!--      <template #content>-->
-<!--        <div class="menu">-->
-<!--          <NuxtLinkLocale class="item" to="/yzforum">-->
-<!--            <span>-->
-<!--              {{ t('header.about.about') }}-->
-<!--            </span>-->
-<!--          </NuxtLinkLocale>-->
+    <!--    <YuzuPopover>-->
+    <!--      <span class="nav">{{ t('header.about.name') }}</span>-->
+    <!--      <template #content>-->
+    <!--        <div class="menu">-->
+    <!--          <NuxtLinkLocale class="item" to="/yzforum">-->
+    <!--            <span>-->
+    <!--              {{ t('header.about.about') }}-->
+    <!--            </span>-->
+    <!--          </NuxtLinkLocale>-->
 
-<!--          <NuxtLinkLocale class="item" to="/friend-links">-->
-<!--            <span>-->
-<!--              <span>{{ t('header.about.friendLinks') }}</span>-->
-<!--            </span>-->
-<!--          </NuxtLinkLocale>-->
-<!--        </div>-->
-<!--      </template>-->
-<!--    </YuzuPopover>-->
+    <!--          <NuxtLinkLocale class="item" to="/friend-links">-->
+    <!--            <span>-->
+    <!--              <span>{{ t('header.about.friendLinks') }}</span>-->
+    <!--            </span>-->
+    <!--          </NuxtLinkLocale>-->
+    <!--        </div>-->
+    <!--      </template>-->
+    <!--    </YuzuPopover>-->
 
     <NuxtLinkLocale class="link" to="/game">
       <span>

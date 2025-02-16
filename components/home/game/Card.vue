@@ -1,17 +1,17 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {HomeGame} from "~/types/api/home";
 import {platformIconMap} from "~/components/game/utils/iconMap";
 
 const {locale} = useI18n()
 
-const props = defineProps<{game: HomeGame}>()
+const props = defineProps<{ game: HomeGame }>()
 </script>
 
 <template>
-  <NuxtLinkLocale class="game" :to="`/game/${props.game.gid}`" v-yuzu-gradient>
+  <NuxtLinkLocale v-yuzu-gradient :to="`/game/${props.game.gid}`" class="game">
     <div class="title">
-      <span>{{getPreferredLanguageText(props.game.name, locale as Language)}}</span>
-      <span class="time">{{formatTimeDiff(props.game.time, locale as Language)}}</span>
+      <span>{{ getPreferredLanguageText(props.game.name, locale as Language) }}</span>
+      <span class="time">{{ formatTimeDiff(props.game.time, locale as Language) }}</span>
     </div>
 
     <div class="info">
@@ -19,20 +19,20 @@ const props = defineProps<{game: HomeGame}>()
         <YuzuAvatar v-for="(user, index) in props.game.contributors" :key="index" :user="user" size="30px"></YuzuAvatar>
         <span class="views">
           <span><Icon class="icon" name="lucide:mouse-pointer-click"></Icon></span>
-          <span>{{props.game.views}}</span>
+          <span>{{ props.game.views }}</span>
         </span>
       </div>
 
       <div class="status">
         <div class="platform">
           <span v-for="(platform, index) in props.game.platforms" :key="index">
-            <Icon class="icon" :name="platformIconMap[platform]"></Icon>
+            <Icon :name="platformIconMap[platform]" class="icon"></Icon>
           </span>
         </div>
 
         <div class="language">
           <span v-for="(language, index) in props.game.languages" :key="index">
-            {{language.slice(0, 2).toUpperCase()}}
+            {{ language.slice(0, 2).toUpperCase() }}
           </span>
         </div>
       </div>
@@ -40,7 +40,7 @@ const props = defineProps<{game: HomeGame}>()
   </NuxtLinkLocale>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .game {
   width: 100%;
   height: 100%;

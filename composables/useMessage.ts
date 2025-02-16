@@ -1,4 +1,4 @@
-import {render, h} from "vue";
+import {h, render} from "vue";
 import type {InfoCode} from "~/code&message/infoCode";
 import {getInfoMessagesCN, getInfoMessagesEN, getInfoMessagesJP} from "~/code&message/infoMessage";
 import Message from "~/components/yuzu/alert/Message.vue";

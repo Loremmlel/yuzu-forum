@@ -1,14 +1,15 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 interface Props {
   user: YuzuUser,
   time: number
 }
+
 const props = defineProps<Props>()
 
 const {locale, t} = useI18n()
 const localePath = useLocalePath()
 
-function handleClickAvatar(event: MouseEvent){
+function handleClickAvatar(event: MouseEvent) {
   event.preventDefault()
   navigateTo(localePath(`/yzgamer/${props.user.uid}/info`))
 }
@@ -17,8 +18,8 @@ function handleClickAvatar(event: MouseEvent){
 <template>
   <div class="user">
     <div class="avatar" @click="handleClickAvatar($event)">
-      <NuxtImg height="50" width="50" v-if="user.avatar"
-          :src="user.avatar.replace(/\.webp$/, '-100.webp')" :alt="user.name"></NuxtImg>
+      <NuxtImg v-if="user.avatar" :alt="user.name" :src="user.avatar.replace(/\.webp$/, '-100.webp')"
+               height="50" width="50"></NuxtImg>
       <span v-if="!user.avatar">
         {{ user.name.slice(0, 1).toUpperCase() }}
       </span>
@@ -27,13 +28,13 @@ function handleClickAvatar(event: MouseEvent){
     <div class="info">
       <span>{{ user.name }}</span>
       <span class="time">
-        {{ formatDate(props.time, locale, { isPrecise: true }) }}
+        {{ formatDate(props.time, locale, {isPrecise: true}) }}
       </span>
     </div>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .user {
   display: flex;
   margin: 10px 0;

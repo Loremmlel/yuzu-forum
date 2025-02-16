@@ -12,8 +12,8 @@ const localePath = useLocalePath()
   <div class="article">
     <YzgamerPassword></YzgamerPassword>
 
-    <span @click="navigateTo(localePath('/forgot'))" class="forgot">
-      {{t('login.forgot')}}
+    <span class="forgot" @click="navigateTo(localePath('/forgot'))">
+      {{ t('login.forgot') }}
     </span>
   </div>
 </template>

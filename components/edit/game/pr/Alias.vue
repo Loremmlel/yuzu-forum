@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {InfoCode} from "~/code&message/infoCode";
 
 const {t} = useI18n()
@@ -72,18 +72,18 @@ function validateAliasName(tagName: string) {
       </span>
     </div>
 
-    <input class="input" type="text" v-model="inputValue" :placeholder="t('edit.pr.alias.placeholder')"
-           @input="canDeleteAlias = false" @keyup.enter="handleAddAlias"
-           @keyup.backspace="handleRemoveAlias" @focus="isInputFocus = true" @blur="isInputFocus = false">
+    <input v-model="inputValue" :placeholder="t('edit.pr.alias.placeholder')" class="input" type="text"
+           @blur="isInputFocus = false" @focus="isInputFocus = true"
+           @input="canDeleteAlias = false" @keyup.enter="handleAddAlias" @keyup.backspace="handleRemoveAlias">
 
     <div class="box1"></div>
-    <div class="box2" :class="isInputFocus ? 'box-active' : ''"></div>
+    <div :class="isInputFocus ? 'box-active' : ''" class="box2"></div>
   </div>
 
-  <div class="hint">{{t('edit.pr.alias.hint')}}</div>
+  <div class="hint">{{ t('edit.pr.alias.hint') }}</div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .input-container {
   width: 100%;
   display: flex;

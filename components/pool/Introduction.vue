@@ -1,17 +1,17 @@
-<script setup lang="ts">
-defineProps<{section: string[], tags: string[]}>()
+<script lang="ts" setup>
+defineProps<{ section: string[], tags: string[] }>()
 </script>
 
 <template>
   <div class="introduction">
     <TopicSection :section="section"></TopicSection>
-    <span class="tags" v-for="(tag, index) in tags" :key="index">
-      {{tag}}
+    <span v-for="(tag, index) in tags" :key="index" class="tags">
+      {{ tag }}
     </span>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .introduction {
   display: flex;
   flex-wrap: wrap;

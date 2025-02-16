@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 interface Props {
   user: YuzuUser
   size: string
@@ -16,13 +16,13 @@ function handleClickAvatar(event: MouseEvent) {
 
 <template>
   <div class="yuzu-avatar" @click="handleClickAvatar($event)">
-    <NuxtImg :height="props.size" :width="props.size" v-if="props.user.avatar"
-             :src="props.user.avatar.replace(/\.webp/, '-100.webp')" :alt="props.user.name"></NuxtImg>
+    <NuxtImg v-if="props.user.avatar" :alt="props.user.name" :height="props.size"
+             :src="props.user.avatar.replace(/\.webp/, '-100.webp')" :width="props.size"></NuxtImg>
     <span v-if="!props.user.avatar">{{ props.user.name.slice(0, 1).toUpperCase() }}</span>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .yuzu-avatar {
   display: flex;
   justify-content: center;

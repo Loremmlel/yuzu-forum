@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {TopicDetail} from "~/types/api/topic";
 
 const props = defineProps<{ topic: TopicDetail }>()
@@ -23,11 +23,11 @@ function rewriteTopic() {
 </script>
 
 <template>
-  <span v-if="showRewrite" @click="rewriteTopic" class="icon">
+  <span v-if="showRewrite" class="icon" @click="rewriteTopic">
     <Icon class="icon" name="lucide:pencil"></Icon>
   </span>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 
 </style>

@@ -20,7 +20,7 @@ useHead({
   ]
 })
 
-onBeforeRouteLeave(async (_, __, next) =>  {
+onBeforeRouteLeave(async (_, __, next) => {
   if (!edit.isTopicRewriting) {
     next()
     return
@@ -42,7 +42,7 @@ onBeforeRouteLeave(async (_, __, next) =>  {
 <template>
   <div class="root">
     <div class="container">
-      <div class="content" ref="content">
+      <div ref="content" class="content">
         <ClientOnly>
           <EditTopicTitle></EditTopicTitle>
           <EditTopicEditor :is-show-menu="true"></EditTopicEditor>

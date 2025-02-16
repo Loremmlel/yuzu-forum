@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 interface Props {
   uid?: number
   name?: string
@@ -19,8 +19,8 @@ onMounted(() => showProgress.value = true)
 
 <template>
   <div class="header">
-    <div class="avatar" v-if="avatar">
-      <NuxtImg :src="avatar" :alt="name"></NuxtImg>
+    <div v-if="avatar" class="avatar">
+      <NuxtImg :alt="name" :src="avatar"></NuxtImg>
     </div>
 
     <div class="username">
@@ -43,7 +43,7 @@ onMounted(() => showProgress.value = true)
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .header {
   height: 150px;
   position: relative;

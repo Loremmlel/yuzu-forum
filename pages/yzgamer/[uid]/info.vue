@@ -3,7 +3,7 @@ import type {UserInfo} from "~/types/api/user";
 
 const {locale, t} = useI18n()
 
-const props = defineProps<{user: UserInfo}>()
+const props = defineProps<{ user: UserInfo }>()
 
 function rolesName() {
   const roles = props.user.roles
@@ -33,7 +33,7 @@ function statusName() {
 </script>
 
 <template>
-  <div class="article" v-if="user">
+  <div v-if="user" class="article">
     <div class="info">
       <div class="basic">
         <span>{{ t('user.profile.name') }}: {{ user.name }}</span>
@@ -65,17 +65,17 @@ function statusName() {
         </span>
         <span>
           {{ t('user.profile.time') }}:
-          {{formatDate(user.time, locale, {showYear: true, isPrecise: true}) }}
+          {{ formatDate(user.time, locale, {showYear: true, isPrecise: true}) }}
         </span>
       </div>
 
       <YuzuDivider margin="0 10px"></YuzuDivider>
 
       <div class="bio">
-        <div>{{t('user.profile.bio')}}</div>
-        <pre v-if="user.bio">{{user.bio}}</pre>
+        <div>{{ t('user.profile.bio') }}</div>
+        <pre v-if="user.bio">{{ user.bio }}</pre>
 
-        <YuzuNull :condition="!user.bio" type="null" :show-sticker="false"></YuzuNull>
+        <YuzuNull :condition="!user.bio" :show-sticker="false" type="null"></YuzuNull>
       </div>
     </div>
   </div>

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {Nav} from "~/components/yzgamer/utils/route";
 import 'animate.css'
 
@@ -48,25 +48,25 @@ function handleCollapsed(item: Nav) {
 
 <template>
   <div class="nav">
-    <div v-for="(n, index) in nav" :key="index" v-show="n.permission?.includes(currentPageUserRoles)">
-      <div class="link" :class="activeClass(n)" @click="handleCollapsed(n)">
+    <div v-for="(n, index) in nav" v-show="n.permission?.includes(currentPageUserRoles)" :key="index">
+      <div :class="activeClass(n)" class="link" @click="handleCollapsed(n)">
         <span class="nav-icon">
-          <Icon class="icon" :name="iconMap[n.name] ?? ''"></Icon>
+          <Icon :name="iconMap[n.name] ?? ''" class="icon"></Icon>
         </span>
         <span class="name">{{ t(`user.nav.${n.name}`) }}</span>
-        <span class="chevron" v-if="n.collapsed !== undefined" :class="n.collapsed ? '' : 'active-chevron'">
+        <span v-if="n.collapsed !== undefined" :class="n.collapsed ? '' : 'active-chevron'" class="chevron">
           <Icon class="icon" name="lucide:chevron-right"></Icon>
         </span>
       </div>
 
       <div v-if="n.child && !n.collapsed" class="submenu">
-        <YzgamerNavBar :uid="uid" :nav="n.child"></YzgamerNavBar>
+        <YzgamerNavBar :nav="n.child" :uid="uid"></YzgamerNavBar>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .nav {
   height: 100%;
   width: 130px;

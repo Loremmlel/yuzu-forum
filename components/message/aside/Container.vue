@@ -1,14 +1,14 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {asideItems} from "~/components/message/aside/items";
 
 const {t} = useI18n()
 
-const { data: system } = await useFetch(`/api/message/nav/system`, {
+const {data: system} = await useFetch(`/api/message/nav/system`, {
   method: 'GET',
   ...yzforumResponseHandler
 })
 
-const { data: contact } = await useFetch(`/api/message/nav/contact`, {
+const {data: contact} = await useFetch(`/api/message/nav/contact`, {
   method: 'GET',
   ...yzforumResponseHandler
 })
@@ -18,18 +18,18 @@ asideItems.value = contact.value ? contact.value : []
 
 <template>
   <aside>
-    <h2>{{t('message.name')}}</h2>
+    <h2>{{ t('message.name') }}</h2>
     <YuzuDivider margin="10px 0"></YuzuDivider>
 
-    <MessageAsideSystemItem v-if="system" :title="t('message.notice')" :data="system[0]"></MessageAsideSystemItem>
+    <MessageAsideSystemItem v-if="system" :data="system[0]" :title="t('message.notice')"></MessageAsideSystemItem>
 
-    <MessageAsideSystemItem v-if="system" :title="t('message.system')" :data="system[1]">
+    <MessageAsideSystemItem v-if="system" :data="system[1]" :title="t('message.system')">
       <template #system>
-        <span class="zako" v-if="!system[1].unreadCount">
-          {{t('topic.panel.reply')}}
+        <span v-if="!system[1].unreadCount" class="zako">
+          {{ t('topic.panel.reply') }}
         </span>
-        <span class="new" v-else>
-          {{`「 ${t('message.new')} 」`}}
+        <span v-else class="new">
+          {{ `「 ${t('message.new')} 」` }}
         </span>
       </template>
     </MessageAsideSystemItem>
@@ -42,7 +42,7 @@ asideItems.value = contact.value ? contact.value : []
   </aside>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .aside {
   height: 100%;
   width: 32rem;

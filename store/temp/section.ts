@@ -6,5 +6,6 @@ export const useTempSectionStore = defineStore('tempSection', () => {
         page.value = 1
         limit.value = 10
     }
+
     return {page, limit, reset}
 }, {persist: false})

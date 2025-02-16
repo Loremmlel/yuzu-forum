@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {GameStoreTemp} from "~/store/types/edit/game";
 import {InfoCode} from "~/code&message/infoCode";
 
@@ -127,7 +127,7 @@ function checkGamePR(game: GameStoreTemp): boolean {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .confirm {
   width: 100%;
   margin-top: 50px;

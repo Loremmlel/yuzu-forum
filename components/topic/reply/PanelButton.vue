@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {InfoCode} from "~/code&message/infoCode";
 
 function checkReplyPublish(tags: string[], content: string) {
@@ -130,7 +130,7 @@ function handleShowAdvance() {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .button-container {
   padding: 10px;
   width: 100%;

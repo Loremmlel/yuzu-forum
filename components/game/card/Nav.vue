@@ -1,8 +1,9 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {useTempGameStore} from "~/store/temp/game/game";
 import {
   type LanguageOptions,
-  languageOptions, type PlatformOptions,
+  languageOptions,
+  type PlatformOptions,
   platformOptions,
   type TypeOptions,
   typeOptions
@@ -28,23 +29,23 @@ watch(
 
 <template>
   <div class="nav">
-    <YuzuSelect :styles="{width: '150px'}" :options="typeOptions" i18n="game.resource.type"
-                @set="(newVal) => tempGameStore.type = newVal as TypeOptions" position="bottom">
+    <YuzuSelect :options="typeOptions" :styles="{width: '150px'}" i18n="game.resource.type"
+                position="bottom" @set="(newVal) => tempGameStore.type = newVal as TypeOptions">
       {{ t(`game.resource.type.${tempGameStore.type}`) }}
     </YuzuSelect>
 
-    <YuzuSelect :styles="{width: '150px'}" :options="languageOptions" i18n="game.resource.language"
-                @set="(newVal) => tempGameStore.language = newVal as LanguageOptions" position="bottom">
+    <YuzuSelect :options="languageOptions" :styles="{width: '150px'}" i18n="game.resource.language"
+                position="bottom" @set="(newVal) => tempGameStore.language = newVal as LanguageOptions">
       {{ t(`game.resource.language.${tempGameStore.language}`) }}
     </YuzuSelect>
 
-    <YuzuSelect :styles="{width: '150px'}" :options="platformOptions" i18n="game.resource.platform"
-                @set="(newVal) => tempGameStore.platform = newVal as PlatformOptions" position="bottom">
+    <YuzuSelect :options="platformOptions" :styles="{width: '150px'}" i18n="game.resource.platform"
+                position="bottom" @set="(newVal) => tempGameStore.platform = newVal as PlatformOptions">
       {{ t(`game.resource.platform.${tempGameStore.platform}`) }}
     </YuzuSelect>
 
-    <YuzuSelect :styles="{width: '150px'}" :options="['time', 'created', 'views']" i18n="game.resource.sort"
-                @set="(newVal) => tempGameStore.sortField = newVal as 'time' | 'views'" position="bottom">
+    <YuzuSelect :options="['time', 'created', 'views']" :styles="{width: '150px'}" i18n="game.resource.sort"
+                position="bottom" @set="(newVal) => tempGameStore.sortField = newVal as 'time' | 'views'">
       {{ t(`game.resource.sort.${tempGameStore.sortField}`) }}
     </YuzuSelect>
 
@@ -59,7 +60,7 @@ watch(
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .nav {
   display: flex;
   flex-wrap: wrap;

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {Message} from "~/types/api/chatMessage";
 
 const {locale} = useI18n()
@@ -7,7 +7,7 @@ defineProps<{ message: Message, isSent: boolean }>()
 </script>
 
 <template>
-  <div class="message-item" :class="isSent ? 'sent' : 'others'">
+  <div :class="isSent ? 'sent' : 'others'" class="message-item">
     <YuzuAvatar :user="message.sender" size="30px"></YuzuAvatar>
     <div class="content-container">
       <div class="top">
@@ -25,7 +25,7 @@ defineProps<{ message: Message, isSent: boolean }>()
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .message-item {
   display: flex;
   width: 100%;

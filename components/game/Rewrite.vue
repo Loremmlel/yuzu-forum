@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {GameDetail} from "~/types/api/game";
 
 defineProps<{ game: GameDetail }>()
@@ -28,7 +28,7 @@ const handleRewriteGame = (game: GameDetail) => {
   </span>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .rewrite {
   color: var(--yzforum-font-color-2);
   cursor: pointer;

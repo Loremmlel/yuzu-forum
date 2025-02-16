@@ -5,19 +5,19 @@ const {locale, t} = useI18n()
 <template>
   <footer>
     <div class="subsites">
-      <a href="https://tieba.baidu.com/f?kw=%E8%94%A1%E5%B9%B4%E5%BD%AC" target="_blank" rel="noopener noreferer">
+      <a href="https://tieba.baidu.com/f?kw=%E8%94%A1%E5%B9%B4%E5%BD%AC" rel="noopener noreferer" target="_blank">
         <Icon class="icon" name="arcticons:baidu-tieba"></Icon>
-        {{t('home.subsites.cnbBa')}}
+        {{ t('home.subsites.cnbBa') }}
       </a>
     </div>
 
     <div class="copyright">
       <div>
         <a :href="`${useRuntimeConfig().public.YZFORUM_URL}/${locale ? locale : ''}`"
-        target="_blank" rel="noopener noreferer">
-          <NuxtImg src="/favicon.webp" :aria-label="t('head.title')" :alt="t('head.title')"></NuxtImg>
+           rel="noopener noreferer" target="_blank">
+          <NuxtImg :alt="t('head.title')" :aria-label="t('head.title')" src="/favicon.webp"></NuxtImg>
         </a>
-        <span>{{t('home.copyright')}}</span>
+        <span>{{ t('home.copyright') }}</span>
       </div>
     </div>
   </footer>
@@ -34,6 +34,7 @@ footer {
     text-underline-offset: 3px;
     margin: 0 8px;
   }
+
   .icon {
     width: 20px;
     height: 20px;
@@ -46,6 +47,7 @@ footer {
     font-size: small;
     margin-bottom: 8px;
     margin-top: 50px;
+
     a {
       display: flex;
       align-items: center;

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {TopicComment} from "~/types/api/topicComment";
 import {InfoCode} from "~/code&message/infoCode";
 
@@ -27,12 +27,12 @@ function handleClickComment(comment: TopicComment) {
 
 <template>
   <div class="comment-container">
-    <div class="container" v-if="comments?.length">
+    <div v-if="comments?.length" class="container">
       <div class="title">
         <span>{{ t('topic.content.comments') }}</span>
       </div>
 
-      <div class="comment" v-for="(comment, index) in comments" :key="index">
+      <div v-for="(comment, index) in comments" :key="index" class="comment">
         <NuxtLink v-if="comment.user.avatar" :to="`/yzgamer/${comment.user.uid}/info`">
           <img :src="comment.user.avatar.replace(/\.webp$/, '-100.webp')" alt="柚子">
         </NuxtLink>
@@ -64,7 +64,7 @@ function handleClickComment(comment: TopicComment) {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .title {
   border-top: 1px solid var(--yzforum-trans-blue-2);
   flex-shrink: 0;

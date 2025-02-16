@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import loliImage from './loli'
 import 'animate.css'
 
@@ -43,12 +43,12 @@ watch(
 </script>
 
 <template>
-  <Teleport to="body" :disabled="!message.showInfo">
+  <Teleport :disabled="!message.showInfo" to="body">
     <Transition
         enter-active-class="animate__animated animate__fadeInUp animate__faster"
         leave-active-class="animate__animated animate__fadeOutDown animate__faster">
-      <div class="container" v-if="message.showInfo">
-        <Transition enter-active-class="animate__animated animate_swing" appear>
+      <div v-if="message.showInfo" class="container">
+        <Transition appear enter-active-class="animate__animated animate_swing">
           <div class="lass">
             <span>{{ name }}</span>
           </div>
@@ -58,7 +58,7 @@ watch(
           <NuxtImg :src="loli"></NuxtImg>
         </div>
 
-        <Transition enter-active-class="animate__animated animate__bounceInRight animate__faster" appear>
+        <Transition appear enter-active-class="animate__animated animate__bounceInRight animate__faster">
           <div class="info">
             {{ `「 ${t(message.infoMessage)} 」` }}
           </div>
@@ -74,7 +74,7 @@ watch(
   </Teleport>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .container {
   min-height: 120px;
   width: 100%;
@@ -123,15 +123,14 @@ watch(
   margin-right: 50px;
   font-size: 20px;
   color: var(--yzforum-white);
-  text-shadow:
-      0 1px var(--yzforum-font-color-3),
-      1px 0 var(--yzforum-font-color-3),
-      -1px 0 var(--yzforum-font-color-3),
-      0 -1px var(--yzforum-font-color-3),
-      1px 2px var(--yzforum-font-color-3),
-      1px 2px var(--yzforum-font-color-3),
-      1px 2px var(--yzforum-font-color-3),
-      1px 2px var(--yzforum-font-color-3);
+  text-shadow: 0 1px var(--yzforum-font-color-3),
+  1px 0 var(--yzforum-font-color-3),
+  -1px 0 var(--yzforum-font-color-3),
+  0 -1px var(--yzforum-font-color-3),
+  1px 2px var(--yzforum-font-color-3),
+  1px 2px var(--yzforum-font-color-3),
+  1px 2px var(--yzforum-font-color-3),
+  1px 2px var(--yzforum-font-color-3);
 }
 
 .close {

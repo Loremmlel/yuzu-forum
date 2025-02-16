@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const props = defineProps<{
   userData: YuzuUser[]
   toUser: YuzuUser
@@ -51,30 +51,30 @@ onMounted(() => (gameResourceStore.commentToUid = props.toUser.uid))
     </template>
   </YuzuHeader>
 
-  <div class="to-user" v-if="toUser">
+  <div v-if="toUser" class="to-user">
     <div>{{ t('game.comment.to') }}</div>
-    <YuzuSelect :styles="{width: '100%'}" :selector-styles="{justifyContent: 'flex-start'}"
-                :options="userData.map(user => user.name)" :discard-i18n="true"
-                @set="handleSetUserInfo" position="bottom">
+    <YuzuSelect :discard-i18n="true" :options="userData.map(user => user.name)"
+                :selector-styles="{justifyContent: 'flex-start'}" :styles="{width: '100%'}"
+                position="bottom" @set="handleSetUserInfo">
       {{ username }}
     </YuzuSelect>
   </div>
 
   <div class="panel">
-    <GameCommentPanel :to-user="toUser" :refresh="refresh">
-      <YuzuNav class="nav" v-if="data && data.totalCount" :items="orderItems"
-               :default-value="pageData.order" @set="(value) => pageData.order = value as string"></YuzuNav>
+    <GameCommentPanel :refresh="refresh" :to-user="toUser">
+      <YuzuNav v-if="data && data.totalCount" :default-value="pageData.order" :items="orderItems"
+               class="nav" @set="(value) => pageData.order = value as string"></YuzuNav>
     </GameCommentPanel>
 
-    <div class="sad" v-if="!data?.totalCount && status !== 'pending'">
+    <div v-if="!data?.totalCount && status !== 'pending'" class="sad">
       {{ t('game.comment.sad') }}
     </div>
 
-    <div class="comments" v-if="status === 'success' && data && data.totalCount">
+    <div v-if="status === 'success' && data && data.totalCount" class="comments">
       <GameComment v-for="comment in data.comments" :key="comment.gcid" :comment="comment"
                    :refresh="refresh"></GameComment>
-      <YuzuPagination class="pagination" v-if="data.totalCount > 10"
-                      :page="pageData.page" :limit="pageData.limit" :sum="data.totalCount" :status="status"
+      <YuzuPagination v-if="data.totalCount > 10" :limit="pageData.limit"
+                      :page="pageData.page" :status="status" :sum="data.totalCount" class="pagination"
                       @set-page="(newPage) => pageData.page = newPage"></YuzuPagination>
     </div>
   </div>
@@ -82,7 +82,7 @@ onMounted(() => (gameResourceStore.commentToUid = props.toUser.uid))
   <YuzuSkeletonGameComment v-if="status === 'pending'"></YuzuSkeletonGameComment>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .to-user {
   display: flex;
   align-items: center;

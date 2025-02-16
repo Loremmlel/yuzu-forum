@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {languageItems} from "~/components/edit/utils/options";
 
 const {locale, t} = useI18n()
@@ -16,18 +16,18 @@ defineProps<{
     </template>
   </YuzuHeader>
 
-  <YuzuNav class="nav" :items="languageItems" :default-value="introductionLanguage"
+  <YuzuNav :default-value="introductionLanguage" :items="languageItems" class="nav"
            @set="(value) => introductionLanguage = value as Language"></YuzuNav>
 
-  <div class="hint" v-if="introduction[introductionLanguage as Language] === ''">
+  <div v-if="introduction[introductionLanguage as Language] === ''" class="hint">
     {{ t('game.introduction.hint') }}
   </div>
 
-  <YuzuContent class="yuzu-content"
-               :content="getPreferredLanguageText(introduction, introductionLanguage as Language)"></YuzuContent>
+  <YuzuContent :content="getPreferredLanguageText(introduction, introductionLanguage as Language)"
+               class="yuzu-content"></YuzuContent>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 h2 {
   margin: 20px 0;
 }

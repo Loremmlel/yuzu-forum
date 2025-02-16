@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {GamePR, GamePRDetails} from "~/types/api/gamePR";
 
 const iconMap: Record<number, string> = {
@@ -62,7 +62,7 @@ watch(
     </div>
 
     <div class="button">
-      <span class="description" :class="`status${pr.status}`">
+      <span :class="`status${pr.status}`" class="description">
         <span v-if="pr.completedTime">
           {{
             formatDate(pr.completedTime, locale, {
@@ -71,30 +71,30 @@ watch(
             })
           }}
         </span>
-        <Icon class="icon" :name="iconMap[pr.status]"></Icon>
+        <Icon :name="iconMap[pr.status]" class="icon"></Icon>
         <span>{{ t(`game.pr.status${pr.status}`) }}</span>
       </span>
 
-      <YuzuButton v-if="!details && pr.status !== 2" @click="handleGetDetails(pr.gprid)"
-                  :pending="isFetching">
+      <YuzuButton v-if="!details && pr.status !== 2" :pending="isFetching"
+                  @click="handleGetDetails(pr.gprid)">
         {{ t('game.pr.details') }}
       </YuzuButton>
 
       <span v-if="pr.status === 2">#{{ pr.index }}</span>
       <span v-if="details" class="close" @click="details = undefined">
-        <Icon name="lucide:x" class="icon"></Icon>
+        <Icon class="icon" name="lucide:x"></Icon>
       </span>
     </div>
   </div>
 
-  <p class="note" v-if="userStore.uid === props.pr.user.uid && props.pr.status === 0">
-    {{t('game.pr.note')}}
+  <p v-if="userStore.uid === props.pr.user.uid && props.pr.status === 0" class="note">
+    {{ t('game.pr.note') }}
   </p>
   <!--fix: 组件名称不对-->
   <GamePrDetail v-if="details" :details="details" :refresh="refresh"></GamePrDetail>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .pr {
   display: flex;
   flex-wrap: wrap;

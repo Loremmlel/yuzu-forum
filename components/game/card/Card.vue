@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {GameCard} from "~/types/api/game";
 import {platformIconMap} from "~/components/game/utils/iconMap";
 
@@ -9,15 +9,15 @@ defineProps<{ games: GameCard[] }>()
 
 <template>
   <div class="grid-card">
-    <NuxtLink class="card" v-for="game in games" :key="game.gid" :to="`/game/${game.gid}`">
+    <NuxtLink v-for="game in games" :key="game.gid" :to="`/game/${game.gid}`" class="card">
       <div class="banner">
-        <NuxtImg :src="game.banner.replace(/\.webp$/, '-mini.webp')"
-                 loading="lazy" :alt="getPreferredLanguageText(game.name, locale as Language)"
+        <NuxtImg :alt="getPreferredLanguageText(game.name, locale as Language)"
+                 :src="game.banner.replace(/\.webp$/, '-mini.webp')" loading="lazy"
                  placeholder="/placeholder.webp"></NuxtImg>
         <div class="platform">
           <template v-if="game.platform.length">
             <span v-for="(platform, index) in game.platform" :key="index">
-              <Icon class="icon" :name="platformIconMap[platform]"></Icon>
+              <Icon :name="platformIconMap[platform]" class="icon"></Icon>
             </span>
           </template>
           <span v-else class="preparing">
@@ -62,7 +62,7 @@ defineProps<{ games: GameCard[] }>()
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .grid-card {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));

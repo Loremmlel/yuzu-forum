@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {UserInfo} from "~/types/api/user";
 import {InfoCode} from "~/code&message/infoCode";
 
@@ -41,7 +41,7 @@ onMounted(() => {
 <template>
   <div class="bio">
     <div class="title">{{ t('user.settings.bio') }}</div>
-    <YuzuTextarea name="bio" :placeholder="`${t('user.settings.hint')}`" rows="5" v-model="bioValue"></YuzuTextarea>
+    <YuzuTextarea v-model="bioValue" :placeholder="`${t('user.settings.hint')}`" name="bio" rows="5"></YuzuTextarea>
 
     <YuzuButton @click="handleChangeBio">
       {{ t('user.settings.confirm') }}
@@ -49,7 +49,7 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .bio {
   width: 100%;
   margin-bottom: 20px;

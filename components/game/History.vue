@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const route = useRoute()
 const gid = ref(route.params.gid as string)
 const {locale, t} = useI18n()
@@ -23,8 +23,8 @@ const {data, status} = await useFetch(`/api/game/${gid.value}/history/all`, {
     </template>
   </YuzuHeader>
 
-  <div class="container" v-if="data">
-    <div class="history" v-for="(history, index) in data.historyData" :key="index">
+  <div v-if="data" class="container">
+    <div v-for="(history, index) in data.historyData" :key="index" class="history">
       <NuxtLink :to="`/yzgamer/${history.user.uid}/info`">
         <YuzuAvatar :user="history.user" size="30px"></YuzuAvatar>
       </NuxtLink>
@@ -36,19 +36,19 @@ const {data, status} = await useFetch(`/api/game/${gid.value}/history/all`, {
           <span>{{ t(`game.history.${history.type}`) }}</span>
           <span class="time">{{ formatTimeDiff(history.time, locale) }}</span>
         </div>
-        <div class="content" v-if="history.content">
+        <div v-if="history.content" class="content">
           {{ history.content }}
         </div>
       </div>
     </div>
 
-    <YuzuPagination class="pagination" v-if="data.totalCount > 7" :page="pageData.page"
-                    :limit="pageData.limit" :sum="data.totalCount" :status="status"
+    <YuzuPagination v-if="data.totalCount > 7" :limit="pageData.limit" :page="pageData.page"
+                    :status="status" :sum="data.totalCount" class="pagination"
                     @set-page="(newPage) => (pageData.page = newPage)"></YuzuPagination>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 h2 {
   margin-bottom: 20px;
 }

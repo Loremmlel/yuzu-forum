@@ -1,5 +1,6 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {TopicReply} from "~/types/api/topicReply";
+
 const props = defineProps<{
   reply: TopicReply
 }>()
@@ -17,11 +18,11 @@ function rewriteReply() {
 </script>
 
 <template>
-  <span v-if="showRewrite" @click="rewriteReply" class="icon">
+  <span v-if="showRewrite" class="icon" @click="rewriteReply">
     <Icon class="icon" name="lucide:pencil"></Icon>
   </span>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 
 </style>

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type {TopicReply} from "~/types/api/topicReply";
 import {InfoCode} from "~/code&message/infoCode";
 
@@ -27,10 +27,6 @@ function handleClickComment(replyRid: number, uid: number, name: string) {
   <div class="footer">
     <div class="left">
       <TopicFooterUpvote
-          :rid="reply.rid"
-          :to-uid="reply.user.uid"
-          :upvote-count="reply.upvotes.count"
-          :is-upvoted="reply.upvotes.isUpvoted"
           v-tooltip="{
           message: {
             'en-us': 'Upvote',
@@ -38,13 +34,13 @@ function handleClickComment(replyRid: number, uid: number, name: string) {
             'zh-cn': '推'
           },
           position: 'bottom'
-        }"></TopicFooterUpvote>
-
-      <TopicFooterLike
+        }"
+          :is-upvoted="reply.upvotes.isUpvoted"
           :rid="reply.rid"
           :to-uid="reply.user.uid"
-          :likes-count="reply.likes.count"
-          :is-liked="reply.likes.isLiked"
+          :upvote-count="reply.upvotes.count"></TopicFooterUpvote>
+
+      <TopicFooterLike
           v-tooltip="{
           message: {
             'en-us': 'Like',
@@ -52,13 +48,13 @@ function handleClickComment(replyRid: number, uid: number, name: string) {
             'zh-cn': '点赞'
           },
           position: 'bottom'
-        }"></TopicFooterLike>
+        }"
+          :is-liked="reply.likes.isLiked"
+          :likes-count="reply.likes.count"
+          :rid="reply.rid"
+          :to-uid="reply.user.uid"></TopicFooterLike>
 
       <TopicFooterDislike
-          :rid="reply.rid"
-          :to-uid="reply.user.uid"
-          :dislikes-count="reply.dislikes.count"
-          :is-disliked="reply.dislikes.isDisliked"
           v-tooltip="{
           message: {
             'en-us': 'Dislike',
@@ -66,41 +62,45 @@ function handleClickComment(replyRid: number, uid: number, name: string) {
             'zh-cn': '点踩'
           },
           position: 'bottom'
-        }"></TopicFooterDislike>
+        }"
+          :dislikes-count="reply.dislikes.count"
+          :is-disliked="reply.dislikes.isDisliked"
+          :rid="reply.rid"
+          :to-uid="reply.user.uid"></TopicFooterDislike>
     </div>
 
     <div class="right">
-      <TopicFooterReply :to-username="reply.user.name" :to-uid="reply.user.uid"
-                        :to-floor="reply.floor"></TopicFooterReply>
+      <TopicFooterReply :to-floor="reply.floor" :to-uid="reply.user.uid"
+                        :to-username="reply.user.name"></TopicFooterReply>
 
-      <span @click="useYuzuCopy(
-              `${title}: ${useRuntimeConfig().public.YZFORUM_URL}/topic/${reply.tid}#k${reply.floor}`)"
-            class="icon" v-tooltip="{
+      <span v-tooltip="{
         message: {
             'en-us': 'Share',
             'ja-jp': '共有',
             'zh-cn': '分享'
           },
           position: 'bottom'
-      }">
+      }"
+            class="icon" @click="useYuzuCopy(
+              `${title}: ${useRuntimeConfig().public.YZFORUM_URL}/topic/${reply.tid}#k${reply.floor}`)">
         <Icon class="icon" name="lucide:share-2"></Icon>
       </span>
 
-      <TopicReplyRewrite :reply="reply" v-tooltip="{message: 'Rewrite',position: 'bottom'}"></TopicReplyRewrite>
-      <span @click="handleClickComment(reply.rid, reply.user.uid, reply.user.name)" class="comment" v-tooltip="{
+      <TopicReplyRewrite v-tooltip="{message: 'Rewrite',position: 'bottom'}" :reply="reply"></TopicReplyRewrite>
+      <span v-tooltip="{
         message: {
             'en-us': 'Comment',
             'ja-jp': 'コメント',
             'zh-cn': '评论',
           },
-          position: 'bottom'}">
+          position: 'bottom'}" class="comment" @click="handleClickComment(reply.rid, reply.user.uid, reply.user.name)">
         <Icon class="icon" name="uil:comment-dots"></Icon>
       </span>
     </div>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .footer {
   padding: 20px 10px;
   width: 100%;

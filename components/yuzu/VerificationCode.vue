@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const props = defineProps<{
   to: 'register' | 'forgot'
   name?: string
@@ -59,12 +59,12 @@ function handleSendCode() {
 </script>
 
 <template>
-  <button @click="handleSendCode" :disabled="isSending">
+  <button :disabled="isSending" @click="handleSendCode">
     {{ isSending ? countdown : t('register.send') }}
   </button>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 button {
   width: 90px;
   height: 30px;

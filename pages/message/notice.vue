@@ -31,7 +31,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="container" v-if="data">
+  <div v-if="data" class="container">
     <header>
       <NuxtLink to="/message">
         <Icon class="icon" name="lucide:chevron-left"></Icon>
@@ -49,9 +49,9 @@ onMounted(async () => {
 
     <YuzuNull :condition="!data.totalCount" type="null"></YuzuNull>
 
-    <YuzuPagination class="pagination" v-if="data.totalCount"
-                    :page="pageData.page" :limit="pageData.limit"
-                    :sum="data.totalCount" :status="status"
+    <YuzuPagination v-if="data.totalCount" :limit="pageData.limit"
+                    :page="pageData.page" :status="status"
+                    :sum="data.totalCount" class="pagination"
                     @set-page="(newPage) => pageData.page = newPage"></YuzuPagination>
   </div>
 </template>

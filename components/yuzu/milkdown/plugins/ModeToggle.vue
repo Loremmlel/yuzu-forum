@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const route = useRoute()
 const getRouteBaseName = useRouteBaseName()
 const baseRouteName = computed(() => getRouteBaseName(route))
@@ -27,18 +27,18 @@ function handleSetMode(value: 'preview' | 'code') {
 </script>
 
 <template>
-  <YuzuNav :items="modeItems" :default-value="baseRouteName === 'edit-topic' ? topic.mode : reply.mode"
-  @set="(value) => handleSetMode(value as 'preview' | 'code')" v-tooltip="{
+  <YuzuNav v-tooltip="{
     message: {
         'en-us': 'Text Mode / WYSIWYG mode',
         'ja-jp': 'テキストモード / WYSIWYGモード',
         'zh-cn': '文本模式 / 所见即所得模式',
       },
       position: 'bottom'
-  }"></YuzuNav>
+  }" :default-value="baseRouteName === 'edit-topic' ? topic.mode : reply.mode"
+           :items="modeItems" @set="(value) => handleSetMode(value as 'preview' | 'code')"></YuzuNav>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .yuzu-nav {
   display: inline-block;
   height: 45px;

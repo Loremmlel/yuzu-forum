@@ -1,9 +1,9 @@
-<script setup lang="ts">
-const props = defineProps<{showDialog: boolean}>()
+<script lang="ts" setup>
+const props = defineProps<{ showDialog: boolean }>()
 </script>
 
 <template>
-  <Teleport to="body" :disabled="!showDialog">
+  <Teleport :disabled="!showDialog" to="body">
     <Transition name="dialog">
       <div v-if="showDialog" class="mask" tabindex="0">
         <slot></slot>
@@ -12,7 +12,7 @@ const props = defineProps<{showDialog: boolean}>()
   </Teleport>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .mask {
   position: fixed;
   z-index: 9999;

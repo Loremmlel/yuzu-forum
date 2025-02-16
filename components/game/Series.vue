@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const route = useRoute()
 const {locale, t} = useI18n()
 
@@ -13,7 +13,7 @@ const {data, status} = await useLazyFetch(`/api/game/${gid.value}/series`, {
 
 <template>
   <div class="container">
-    <YuzuHeader :size="2" :show-help="true">
+    <YuzuHeader :show-help="true" :size="2">
       <template #header>
         {{ t('game.series.name') }}
       </template>
@@ -22,7 +22,7 @@ const {data, status} = await useLazyFetch(`/api/game/${gid.value}/series`, {
       </template>
     </YuzuHeader>
 
-    <div class="games" v-if="data && status === 'success'">
+    <div v-if="data && status === 'success'" class="games">
       <NuxtLink v-for="(link, index) in data" :key="index" :to="`/game/${link.gid}`">
         {{ getPreferredLanguageText(link.name, locale) }}
       </NuxtLink>
@@ -31,7 +31,7 @@ const {data, status} = await useLazyFetch(`/api/game/${gid.value}/series`, {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .container {
   width: 100%;
   display: flex;

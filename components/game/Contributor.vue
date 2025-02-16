@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 interface Props {
   data: YuzuUser[]
   pending: boolean
@@ -17,18 +17,18 @@ const {t} = useI18n()
     </template>
   </YuzuHeader>
 
-  <div class="contributor" v-if="data && !pending">
-    <YuzuAvatar size="30px" v-for="(user, index) in data" :key="index" :user="user" v-tooltip="{
+  <div v-if="data && !pending" class="contributor">
+    <YuzuAvatar v-for="(user, index) in data" :key="index" v-tooltip="{
         message: user.name,
         position: 'bottom'
-      }"></YuzuAvatar>
-    <span v-if="views > 0" class="views" v-tooltip="{
+      }" :user="user" size="30px"></YuzuAvatar>
+    <span v-if="views > 0" v-tooltip="{
         message: {
           'en-us': 'Views',
           'ja-jp': '閲覧数',
           'zh-cn': '浏览数'
         },
-        position: 'bottom'}">
+        position: 'bottom'}" class="views">
       <Icon class="icon" name="lucide:mouse-pointer-click"></Icon>
       <span>{{ views }}</span>
     </span>
@@ -36,7 +36,7 @@ const {t} = useI18n()
   <YuzuSkeletonGameContributor v-if="pending"></YuzuSkeletonGameContributor>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 h2 {
   margin-bottom: 20px;
 }

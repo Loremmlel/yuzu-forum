@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const {locale} = useI18n()
 
 const props = defineProps<{ uid: number }>()
@@ -16,8 +16,8 @@ const {data, status} = await useFetch(`/api/user/${props.uid}/replies`, {
 </script>
 
 <template>
-  <div class="reply" v-if="data && data.replies.length">
-    <div class="item" v-for="(replyData, index) in data.replies" :key="index">
+  <div v-if="data && data.replies.length" class="reply">
+    <div v-for="(replyData, index) in data.replies" :key="index" class="item">
       <NuxtLink :to="`/topic/${replyData.tid}`">
         <div class="title">
           {{ markdownToText(replyData.content) }}
@@ -28,14 +28,14 @@ const {data, status} = await useFetch(`/api/user/${props.uid}/replies`, {
       </NuxtLink>
     </div>
 
-    <YuzuPagination class="pagination" v-if="data.totalCount > 50"
-                    :page="pageData.page" :limit="pageData.limit"
-                    :sum="data.totalCount" :status="status"
+    <YuzuPagination v-if="data.totalCount > 50" :limit="pageData.limit"
+                    :page="pageData.page" :status="status"
+                    :sum="data.totalCount" class="pagination"
                     @set-page="(newPage) => (pageData.page = newPage)"></YuzuPagination>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .item {
   width: 100%;
   margin-top: 20px;

@@ -93,7 +93,7 @@ export function formatTimeDiff(pastTime: number | Date | string, language: Langu
             return now.to(pastTime, true)
         } else if (diffInSeconds < 2592000) {
             return now.to(pastTime, true)
-        } else if (diffInSeconds< 31536000) {
+        } else if (diffInSeconds < 31536000) {
             return now.to(pastTime, true)
         } else {
             return now.to(pastTime, true)

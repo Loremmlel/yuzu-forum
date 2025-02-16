@@ -11,5 +11,6 @@ export const useTempBannedStore = defineStore('tempBanned', () => {
         page.value = '1'
         limit.value = '4'
     }
+
     return {page, limit, reset}
 }, {persist: false})

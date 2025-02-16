@@ -10,8 +10,8 @@ const props = defineProps<{ section: string[] }>()
 </script>
 
 <template>
-  <span class="section" v-for="(sec, index) in props.section" :key="index" :class="sec.toLowerCase()[0]">
-    <Icon class="icon" :name="iconMap[sec[0]]"></Icon>
+  <span v-for="(sec, index) in props.section" :key="index" :class="sec.toLowerCase()[0]" class="section">
+    <Icon :name="iconMap[sec[0]]" class="icon"></Icon>
   </span>
 </template>
 
