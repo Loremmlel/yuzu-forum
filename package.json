@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "packageManager": "pnpm@9.14.2",
+  "description": "一个游戏分享论坛。有以下功能：讨论贴子、上传游戏贴子、分享连接、对游戏做合并请求、记录游戏合并请求贡献者、实现私信聊天室功能、实现响应式界面",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
