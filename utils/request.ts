@@ -41,11 +41,11 @@ export function onResponse(context: YuzuOnResponseContext) {
 }
 
 function onResponseError(context: YuzuOnResponseErrorContext) {
-    // useMessage({
-    //     'en-us': 'Network Error' + context.error?.message,
-    //     'ja-jp': 'ネットワー' + context.error?.message,
-    //     'zh-cn': '网络错误' + context.error?.message,
-    // }, 'error', 5000)
+    useMessage({
+        'en-us': 'Network Error' + context.error?.message,
+        'ja-jp': 'ネットワー' + context.error?.message,
+        'zh-cn': '网络错误' + context.error?.message,
+    }, 'error', 5000)
 }
 
 export const yzforumResponseHandler = {onResponse, onResponseError}
