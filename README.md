@@ -1,75 +1,259 @@
-# Nuxt Minimal Starter
+# 柚子游戏论坛
+# 项目技术栈简介
+本项目主要基于`Nuxt.js`搭建。
+## 为什么选择`Nuxt.js`?
+### SEO
+SEO是一个网站性能评估的重要指标之一，大部分网站的流量来源也主要是这里，要想让网站被更多人发现，SEO是必不可少的。
+#### Preview窗口看不到渲染的页面
+原生Vue是CSR，在开发者工具->网络当中，请求的第一个HTML文件完全看不到网站的页面。虽然现代搜索引擎具有处理js生成内容的能力，但某些旧时代搜索引擎还是需要SEO。
+#### 首屏加载时间
+在Nuxt.js中，Nuxt.js会根据配置的`render.ssr`选项，将渲染好的页面作为HTML文件返回给客户端。这样，在客户端加载页面时，就可以看到完整的渲染页面，而不需要等待JavaScript文件的传输和加载。
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+相当于把客户端和网络传输的压力传导到服务端。
+# 页面介绍
+## 主页
+* 网站图表、网站名、顶部导航条(在移动端下则是侧边栏，在左侧弹出)
+* 设置面板
+    * 网站白天 / 黑夜切换
+    * 网站语言切换
+    * 网站字体调整
+    * 网站背景调整
+    * 网站自定义背景
+    * 网站恢复空白背景
+    * 网站恢复默认设置
+* 用户信息
+    * 用户头像
+    * 用户名
+    * 用户柚子点
+    * 跳转到用户主页
+    * 每日签到
+    * 退出登录
+* 打开侧边栏(移动端)
+* 折叠侧边栏(移动端)
+* 发布新话题
+* 今日热门话题
+* 今日最新话题
+* 根据更新、时间、热度、浏览数、点赞数、回复数、评论数升序，降序排序话题
+* 动态搜索话题
+    * 搜索记录
+    * 清除搜索记录
+    * 清除全部记录
+* 跳转到所有话题
+* 话题展示，用户头像，用户名，话题预览，话题标题，话题浏览、点赞、回复数，话题发布时间
+* 底部`Footer`
+## 话题详情页
+* 折叠侧边栏
+* 展开侧边栏
+    * 回到顶端
+    * 按照楼层、时间、点赞、回复、更新时间排序
+* 相同标签下的其它话题
+* 楼主的其它话题
+* 话题展示
+    * 标题
+    * 标签
+    * 发布时间
+    * 发布人信息
+    * 内容，富文本
+    * 状态:正常、被推、封禁
+    * 重新编辑时间
+    * 推、浏览、赞、踩数
+    * 回复话题
+    * 分享话题
+    * 重新编辑话题
+* 回复展示
+    * 回复人信息
+    * 被回复人
+    * 楼层数
+    * 重新编辑时间
+    * 发布时间
+    * 内容
+    * 推、赞、踩数
+    * 回复的回复
+    * 分享回复
+    * 重新编辑回复
+    * 评论回复
+* 评论展示
+    * 评论人信息
+    * 被评论人
+    * 评论赞、踩数
+    * 评论的评论
+## 游戏详情页
+* 封面图
+* 介绍(I18n)
+* 其它信息
+    * 标题
+    * 标签
+    * 别名
+    * 官网
+    * 平台
+    * 序号
+    * 系列(站内链接)
+* 资源链接
+    * 名称
+    * 大小
+    * 平台
+    * 语言
+    * 获取链接
+    * 链接状态
+    * 举报
+    * 链接密码
+    * 解压密码
+* 贡献者
+* 赞、推贡献者
+* 重新编辑
+* 贡献历史(pull request)
+* 评论
+    * 评论的评论
+## 用户个人主页
+* 头像
+* 用户名
+* 柚子点
+* 注册序号
+* 角色
+* 状态
+* 被推、赞、踩数
+* 今日发表话题、回复、评论数
+* 注册时间
+* 签名
+* 更改用户头像、签名、邮箱、密码
+* 用户发布、点赞、推的话题
+* 用户发布的回复
+* 用户发布的评论
+## 话题编辑页
+* 标题
+* 编辑器 - milkdown
+* 编辑器设置
+    * 高度
+    * 模式(所见即所得模式、代码模式)
+* 标签
+* 分类
+* 发布话题
+* 保存草稿
+* 重新编辑
+* 确认重新编辑
+## 游戏编辑页
+* 标题(I18n)
+* 介绍(I18n)
+* 编辑器 - milkdown
+    * 编辑器设置
+    * 高度
+    * 模式(所见即所得模式、代码模式)
+* 上传预览图
+* 确认发布
+* 重新编辑
+    * 标签
+    * 别名
+    * 官网
+    * 平台
+    * 序号
+    * 系列(站内链接)
+* 确认重新编辑
+## 我的消息
+* 消息列表
+    * 通知(如新回复、新评论、新游戏pull request)
+    * 系统通知
+    * 私信
+* 通知 / 私信内容
+# 项目依赖
+## 核心框架
+* Nuxt.js 3: 全栈框架(SSR/SSG 支持)
+* Vue 3: 前端核心框架
+* Typescript: 主开发语言
+## 状态管理
+* Pinia: Vue官方推荐的状态管理框架
+* pinia-plugin-persistedstate: Pinia插件，用于持久化存储状态
+## 富文本编辑
+* Milkdown及其生态:
+    * @milkdown/core: 核心库
+    * preset-gfm/preset-commonmark: 通用扩展
+    * 数学公式、代码高亮的插件等
+    * @milkdown/vue: Vue适配器
+## 数据库 & 认证
+* MongoDB + Mongoose: 数据库和ORM
+* bcrypt: 密码加密
+* jsonwebtoken: JWT认证
+## 实时通信
+* Socket.io: 实时通信框架
+* Engine.IO: Socket.io的底层实现
+## 工具库
+* Day.js: 时间处理库
+* LocalForage: 本地存储库
+* Animate.css: 动画库
+* isomorphic-dompurify: HTML 净化，预防XSS攻击
+## 构建优化
+* @nuxt/image: 图片优化
+* @nuxtjs/i18n: 国际化
+* @nuxtjs/color-mode: 主题切换
+* @vite-pwa/nuxt: PWA支持
+* @nuxtjs/sitemap: SEO站点地图
+## 开发工具
+* ESLint + Prettier: 代码规范
+* Sass: 样式预处理
+# 项目结构
+## `.nuxt`
+这是 nuxt 的工程文件，内部含有 nuxt 运行时必要的类型推断，hot reload 等等，大多数情况不需要在意
 
-## Setup
+需要注意的是开发时可能碰到页面卡住，写的对但是浏览器报错甚至内存泄漏到数十G的情况，除了完全清除浏览器缓存之外，还应该彻底删除`.nuxt`文件夹，重新启动项目，因为内部有Nuxt的开发缓存
+## `assets`
+静态资源文件夹
+### `css`
+这是本项目一些常用的样式文件夹，例如编辑器样式，主题颜色配置等等
+* editor 编辑器代码块颜色
+* effect 一些css特效
+* theme 主题颜色配置
+* tooltip tooltip的纯css实现
+* index.scss css资源索引
+* reset.scss 预设样式，清除部分浏览器默认样式，例如滚动条样式等
+## `code&message`
+* `errorCode`: 枚举错误码，用于前端错误提示
+* `errorMessage`: 枚举错误码对应的错误信息(I18n)，用于前端错误提示 
+* `infoCode`: 枚举信息码，用于前端信息提示
+* `infoMessage`: 枚举信息码对应的信息(I18n)，用于前端信息提示
+* `returnMessage`: 枚举返回码，用于后端返回信息
+## `components`
+这是项目的核心，组件文件夹。
 
-Make sure to install dependencies:
+在本项目中，`components`文件夹不止含有全局组件，还有其余所有页面的具体实现组件。
+### `yuzu`
+是`components`的核心，有核心组件，类似于自定义的小组件库。
+## `composables`
+可组合函数集合。
+* `useDiff`: 基于最长公共子序列（LCS）算法，通过动态规划找出两个字符串的差异，使用\<b\>标签标记str1特有的字符，\<strong\>标记str2特有的字符。主要用于游戏pull request。
+* `useLocalforage`: 本地存储库封装，用于持久化存储状态。
+* `useMessage`: 消息提示封装，用于显示各种类型的消息提示，例如成功、错误、警告等。
+* `useRipple`: 创建一个ripple效果，用于显示点击涟漪效果。
+* `useSocketIO`: `Socket.io`封装，用于实时通信。
+* `useSocketIOErrorHandler`: `Socket.io`错误处理封装，用于处理`Socket.io`错误。
+* `useYuzuCopy`: 复制文本到剪贴板封装，用于复制文本到剪贴板。
+## `i18n`
+项目国家化语言资源文件夹
+## `middleware`
+前端中间件配置，用于页面鉴权
+## `pages`
+Nuxt的路由文件。这里用文件结构来定义路由。
 
-```bash
-# npm
-npm install
+为什么把大部分组件的实现都扔到`components`文件夹，就是因为Nuxt专门整了一个`pages`文件夹定义路由，那么这个文件夹就应该只专注于路由的实现。
+## `plugins`
+* `fontPlugin`: 字体配置插件，目的是为了覆盖网站整体的字体，防止水合时，页面抖动。
+* `tooltipDirective`: tooltip指令，用于显示tooltip。
+* `yuzuGradientDirective`: 跟随鼠标移动的背景渐变指令，用于显示背景渐变。
+## `server`
+后端代码所在的文件夹。
+### `api`
+定义了所有api，把route、controller、service都合在一起。
+### `models`
+定义了所有数据库模型，包括用户、话题、游戏、评论等。
+### `plugins`
+后端项目的插件，用于mongodb、redis和socket.io的连接。
+### `sockets`
+socket.io的后端部分配置
+## `store`
+`Pinia`定义的全局状态管理。
 
-# pnpm
-pnpm install
+对于`Pinia`的`persistedstate`，使用`Cookie`而非`localStorage`进行存储，因为`SSR`的时候，服务端`localStorage`无法使用，而`Cookie`可以。
+## `types`
+项目的某些类型定义
+## `app.vue`
+总入口文件，初始化了基本的变量和配置。例如网站标题和meta信息。
 
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+同时挂在了信息提示、对话框、回复输入框等全局组件。
