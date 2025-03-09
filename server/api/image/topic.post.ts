@@ -55,5 +55,5 @@ export default defineEventHandler(async (event) => {
         {uid: userInfo.uid},
         {$inc: {dailyImageCount: 1}}
     )
-    return '/' + path.relative(path.join(process.cwd(), 'public'), res)
+    return res
 })

@@ -1,17 +1,32 @@
-import fs from "node:fs";
-import path from "node:path";
+import COS from 'cos-nodejs-sdk-v5'
 
 export async function saveImage(file: Buffer, bucketName: string, filename: string) {
-    const dataPath = path.join(process.cwd(), 'public', 'data', bucketName)
-    if (!fs.existsSync(dataPath)) {
-        fs.mkdirSync(dataPath, {recursive: true})
-    }
-    const filePath = path.join(dataPath, filename)
-    try {
-        fs.writeFileSync(filePath, file)
-        return filePath
-    } catch (err) {
-        console.error('写入图片错误:', err)
-        return false
-    }
+    const config = useRuntimeConfig()
+    const cos = new COS({
+        SecretId: config.CLOUD_SECRET_ID,
+        SecretKey: config.CLOUD_SECRET_KEY
+    })
+    const filenameWithBucket = `${bucketName}/${filename}`.replace(/\//g, '-')
+    cos.putObject({
+        Bucket: config.BUCKET_NAME,
+        Region: config.BUCKET_REGION,
+        Key: filenameWithBucket,
+        Body: file
+    }, (err, _data) => {
+        if (err) {
+            console.log('图片上传失败', filenameWithBucket)
+        }
+    })
+    return cos.getObjectUrl({
+        Bucket: config.BUCKET_NAME,
+        Region: config.BUCKET_REGION,
+        Key: filenameWithBucket,
+        Sign: true
+    }, (err, data) => {
+        if (err) {
+            console.log('图片获取失败', filenameWithBucket)
+        } else {
+            return data.Url
+        }
+    })
 }

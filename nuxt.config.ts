@@ -43,6 +43,11 @@ export default defineNuxtConfig({
         EMAIL_ACCOUNT: '1336835965@qq.com',
         EMAIL_PASSWORD: 'pogvvxpjezpvgddj',
 
+        CLOUD_SECRET_ID: process.env.CLOUD_SECRET_ID,
+        CLOUD_SECRET_KEY: process.env.CLOUD_SECRET_KEY,
+        BUCKET_NAME: process.env.BUCKET_NAME,
+        BUCKET_REGION: process.env.BUCKET_REGION,
+
         public: {
             FORUM_VERSION: appVersion,
             YZFORUM_URL: import.meta.dev ? process.env.YZFORUM_URL : process.env.YZFORUM_URL_PRODUCT,

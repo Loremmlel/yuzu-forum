@@ -27,8 +27,8 @@ async function resizeUserAvatar(name: string, avatar: Buffer, uid: number) {
         return ErrorCode.CompressedImageSizeExceeded
     }
     return {
-        avatarUrl: '/' + path.relative(path.join(process.cwd(), 'public'), avatarUrl),
-        miniAvatarUrl: '/' + path.relative(path.join(process.cwd(), 'public'), miniAvatarUrl)
+        avatarUrl,
+        miniAvatarUrl
     }
 }
 
