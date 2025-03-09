@@ -10,7 +10,7 @@ export const usePersistSettingsStore = defineStore('yzforumSettings', () => {
     const showYzforumFontStyle = ref(settingsDefaultFontFamily)
     const showYzforumBackground = ref(0)
     const showYzforumBackgroundBlur = ref(0)
-    const showYzforumBackLoli = ref(true)
+    const showYzforumBackLoli = ref(false)
 
     function setYzforumFontStyle(font: string) {
         showYzforumFontStyle.value = font
@@ -60,7 +60,7 @@ export const usePersistSettingsStore = defineStore('yzforumSettings', () => {
         }
 
         // fix: 修复了背景图片设置不生效的bug
-        return `/bg/bg${showYzforumBackground.value}.webp`
+        return `/bg/${showYzforumBackground.value}.webp`
     }
 
     async function setYzforumSettingsRecover() {
@@ -74,7 +74,7 @@ export const usePersistSettingsStore = defineStore('yzforumSettings', () => {
         showYzforumFontStyle.value = settingsDefaultFontFamily
         showYzforumBackground.value = 0
         showYzforumBackgroundBlur.value = 0
-        showYzforumBackLoli.value = true
+        showYzforumBackLoli.value = false
     }
 
     return {

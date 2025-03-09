@@ -25,7 +25,7 @@ watch(
     <slot></slot>
     <NuxtImg
         v-if="setting.showYzforumBackLoli"
-        alt="kohaku" class="kohaku" loading="lazy" src="/image/kohaku.webp">
+        alt="loli" class="loli" loading="lazy" src="/image/loli.webp">
     </NuxtImg>
   </div>
 </template>
@@ -40,7 +40,7 @@ watch(
   min-height: 100dvh;
 }
 
-.kohaku {
+.loli {
   position: fixed;
   user-select: none;
   pointer-events: none;
