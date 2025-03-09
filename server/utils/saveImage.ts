@@ -17,16 +17,7 @@ export async function saveImage(file: Buffer, bucketName: string, filename: stri
             console.log('图片上传失败', filenameWithBucket)
         }
     })
-    return cos.getObjectUrl({
-        Bucket: config.BUCKET_NAME,
-        Region: config.BUCKET_REGION,
-        Key: filenameWithBucket,
-        Sign: true
-    }, (err, data) => {
-        if (err) {
-            console.log('图片获取失败', filenameWithBucket)
-        } else {
-            return data.Url
-        }
-    })
+    // fix: 修复了图片URL不是永久有效的问题
+    // tips: 使用cos.getObjectUrl()方法获取的URL，是临时的
+    return `https://${config.BUCKET_NAME}.cos.${config.BUCKET_REGION}.myqcloud.com/${filenameWithBucket}`
 }
