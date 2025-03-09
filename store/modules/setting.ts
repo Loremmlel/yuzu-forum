@@ -59,7 +59,8 @@ export const usePersistSettingsStore = defineStore('yzforumSettings', () => {
             return URL.createObjectURL(backgroundImageBlob)
         }
 
-        return `/bg/bg${showYzforumBackground}.webp`
+        // fix: 修复了背景图片设置不生效的bug
+        return `/bg/bg${showYzforumBackground.value}.webp`
     }
 
     async function setYzforumSettingsRecover() {
