@@ -62,9 +62,9 @@ async function handleChangeImage(index: number) {
 
       <div>
         <ul class="yzforum-restore-bg">
-          <li v-for="image in paginatedImages" :key="image.index"
+          <li v-for="image in paginatedImages"
               v-tooltip="{message: image.message[locale as Language], position: 'bottom'}">
-            <NuxtImg v-if="image" :src="`bg/bg${image.index}-m.webp`" loading="lazy"
+            <NuxtImg v-if="image" :src="`bg/${image.index}-m.webp`" loading="lazy"
                      @click="handleChangeImage(image.index)"></NuxtImg>
           </li>
         </ul>
@@ -116,7 +116,8 @@ async function handleChangeImage(index: number) {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(3, 80px);
-  grid-template-rows: repeat(5, 50px);
+  grid-template-rows: repeat(3, 45px);
+  grid-gap: 5px;
   position: relative;
   margin: 0 0 10px;
 
