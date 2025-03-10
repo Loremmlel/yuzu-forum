@@ -5,10 +5,10 @@
   <div class="yuzu-footer">
     <div>{{ `© 2025 柚子游戏` }}</div>
     <div>
-      <span>GitHub 开源 -></span>
+      <span>GitHub-></span>
 
       <a
-          aria-label="Yuzu Game Forum Open Source GitHub Repository. 柚子游戏论坛 开源 GitHub 仓库" href="https://github.com/Loremmlel/yuzu-forum" rel="noopener noreferer"
+          aria-label="Yuzu Game Forum Open Source GitHub Repository. 柚子游戏论坛 GitHub 仓库" href="https://github.com/Loremmlel/yuzu-forum" rel="noopener noreferer"
           target="_blank">
         <Icon class="icon" name="lucide:github"></Icon>
       </a>
