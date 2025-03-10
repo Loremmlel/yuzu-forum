@@ -51,7 +51,7 @@ useHead({
     },
     {
       rel: 'apple-touch-icon',
-      href: '/apple-touch-icon.png'
+      href: '/apple-touch-icon.webp'
     }
   ]
 })

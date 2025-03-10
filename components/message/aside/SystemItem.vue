@@ -8,7 +8,7 @@ defineProps<{ title: string, data: AsideItem }>()
 
 <template>
   <NuxtLink :to="`/message/${data.route as 'system' | 'notice'}`" class="item">
-    <NuxtImg src="/apple-touch-icon.png"></NuxtImg>
+    <NuxtImg src="/apple-touch-icon.webp"></NuxtImg>
     <div class="info">
       <div class="title">
         <span class="name">{{ title }}</span>

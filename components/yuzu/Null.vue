@@ -14,7 +14,7 @@ const {t} = useI18n()
 
 <template>
   <div v-if="condition" class="yuzu-null">
-    <NuxtImg v-if="showSticker" :src="useRandomSticker" loading="lazy" placeholder="/apple-touch-icon.png"></NuxtImg>
+    <NuxtImg v-if="showSticker" :src="useRandomSticker" loading="lazy" placeholder="/apple-touch-icon.webp"></NuxtImg>
     <span v-if="type === 'null'">{{ t('null.null') }}</span>
     <span v-if="type === '404'">{{ t('pageError.404') }}</span>
   </div>
