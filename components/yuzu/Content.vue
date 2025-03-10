@@ -11,8 +11,9 @@ defineProps<{
 </template>
 
 <style lang="scss" scoped>
-@use '~/assets/css/editor/index.scss';
-@use '~/assets/css/editor/yuzu-content.scss';
+// @use不生效，@import能行吗？
+@import '~/assets/css/editor/index.scss';
+@import '~/assets/css/editor/yuzu-content.scss';
 
 .yzforum-content {
   width: calc(100% - 135px);
@@ -29,6 +30,9 @@ defineProps<{
   .yzforum-content {
     padding: 10px;
     width: 100%;
+    text-wrap: wrap;
+    white-space: wrap;
+    overflow-x: auto;
   }
 }
 </style>
