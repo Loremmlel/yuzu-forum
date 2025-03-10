@@ -17,11 +17,16 @@ import {
 import {toggleStrikethroughCommand} from "@milkdown/preset-gfm";
 import {insertLinkPlugin} from "~/components/yuzu/milkdown/plugins/hyperlinkInsert";
 
-const props = defineProps<{
+interface Props {
   editorInfo: UseEditorReturn,
   showUploadImage: boolean,
   toggle?: boolean
-}>()
+}
+
+// fix: v-if="props.toggle ?? true",但是不主动设置toggle时却不为true
+const props = withDefaults(defineProps<Props>(), {
+  toggle: true
+})
 
 const {get} = props.editorInfo
 const input = ref<HTMLElement>()
