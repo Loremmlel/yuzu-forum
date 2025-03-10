@@ -161,4 +161,11 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
     opacity: 1;
   }
 }
+
+// 移动端下的设置在汉堡菜单里，顶部栏不需要显示。
+@media (max-width: 700px) {
+  .settings {
+    display: none !important;
+  }
+}
 </style>
