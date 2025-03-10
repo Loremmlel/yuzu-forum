@@ -14,6 +14,8 @@ export default defineNuxtConfig({
         host: '127.0.0.1',
         port: 1007
     },
+    // 测试ssr和csr性能用
+    ssr: true,
     modules: [
         '@nuxt/image',
         '@nuxt/icon',
