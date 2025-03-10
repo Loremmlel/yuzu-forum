@@ -75,7 +75,7 @@ async function handleLoadMore() {
     <SearchHistory v-if="!searchStore.keywords"></SearchHistory>
     <SearchResult :results="results" :type="pageData.type" v-if="results.length"></SearchResult>
     <YuzuDivider v-if="results.length >= 10" margin="30px" padding="0 20px">
-      <slot />
+      <slot></slot>
       <span class="loader" v-if="!isLoading && !isLoadComplete" @click="handleLoadMore">
         {{ t('search.load') }}
       </span>
