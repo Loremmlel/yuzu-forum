@@ -112,7 +112,7 @@ const loliStatus = computed(() => {
   flex-direction: column;
   align-items: center;
   flex-shrink: 0;
-  margin-bottom: 17px;
+  margin-bottom: 20px;
 
   @include yz-blur;
 }

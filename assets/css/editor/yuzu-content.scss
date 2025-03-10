@@ -31,22 +31,24 @@
     text-decoration: line-through;
   }
 
-  p {
-    margin: 17px 0;
-    word-break: break-all;
+  // 修正在特定md语法的情况下，代码块样式不正确的问题。
+  // 例如在ol > li > code，没有定义。先补充全局定义，然后再定义pre的特殊情况
+  code {
+    font-family: "JetBrains Mono",
+    SF Mono,
+    Menlo,
+    Consolas,
+    Liberation Mono,
+    monospace;
+    margin: 0 4px;
+    background-color: var(--yzforum-trans-blue-1);
+    padding: 2px 4px;
+    border-radius: 8px;
+  }
 
-    code {
-      font-family: "JetBrains Mono",
-      SF Mono,
-      Menlo,
-      Consolas,
-      Liberation Mono,
-      monospace;
-      margin: 0 4px;
-      background-color: var(--yzforum-trans-blue-1);
-      padding: 2px 4px;
-      border-radius: 8px;
-    }
+  p {
+    margin: 16px 0;
+    word-break: break-all;
   }
 
   blockquote {
@@ -74,13 +76,18 @@
 
     code {
       font-size: 15px;
-      font-family: SF Mono,
+      font-family: "JetBrains Mono",
+      SF Mono,
       Menlo,
       Consolas,
       Liberation Mono,
       monospace;
       float: left;
       min-width: 100%;
+      margin: 0;
+      background-color: initial;
+      padding: 0;
+      border-radius: initial;
 
       .code-line {
         display: block;
