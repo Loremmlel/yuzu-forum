@@ -73,7 +73,6 @@ export default defineNuxtConfig({
             drop: ['console', 'debugger']
         }
     },
-
     icon: {
         fetchTimeout: 7777,
         provider: 'iconify',
@@ -165,6 +164,9 @@ export default defineNuxtConfig({
     nitro: {
         experimental: {
             websocket: true
+        },
+        compressPublicAssets: {
+            gzip: true
         }
     },
 
