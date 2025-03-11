@@ -22,7 +22,8 @@ function formatNumberWithCommas(number: number): string {
       <span>{{ t(`edit.topic.section.${section.section}`) }}</span>
     </div>
 
-    <NuxtLink :tp="`/section/${section.section}`" class="content">
+    <!--fix: 把打错字的tp改成to-->
+    <NuxtLink :to="`/section/${section.section}`" class="content">
       <div class="topic">
         <span @click.prevent="navigateTo(localePath(`topic/${section.topic.tid}`))">
           {{ section.topic.title }}
@@ -61,7 +62,7 @@ function formatNumberWithCommas(number: number): string {
 
   &:hover {
     .section-title {
-      transform: translateX(20px) translateY(7px);
+      transform: translateX(20px) translateY(10px);
     }
 
     .content {
