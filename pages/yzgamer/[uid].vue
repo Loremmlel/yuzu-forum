@@ -95,5 +95,12 @@ useHead({
   .root {
     padding: 0 5px;
   }
+  // fix: 修正宽度不够的情况下内容溢出的问题
+  .content {
+    * {
+      word-break: break-all;
+      white-space: pre-wrap;
+    }
+  }
 }
 </style>
