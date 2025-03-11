@@ -9,8 +9,6 @@ interface Props {
 const props = defineProps<Props>()
 const emit = defineEmits<{ setPage: [page: number] }>()
 
-const {t} = useI18n()
-
 const pageInput = ref(props.page)
 const currentPage = ref(props.page)
 const totalPages = computed(() => Math.ceil(props.sum / props.limit))
