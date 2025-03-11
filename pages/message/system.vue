@@ -28,6 +28,16 @@ onMounted(async () => {
     ...yzforumResponseHandler
   })
 })
+
+useHead({
+  title: `${t('seo.system.title')} - 柚子游戏`,
+  meta: [
+    {
+      name: 'description',
+      content: t('seo.system.description')
+    }
+  ]
+})
 </script>
 
 <template>

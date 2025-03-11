@@ -772,6 +772,18 @@
     "message": {
       "title": "Message",
       "description": "Yuzu game Forum message system, system notifications, messages, private chat, game group chat, etc."
+    },
+    "notice": {
+      "title": "notice",
+      "description": "Yuzu game Forum message system, system notifications, messages, private chat, game group chat, etc."
+    },
+    "system": {
+      "title": "system notice",
+      "description": "Yuzu game Forum message system, system notifications, messages, private chat, game group chat, etc."
+    },
+    "chat": {
+      "title": "chat",
+      "description": "Yuzu game Forum message system, system notifications, messages, private chat, game group chat, etc."
     }
   },
   "ComponentAlert": {

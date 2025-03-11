@@ -18,6 +18,16 @@ const user = {
 }
 
 const handleReload = () => location.reload()
+
+useHead({
+  title: `${t('seo.chat.title')} - ${user.name} - 柚子游戏`,
+  meta: [
+    {
+      name: 'description',
+      content: t('seo.chat.description')
+    }
+  ]
+})
 </script>
 
 <template>

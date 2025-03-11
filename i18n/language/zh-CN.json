@@ -772,6 +772,18 @@
     "message": {
       "title": "消息",
       "description": "柚子 游戏 论坛消息系统, 系统通知, 消息, 私聊, 游戏 群聊等"
+    },
+    "notice": {
+      "title": "通知",
+      "description": "柚子 游戏 论坛消息系统, 系统通知, 消息, 私聊, 游戏 群聊等"
+    },
+    "system": {
+      "title": "系统通知",
+      "description": "柚子 游戏 论坛消息系统, 系统通知, 消息, 私聊, 游戏 群聊等"
+    },
+    "chat": {
+      "title": "私聊",
+      "description": "柚子 Game 论坛私聊系统, 私聊, 群聊, 聊天"
     }
   },
   "ComponentAlert": {
