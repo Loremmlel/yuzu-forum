@@ -17,7 +17,7 @@ function formatNumberWithCommas(number: number): string {
 </script>
 
 <template>
-  <section v-for="(section, index) in sections" :key="index" class="section">
+  <section v-for="section in sections" class="section">
     <div class="section-title">
       <span>{{ t(`edit.topic.section.${section.section}`) }}</span>
     </div>
@@ -25,7 +25,9 @@ function formatNumberWithCommas(number: number): string {
     <!--fix: 把打错字的tp改成to-->
     <NuxtLink :to="`/section/${section.section}`" class="content">
       <div class="topic">
-        <span @click.prevent="navigateTo(localePath(`topic/${section.topic.tid}`))">
+        <!--fix: 修复了点击话题标题无法跳转到话题的bug-->
+        <!--这个localePath不以'/'开头，会默认跳转到主页-->
+        <span @click.prevent="navigateTo(localePath(`/topic/${section.topic.tid}`))">
           {{ section.topic.title }}
         </span>
         <p>
