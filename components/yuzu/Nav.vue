@@ -34,6 +34,8 @@ const emits = defineEmits<{ set: [value: string] }>()
 .yuzu-nav {
   display: flex;
   align-items: center;
+  // 尝试修复出现滚动条的问题
+  overflow: hidden;
 
   & > span {
     cursor: pointer;
