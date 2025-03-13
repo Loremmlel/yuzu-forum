@@ -15,9 +15,12 @@ const pageData = reactive({
   limit: 10
 })
 
+// fix: 手动指定useFetch的key，修复了服务端获取到数据，而客户端因为key不同认为缓存没有命中，重新获取数据导致页面为空和水合失败的错误
+// !!! 目前只有Home界面的组件会发生这种情况。尚不清楚为什么，是这两天才有的，可能是某些依赖版本变化的原因吧
 const {data, status} = await useFetch('/api/home/message', {
   method: 'GET',
-  query: pageData
+  query: pageData,
+  key: 'home-recent'
 })
 messageData.value = data.value
 

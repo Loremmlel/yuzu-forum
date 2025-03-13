@@ -11,7 +11,8 @@ const pageData = reactive({
 
 const {data, status} = await useFetch('/api/home/resource', {
   method: 'GET',
-  query: pageData
+  query: pageData,
+  key: 'home-resource'
 })
 resourceData.value = data.value
 

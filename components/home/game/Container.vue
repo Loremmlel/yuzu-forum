@@ -10,7 +10,9 @@ const pageData = reactive({
 })
 const {data, status} = await useFetch('/api/home/game', {
   method: 'GET',
-  query: pageData
+  query: pageData,
+  key: 'home-game',
+  ...yzforumResponseHandler
 })
 gameData.value = data.value
 
