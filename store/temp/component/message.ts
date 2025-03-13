@@ -1,7 +1,6 @@
 export const useComponentMessageStore = defineStore('tempComponentMessage', () => {
     const showInfo = ref(false)
     const infoMessage = ref('')
-    const infoTranslateParams = ref('')
     const durations = ref(0)
 
     const showAlert = ref(false)
@@ -20,9 +19,8 @@ export const useComponentMessageStore = defineStore('tempComponentMessage', () =
 
     let promiseResolve: ((value: boolean) => void) | null = null
 
-    function info(infoMessage_: string, infoTranslateParams_?: string, durations_?: number) {
+    function info(infoMessage_: string, durations_?: number) {
         infoMessage.value = infoMessage_
-        infoTranslateParams.value = infoTranslateParams_ ?? ''
         durations.value = durations_ ?? 3000
         showInfo.value = true
     }
@@ -64,7 +62,6 @@ export const useComponentMessageStore = defineStore('tempComponentMessage', () =
     function reset() {
         showInfo.value = false
         infoMessage.value = ''
-        infoTranslateParams.value = ''
         durations.value = 0
 
         showAlert.value = false
@@ -88,7 +85,6 @@ export const useComponentMessageStore = defineStore('tempComponentMessage', () =
     return {
         showInfo,
         infoMessage,
-        infoTranslateParams,
         durations,
         showAlert,
         alertTitle,

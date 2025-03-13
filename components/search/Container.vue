@@ -106,7 +106,6 @@ async function handleLoadMore() {
 .nav {
   margin-bottom: 20px;
   overflow-x: scroll;
-  // fix: 修复高度太低导致出现滚动条的问题
   height: 50px;
 
   &::-webkit-scrollbar {

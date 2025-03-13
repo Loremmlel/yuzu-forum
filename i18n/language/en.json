@@ -816,9 +816,9 @@
       "password": "Are you sure you want to change your password?"
     },
     "check": {
-      "message1": "Utterly useless... Useless... Sign-in successful, but you got nothing today...",
-      "message2": "Utterly useless... Sign-in successful, you received {params} cute points today",
-      "message3": "Useless... Sign-in successful, lucky you, received {params} cute points today!"
+      "message1": "Sign-in successful, but you got nothing today...",
+      "message2": "Sign-in successful, you received{points}yuzu points today",
+      "message3": "Sign-in successful, lucky you, received{points}yuzu points today!"
     }
   },
   "null": {

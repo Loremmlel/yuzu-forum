@@ -41,7 +41,7 @@ watch(
         const result = await sendCode()
 
         if (result) {
-          message.info('AlertInfo.code.code')
+          message.info(t('AlertInfo.code.code'))
         } else {
           isSending.value = false
         }

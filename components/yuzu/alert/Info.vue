@@ -60,7 +60,7 @@ watch(
 
         <Transition appear enter-active-class="animate__animated animate__bounceInRight animate__faster">
           <div class="info">
-            {{ `「 ${t(message.infoMessage)} 」` }}
+            {{ `「 ${message.infoMessage} 」` }}
           </div>
         </Transition>
 

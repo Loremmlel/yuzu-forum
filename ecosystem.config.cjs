@@ -9,7 +9,7 @@ module.exports = {
             instances: 1,
             autorestart: true,
             watch: false,
-            max_memory_restart: '1G',
+            max_memory_restart: '2G',  // 不往大了设置，我4G内存不是白买了？
             script: './.output/server/index.mjs'
         }
     ]

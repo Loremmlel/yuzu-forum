@@ -19,7 +19,7 @@ function checkForm(name: string, email: string, password: string): boolean {
     return false
   }
   if (!isValidName(name)) {
-    message.info('AlertInfo.login.invalidUsername')
+    message.info(t('AlertInfo.login.invalidUsername'))
     return false
   }
   if (!isValidEmail(email)) {
@@ -27,7 +27,7 @@ function checkForm(name: string, email: string, password: string): boolean {
     return false
   }
   if (!isValidPassword(password)) {
-    message.info('AlertInfo.login.invalidPassword')
+    message.info(t('AlertInfo.login.invalidPassword'))
     return false
   }
   return true
@@ -43,7 +43,7 @@ function checkRegister(isSendCode: boolean, code: string) {
     return false
   }
   if (!isValidMailConfirmCode(code)) {
-    message.info('AlertInfo.login.invalidCode')
+    message.info(t('AlertInfo.login.invalidCode'))
     return false
   }
   return true
@@ -88,7 +88,7 @@ async function handleRegister() {
   })
 
   if (userInfo) {
-    message.info('AlertInfo.login.success')
+    message.info(t('AlertInfo.login.success'))
     useMessage(InfoCode.RegistrationSuccess, 'success')
     usePersistUserStore().setUserInfo(userInfo)
     navigateTo(localePath('/'))

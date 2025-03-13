@@ -33,13 +33,13 @@ async function handleCheckIn() {
 
   switch (result) {
     case 0:
-      message.info('AlertInfo.check.message1', '', 5000)
+      message.info(t('AlertInfo.check.message1'), 5000)
       break
     case 7:
-      message.info('AlertInfo.check.message3', '7', 5000)
+      message.info(t('AlertInfo.check.message3', {points: 7}), 5000)
       break
     default:
-      message.info('AlertInfo.check.message2', result.toString(), 5000)
+      message.info(t('AlertInfo.check.message2', {points: result}), 5000)
   }
 }
 

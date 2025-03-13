@@ -21,7 +21,7 @@ function checkUsername(name: string) {
     return false
   }
   if (!isValidName(name) && !isValidEmail(name)) {
-    message.info('AlertInfo.login.invalidUsername')
+    message.info(t('AlertInfo.login.invalidUsername'))
     return false
   }
   return true
@@ -33,7 +33,7 @@ function checkPassword(password: string) {
     return false
   }
   if (!isValidPassword(password)) {
-    message.info('AlertInfo.login.invalidPassword')
+    message.info(t('AlertInfo.login.invalidPassword'))
     return false
   }
   return true
@@ -57,7 +57,7 @@ async function handleLogin() {
     watch: false
   })
   if (userInfo) {
-    message.info('AlertInfo.login.success')
+    message.info(t('AlertInfo.login.success'))
     usePersistUserStore().setUserInfo(userInfo)
     navigateTo(localePath('/'))
   }
