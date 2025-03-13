@@ -24,6 +24,7 @@ const {data, status, refresh} = await useFetch(`/api/topic/${props.tid}/reply`, 
   method: 'GET',
   query: pageData,
   watch: false,
+  key: 'topic-reply',
   ...yzforumResponseHandler
 })
 replyData.value = data.value

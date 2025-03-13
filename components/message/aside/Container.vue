@@ -5,11 +5,13 @@ const {t} = useI18n()
 
 const {data: system} = await useFetch(`/api/message/nav/system`, {
   method: 'GET',
+  key: 'message-system',
   ...yzforumResponseHandler
 })
 
 const {data: contact} = await useFetch(`/api/message/nav/contact`, {
   method: 'GET',
+  key: 'message-contact',
   ...yzforumResponseHandler
 })
 

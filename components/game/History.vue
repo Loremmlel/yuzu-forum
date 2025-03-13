@@ -9,11 +9,11 @@ const pageData = reactive({
 })
 
 const {data, status} = await useFetch(`/api/game/${gid.value}/history/all`, {
-      method: 'GET',
-      query: pageData,
-      ...yzforumResponseHandler
-    }
-)
+  method: 'GET',
+  query: pageData,
+  key: 'game-history',
+  ...yzforumResponseHandler
+})
 </script>
 
 <template>

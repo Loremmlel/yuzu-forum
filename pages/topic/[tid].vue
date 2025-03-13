@@ -15,6 +15,7 @@ provide<string>('tid', tid.value)
 const data = await useFetch(`/api/topic/${tid.value}`, {
   method: 'GET',
   watch: false,
+  key: 'message-topic',
   ...yzforumResponseHandler
 }).then(({data}) => {
   if (data.value === 'banned') {

@@ -15,6 +15,7 @@ const pageData = reactive({
 const {data} = await useFetch('/api/message/admin', {
   method: 'GET',
   query: pageData,
+  key: 'message-admin',
   ...yzforumResponseHandler
 })
 

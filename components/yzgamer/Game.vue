@@ -13,6 +13,7 @@ const pageData = reactive({
 const {data, status} = await useFetch(`/api/user/${props.uid}/game`, {
   method: 'GET',
   query: pageData,
+  key: 'yzgamer-game',
   ...yzforumResponseHandler
 })
 </script>

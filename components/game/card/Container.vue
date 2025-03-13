@@ -3,11 +3,10 @@ const tempGameStore = useTempGameStore()
 
 const pageData = computed(() => tempGameStore.out())
 
-const {t} = useI18n()
-
 const {data, status} = await useFetch('/api/game', {
   method: 'GET',
   query: pageData.value,
+  key: 'game-card',
   ...yzforumResponseHandler
 })
 </script>

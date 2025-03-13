@@ -11,6 +11,7 @@ const gid = ref(route.params.gid as string)
 const {data} = await useFetch(`/api/game/${gid.value}`, {
   method: 'GET',
   watch: false,
+  key: 'game',
   ...yzforumResponseHandler
 })
 

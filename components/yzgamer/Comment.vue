@@ -9,6 +9,7 @@ const pageData = reactive({
 const {data, status} = await useFetch(`/api/user/${props.uid}/comments`, {
   method: 'GET',
   query: pageData,
+  key: 'yzgamer-comments',
   ...yzforumResponseHandler
 })
 </script>

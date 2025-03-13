@@ -8,6 +8,7 @@ const hasSentCodeEmail = ref('')
 
 const {data, refresh} = await useFetch('/api/user/email', {
   method: 'GET',
+  key: 'yzgamer-email',
   ...yzforumResponseHandler
 })
 

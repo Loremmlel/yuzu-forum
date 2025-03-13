@@ -20,7 +20,8 @@ const pageData = reactive({
 const {data, status} = await useFetch('/api/home/message', {
   method: 'GET',
   query: pageData,
-  key: 'home-recent'
+  key: 'home-recent',
+  ...yzforumResponseHandler
 })
 messageData.value = data.value
 

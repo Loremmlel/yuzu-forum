@@ -13,6 +13,7 @@ const {data, status} = await useFetch('/api/section', {
     page,
     limit: 23
   },
+  key: 'section',
   ...yzforumResponseHandler
 })
 

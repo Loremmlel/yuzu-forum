@@ -12,7 +12,8 @@ const pageData = reactive({
 const {data, status} = await useFetch('/api/home/resource', {
   method: 'GET',
   query: pageData,
-  key: 'home-resource'
+  key: 'home-resource',
+  ...yzforumResponseHandler
 })
 resourceData.value = data.value
 

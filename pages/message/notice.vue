@@ -15,6 +15,7 @@ const pageData = reactive({
 const {data, status, refresh} = await useFetch(`/api/message`, {
   method: 'GET',
   query: pageData,
+  key: 'message',
   ...yzforumResponseHandler
 })
 

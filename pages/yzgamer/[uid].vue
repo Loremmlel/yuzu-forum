@@ -14,6 +14,9 @@ const isBanned = ref(false)
 
 const {data, refresh} = await useFetch(`/api/user/${uid.value}`, {
   method: 'GET',
+  // fix: 发现其它使用useFetch的也出现这种错误了……
+  // 看来以后都得手动指定key了
+  key: 'yzgamer-user',
   ...yzforumResponseHandler
 })
 
