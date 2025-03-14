@@ -6,13 +6,11 @@ const {t} = useI18n()
 
 const pageStore = useTempPoolPageStore()
 
-const loadingComplete = ref(false)
 const isFetching = ref(false)
-const topics = ref<PoolTopic[]>([])
 const savedPosition = ref(0)
 
-if (!topics.value.length) {
-  topics.value = await getTopics()
+if (pageStore.topics.length === 0) {
+  pageStore.topics = await getTopics()
 }
 
 async function getTopics() {
@@ -35,7 +33,7 @@ function isScrollAtBottom() {
 }
 
 async function scrollHandler() {
-  if (!isScrollAtBottom() || loadingComplete.value || isFetching.value) {
+  if (!isScrollAtBottom() || pageStore.loadingComplete || isFetching.value) {
     return
   }
   isFetching.value = true
@@ -43,9 +41,9 @@ async function scrollHandler() {
   const newData = await getTopics()
 
   if (newData.length < pageStore.limit) {
-    loadingComplete.value = true
+    pageStore.loadingComplete = true
   }
-  topics.value = topics.value.concat(newData)
+  pageStore.topics = pageStore.topics.concat(newData)
   isFetching.value = false
 }
 
@@ -53,23 +51,23 @@ watch(
     () => [pageStore.sortField, pageStore.sortOrder, pageStore.category],
     async () => {
       pageStore.page = 1
-      loadingComplete.value = false
-      topics.value = []
+      pageStore.loadingComplete = false
+      pageStore.topics = []
       savedPosition.value = 0
-      topics.value = await getTopics()
+      pageStore.topics = await getTopics()
     }
 )
 
 async function handleLoadTopics() {
-  if (loadingComplete.value) {
+  if (pageStore.loadingComplete) {
     return
   }
   pageStore.page++
   const lazyLoadTopics = await getTopics()
   if (lazyLoadTopics.length < pageStore.limit) {
-    loadingComplete.value = true
+    pageStore.loadingComplete = true
   }
-  topics.value = topics.value.concat(lazyLoadTopics)
+  pageStore.topics = pageStore.topics.concat(lazyLoadTopics)
 }
 
 onMounted(() => {
@@ -87,9 +85,9 @@ onUnmounted(() => {
 <template>
   <div class="pool">
     <PoolTool></PoolTool>
-    <PoolLayout :topics="topics"></PoolLayout>
+    <PoolLayout :topics="pageStore.topics"></PoolLayout>
     <div class="load">
-      <span v-if="!loadingComplete" class="loader" @click="handleLoadTopics">
+      <span v-if="!pageStore.loadingComplete" class="loader" @click="handleLoadTopics">
         {{ t('pool.load') }}
       </span>
       <span v-else class="complete">
