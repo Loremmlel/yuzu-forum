@@ -50,7 +50,7 @@ async function handlePublishGame() {
     await deleteImage('yzforum-publish-banner')
     editGameStore.reset()
     navigateTo(localePath(`/game/${gid}`))
-    useComponentMessageStore().info('AlertInfo.edit.publishSuccess')
+    useComponentMessageStore().info(t('AlertInfo.edit.publishSuccess'))
   }
 }
 

@@ -129,7 +129,7 @@ async function handlePublish() {
 
   if (tid) {
     navigateTo(localePath(`/topic/${tid}`))
-    useComponentMessageStore().info('AlertInfo.edit.publishSuccess')
+    useComponentMessageStore().info(t('AlertInfo.edit.publishSuccess'))
     usePersistEditTopicStore().resetTopicData()
   }
 }
@@ -171,7 +171,7 @@ async function handleRewrite() {
 
   if (result) {
     navigateTo(localePath(`/topic/${tid.value}`))
-    useComponentMessageStore().info('AlertInfo.edit.rewriteSuccess')
+    useComponentMessageStore().info(t('AlertInfo.edit.rewriteSuccess'))
     useTempEditStore().resetRewriteTopicData()
   }
 }

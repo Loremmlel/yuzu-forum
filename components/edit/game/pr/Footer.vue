@@ -62,7 +62,7 @@ async function handlePublishGamePR() {
     navigateTo(localePath(`/game/${pullRequest.gid}`), {
       replace: true
     })
-    useComponentMessageStore().info('AlertInfo.edit.prSuccess')
+    useComponentMessageStore().info(t('AlertInfo.edit.prSuccess'))
   }
 }
 
