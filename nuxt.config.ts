@@ -27,7 +27,8 @@ export default defineNuxtConfig({
         'pinia-plugin-persistedstate/nuxt',
         '@vite-pwa/nuxt',
         'dayjs-nuxt',
-        'nuxt-schema-org'
+        'nuxt-schema-org',
+        'nuxt-cron'
     ],
     runtimeConfig: {
         MONGODB_URL: process.env.MONGODB_URL,
@@ -84,6 +85,12 @@ export default defineNuxtConfig({
             maxAge: 60 * 60 * 24 * 7,
             sameSite: 'strict'
         }
+    },
+
+    cron: {
+        runOnInit: false,
+        timeZone: 'Asia/Shanghai',
+        jobsDir: 'cron'
     },
 
     i18n: {
