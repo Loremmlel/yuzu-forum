@@ -1,6 +1,10 @@
 <script lang="ts" setup>
 const tempGameStore = useTempGameStore()
 
+// fix: 修复了game页面出错的问题……
+// 被ws的文件搜索给骗了。我之前给useFetch加key的时候，看到这里的t是灰色的，以为没用到就给删了……
+const {t} = useI18n()
+
 const pageData = computed(() => tempGameStore.out())
 
 const {data, status} = await useFetch('/api/game', {
