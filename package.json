@@ -36,6 +36,7 @@
     "animate.css": "^4.1.1",
     "bcrypt": "^5.1.1",
     "cos-nodejs-sdk-v5": "^2.14.6",
+    "diff_module": "link:wasm\\diff_module\\pkg",
     "dotenv": "^16.4.7",
     "engine.io": "^6.6.4",
     "feed": "^4.2.2",
